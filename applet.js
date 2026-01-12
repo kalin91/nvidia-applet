@@ -59,7 +59,8 @@ NvidiaMonitorApplet.prototype = {
 
     update: function() {
         try {
-            let [success, stdout, stderr, exit_status] = GLib.spawn_command_line_sync('nvidia-smi --query-gpu=temperature.gpu,memory.used,memory.total,utilization.gpu,fan.speed --format=csv,noheader,nounits');
+            // Use full path to nvidia-smi
+            let [success, stdout, stderr, exit_status] = GLib.spawn_command_line_sync('/usr/bin/nvidia-smi --query-gpu=temperature.gpu,memory.used,memory.total,utilization.gpu,fan.speed --format=csv,noheader,nounits');
 
             if (success) {
                 let output = "";
