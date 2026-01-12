@@ -48,7 +48,8 @@ NvidiaMonitorApplet.prototype = {
     _updateLoop: function() {
         this.update();
         
-        let interval = this.refresh_interval * 1000;
+        // refresh_interval is now in milliseconds directly
+        let interval = this.refresh_interval;
         if (interval < 500) interval = 500;
         
         this._updateLoopId = Mainloop.timeout_add(interval, Lang.bind(this, function() {
