@@ -28,8 +28,9 @@ NvidiaMonitorApplet.prototype = {
         
         // Separator string
         let sepText = " | ";
+        this._pieChartSize = Math.max(16, panel_height - 6);
 
-        // 1. Temp Label (existing _label)
+        // 1. Temp Label
         this._label = new St.Label({ 
             text: "Initializing...",
             y_align: Clutter.ActorAlign.CENTER
@@ -46,16 +47,15 @@ NvidiaMonitorApplet.prototype = {
         this._box.add(this._memLabel, { y_fill: false, y_align: St.Align.MIDDLE });
         this._memLabel.hide();
 
-        // 4. Mem Pie Chart
-        this._pieChartSize = Math.max(16, panel_height - 6);
-        this._pieChartArea = new St.DrawingArea({
+        // 4. Mem Pie Chart (Renamed from _pieChartArea)
+        this._memPieChartArea = new St.DrawingArea({
             width: this._pieChartSize,
             height: this._pieChartSize,
             style: 'margin-left: 2px; margin-right: 2px;'
         });
-        this._pieChartArea.connect('repaint', Lang.bind(this, this._drawPieChart));
-        this._box.add(this._pieChartArea, { y_fill: false, y_align: St.Align.MIDDLE });
-        this._pieChartArea.hide();
+        this._memPieChartArea.connect('repaint', Lang.bind(this, this._drawMemPie));
+        this._box.add(this._memPieChartArea, { y_fill: false, y_align: St.Align.MIDDLE });
+        this._memPieChartArea.hide();
 
         // 5. Sep 2
         this._sep2 = new St.Label({ text: sepText, y_align: Clutter.ActorAlign.CENTER });
@@ -67,15 +67,35 @@ NvidiaMonitorApplet.prototype = {
         this._box.add(this._gpuLabel, { y_fill: false, y_align: St.Align.MIDDLE });
         this._gpuLabel.hide();
 
-        // 7. Sep 3
+        // 7. GPU Pie Chart
+        this._gpuPieChartArea = new St.DrawingArea({
+            width: this._pieChartSize,
+            height: this._pieChartSize,
+            style: 'margin-left: 2px; margin-right: 2px;'
+        });
+        this._gpuPieChartArea.connect('repaint', Lang.bind(this, this._drawGpuPie));
+        this._box.add(this._gpuPieChartArea, { y_fill: false, y_align: St.Align.MIDDLE });
+        this._gpuPieChartArea.hide();
+
+        // 8. Sep 3
         this._sep3 = new St.Label({ text: sepText, y_align: Clutter.ActorAlign.CENTER });
         this._box.add(this._sep3, { y_fill: false, y_align: St.Align.MIDDLE });
         this._sep3.hide();
 
-        // 8. Fan Label
+        // 9. Fan Label
         this._fanLabel = new St.Label({ text: "", y_align: Clutter.ActorAlign.CENTER });
         this._box.add(this._fanLabel, { y_fill: false, y_align: St.Align.MIDDLE });
         this._fanLabel.hide();
+
+        // 10. Fan Pie Chart
+        this._fanPieChartArea = new St.DrawingArea({
+            width: this._pieChartSize,
+            height: this._pieChartSize,
+            style: 'margin-left: 2px; margin-right: 2px;'
+        });
+        this._fanPieChartArea.connect('repaint', Lang.bind(this, this._drawFanPie));
+        this._box.add(this._fanPieChartArea, { y_fill: false, y_align: St.Align.MIDDLE });
+        this._fanPieChartArea.hide();
         
         this.settings = new Settings.AppletSettings(this, metadata.uuid, instance_id);
         
@@ -84,11 +104,15 @@ NvidiaMonitorApplet.prototype = {
         this.settings.bind("show-memory", "show_memory", this.on_update_display);
         this.settings.bind("memory-display-mode", "memory_display_mode", this.on_update_display);
         this.settings.bind("show-gpu-util", "show_gpu_util", this.on_update_display);
+        this.settings.bind("gpu-display-mode", "gpu_display_mode", this.on_update_display);
         this.settings.bind("show-fan-speed", "show_fan_speed", this.on_update_display);
+        this.settings.bind("fan-display-mode", "fan_display_mode", this.on_update_display);
 
         this._updateLoopId = null;
         this.last_output = "";
         this._memUsedPercent = 0;
+        this._gpuUtilPercent = 0;
+        this._fanSpeedPercent = 0;
         
         this.set_applet_tooltip("NVIDIA Monitor");
         
@@ -152,7 +176,19 @@ NvidiaMonitorApplet.prototype = {
         }
     },
 
-    _drawPieChart: function(area) {
+    _drawMemPie: function(area) {
+        this._drawPie(area, this._memUsedPercent);
+    },
+
+    _drawGpuPie: function(area) {
+        this._drawPie(area, this._gpuUtilPercent);
+    },
+
+    _drawFanPie: function(area) {
+        this._drawPie(area, this._fanSpeedPercent);
+    },
+
+    _drawPie: function(area, percent) {
         let [width, height] = area.get_surface_size();
         let cr = area.get_context();
         
@@ -160,30 +196,29 @@ NvidiaMonitorApplet.prototype = {
         let centerY = height / 2;
         let radius = Math.min(width, height) / 2 - 1;
         
-        // Background circle (total memory - gray)
+        // Background circle (gray)
         cr.setSourceRGBA(0.4, 0.4, 0.4, 1.0);
         cr.arc(centerX, centerY, radius, 0, 2 * Math.PI);
         cr.fill();
         
-        // Used memory portion (green to red gradient based on usage)
-        let usedPercent = this._memUsedPercent;
-        if (usedPercent > 0) {
+        // Used portion (green to red gradient based on usage)
+        if (percent > 0) {
             // Color goes from green (low usage) to yellow to red (high usage)
             let r, g, b;
-            if (usedPercent < 0.5) {
-                r = usedPercent * 2;
+            if (percent < 0.5) {
+                r = percent * 2;
                 g = 0.8;
                 b = 0.2;
             } else {
                 r = 1.0;
-                g = 0.8 * (1 - (usedPercent - 0.5) * 2);
+                g = 0.8 * (1 - (percent - 0.5) * 2);
                 b = 0.2;
             }
             cr.setSourceRGBA(r, g, b, 1.0);
             
             // Draw pie slice starting from top (-PI/2)
             cr.moveTo(centerX, centerY);
-            cr.arc(centerX, centerY, radius, -Math.PI / 2, -Math.PI / 2 + usedPercent * 2 * Math.PI);
+            cr.arc(centerX, centerY, radius, -Math.PI / 2, -Math.PI / 2 + percent * 2 * Math.PI);
             cr.closePath();
             cr.fill();
         }
@@ -204,17 +239,24 @@ NvidiaMonitorApplet.prototype = {
         let temp = parts[0];
         let memUsed = parseFloat(parts[1]);
         let memTotal = parseFloat(parts[2]);
-        let gpuUtil = parts[3];
-        let fanSpeed = parts[4];
+        let gpuUtil = parseFloat(parts[3]);
+        let fanSpeed = parseFloat(parts[4]);
         
-        // Calculate memory percentage for pie chart
+        // Calculate percentages
         this._memUsedPercent = memTotal > 0 ? memUsed / memTotal : 0;
+        this._gpuUtilPercent = gpuUtil / 100.0;
+        this._fanSpeedPercent = fanSpeed / 100.0;
 
         let showTemp = this.show_temp;
+        
         let showMem = this.show_memory;
         let memMode = this.memory_display_mode;
+        
         let showGpu = this.show_gpu_util;
+        let gpuMode = this.gpu_display_mode;
+
         let showFan = this.show_fan_speed;
+        let fanMode = this.fan_display_mode;
 
         let visTemp = false;
         let visMem = false;
@@ -235,34 +277,50 @@ NvidiaMonitorApplet.prototype = {
             visMem = true;
             if (memMode === 'pie') {
                 this._memLabel.hide();
-                this._pieChartArea.show();
-                this._pieChartArea.queue_repaint();
+                this._memPieChartArea.show();
+                this._memPieChartArea.queue_repaint();
             } else {
                 this._memLabel.set_text(Math.round(memUsed) + "MiB / " + Math.round(memTotal) + "MiB");
                 this._memLabel.show();
-                this._pieChartArea.hide();
+                this._memPieChartArea.hide();
             }
         } else {
             this._memLabel.hide();
-            this._pieChartArea.hide();
+            this._memPieChartArea.hide();
         }
 
         // GPU
         if (showGpu) {
-            this._gpuLabel.set_text("GPU: " + gpuUtil + "%");
-            this._gpuLabel.show();
             visGpu = true;
+            if (gpuMode === 'pie') {
+                this._gpuLabel.hide();
+                this._gpuPieChartArea.show();
+                this._gpuPieChartArea.queue_repaint();
+            } else {
+                this._gpuLabel.set_text("GPU: " + gpuUtil + "%");
+                this._gpuLabel.show();
+                this._gpuPieChartArea.hide();
+            }
         } else {
             this._gpuLabel.hide();
+            this._gpuPieChartArea.hide();
         }
 
         // Fan
         if (showFan) {
-            this._fanLabel.set_text("Fan: " + fanSpeed + "%");
-            this._fanLabel.show();
             visFan = true;
+            if (fanMode === 'pie') {
+                this._fanLabel.hide();
+                this._fanPieChartArea.show();
+                this._fanPieChartArea.queue_repaint();
+            } else {
+                this._fanLabel.set_text("Fan: " + fanSpeed + "%");
+                this._fanLabel.show();
+                this._fanPieChartArea.hide();
+            }
         } else {
             this._fanLabel.hide();
+            this._fanPieChartArea.hide();
         }
 
         // Separators

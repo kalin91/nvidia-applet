@@ -42,10 +42,32 @@
     "description": "Show GPU Utilization",
     "tooltip": "Show GPU utilization percentage in the panel."
   },
+  "gpu-display-mode": {
+    "type": "combobox",
+    "default": "text",
+    "options": {
+      "Text (Percent)": "text",
+      "Pie Chart": "pie"
+    },
+    "description": "GPU Display Mode",
+    "tooltip": "Choose how to display GPU utilization: as text or as a pie chart.",
+    "dependency": "show-gpu-util"
+  },
   "show-fan-speed": {
     "type": "switch",
     "default": false,
     "description": "Show Fan Speed",
     "tooltip": "Show GPU fan speed percentage in the panel."
+  },
+  "fan-display-mode": {
+    "type": "combobox",
+    "default": "text",
+    "options": {
+      "Text (Percent)": "text",
+      "Pie Chart": "pie"
+    },
+    "description": "Fan Display Mode",
+    "tooltip": "Choose how to display fan speed: as text or as a pie chart.",
+    "dependency": "show-fan-speed"
   }
 }
