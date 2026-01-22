@@ -6,6 +6,8 @@ const GLib = imports.gi.GLib;
 const ByteArray = imports.byteArray;
 const St = imports.gi.St;
 const Clutter = imports.gi.Clutter;
+const Pango = imports.gi.Pango;
+const PangoCairo = imports.gi.PangoCairo;
 
 function NvidiaMonitorApplet(metadata, orientation, panel_height, instance_id) {
     this._init(metadata, orientation, panel_height, instance_id);
@@ -177,18 +179,18 @@ NvidiaMonitorApplet.prototype = {
     },
 
     _drawMemPie: function(area) {
-        this._drawPie(area, this._memUsedPercent);
+        this._drawPie(area, this._memUsedPercent, "Mem");
     },
 
     _drawGpuPie: function(area) {
-        this._drawPie(area, this._gpuUtilPercent);
+        this._drawPie(area, this._gpuUtilPercent, "GPU");
     },
 
     _drawFanPie: function(area) {
-        this._drawPie(area, this._fanSpeedPercent);
+        this._drawPie(area, this._fanSpeedPercent, "Fan");
     },
 
-    _drawPie: function(area, percent) {
+    _drawPie: function(area, percent, label) {
         let [width, height] = area.get_surface_size();
         let cr = area.get_context();
         
@@ -196,15 +198,15 @@ NvidiaMonitorApplet.prototype = {
         let centerY = height / 2;
         let radius = Math.min(width, height) / 2 - 1;
         
-        // Background circle (gray)
-        cr.setSourceRGBA(0.4, 0.4, 0.4, 1.0);
+        // Background circle (Darker gray for better text contrast)
+        cr.setSourceRGBA(0.2, 0.2, 0.2, 1.0);
         cr.arc(centerX, centerY, radius, 0, 2 * Math.PI);
         cr.fill();
         
         // Used portion (green to red gradient based on usage)
+        let r, g, b;
         if (percent > 0) {
             // Color goes from green (low usage) to yellow to red (high usage)
-            let r, g, b;
             if (percent < 0.5) {
                 r = percent * 2;
                 g = 0.8;
@@ -222,8 +224,37 @@ NvidiaMonitorApplet.prototype = {
             cr.closePath();
             cr.fill();
         }
+
+        // Draw Label using Pango
+        if (label) {
+             let layout = PangoCairo.create_layout(cr);
+             layout.set_text(label, -1);
+             
+             // Dynamic font size: ~35% of diameter (increased from 25%)
+             let fontSize = Math.max(8, Math.min(width, height) * 0.32);
+             let desc = Pango.FontDescription.from_string("Sans Bold");
+             desc.set_absolute_size(fontSize * Pango.SCALE);
+             layout.set_font_description(desc);
+
+             // Brighter Blue for contrast against dark background
+            if (percent < 0.5) {
+                cr.setSourceRGBA(0.7, 0.25, 0.0, 1.0);
+            } else if (percent < 0.75) {
+                cr.setSourceRGBA(0.15, 0.75, 0.15, 1.0);
+            } else {
+                cr.setSourceRGBA(1-r, 1-g, 1-b, 1.0);
+            }
+             let [inkRect, logicalRect] = layout.get_pixel_extents();
+             let textWidth = logicalRect.width;
+             let textHeight = logicalRect.height;
+             
+             cr.moveTo(centerX - textWidth / 2, centerY - textHeight / 2);
+             PangoCairo.show_layout(cr, layout);
+        }
         
         // Draw border
+        // Clear path to avoid connecting text end-point to the circle start (artifact fix)
+        cr.newPath();
         cr.setSourceRGBA(0.7, 0.7, 0.7, 1.0);
         cr.setLineWidth(1);
         cr.arc(centerX, centerY, radius, 0, 2 * Math.PI);
