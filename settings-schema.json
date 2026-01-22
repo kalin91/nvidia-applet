@@ -25,6 +25,17 @@
     "description": "Show Memory Usage",
     "tooltip": "Show GPU memory usage in the panel."
   },
+  "memory-display-mode": {
+    "type": "combobox",
+    "default": "text",
+    "options": {
+      "Text (Used / Total)": "text",
+      "Pie Chart": "pie"
+    },
+    "description": "Memory Display Mode",
+    "tooltip": "Choose how to display memory usage: as text or as a pie chart.",
+    "dependency": "show-memory"
+  },
   "show-gpu-util": {
     "type": "switch",
     "default": false,
