@@ -98,6 +98,7 @@ class NvidiaMonitorApplet extends applet.Applet {
         this.settings.bind("refresh-interval", "refresh_interval", () => this.on_settings_changed());
         this.settings.bind("encoding", "encoding", () => this.on_settings_changed());
         this.settings.bind("show-temp", "show_temp", () => this.on_update_display());
+        this.settings.bind("temp-unit", "temp_unit", () => this.on_update_display());
         this.settings.bind("show-memory", "show_memory", () => this.on_update_display());
         this.settings.bind("memory-display-mode", "memory_display_mode", () => this.on_update_display());
         this.settings.bind("show-gpu-util", "show_gpu_util", () => this.on_update_display());
@@ -129,7 +130,7 @@ class NvidiaMonitorApplet extends applet.Applet {
     _updateLoop() {
         this.update();
 
-        let interval = Math.max(this.refresh_interval, 500);
+        let interval = Math.max(this.refresh_interval * 1000, 500);
 
         this._updateLoopId = GLib.timeout_add(GLib.PRIORITY_DEFAULT, interval, () => {
             this._updateLoop();
@@ -260,7 +261,11 @@ class NvidiaMonitorApplet extends applet.Applet {
 
         // Temp logic
         if (this.show_temp) {
-            this._label.set_text(temp + "°C");
+            let displayTemp = temp;
+            if (this.temp_unit === "F") {
+                displayTemp = (parseFloat(temp) * 9/5 + 32).toFixed(1);
+            }
+            this._label.set_text(displayTemp + "°" + this.temp_unit);
             this._label.show();
             visTemp = true;
         } else {

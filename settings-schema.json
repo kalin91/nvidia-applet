@@ -1,23 +1,54 @@
 {
   "section1": {
     "type": "section",
-    "description": "Display Settings"
+    "description": "General Settings"
   },
+
   "refresh-interval": {
     "type": "spinbutton",
-    "default": 2000,
-    "min": 500,
-    "max": 60000,
-    "step": 500,
-    "units": "ms",
+    "default": 1.5,
+    "min": 0.5,
+    "max": 86400,
+    "step": 0.5,
+    "units": "s",
     "description": "Refresh Interval",
-    "tooltip": "How often to update the GPU stats (in milliseconds)."
+    "tooltip": "How often to update the GPU stats (in seconds)."
+  },
+  "encoding": {
+    "type": "combobox",
+    "default": "utf8",
+    "options": {
+      "UTF-8": "utf8",
+      "macintosh": "mac",
+      "ASCII": "windows-1252"
+    },
+    "description": "nvidia-smi Output Encoding",
+    "tooltip": "Select the character encoding used by nvidia-smi output."
+  },
+  "section2": {
+    "type": "section",
+    "description": "Temperature"
   },
   "show-temp": {
     "type": "switch",
     "default": true,
     "description": "Show Temperature",
     "tooltip": "Show GPU temperature in the panel."
+  },
+  "temp-unit": {
+    "type": "combobox",
+    "default": "C",
+    "options": {
+      "Celsius (°C)": "C",
+      "Fahrenheit (°F)": "F"
+    },
+    "description": "Temperature Unit",
+    "tooltip": "Choose the unit for displaying GPU temperature.",
+    "dependency": "show-temp"
+  },
+  "section3": {
+    "type": "section",
+    "description": "Memory Usage"
   },
   "show-memory": {
     "type": "switch",
@@ -36,6 +67,10 @@
     "tooltip": "Choose how to display memory usage: as text or as a pie chart.",
     "dependency": "show-memory"
   },
+  "section4": {
+    "type": "section",
+    "description": "GPU Utilization"
+  },
   "show-gpu-util": {
     "type": "switch",
     "default": false,
@@ -53,6 +88,10 @@
     "tooltip": "Choose how to display GPU utilization: as text or as a pie chart.",
     "dependency": "show-gpu-util"
   },
+  "section5": {
+    "type": "section",
+    "description": "Fan Speed"
+  },
   "show-fan-speed": {
     "type": "switch",
     "default": false,
@@ -69,16 +108,5 @@
     "description": "Fan Display Mode",
     "tooltip": "Choose how to display fan speed: as text or as a pie chart.",
     "dependency": "show-fan-speed"
-  },
-  "encoding": {
-    "type": "combobox",
-    "default": "utf8",
-    "options": {
-      "UTF-8": "utf8",
-      "macintosh": "mac",
-      "ASCII": "windows-1252"
-    },
-    "description": "nvidia-smi Output Encoding",
-    "tooltip": "Select the character encoding used by nvidia-smi output."
   }
 }
