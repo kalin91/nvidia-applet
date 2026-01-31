@@ -1,4 +1,4 @@
-const { applet, settings } = imports.ui;
+const { applet, settings, main: Main } = imports.ui;
 const { GLib, St, Clutter, Pango, PangoCairo } = imports.gi;
 
 class NvidiaMonitorApplet extends applet.Applet {
@@ -7,6 +7,7 @@ class NvidiaMonitorApplet extends applet.Applet {
         super(orientation, panel_height, instance_id);
 
         this._panel_height = panel_height;
+        this.app_name= metadata.name
 
         this._updateLoopId = null;
         this.last_output = "";
@@ -15,11 +16,26 @@ class NvidiaMonitorApplet extends applet.Applet {
         this._fanSpeedPercent = 0;
 
         this._buildUI(panel_height);
+        if (!GLib.find_program_in_path('nvidia-smi')){
+            this.set_applet_label("nvidia-smi not found");
+            return this._show_err('nvidia-smi not found in PATH.\nPlease ensure NVIDIA drivers are installed.');
+        }
+
         this._initSettings(metadata, instance_id);
 
         this.set_applet_tooltip("NVIDIA Monitor");
 
         this.on_settings_changed();
+    }
+
+    _show_err(msg) {
+            let icon = new St.Icon({ 
+                icon_name: 'dialog-warning',
+                icon_type: St.IconType.FULLCOLOR,
+                icon_size: 36 
+            });
+            const title = `${this.app_name} Error`;
+            Main.criticalNotify(title, msg, icon);
     }
 
     _buildUI(panel_height) {
@@ -149,10 +165,12 @@ class NvidiaMonitorApplet extends applet.Applet {
                 this.parse_and_display(output);
             } else {
                 this.set_applet_label("Error");
+                this._show_err(`Failed to run nvidia-smi.\n${stderr ? stderr.toString() : "Unknown"}`);
                 global.logError("Nvidia Monitor: Failed to run nvidia-smi. Stderr: " + (stderr ? stderr.toString() : "Unknown"));
             }
         } catch (e) {
             global.logError(e);
+            this._show_err("An unexpected error occurred while running nvidia-smi.\n" + e.message);
             this.set_applet_label("Err");
         }
     }
