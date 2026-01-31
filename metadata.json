@@ -3,6 +3,5 @@
   "name": "NVIDIA Monitor",
   "description": "Monitors GPU temperature, memory, utilization, and fan speed using nvidia-smi",
   "version": "1.0",
-  "icon": "video-display",
   "multiversion": false
 }
