@@ -1,15 +1,7 @@
-const Applet = imports.ui.applet;
-const Mainloop = imports.mainloop;
-const Lang = imports.lang;
-const Settings = imports.ui.settings;
-const GLib = imports.gi.GLib;
-const ByteArray = imports.byteArray;
-const St = imports.gi.St;
-const Clutter = imports.gi.Clutter;
-const Pango = imports.gi.Pango;
-const PangoCairo = imports.gi.PangoCairo;
+const { applet, settings } = imports.ui;
+const { GLib, St, Clutter, Pango, PangoCairo } = imports.gi;
 
-class NvidiaMonitorApplet extends Applet.Applet {
+class NvidiaMonitorApplet extends applet.Applet {
 
     constructor(metadata, orientation, panel_height, instance_id) {
         super(orientation, panel_height, instance_id);
@@ -101,9 +93,10 @@ class NvidiaMonitorApplet extends Applet.Applet {
 
     _initSettings(metadata, instance_id) {
 
-        this.settings = new Settings.AppletSettings(this, metadata.uuid, instance_id);
+        this.settings = new settings.AppletSettings(this, metadata.uuid, instance_id);
 
         this.settings.bind("refresh-interval", "refresh_interval", () => this.on_settings_changed());
+        this.settings.bind("encoding", "encoding", () => this.on_settings_changed());
         this.settings.bind("show-temp", "show_temp", () => this.on_update_display());
         this.settings.bind("show-memory", "show_memory", () => this.on_update_display());
         this.settings.bind("memory-display-mode", "memory_display_mode", () => this.on_update_display());
@@ -121,8 +114,9 @@ class NvidiaMonitorApplet extends Applet.Applet {
 
     on_settings_changed() {
         if (this._updateLoopId) {
-            Mainloop.source_remove(this._updateLoopId);
+            GLib.Source.remove(this._updateLoopId);
         }
+        this._decoder = new TextDecoder(this.encoding);
         this._updateLoop();
     }
 
@@ -137,7 +131,7 @@ class NvidiaMonitorApplet extends Applet.Applet {
 
         let interval = Math.max(this.refresh_interval, 500);
 
-        this._updateLoopId = Mainloop.timeout_add(interval, () => {
+        this._updateLoopId = GLib.timeout_add(GLib.PRIORITY_DEFAULT, interval, () => {
             this._updateLoop();
             return false;
         });
@@ -149,12 +143,7 @@ class NvidiaMonitorApplet extends Applet.Applet {
             let [success, stdout, stderr, exit_status] = GLib.spawn_command_line_sync('/usr/bin/nvidia-smi --query-gpu=temperature.gpu,memory.used,memory.total,utilization.gpu,fan.speed --format=csv,noheader,nounits');
 
             if (success) {
-                let output = "";
-                if (stdout instanceof Uint8Array) {
-                    output = ByteArray.toString(stdout);
-                } else {
-                    output = stdout.toString();
-                }
+                let output = this._decoder.decode(stdout);
                 this.last_output = output;
                 this.parse_and_display(output);
             } else {
@@ -342,7 +331,7 @@ class NvidiaMonitorApplet extends Applet.Applet {
 
     on_applet_removed_from_panel() {
         if (this._updateLoopId) {
-            Mainloop.source_remove(this._updateLoopId);
+            GLib.Source.remove(this._updateLoopId);
         }
         this.settings.finalize();
     }
