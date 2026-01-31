@@ -9,17 +9,28 @@ const Clutter = imports.gi.Clutter;
 const Pango = imports.gi.Pango;
 const PangoCairo = imports.gi.PangoCairo;
 
-function NvidiaMonitorApplet(metadata, orientation, panel_height, instance_id) {
-    this._init(metadata, orientation, panel_height, instance_id);
-}
+class NvidiaMonitorApplet extends Applet.Applet {
 
-NvidiaMonitorApplet.prototype = {
-    __proto__: Applet.Applet.prototype,
-
-    _init: function(metadata, orientation, panel_height, instance_id) {
-        Applet.Applet.prototype._init.call(this, orientation, panel_height, instance_id);
+    constructor(metadata, orientation, panel_height, instance_id) {
+        super(orientation, panel_height, instance_id);
         
         this._panel_height = panel_height;
+
+        this._updateLoopId = null;
+        this.last_output = "";
+        this._memUsedPercent = 0;
+        this._gpuUtilPercent = 0;
+        this._fanSpeedPercent = 0;
+
+        this._buildUI(panel_height);
+        this._initSettings(metadata, instance_id);
+        
+        this.set_applet_tooltip("NVIDIA Monitor");
+        
+        this.on_settings_changed();
+    }
+
+    _buildUI(panel_height) {
         
         // Create main container
         this._box = new St.BoxLayout({ 
@@ -55,7 +66,7 @@ NvidiaMonitorApplet.prototype = {
             height: this._pieChartSize,
             style: 'margin-left: 2px; margin-right: 2px;'
         });
-        this._memPieChartArea.connect('repaint', Lang.bind(this, this._drawMemPie));
+        this._memPieChartArea.connect('repaint', area => this._drawMemPie(area));
         this._box.add(this._memPieChartArea, { y_fill: false, y_align: St.Align.MIDDLE });
         this._memPieChartArea.hide();
 
@@ -75,7 +86,7 @@ NvidiaMonitorApplet.prototype = {
             height: this._pieChartSize,
             style: 'margin-left: 2px; margin-right: 2px;'
         });
-        this._gpuPieChartArea.connect('repaint', Lang.bind(this, this._drawGpuPie));
+        this._gpuPieChartArea.connect('repaint', area => this._drawGpuPie(area));
         this._box.add(this._gpuPieChartArea, { y_fill: false, y_align: St.Align.MIDDLE });
         this._gpuPieChartArea.hide();
 
@@ -95,66 +106,56 @@ NvidiaMonitorApplet.prototype = {
             height: this._pieChartSize,
             style: 'margin-left: 2px; margin-right: 2px;'
         });
-        this._fanPieChartArea.connect('repaint', Lang.bind(this, this._drawFanPie));
+        this._fanPieChartArea.connect('repaint', area => this._drawFanPie(area));
         this._box.add(this._fanPieChartArea, { y_fill: false, y_align: St.Align.MIDDLE });
         this._fanPieChartArea.hide();
+    }
+
+    _initSettings(metadata, instance_id) {
         
         this.settings = new Settings.AppletSettings(this, metadata.uuid, instance_id);
         
-        this.settings.bind("refresh-interval", "refresh_interval", this.on_settings_changed);
-        this.settings.bind("show-temp", "show_temp", this.on_update_display);
-        this.settings.bind("show-memory", "show_memory", this.on_update_display);
-        this.settings.bind("memory-display-mode", "memory_display_mode", this.on_update_display);
-        this.settings.bind("show-gpu-util", "show_gpu_util", this.on_update_display);
-        this.settings.bind("gpu-display-mode", "gpu_display_mode", this.on_update_display);
-        this.settings.bind("show-fan-speed", "show_fan_speed", this.on_update_display);
-        this.settings.bind("fan-display-mode", "fan_display_mode", this.on_update_display);
+        this.settings.bind("refresh-interval", "refresh_interval", () => this.on_settings_changed());
+        this.settings.bind("show-temp", "show_temp", () => this.on_update_display());
+        this.settings.bind("show-memory", "show_memory", () => this.on_update_display());
+        this.settings.bind("memory-display-mode", "memory_display_mode", () => this.on_update_display());
+        this.settings.bind("show-gpu-util", "show_gpu_util", () => this.on_update_display());
+        this.settings.bind("gpu-display-mode", "gpu_display_mode", () => this.on_update_display());
+        this.settings.bind("show-fan-speed", "show_fan_speed", () => this.on_update_display());
+        this.settings.bind("fan-display-mode", "fan_display_mode", () => this.on_update_display());
 
-        this._updateLoopId = null;
-        this.last_output = "";
-        this._memUsedPercent = 0;
-        this._gpuUtilPercent = 0;
-        this._fanSpeedPercent = 0;
-        
-        this.set_applet_tooltip("NVIDIA Monitor");
-        
-        this.on_settings_changed();
-    },
+    }
     
-    set_applet_label: function(text) {
+    set_applet_label(text) {
         this._label.set_text(text);
         this._label.show();
-        // Ensure others are hidden in error/init state if needed, 
-        // but simple set_text is safe fallback.
-    },
+    }
 
-    on_settings_changed: function() {
+    on_settings_changed() {
         if (this._updateLoopId) {
             Mainloop.source_remove(this._updateLoopId);
         }
         this._updateLoop();
-    },
+    }
     
-    on_update_display: function() {
+    on_update_display() {
         if (this.last_output) {
             this.parse_and_display(this.last_output);
         }
-    },
+    }
 
-    _updateLoop: function() {
+    _updateLoop() {
         this.update();
         
-        // refresh_interval is now in milliseconds directly
-        let interval = this.refresh_interval;
-        if (interval < 500) interval = 500;
+        let interval = Math.max(this.refresh_interval, 500);
         
-        this._updateLoopId = Mainloop.timeout_add(interval, Lang.bind(this, function() {
+        this._updateLoopId = Mainloop.timeout_add(interval, () => {
             this._updateLoop();
             return false;
-        }));
-    },
+        });
+    }
 
-    update: function() {
+    update() {
         try {
             // Use full path to nvidia-smi
             let [success, stdout, stderr, exit_status] = GLib.spawn_command_line_sync('/usr/bin/nvidia-smi --query-gpu=temperature.gpu,memory.used,memory.total,utilization.gpu,fan.speed --format=csv,noheader,nounits');
@@ -176,21 +177,21 @@ NvidiaMonitorApplet.prototype = {
             global.logError(e);
             this.set_applet_label("Err");
         }
-    },
+    }
 
-    _drawMemPie: function(area) {
+    _drawMemPie(area) {
         this._drawPie(area, this._memUsedPercent, "Mem");
-    },
+    }
 
-    _drawGpuPie: function(area) {
+    _drawGpuPie(area) {
         this._drawPie(area, this._gpuUtilPercent, "GPU");
-    },
+    }
 
-    _drawFanPie: function(area) {
+    _drawFanPie(area) {
         this._drawPie(area, this._fanSpeedPercent, "Fan");
-    },
+    }
 
-    _drawPie: function(area, percent, label) {
+    _drawPie(area, percent, label) {
         let [width, height] = area.get_surface_size();
         let cr = area.get_context();
         
@@ -261,9 +262,9 @@ NvidiaMonitorApplet.prototype = {
         cr.stroke();
         
         cr.$dispose();
-    },
+    }
 
-    parse_and_display: function(output) {
+    parse_and_display(output) {
         let parts = output.trim().split(',').map(function(s) { return s.trim(); });
         if (parts.length < 5) return;
 
@@ -371,15 +372,15 @@ NvidiaMonitorApplet.prototype = {
             this._label.set_text("Nvidia");
             this._label.show();
         }
-    },
+    }
 
-    on_applet_removed_from_panel: function() {
+    on_applet_removed_from_panel() {
         if (this._updateLoopId) {
             Mainloop.source_remove(this._updateLoopId);
         }
         this.settings.finalize();
     }
-};
+}
 
 function main(metadata, orientation, panel_height, instance_id) {
     return new NvidiaMonitorApplet(metadata, orientation, panel_height, instance_id);
