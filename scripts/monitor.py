@@ -22,8 +22,40 @@ class MonitorNav:
         parser.add_argument("--width", type=float, default=0)
         parser.add_argument("--height", type=float, default=0)
         parser.add_argument("--orientation", type=int, default=1) # Default BOTTOM
-        args = parser.parse_args()
+        # Settings Args
+        parser.add_argument("--interval", type=float, default=1.5)
+        parser.add_argument("--color-gpu", type=str, default="#0ed815")
+        parser.add_argument("--color-mem", type=str, default="#fbff07")
+        parser.add_argument("--color-temp", type=str, default="#f51717")
+        parser.add_argument("--color-fan", type=str, default="#7805e4")
+        parser.add_argument("--color-bg", type=str, default="#000000")
+        parser.add_argument("--ysteps", type=int, default=3)
+        parser.add_argument("--xunit", type=str, default="seconds")
+        parser.add_argument("--xlength", type=float, default=60)
+        
+        self.args = parser.parse_args()
 
+        # Config derived from args
+        self.interval = max(0.5, self.args.interval)
+        self.max_history = int(self.args.xlength / self.interval) if self.args.xunit == 'seconds' else \
+                           int((self.args.xlength * 60) / self.interval) if self.args.xunit == 'minutes' else \
+                           int((self.args.xlength * 3600) / self.interval)
+        
+        self.colors = {
+            'gpu': self.hex_to_rgb(self.args.color_gpu),
+            'mem': self.hex_to_rgb(self.args.color_mem),
+            'temp': self.hex_to_rgb(self.args.color_temp),
+            'fan': self.hex_to_rgb(self.args.color_fan),
+            'bg': self.hex_to_rgb(self.args.color_bg),
+            'text': self.get_inverse_color(self.args.color_bg)
+        }
+
+        # Visibility states (default all true)
+        self.show_gpu = True
+        self.show_mem = True
+        self.show_temp = True
+        self.show_fan = True
+        
         # Load UI
         curr_dir = os.path.dirname(os.path.realpath(__file__))
         glade_file = os.path.join(curr_dir, "../ui/monitor_window.glade")
@@ -40,18 +72,124 @@ class MonitorNav:
         self.label_fan = self.builder.get_object("label_fan")
 
         # Position Window
-        self.setup_window_position(args)
+        self.setup_window_position(self.args)
+
+        # Add toggle controls
+        self.add_controls()
 
         # Connect signals
         self.builder.connect_signals(self)
         self.window.connect("destroy", Gtk.main_quit)
+        self.graph_area.connect("draw", self.on_draw)
+        
+        # Tooltip interactions
+        self.graph_area.add_events(Gdk.EventMask.POINTER_MOTION_MASK | Gdk.EventMask.LEAVE_NOTIFY_MASK)
+        self.graph_area.connect("motion-notify-event", self.on_mouse_move)
+        self.graph_area.connect("leave-notify-event", self.on_mouse_leave)
+        self.tooltip_idx = -1
         
         # Setup stdin reading
         io_channel = GLib.IOChannel(sys.stdin.fileno())
-        # Priority must be lower than GDK redrawing but high enough
         GLib.io_add_watch(io_channel, GLib.PRIORITY_DEFAULT, GLib.IOCondition.IN | GLib.IOCondition.HUP, self.on_stdin_data)
 
         self.window.show_all()
+
+    def hex_to_rgb(self, color_str):
+        # Handle rgb(r,g,b) format
+        if color_str.startswith("rgb"):
+            try:
+                # Extract content inside parens: rgb(224,27,36) -> 224,27,36
+                content = color_str.split('(')[1].split(')')[0]
+                parts = content.split(',')
+                if len(parts) >= 3:
+                     return (int(parts[0])/255.0, int(parts[1])/255.0, int(parts[2])/255.0)
+            except Exception as e:
+                print(f"Error parsing RGB string '{color_str}': {e}", file=sys.stderr)
+                return (1.0, 0.0, 1.0) # Error magenta
+
+        # Handle hex format
+        hex_str = color_str.lstrip('#')
+        try:
+            if len(hex_str) < 6: return (1.0, 1.0, 1.0) # fallback
+            return tuple(int(hex_str[i:i+2], 16)/255.0 for i in (0, 2, 4))
+        except ValueError:
+             return (1.0, 1.0, 1.0)
+        
+    def get_inverse_color(self, hex_bg):
+        r, g, b = self.hex_to_rgb(hex_bg)
+        luminance = (0.299 * r + 0.587 * g + 0.114 * b)
+        return (0, 0, 0) if luminance > 0.5 else (1, 1, 1)
+
+    def add_controls(self):
+        # Insert a new HBox at the top of the window vbox for toggles
+        # Glade structure: window -> box_main -> (box_header, graph_area, ...)
+        # We will insert between header and graph or just append to graph area
+        pass
+        # Since I can't easily see the GLADE structure ID names, I'll try to find the parent of graph_area
+        parent = self.graph_area.get_parent()
+        if isinstance(parent, Gtk.Box):
+            ctrl_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=10)
+            ctrl_box.set_halign(Gtk.Align.CENTER)
+            
+            # Helper to create styled checkbox
+            def create_chk(label, key, color):
+                chk = Gtk.CheckButton.new_with_label(label)
+                chk.set_active(True)
+                chk.connect("toggled", self.on_toggle_visibility, key)
+                # Try to colorize (limited in standard GTK3 without custom CSS provider)
+                # We can wrap the label in a colored markup if we want, but keeping it simple for now.
+                return chk
+
+            self.chk_gpu = create_chk("GPU", 'gpu', self.colors['gpu'])
+            self.chk_mem = create_chk("RAM", 'mem', self.colors['mem'])
+            self.chk_temp = create_chk("Temp", 'temp', self.colors['temp'])
+            self.chk_fan = create_chk("Fan", 'fan', self.colors['fan'])
+            
+            ctrl_box.pack_start(self.chk_gpu, False, False, 0)
+            ctrl_box.pack_start(self.chk_mem, False, False, 0)
+            ctrl_box.pack_start(self.chk_temp, False, False, 0)
+            ctrl_box.pack_start(self.chk_fan, False, False, 0)
+            
+            # Find index of graph_area to insert before/after
+            # Not crucial, just pack at start (top) or end (bottom)
+            # Parent is likely vertical box. Let's put it at the bottom.
+            parent.pack_start(ctrl_box, False, False, 0)
+
+    def on_toggle_visibility(self, button, name):
+        if name == 'gpu': self.show_gpu = button.get_active()
+        elif name == 'mem': self.show_mem = button.get_active()
+        elif name == 'temp': self.show_temp = button.get_active()
+        elif name == 'fan': self.show_fan = button.get_active()
+        self.graph_area.queue_draw()
+
+    def on_mouse_leave(self, widget, event):
+        self.tooltip_idx = -1
+        widget.queue_draw()
+
+    def on_mouse_move(self, widget, event):
+        rect = widget.get_allocation()
+        x = event.x
+        
+        if len(self.history) < 2:
+            return
+            
+        # Determine index corresponding to X
+        # Width per data point
+        points_to_show = min(len(self.history), self.max_history)
+        if points_to_show < 2: return
+        
+        step_x = rect.width / (self.max_history - 1)
+        
+        # Cursor X relative to right edge (since graph moves left)
+        # But we render from right to left? No, usually left to right for history or right-anchored.
+        # Let's check draw logic. Assuming standard time graph: T-max ... T-0
+        # If we draw newest at right:
+        # data[0] is oldest?
+        
+        # Let's rely on on_draw to confirm order.
+        # For now, just calculate step and trigger redraw with mouse pos
+        self.mouse_x = x
+        self.graph_area.queue_draw()
 
     def setup_window_position(self, args):
         # We need the window size to calculate position properly, 
@@ -155,14 +293,14 @@ class MonitorNav:
         height = widget.get_allocated_height()
         
         # Background
-        cr.set_source_rgb(0.1, 0.1, 0.1)
+        cr.set_source_rgb(*self.colors['bg'])
         cr.rectangle(0, 0, width, height)
         cr.fill()
 
         # Axes & Labels Config
         margin_left = 40  # For Temp labels
         margin_right = 40 # For % labels
-        margin_bottom = 20 # For Time axis (future)
+        margin_bottom = 20 # For Time axis
         margin_top = 10
         
         graph_w = width - margin_left - margin_right
@@ -170,12 +308,12 @@ class MonitorNav:
         
         if graph_w <= 0 or graph_h <= 0: return # Too small
 
-        # Draw Grid & Labels
-        cr.set_line_width(1)
+        # Text Color
+        text_col = self.colors['text']
+
+        # Helper to draw text
         cr.set_font_size(10)
-        
-        # Helper to draw text centered vertically at y
-        def draw_text(text, x, y, align_right=True, color=(0.8, 0.8, 0.8)):
+        def draw_text(text, x, y, align_right=True, color=text_col):
             cr.set_source_rgb(*color)
             extents = cr.text_extents(text)
             text_x = x - extents.width - 2 if align_right else x + 2
@@ -183,81 +321,148 @@ class MonitorNav:
             cr.move_to(text_x, text_y)
             cr.show_text(text)
 
-        # Horizontal Grid (0%, 50%, 100%)
-        # 0% (Bottom)
-        y_0 = margin_top + graph_h
-        y_50 = margin_top + graph_h / 2
-        y_100 = margin_top
+        # Draw Grid & Y-Axis Labels
+        cr.set_line_width(1)
+        steps = max(1, self.args.ysteps)
         
-        # Grid Lines
-        cr.set_source_rgba(0.3, 0.3, 0.3, 1.0)
-        
-        # 0% / 0C
-        cr.move_to(margin_left, y_0)
-        cr.line_to(width - margin_right, y_0)
-        cr.stroke()
-        draw_text("0°C", margin_left, y_0, align_right=True, color=(1, 0.5, 0.5))
-        draw_text("0%", width - margin_right, y_0, align_right=False)
-        
-        # 50% / 50C
-        cr.move_to(margin_left, y_50)
-        cr.line_to(width - margin_right, y_50)
-        cr.stroke()
-        draw_text("50°C", margin_left, y_50, align_right=True, color=(1, 0.5, 0.5))
-        draw_text("50%", width - margin_right, y_50, align_right=False)
-
-        # 100% / 100C
-        cr.move_to(margin_left, y_100)
-        cr.line_to(width - margin_right, y_100)
-        cr.stroke()
-        draw_text("100°C", margin_left, y_100, align_right=True, color=(1, 0.5, 0.5))
-        draw_text("100%", width - margin_right, y_100, align_right=False)
-
-        if not self.history:
-            return
-
-        # Scaling
-        # X: spread point across width
-        step_x = graph_w / max(self.max_history - 1, 1)
-        
-        def draw_line(key, r, g, b, is_temp=False):
-            cr.set_source_rgb(r, g, b)
-            cr.set_line_width(2.0)
+        for i in range(steps + 1):
+            ratio = i / float(steps)
+            y = margin_top + graph_h * (1 - ratio) # 0 at bottom
             
+            # Grid Line
+            cr.set_source_rgba(0.3, 0.3, 0.3, 0.5)
+            cr.move_to(margin_left, y)
+            cr.line_to(width - margin_right, y)
+            cr.stroke()
+            
+            # Labels
+            # Left: Temp (0 - 100 C assumed)
+            temp_val = int(ratio * 100)
+            draw_text(f"{temp_val}°C", margin_left, y, align_right=True, color=self.colors['temp'])
+            
+            # Right: Unit % (0 - 100 %)
+            pct_val = int(ratio * 100)
+            draw_text(f"{pct_val}%", width - margin_right, y, align_right=False)
+
+        # X-Axis Labels (Time)
+        # We want labels at start, middle, end? Or fixed intervals?
+        # Let's do Start (Time ago) and End (Now)
+        cr.set_source_rgb(*text_col)
+        draw_text("Now", width - margin_right, height - 5, align_right=True)
+        draw_text(f"{self.args.xlength} {self.args.xunit} ago", margin_left, height - 5, align_right=False)
+
+        # Data Plotting
+        if not self.history: return
+
+        # How many points fit?
+        # self.max_history is the capacity for the visible window
+        # We draw from right (newest) to left (oldest)
+        # Coordinate mapping:
+        # Index 0 (newest) -> x = width - margin_right
+        # Index max -> x = margin_left
+        
+        step_x = float(graph_w) / (self.max_history - 1) if self.max_history > 1 else graph_w
+        
+        points_to_draw = min(len(self.history), self.max_history)
+        
+        # Precompute points to avoid logic repetition
+        # data format: (timestamp, gpu, mem, temp, fan)
+        # values are 0-100
+        
+        coords = []
+        for i in range(points_to_draw):
+            data_idx = len(self.history) - 1 - i
+            data = self.history[data_idx]
+            
+            x = (width - margin_right) - (i * step_x)
+            
+            # Y calculation: val (0-100) -> pixels
+            # 0 -> margin_top + graph_h
+            # 100 -> margin_top
+            
+            def get_y(val):
+                return margin_top + graph_h * (1 - (val / 100.0))
+            
+            coords.append({
+                'x': x,
+                'gpu': get_y(data.get('gpu', 0)),
+                'mem': get_y(data.get('mem', 0)),
+                'temp': get_y(data.get('temp', 0)),
+                'fan': get_y(data.get('fan', 0)),
+                'raw': data
+            })
+            
+        # Draw Paths
+        def draw_line(key, color):
+            cr.set_source_rgb(*color)
+            cr.set_line_width(2)
             first = True
-            for i, data in enumerate(self.history):
-                val = data.get(key, 0)
-                
-                # Normalize Y (Assuming 0-100 range for both % and Temp C)
-                # If Temp > 100, clamp it
-                normalized_val = min(max(val, 0), 100) / 100.0
-                
-                y = (margin_top + graph_h) - (normalized_val * graph_h)
-                x = (margin_left + graph_w) - ((len(self.history) - 1 - i) * step_x)
-                
-                # Clip to graph area horizontally
-                if x < margin_left: break
-                
+            for pt in coords:
                 if first:
-                    cr.move_to(x, y)
+                    cr.move_to(pt['x'], pt[key])
                     first = False
                 else:
-                    cr.line_to(x, y)
-            
+                    cr.line_to(pt['x'], pt[key])
             cr.stroke()
 
-        # Draw Lines
-        # Clipping area
-        cr.rectangle(margin_left, margin_top, graph_w, graph_h)
-        cr.clip()
-        
-        draw_line('gpu', 0.2, 0.8, 0.2) # Green
-        draw_line('mem', 0.9, 0.9, 0.2) # Yellow
-        draw_line('temp', 0.9, 0.3, 0.3, is_temp=True) # Red
-        draw_line('fan', 0.3, 0.3, 0.9) # Blue
-        
-        # Reset clip
-        cr.reset_clip()
+        if self.show_gpu: draw_line('gpu', self.colors['gpu'])
+        if self.show_mem: draw_line('mem', self.colors['mem'])
+        if self.show_temp: draw_line('temp', self.colors['temp'])
+        if self.show_fan: draw_line('fan', self.colors['fan'])
+
+        # Tooltip / Hover Cursor
+        # Check mouse_x
+        if hasattr(self, 'mouse_x') and margin_left <= self.mouse_x <= width - margin_right:
+            # Find closest point
+            # mouse_x distance from right edge
+            dist_from_right = (width - margin_right) - self.mouse_x
+            idx_approx = int(round(dist_from_right / step_x))
+            
+            if 0 <= idx_approx < len(coords):
+                pt = coords[idx_approx]
+                
+                # Draw vertical line
+                cr.set_source_rgba(1, 1, 1, 0.5)
+                cr.set_line_width(1)
+                cr.move_to(pt['x'], margin_top)
+                cr.line_to(pt['x'], height - margin_bottom)
+                cr.stroke()
+                
+                # Draw Info Box
+                # Content
+                lines = []
+                data = pt['raw']
+                if self.show_gpu: lines.append((f"GPU: {data.get('gpu', 0):.1f}%", self.colors['gpu']))
+                if self.show_mem: lines.append((f"MEM: {data.get('mem', 0):.1f}%", self.colors['mem']))
+                if self.show_temp: lines.append((f"TMP: {data.get('temp', 0):.1f}°C", self.colors['temp']))
+                if self.show_fan: lines.append((f"FAN: {data.get('fan', 0):.1f}%", self.colors['fan']))
+                
+                # Box dims
+                box_w = 100
+                box_h = len(lines) * 15 + 10
+                box_x = pt['x'] + 10
+                box_y = margin_top + 10
+                
+                # Flip if too close to edge
+                if box_x + box_w > width:
+                    box_x = pt['x'] - box_w - 10
+                
+                # Box BG
+                cr.set_source_rgba(0, 0, 0, 0.8)
+                cr.rectangle(box_x, box_y, box_w, box_h)
+                cr.fill()
+                cr.set_source_rgb(1, 1, 1)
+                cr.rectangle(box_x, box_y, box_w, box_h)
+                cr.stroke()
+                
+                # Text
+                ty = box_y + 12
+                for text, col in lines:
+                    cr.set_source_rgb(*col)
+                    cr.move_to(box_x + 5, ty)
+                    cr.show_text(text)
+                    ty += 15
+
 
 if __name__ == "__main__":
     # Handle Ctrl+C

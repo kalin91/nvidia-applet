@@ -87,6 +87,12 @@ class NvidiaMonitorApplet extends applet.Applet {
             let [w, h] = this.actor.get_transformed_size();
             let orientation = this.orientation; 
 
+            // Calculate X axis length value
+            let xLength = 60; // default seconds
+            if (this.x_axis_unit === "minutes") xLength = this.x_axis_length_min;
+            else if (this.x_axis_unit === "hours") xLength = this.x_axis_length_hour;
+            else xLength = this.x_axis_length_sec;
+
             // Subprocess arguments - Explicitly invoke python3
             let args = [
                 "/usr/bin/python3",
@@ -95,7 +101,16 @@ class NvidiaMonitorApplet extends applet.Applet {
                 "--y", Math.round(y).toString(),
                 "--width", Math.round(w).toString(),
                 "--height", Math.round(h).toString(),
-                "--orientation", orientation.toString()
+                "--orientation", orientation.toString(),
+                "--interval", this.refresh_interval.toString(),
+                "--color-gpu", this.gpu_color,
+                "--color-mem", this.mem_color,
+                "--color-temp", this.temp_color,
+                "--color-fan", this.fan_color,
+                "--color-bg", this.background_color,
+                "--ysteps", this.y_axis_steps.toString(),
+                "--xunit", this.x_axis_unit,
+                "--xlength", xLength.toString()
             ];
             
             // Log for debugging
@@ -245,6 +260,20 @@ class NvidiaMonitorApplet extends applet.Applet {
         this.settings.bind("gpu-display-mode", "gpu_display_mode", () => this.on_update_display());
         this.settings.bind("show-fan-speed", "show_fan_speed", () => this.on_update_display());
         this.settings.bind("fan-display-mode", "fan_display_mode", () => this.on_update_display());
+
+        // Monitor Colors
+        this.settings.bind("temp-color", "temp_color");
+        this.settings.bind("mem_color", "mem_color");
+        this.settings.bind("gpu_color", "gpu_color");
+        this.settings.bind("fan_color", "fan_color");
+        this.settings.bind("background_color", "background_color");
+        
+        // Monitor Axes
+        this.settings.bind("y-axis-steps", "y_axis_steps");
+        this.settings.bind("x-axis-unit", "x_axis_unit");
+        this.settings.bind("x-axis-length-sec", "x_axis_length_sec");
+        this.settings.bind("x-axis-length-min", "x_axis_length_min");
+        this.settings.bind("x-axis-length-hour", "x_axis_length_hour");
 
     }
 
