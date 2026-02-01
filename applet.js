@@ -9,6 +9,7 @@ class NvidiaMonitorApplet extends applet.Applet {
         this.metadata = metadata;
         this._panel_height = panel_height;
         this.app_name = metadata.name
+        this.uuid = metadata.uuid;
 
         // Inicializar historial
         this.history = [];
@@ -44,7 +45,7 @@ class NvidiaMonitorApplet extends applet.Applet {
     _buildMenu() {
         try {
             if (!this.menuManager) this.menuManager = new popupMenu.PopupMenuManager(this);
-            
+
             // Re-create menu carefully
             if (this.menu) {
                 this.menuManager.removeMenu(this.menu);
@@ -54,7 +55,7 @@ class NvidiaMonitorApplet extends applet.Applet {
             // Usar this.orientation para que el menú sepa hacia dónde abrirse (Arriba/Abajo)
             // Use St.Side enum or verify this.orientation is valid (usually 0 or 1)
             this.menu = new applet.AppletPopupMenu(this, this.orientation);
-            
+
             // Important: Set the actor explicitly as source if needed, though constructor does it.
             // But if actor allocation is weird, we can force box.
             // this.menu.sourceActor = this.actor; 
@@ -65,6 +66,18 @@ class NvidiaMonitorApplet extends applet.Applet {
             let monitorItem = new popupMenu.PopupMenuItem("Open Monitor Graph");
             monitorItem.connect('activate', () => this._openMonitor());
             this.menu.addMenuItem(monitorItem);
+
+            const settings = new popupMenu.PopupSubMenuMenuItem("Settings", true, { reactive: false});
+            this.menu.addMenuItem(settings);
+            this.menu.addMenuItem(new popupMenu.PopupSeparatorMenuItem());
+
+            // Add settings items
+            let appletSettings = new popupMenu.PopupIconMenuItem("Applet Settings", 'speedometer-symbolic', St.IconType.SYMBOLIC);
+            appletSettings.connect('activate', (event) => GLib.spawn_command_line_async(`xlet-settings applet ${this.uuid} -i ${this.instance_id} -t 0`));
+            settings.menu.addMenuItem(appletSettings);
+            let monitorSettings = new popupMenu.PopupIconMenuItem("Monitor Settings", 'org.gnome.SystemMonitor-symbolic', St.IconType.SYMBOLIC);
+            monitorSettings.connect('activate', (event) => GLib.spawn_command_line_async(`xlet-settings applet ${this.uuid} -i ${this.instance_id} -t 1`));
+            settings.menu.addMenuItem(monitorSettings);
 
         } catch (e) {
             global.logError(e);
@@ -80,12 +93,12 @@ class NvidiaMonitorApplet extends applet.Applet {
 
         try {
             let scriptPath = GLib.build_filenamev([this.metadata.path, "scripts", "monitor.py"]);
-            
+
             // Get coordinates
             // Ensure allocation is up to date
             let [x, y] = this.actor.get_transformed_position();
             let [w, h] = this.actor.get_transformed_size();
-            let orientation = this.orientation; 
+            let orientation = this.orientation;
 
             // Calculate X axis length value
             let xLength = 60; // default seconds
@@ -112,7 +125,7 @@ class NvidiaMonitorApplet extends applet.Applet {
                 "--xunit", this.x_axis_unit,
                 "--xlength", xLength.toString()
             ];
-            
+
             // Log for debugging
             global.log("Nvidia Monitor: Launching " + args.join(" "));
 
@@ -121,15 +134,15 @@ class NvidiaMonitorApplet extends applet.Applet {
                 args,
                 Gio.SubprocessFlags.STDIN_PIPE
             );
-            
+
             this._monitorStdin = this._monitorProc.get_stdin_pipe();
-            
+
             // Send existing history to populate graph immediately
             if (this.history && this.history.length > 0) {
-                 global.log("Nvidia Monitor: Sending " + this.history.length + " history points.");
-                 for (let point of this.history) {
-                     this._sendToMonitor(point);
-                 }
+                global.log("Nvidia Monitor: Sending " + this.history.length + " history points.");
+                for (let point of this.history) {
+                    this._sendToMonitor(point);
+                }
             }
 
             // Watch for exit
@@ -137,7 +150,7 @@ class NvidiaMonitorApplet extends applet.Applet {
                 try {
                     proc.wait_check_finish(result);
                 } catch (e) {
-                   global.logError("Nvidia Monitor subprocess exited with error: " + e.message);
+                    global.logError("Nvidia Monitor subprocess exited with error: " + e.message);
                 }
                 this._monitorProc = null;
                 this._monitorStdin = null;
@@ -161,7 +174,7 @@ class NvidiaMonitorApplet extends applet.Applet {
         } catch (e) {
             // Broken pipe likely
             global.logError("Error sending to monitor: " + e.message);
-            this._monitorProc = null; 
+            this._monitorProc = null;
             this._monitorStdin = null;
         }
     }
@@ -267,7 +280,7 @@ class NvidiaMonitorApplet extends applet.Applet {
         this.settings.bind("gpu_color", "gpu_color");
         this.settings.bind("fan_color", "fan_color");
         this.settings.bind("background_color", "background_color");
-        
+
         // Monitor Axes
         this.settings.bind("y-axis-steps", "y_axis_steps");
         this.settings.bind("x-axis-unit", "x_axis_unit");
@@ -289,7 +302,7 @@ class NvidiaMonitorApplet extends applet.Applet {
         this._decoder = new TextDecoder(this.encoding);
         this._updateLoop();
     }
-    
+
     on_orientation_changed(orientation) {
         this.orientation = orientation;
         if (this.menu) {
@@ -440,14 +453,14 @@ class NvidiaMonitorApplet extends applet.Applet {
         this._tempValue = parseFloat(temp);
 
         let visTemp = false;
-        
+
         // --- POC LOGGING ---
         try {
-            if (!this._logFilePath) 
+            if (!this._logFilePath)
                 this._logFilePath = `${GLib.get_tmp_dir()}/nvidia-monitor-${Math.floor(Date.now() / 1000)}.jsonl`;
-            
+
             let logEntry = JSON.stringify({
-                ts: timestamp, 
+                ts: timestamp,
                 gpu: gpuUtil,
                 mem: memUsed,
                 fan: fanSpeed,
@@ -459,7 +472,7 @@ class NvidiaMonitorApplet extends applet.Applet {
             outStream.write_all(logEntry, null);
             outStream.close(null);
         } catch (e) {
-             if (!this._logErr) { global.logError("Log error: " + e.message); this._logErr = true; }
+            if (!this._logErr) { global.logError("Log error: " + e.message); this._logErr = true; }
         }
 
         // Guardar en historial
@@ -557,12 +570,12 @@ class NvidiaMonitorApplet extends applet.Applet {
         if (this._updateLoopId) {
             GLib.Source.remove(this._updateLoopId);
         }
-        
+
         if (this._monitorProc) {
-             try {
+            try {
                 this._monitorProc.force_exit();
-             } catch(e) {}
-             this._monitorProc = null;
+            } catch (e) { }
+            this._monitorProc = null;
         }
 
         if (this.menu) {
