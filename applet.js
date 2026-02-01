@@ -1,4 +1,4 @@
-const { applet, settings, main: Main } = imports.ui;
+const { applet, settings, popupMenu, main: Main } = imports.ui;
 const { GLib, St, Clutter, Pango, PangoCairo } = imports.gi;
 
 class NvidiaMonitorApplet extends applet.Applet {
@@ -7,35 +7,50 @@ class NvidiaMonitorApplet extends applet.Applet {
         super(orientation, panel_height, instance_id);
 
         this._panel_height = panel_height;
-        this.app_name= metadata.name
+        this.app_name = metadata.name
 
         this._updateLoopId = null;
         this.last_output = "";
         this._memUsedPercent = 0;
         this._gpuUtilPercent = 0;
         this._fanSpeedPercent = 0;
+        this._tempValue = 0;
 
         this._buildUI(panel_height);
-        if (!GLib.find_program_in_path('nvidia-smi')){
+        this._buildMenu();
+        if (!GLib.find_program_in_path('nvidia-smi')) {
             this.set_applet_label("nvidia-smi not found");
             return this._show_err('nvidia-smi not found in PATH.\nPlease ensure NVIDIA drivers are installed.');
         }
 
         this._initSettings(metadata, instance_id);
 
-        this.set_applet_tooltip("NVIDIA Monitor");
+        this.set_applet_tooltip("Displays NVIDIA GPU monitor");
 
         this.on_settings_changed();
     }
 
+    _buildMenu() {
+        try {
+            this._menuManager = new popupMenu.PopupMenuManager(this);
+            this.menu = new popupMenu.PopupMenu(this.actor, 0.0, St.Side.TOP);
+            this._menuManager.addMenu(this.menu);
+            let item = new popupMenu.PopupMenuItem("Historial GPU (últimas 6 horas)");
+            this.menu.addMenuItem(item);
+        } catch (e) {
+            global.logError(e);
+            this._show_err("An unexpected error occurred while building the menu.\n" + e.message);
+        }
+    }
+
     _show_err(msg) {
-            let icon = new St.Icon({ 
-                icon_name: 'dialog-warning',
-                icon_type: St.IconType.FULLCOLOR,
-                icon_size: 36 
-            });
-            const title = `${this.app_name} Error`;
-            Main.criticalNotify(title, msg, icon);
+        let icon = new St.Icon({
+            icon_name: 'dialog-warning',
+            icon_type: St.IconType.FULLCOLOR,
+            icon_size: 36
+        });
+        const title = `${this.app_name} Error`;
+        Main.criticalNotify(title, msg, icon);
     }
 
     _buildUI(panel_height) {
@@ -157,7 +172,7 @@ class NvidiaMonitorApplet extends applet.Applet {
     update() {
         try {
             // Use full path to nvidia-smi
-            let [success, stdout, stderr, exit_status] = GLib.spawn_command_line_sync('/usr/bin/nvidia-smi --query-gpu=temperature.gpu,memory.used,memory.total,utilization.gpu,fan.speed --format=csv,noheader,nounits');
+            let [success, stdout, stderr, exit_status] = GLib.spawn_command_line_sync('/usr/bin/nvidia-smi --query-gpu=temperature.gpu,memory.used,memory.total,utilization.gpu,fan.speed,timestamp --format=csv,noheader,nounits');
 
             if (success) {
                 let output = this._decoder.decode(stdout);
@@ -262,18 +277,20 @@ class NvidiaMonitorApplet extends applet.Applet {
 
     parse_and_display(output) {
         let parts = output.trim().split(',').map(function (s) { return s.trim(); });
-        if (parts.length < 5) return;
+        if (parts.length < 6) return;
 
         let temp = parts[0];
         let memUsed = parseFloat(parts[1]);
         let memTotal = parseFloat(parts[2]);
         let gpuUtil = parseFloat(parts[3]);
         let fanSpeed = parseFloat(parts[4]);
+        let timestamp = parts[5].replace(/ /g, "_");
 
         // Calculate percentages
         this._memUsedPercent = memTotal > 0 ? memUsed / memTotal : 0;
         this._gpuUtilPercent = gpuUtil / 100.0;
         this._fanSpeedPercent = fanSpeed / 100.0;
+        this._tempValue = parseFloat(temp);
 
         let visTemp = false;
 
@@ -281,7 +298,7 @@ class NvidiaMonitorApplet extends applet.Applet {
         if (this.show_temp) {
             let displayTemp = temp;
             if (this.temp_unit === "F") {
-                displayTemp = (parseFloat(temp) * 9/5 + 32).toFixed(1);
+                displayTemp = (parseFloat(temp) * 9 / 5 + 32).toFixed(1);
             }
             this._label.set_text(displayTemp + "°" + this.temp_unit);
             this._label.show();
@@ -357,6 +374,11 @@ class NvidiaMonitorApplet extends applet.Applet {
             GLib.Source.remove(this._updateLoopId);
         }
         this.settings.finalize();
+    }
+
+    on_applet_clicked(event) {
+        this.menu.toggle();
+        global.log("Nvidia Monitor: Menu toggled on click.");
     }
 }
 
