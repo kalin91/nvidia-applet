@@ -1,7 +1,129 @@
 {
-  "section1": {
-    "type": "section",
-    "description": "General Settings"
+  "layout": {
+    "type": "layout",
+    "pages": ["Applet", "Monitor"],
+    "Applet": {
+      "type": "page",
+      "title": "Applet Settings",
+      "sections": [
+        "section_general",
+        "section_temp",
+        "section_memory",
+        "section_gpu",
+        "section_fan"
+      ]
+    },
+    "section_general": {
+      "type": "section",
+      "title": "General Settings",
+      "keys": ["refresh-interval", "encoding", "sep_general"]
+    },
+    "section_temp": {
+      "type": "section",
+      "title": "Temperature",
+      "keys": ["show-temp", "temp-unit", "sep_temp"]
+    },
+    "section_memory": {
+      "type": "section",
+      "title": "Memory Usage",
+      "keys": ["show-memory", "memory-display-mode", "sep_memory"]
+    },
+    "section_gpu": {
+      "type": "section",
+      "title": "GPU Utilization",
+      "keys": ["show-gpu-util", "gpu-display-mode", "sep_gpu"]
+    },
+    "section_fan": {
+      "type": "section",
+      "title": "Fan Speed",
+      "keys": ["show-fan-speed", "fan-display-mode", "sep_fan"]
+    },
+    "Monitor": {
+      "type": "page",
+      "title": "Monitor Settings",
+      "sections": [
+        "top_note",
+        "colors_section",
+        "y_axis_section",
+        "x_axis_section"
+      ]
+    },
+    "top_note": {
+      "type": "section",
+      "title": "Note",
+      "keys": ["monitor-note"]
+    },
+    "colors_section": {
+      "type": "section",
+      "title": "Colors",
+      "keys": [
+        "temp-color",
+        "sep_general",
+        "mem_color",
+        "gpu_color",
+        "fan_color",
+        "background_color"
+      ]
+    },
+    "y_axis_section": {
+      "type": "section",
+      "title": "Y-Axis Settings",
+      "keys": []
+    },
+    "x_axis_section": {
+      "type": "section",
+      "title": "X-Axis Settings",
+      "keys": []
+    }
+  },
+  "monitor-note": {
+    "type": "label",
+    "description": "Changes to monitor settings will take effect after restarting the monitor."
+  },
+  "temp-color": {
+    "type": "colorchooser",
+    "default": "rgba(245, 23, 23, 1.0)",
+    "description": "Temperature Color",
+    "tooltip": "Color used for temperature in the graph."
+  },
+  "mem_color": {
+    "type": "colorchooser",
+    "default": "rgba(251, 255, 7, 1.0)",
+    "description": "Memory Usage Color",
+    "tooltip": "Color used for memory usage in the graph."
+  },
+  "gpu_color": {
+    "type": "colorchooser",
+    "default": "rgba(14, 216, 21, 1.0)",
+    "description": "GPU Utilization Color",
+    "tooltip": "Color used for GPU utilization in the graph."
+  },
+  "fan_color": {
+    "type": "colorchooser",
+    "default": "rgba(120, 5, 228, 1.0)",
+    "description": "Fan Speed Color",
+    "tooltip": "Color used for fan speed in the graph."
+  },
+  "background_color": {
+    "type": "colorchooser",
+    "default": "rgba(0, 0, 0, 1.0)",
+    "description": "Background Color",
+    "tooltip": "Background color of the graph."
+  },
+  "sep_general": {
+    "type": "separator"
+  },
+  "sep_temp": {
+    "type": "separator"
+  },
+  "sep_memory": {
+    "type": "separator"
+  },
+  "sep_gpu": {
+    "type": "separator"
+  },
+  "sep_fan": {
+    "type": "separator"
   },
 
   "refresh-interval": {
@@ -25,10 +147,7 @@
     "description": "nvidia-smi Output Encoding",
     "tooltip": "Select the character encoding used by nvidia-smi output."
   },
-  "section2": {
-    "type": "section",
-    "description": "Temperature"
-  },
+
   "show-temp": {
     "type": "switch",
     "default": true,
@@ -46,10 +165,7 @@
     "tooltip": "Choose the unit for displaying GPU temperature.",
     "dependency": "show-temp"
   },
-  "section3": {
-    "type": "section",
-    "description": "Memory Usage"
-  },
+
   "show-memory": {
     "type": "switch",
     "default": true,
@@ -67,10 +183,7 @@
     "tooltip": "Choose how to display memory usage: as text or as a pie chart.",
     "dependency": "show-memory"
   },
-  "section4": {
-    "type": "section",
-    "description": "GPU Utilization"
-  },
+
   "show-gpu-util": {
     "type": "switch",
     "default": false,
@@ -88,10 +201,7 @@
     "tooltip": "Choose how to display GPU utilization: as text or as a pie chart.",
     "dependency": "show-gpu-util"
   },
-  "section5": {
-    "type": "section",
-    "description": "Fan Speed"
-  },
+
   "show-fan-speed": {
     "type": "switch",
     "default": false,

@@ -1,13 +1,18 @@
 const { applet, settings, popupMenu, main: Main } = imports.ui;
-const { GLib, St, Clutter, Pango, PangoCairo } = imports.gi;
+const { GLib, St, Clutter, Pango, PangoCairo, Gio } = imports.gi;
 
 class NvidiaMonitorApplet extends applet.Applet {
 
     constructor(metadata, orientation, panel_height, instance_id) {
         super(orientation, panel_height, instance_id);
-
+        this.orientation = orientation;
+        this.metadata = metadata;
         this._panel_height = panel_height;
         this.app_name = metadata.name
+
+        // Inicializar historial
+        this.history = [];
+        this.max_history_points = 43200;
 
         this._updateLoopId = null;
         this.last_output = "";
@@ -17,31 +22,135 @@ class NvidiaMonitorApplet extends applet.Applet {
         this._tempValue = 0;
 
         this._buildUI(panel_height);
-        this._buildMenu();
-        if (!GLib.find_program_in_path('nvidia-smi')) {
-            this.set_applet_label("nvidia-smi not found");
-            return this._show_err('nvidia-smi not found in PATH.\nPlease ensure NVIDIA drivers are installed.');
+        try {
+            this._buildMenu();
+            if (!GLib.find_program_in_path('nvidia-smi')) {
+                this.set_applet_label("nvidia-smi not found");
+                return this._show_err('nvidia-smi not found in PATH.\nPlease ensure NVIDIA drivers are installed.');
+            }
+
+            this._initSettings(metadata, instance_id);
+
+            this.set_applet_tooltip("Displays NVIDIA GPU monitor");
+
+            this.on_settings_changed();
+        } catch (e) {
+            global.logError(e);
+            this._show_err("Error initializing applet: " + e.message);
+            this.set_applet_label("Init Error");
         }
-
-        this._initSettings(metadata, instance_id);
-
-        this.set_applet_tooltip("Displays NVIDIA GPU monitor");
-
-        this.on_settings_changed();
     }
 
     _buildMenu() {
         try {
-            this._menuManager = new popupMenu.PopupMenuManager(this);
-            this.menu = new popupMenu.PopupMenu(this.actor, 0.0, St.Side.TOP);
-            this._menuManager.addMenu(this.menu);
-            let item = new popupMenu.PopupMenuItem("Historial GPU (últimas 6 horas)");
-            this.menu.addMenuItem(item);
+            if (!this.menuManager) this.menuManager = new popupMenu.PopupMenuManager(this);
+            
+            // Re-create menu carefully
+            if (this.menu) {
+                this.menuManager.removeMenu(this.menu);
+                this.menu.destroy();
+            }
+
+            // Usar this.orientation para que el menú sepa hacia dónde abrirse (Arriba/Abajo)
+            // Use St.Side enum or verify this.orientation is valid (usually 0 or 1)
+            this.menu = new applet.AppletPopupMenu(this, this.orientation);
+            
+            // Important: Set the actor explicitly as source if needed, though constructor does it.
+            // But if actor allocation is weird, we can force box.
+            // this.menu.sourceActor = this.actor; 
+
+            this.menuManager.addMenu(this.menu);
+
+            // Sección de Gráfica (External Monitor)
+            let monitorItem = new popupMenu.PopupMenuItem("Open Monitor Graph");
+            monitorItem.connect('activate', () => this._openMonitor());
+            this.menu.addMenuItem(monitorItem);
+
         } catch (e) {
             global.logError(e);
-            this._show_err("An unexpected error occurred while building the menu.\n" + e.message);
+            this._show_err("Error building menu: " + e.message);
         }
     }
+
+    _openMonitor() {
+        if (this._monitorProc) {
+            // Bring to front or just return
+            return;
+        }
+
+        try {
+            let scriptPath = GLib.build_filenamev([this.metadata.path, "scripts", "monitor.py"]);
+            
+            // Get coordinates
+            // Ensure allocation is up to date
+            let [x, y] = this.actor.get_transformed_position();
+            let [w, h] = this.actor.get_transformed_size();
+            let orientation = this.orientation; 
+
+            // Subprocess arguments - Explicitly invoke python3
+            let args = [
+                "/usr/bin/python3",
+                scriptPath,
+                "--x", Math.round(x).toString(),
+                "--y", Math.round(y).toString(),
+                "--width", Math.round(w).toString(),
+                "--height", Math.round(h).toString(),
+                "--orientation", orientation.toString()
+            ];
+            
+            // Log for debugging
+            global.log("Nvidia Monitor: Launching " + args.join(" "));
+
+            // Subprocess with Stdin pipe
+            this._monitorProc = Gio.Subprocess.new(
+                args,
+                Gio.SubprocessFlags.STDIN_PIPE
+            );
+            
+            this._monitorStdin = this._monitorProc.get_stdin_pipe();
+            
+            // Send existing history to populate graph immediately
+            if (this.history && this.history.length > 0) {
+                 global.log("Nvidia Monitor: Sending " + this.history.length + " history points.");
+                 for (let point of this.history) {
+                     this._sendToMonitor(point);
+                 }
+            }
+
+            // Watch for exit
+            this._monitorProc.wait_check_async(null, (proc, result) => {
+                try {
+                    proc.wait_check_finish(result);
+                } catch (e) {
+                   global.logError("Nvidia Monitor subprocess exited with error: " + e.message);
+                }
+                this._monitorProc = null;
+                this._monitorStdin = null;
+            });
+
+        } catch (e) {
+            global.logError("Error starting monitor: " + e.message);
+            this._show_err("Could not start monitor script: " + e.message);
+        }
+    }
+
+    _sendToMonitor(data) {
+        if (!this._monitorProc || !this._monitorStdin) return;
+
+        try {
+            let jsonStr = JSON.stringify(data) + "\n";
+            // Use GLib.Bytes for safe encoding/handling
+            let bytes = GLib.Bytes.new(jsonStr);
+            this._monitorStdin.write_bytes(bytes, null);
+            this._monitorStdin.flush(null);
+        } catch (e) {
+            // Broken pipe likely
+            global.logError("Error sending to monitor: " + e.message);
+            this._monitorProc = null; 
+            this._monitorStdin = null;
+        }
+    }
+
 
     _show_err(msg) {
         let icon = new St.Icon({
@@ -150,6 +259,15 @@ class NvidiaMonitorApplet extends applet.Applet {
         }
         this._decoder = new TextDecoder(this.encoding);
         this._updateLoop();
+    }
+    
+    on_orientation_changed(orientation) {
+        this.orientation = orientation;
+        if (this.menu) {
+            this.menu.destroy();
+            this.menu = null;
+            this._buildMenu();
+        }
     }
 
     on_update_display() {
@@ -293,6 +411,43 @@ class NvidiaMonitorApplet extends applet.Applet {
         this._tempValue = parseFloat(temp);
 
         let visTemp = false;
+        
+        // --- POC LOGGING ---
+        try {
+            if (!this._logFilePath) 
+                this._logFilePath = `${GLib.get_tmp_dir()}/nvidia-monitor-${Math.floor(Date.now() / 1000)}.jsonl`;
+            
+            let logEntry = JSON.stringify({
+                ts: timestamp, 
+                gpu: gpuUtil,
+                mem: memUsed,
+                fan: fanSpeed,
+                temp: this._tempValue
+            }) + "\n";
+
+            let file = Gio.File.new_for_path(this._logFilePath);
+            let outStream = file.append_to(Gio.FileCreateFlags.NONE, null);
+            outStream.write_all(logEntry, null);
+            outStream.close(null);
+        } catch (e) {
+             if (!this._logErr) { global.logError("Log error: " + e.message); this._logErr = true; }
+        }
+
+        // Guardar en historial
+        this.history.push({
+            gpu: gpuUtil,
+            mem: this._memUsedPercent * 100,
+            temp: this._tempValue,
+            fan: fanSpeed
+        });
+
+        // Send to external monitor if running
+        this._sendToMonitor({
+            gpu: gpuUtil,
+            mem: this._memUsedPercent * 100,
+            temp: this._tempValue,
+            fan: fanSpeed
+        });
 
         // Temp logic
         if (this.show_temp) {
@@ -373,6 +528,18 @@ class NvidiaMonitorApplet extends applet.Applet {
         if (this._updateLoopId) {
             GLib.Source.remove(this._updateLoopId);
         }
+        
+        if (this._monitorProc) {
+             try {
+                this._monitorProc.force_exit();
+             } catch(e) {}
+             this._monitorProc = null;
+        }
+
+        if (this.menu) {
+            this.menu.destroy();
+        }
+
         this.settings.finalize();
     }
 
