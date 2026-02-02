@@ -1,26 +1,28 @@
-const { applet, settings, popupMenu, main: Main } = imports.ui;
-const { GLib, St, Clutter, Pango, PangoCairo, Gio } = imports.gi;
+const { applet, settings, popupMenu, main: Main } = imports.ui; // eslint-disable-line
+const { GLib, St, Clutter, Pango, PangoCairo, Gio } = imports.gi; // eslint-disable-line
 
 class NvidiaMonitorApplet extends applet.Applet {
 
     constructor(metadata, orientation, panel_height, instance_id) {
         super(orientation, panel_height, instance_id);
-        this.orientation = orientation;
-        this.metadata = metadata;
+        this.setAllowedLayout(applet.AllowedLayout.BOTH);
+        this._applet_path = metadata.path;
         this._panel_height = panel_height;
-        this.app_name = metadata.name
-        this.uuid = metadata.uuid;
-
+        this._app_name = metadata.name
+        this._uuid = metadata.uuid;
+        this._turn_over = false;
+        this.on_orientation_changed(orientation);
         // Inicializar historial
-        this.history = [];
-        this.max_history_points = 43200;
+        this._history = [];
+        this._max_history_points = 43200;
 
         this._updateLoopId = null;
-        this.last_output = "";
+        this._last_output = "";
         this._memUsedPercent = 0;
         this._gpuUtilPercent = 0;
         this._fanSpeedPercent = 0;
         this._tempValue = 0;
+        this._sepText = " | ";
 
         this._buildUI(panel_height);
         try {
@@ -34,12 +36,16 @@ class NvidiaMonitorApplet extends applet.Applet {
 
             this.set_applet_tooltip("Displays NVIDIA GPU monitor");
 
-            this.on_settings_changed();
+            this._on_settings_changed();
         } catch (e) {
             global.logError(e);
             this._show_err("Error initializing applet: " + e.message);
             this.set_applet_label("Init Error");
         }
+    }
+    on_panel_height_changed() {
+        this._panel_height = this.panel.height;
+        this.on_orientation_changed(this.orientation);
     }
 
     _buildMenu() {
@@ -56,27 +62,23 @@ class NvidiaMonitorApplet extends applet.Applet {
             // Use St.Side enum or verify this.orientation is valid (usually 0 or 1)
             this.menu = new applet.AppletPopupMenu(this, this.orientation);
 
-            // Important: Set the actor explicitly as source if needed, though constructor does it.
-            // But if actor allocation is weird, we can force box.
-            // this.menu.sourceActor = this.actor; 
-
             this.menuManager.addMenu(this.menu);
 
-            // Sección de Gráfica (External Monitor)
+            // Add Monitor Graph item
             let monitorItem = new popupMenu.PopupMenuItem("Open Monitor Graph");
             monitorItem.connect('activate', () => this._openMonitor());
             this.menu.addMenuItem(monitorItem);
 
-            const settings = new popupMenu.PopupSubMenuMenuItem("Settings", true, { reactive: false});
+            const settings = new popupMenu.PopupSubMenuMenuItem("Settings", true, { reactive: false });
             this.menu.addMenuItem(settings);
             this.menu.addMenuItem(new popupMenu.PopupSeparatorMenuItem());
 
             // Add settings items
             let appletSettings = new popupMenu.PopupIconMenuItem("Applet Settings", 'speedometer-symbolic', St.IconType.SYMBOLIC);
-            appletSettings.connect('activate', (event) => GLib.spawn_command_line_async(`xlet-settings applet ${this.uuid} -i ${this.instance_id} -t 0`));
+            appletSettings.connect('activate', () => GLib.spawn_command_line_async(`xlet-settings applet ${this._uuid} -i ${this.instance_id} -t 0`));
             settings.menu.addMenuItem(appletSettings);
             let monitorSettings = new popupMenu.PopupIconMenuItem("Monitor Settings", 'org.gnome.SystemMonitor-symbolic', St.IconType.SYMBOLIC);
-            monitorSettings.connect('activate', (event) => GLib.spawn_command_line_async(`xlet-settings applet ${this.uuid} -i ${this.instance_id} -t 1`));
+            monitorSettings.connect('activate', () => GLib.spawn_command_line_async(`xlet-settings applet ${this._uuid} -i ${this.instance_id} -t 1`));
             settings.menu.addMenuItem(monitorSettings);
 
         } catch (e) {
@@ -92,7 +94,7 @@ class NvidiaMonitorApplet extends applet.Applet {
         }
 
         try {
-            let scriptPath = GLib.build_filenamev([this.metadata.path, "scripts", "monitor.py"]);
+            let scriptPath = GLib.build_filenamev([this._applet_path, "scripts", "monitor.py"]);
 
             // Get coordinates
             // Ensure allocation is up to date
@@ -138,9 +140,9 @@ class NvidiaMonitorApplet extends applet.Applet {
             this._monitorStdin = this._monitorProc.get_stdin_pipe();
 
             // Send existing history to populate graph immediately
-            if (this.history && this.history.length > 0) {
-                global.log("Nvidia Monitor: Sending " + this.history.length + " history points.");
-                for (let point of this.history) {
+            if (this._history && this._history.length > 0) {
+                global.log("Nvidia Monitor: Sending " + this._history.length + " history points.");
+                for (let point of this._history) {
                     this._sendToMonitor(point);
                 }
             }
@@ -186,25 +188,24 @@ class NvidiaMonitorApplet extends applet.Applet {
             icon_type: St.IconType.FULLCOLOR,
             icon_size: 36
         });
-        const title = `${this.app_name} Error`;
+        const title = `${this._app_name} Error`;
         Main.criticalNotify(title, msg, icon);
     }
 
-    _buildUI(panel_height) {
-
+    _buildUI() {
         // Create main container
         this._box = new St.BoxLayout({
-            style_class: 'applet-box',
-            y_align: Clutter.ActorAlign.CENTER
+            style_class: `applet-box${this._turn_over ? ' vertical' : ''}`,
+            vertical: this._turn_over,
+            [this._turn_over ? 'x_align' : 'y_align']: Clutter.ActorAlign.CENTER
         });
         this.actor.add(this._box);
-
+        let sepText = this._sepText;
         // Separator string
-        let sepText = " | ";
-        this._pieChartSize = Math.max(16, panel_height - 6);
+        this._pieChartSize = Math.max(16, this._panel_height - 6);
 
         // 1. Temp Label
-        this._label = this._add_label("Initializing...");
+        this._label = this._add_label(this._turn_over ? "..." : "Initializing...");
         this._label.show();
 
         // 2. Sep 1
@@ -214,7 +215,7 @@ class NvidiaMonitorApplet extends applet.Applet {
         this._memLabel = this._add_label("");
 
         // 4. Mem Pie Chart (Renamed from _pieChartArea)
-        this._memPieChartArea = this._add_pieChartArea(this._drawMemPie.bind(this));
+        this._memPieChartArea = this._add_pieChartArea((area) => this._drawPie(area, this._memUsedPercent, "Mem"));
 
         // 5. Sep 2
         this._sep2 = this._add_label(sepText);
@@ -223,7 +224,7 @@ class NvidiaMonitorApplet extends applet.Applet {
         this._gpuLabel = this._add_label("");
 
         // 7. GPU Pie Chart
-        this._gpuPieChartArea = this._add_pieChartArea(this._drawGpuPie.bind(this));
+        this._gpuPieChartArea = this._add_pieChartArea((area) => this._drawPie(area, this._gpuUtilPercent, "GPU"));
 
         // 8. Sep 3
         this._sep3 = this._add_label(sepText);
@@ -232,22 +233,111 @@ class NvidiaMonitorApplet extends applet.Applet {
         this._fanLabel = this._add_label("");
 
         // 10. Fan Pie Chart
-        this._fanPieChartArea = this._add_pieChartArea(this._drawFanPie.bind(this));
+        this._fanPieChartArea = this._add_pieChartArea((area) => this._drawPie(area, this._fanSpeedPercent, "Fan"));
     }
 
     _add_label(text) {
-        const label = new St.Label({ text: text, y_align: Clutter.ActorAlign.CENTER });
-        // Fix for truncation bug on restart: create CLUTTER_TEXT and disable ellipsization
-        label.clutter_text.ellipsize = Pango.EllipsizeMode.NONE;
-        this._add_to_box(label);
-        return label;
+        // En modo horizontal, usamos St.Label normal
+        if (this._turn_over & text === this._sepText) {
+
+
+            // En modo vertical, usamos DrawingArea para pintar el texto rotado sin romper el layout
+            // Creamos un "Custom Actor" falso que se comporta como Label
+            // Importante: width/height inicial para asegurar que se pinte la primera vez
+            const area = new St.DrawingArea({
+                style_class: 'applet-label',
+                reactive: true,
+                x_align: St.Align.MIDDLE,
+                y_align: St.Align.MIDDLE,
+                width: 1,
+                height: 1
+            });
+
+            // Guardamos el texto en una propiedad personalizada para poder cambiarlo después
+            area._custom_text = text;
+
+            // Función "set_text" personalizada para mantener compatibilidad
+            area.set_text = (newText) => {
+                if (area._custom_text !== newText) {
+                    area._custom_text = newText;
+                    area.queue_repaint(); // Redibujar cuando cambia el texto
+                }
+            };
+
+            area.connect('repaint', (actor) => this._draw_label(actor, area));
+
+            this._add_to_box(area);
+            return area;
+        } else {// if (!this._turn_over) {
+            const label = new St.Label({
+                text: text,
+                style_class: 'applet-label',
+                y_align: St.Align.MIDDLE,
+                x_align: St.Align.MIDDLE
+            });
+            if (this._turn_over) {
+                let orig = label.set_text;
+                label.set_text = (newText) => {
+                    newText = newText.replace(/:/g, "\n");
+                    let text_size = Math.floor(this._panel_height * 0.40);
+                    label.set_style(`font-size: ${text_size}px; max-width: ${this._panel_height}px;`);
+                    orig.call(label, newText);
+                }
+            }
+            // Fix for truncation bug
+            label.clutter_text.ellipsize = Pango.EllipsizeMode.NONE;
+            this._add_to_box(label);
+            return label;
+        }
+    }
+
+    _draw_label = (actor, area) => {
+        let cr = actor.get_context();
+        let [w, h] = actor.get_surface_size();
+
+        // Configurar fuente y texto
+        let layout = PangoCairo.create_layout(cr);
+        layout.set_text(area._custom_text || "", -1);
+
+        let themeNode = actor.get_theme_node();
+        layout.set_font_description(themeNode.get_font());
+        let color = themeNode.get_foreground_color();
+        if (color)
+            cr.setSourceRGBA(color.red / 255, color.green / 255, color.blue / 255, color.alpha / 255);
+        else
+            cr.setSourceRGBA(1, 1, 1, 1);
+
+        let [, logicalRect] = layout.get_pixel_extents();
+        let textWidth = logicalRect.width;
+        let textHeight = logicalRect.height;
+
+        // Rotar el contexto 90 grados a la izquierda (o -90)
+        cr.translate(w / 2, h / 2);
+        cr.rotate(Math.PI / 2);
+
+        // Dibujar centrado
+        cr.moveTo(-textWidth / 2, -textHeight / 2);
+        PangoCairo.show_layout(cr, layout);
+
+        // IMPORTANTE: Ajustar tamaño dinámicamente
+        // En vertical: Ancho del widget = Alto del texto (+ padding)
+        // Alto del widget = Ancho del texto (+ padding)
+        let reqW = textHeight + 4;
+        let reqH = textWidth;
+
+        if (Math.abs(actor.width - reqW) > 2 || Math.abs(actor.height - reqH) > 2) {
+            actor.set_width(reqW);
+            actor.set_height(reqH);
+        }
+
+        cr.$dispose();
     }
 
     _add_pieChartArea(fnCallback) {
         const res = new St.DrawingArea({
             width: this._pieChartSize,
             height: this._pieChartSize,
-            style: 'margin-left: 2px; margin-right: 2px;'
+            style: (this._turn_over) ? 'margin-top: 2px; margin-bottom: 2px;' : 'margin-left: 2px; margin-right: 2px;'
         });
         res.connect('repaint', area => fnCallback(area));
         this._add_to_box(res);
@@ -255,7 +345,12 @@ class NvidiaMonitorApplet extends applet.Applet {
     }
 
     _add_to_box(actor) {
-        this._box.add(actor, { y_fill: false, y_align: St.Align.MIDDLE });
+        let box_init
+        if (this._turn_over)
+            box_init = { x_fill: false, x_align: St.Align.MIDDLE }
+        else
+            box_init = { y_fill: false, y_align: St.Align.MIDDLE }
+        this._box.add(actor, box_init);
         actor.hide();
     }
 
@@ -263,16 +358,18 @@ class NvidiaMonitorApplet extends applet.Applet {
 
         this.settings = new settings.AppletSettings(this, metadata.uuid, instance_id);
 
-        this.settings.bind("refresh-interval", "refresh_interval", () => this.on_settings_changed());
-        this.settings.bind("encoding", "encoding", () => this.on_settings_changed());
-        this.settings.bind("show-temp", "show_temp", () => this.on_update_display());
-        this.settings.bind("temp-unit", "temp_unit", () => this.on_update_display());
-        this.settings.bind("show-memory", "show_memory", () => this.on_update_display());
-        this.settings.bind("memory-display-mode", "memory_display_mode", () => this.on_update_display());
-        this.settings.bind("show-gpu-util", "show_gpu_util", () => this.on_update_display());
-        this.settings.bind("gpu-display-mode", "gpu_display_mode", () => this.on_update_display());
-        this.settings.bind("show-fan-speed", "show_fan_speed", () => this.on_update_display());
-        this.settings.bind("fan-display-mode", "fan_display_mode", () => this.on_update_display());
+        // Applet Settings
+        this.settings.bind("refresh-interval", "refresh_interval", () => this._on_settings_changed());
+        this.settings.bind("border-color", "border_color", () => this._on_settings_changed());
+        this.settings.bind("encoding", "encoding", () => this._on_settings_changed());
+        this.settings.bind("show-temp", "show_temp", () => this._on_update_display());
+        this.settings.bind("temp-unit", "temp_unit", () => this._on_update_display());
+        this.settings.bind("show-memory", "show_memory", () => this._on_update_display());
+        this.settings.bind("memory-display-mode", "memory_display_mode", () => this._on_update_display());
+        this.settings.bind("show-gpu-util", "show_gpu_util", () => this._on_update_display());
+        this.settings.bind("gpu-display-mode", "gpu_display_mode", () => this._on_update_display());
+        this.settings.bind("show-fan-speed", "show_fan_speed", () => this._on_update_display());
+        this.settings.bind("fan-display-mode", "fan_display_mode", () => this._on_update_display());
 
         // Monitor Colors
         this.settings.bind("temp-color", "temp_color");
@@ -295,7 +392,12 @@ class NvidiaMonitorApplet extends applet.Applet {
         this._label.show();
     }
 
-    on_settings_changed() {
+    _on_settings_changed() {
+        if (this._turn_over) 
+            this._box.width = this._panel_height;
+        else
+            this._box.height = this._panel_height;
+        this._box.style = `border: 1px solid ${this.border_color};`; 
         if (this._updateLoopId) {
             GLib.Source.remove(this._updateLoopId);
         }
@@ -305,21 +407,30 @@ class NvidiaMonitorApplet extends applet.Applet {
 
     on_orientation_changed(orientation) {
         this.orientation = orientation;
+
+        // Handle turn_over logic
+        this._turn_over = (orientation % 2 === 1);
+
+        // Rebuild menu to adjust orientation
         if (this.menu) {
             this.menu.destroy();
             this.menu = null;
-            this._buildMenu();
+            this._buildMenu()
+            this._box.destroy();
+            this._box = null;
+            this._buildUI()
+            this._on_settings_changed();
         }
     }
 
-    on_update_display() {
-        if (this.last_output) {
-            this.parse_and_display(this.last_output);
+    _on_update_display() {
+        if (this._last_output) {
+            this._parse_and_display(this._last_output);
         }
     }
 
     _updateLoop() {
-        this.update();
+        this._update();
 
         let interval = Math.max(this.refresh_interval * 1000, 500);
 
@@ -329,15 +440,15 @@ class NvidiaMonitorApplet extends applet.Applet {
         });
     }
 
-    update() {
+    _update() {
         try {
             // Use full path to nvidia-smi
-            let [success, stdout, stderr, exit_status] = GLib.spawn_command_line_sync('/usr/bin/nvidia-smi --query-gpu=temperature.gpu,memory.used,memory.total,utilization.gpu,fan.speed,timestamp --format=csv,noheader,nounits');
+            let [success, stdout, stderr] = GLib.spawn_command_line_sync('/usr/bin/nvidia-smi --query-gpu=temperature.gpu,memory.used,memory.total,utilization.gpu,fan.speed,timestamp --format=csv,noheader,nounits');
 
             if (success) {
                 let output = this._decoder.decode(stdout);
-                this.last_output = output;
-                this.parse_and_display(output);
+                this._last_output = output;
+                this._parse_and_display(output);
             } else {
                 this.set_applet_label("Error");
                 this._show_err(`Failed to run nvidia-smi.\n${stderr ? stderr.toString() : "Unknown"}`);
@@ -348,18 +459,6 @@ class NvidiaMonitorApplet extends applet.Applet {
             this._show_err("An unexpected error occurred while running nvidia-smi.\n" + e.message);
             this.set_applet_label("Err");
         }
-    }
-
-    _drawMemPie(area) {
-        this._drawPie(area, this._memUsedPercent, "Mem");
-    }
-
-    _drawGpuPie(area) {
-        this._drawPie(area, this._gpuUtilPercent, "GPU");
-    }
-
-    _drawFanPie(area) {
-        this._drawPie(area, this._fanSpeedPercent, "Fan");
     }
 
     _drawPie(area, percent, label) {
@@ -416,7 +515,7 @@ class NvidiaMonitorApplet extends applet.Applet {
             } else {
                 cr.setSourceRGBA(1 - r, 1 - g, 1 - b, 1.0);
             }
-            let [inkRect, logicalRect] = layout.get_pixel_extents();
+            let [, logicalRect] = layout.get_pixel_extents();
             let textWidth = logicalRect.width;
             let textHeight = logicalRect.height;
 
@@ -435,7 +534,7 @@ class NvidiaMonitorApplet extends applet.Applet {
         cr.$dispose();
     }
 
-    parse_and_display(output) {
+    _parse_and_display(output) {
         let parts = output.trim().split(',').map(function (s) { return s.trim(); });
         if (parts.length < 6) return;
 
@@ -475,8 +574,11 @@ class NvidiaMonitorApplet extends applet.Applet {
             if (!this._logErr) { global.logError("Log error: " + e.message); this._logErr = true; }
         }
 
-        // Guardar en historial
-        this.history.push({
+        // Store in history
+        if (this._history.length >= this._max_history_points) {
+            this._history.splice(0, 1800); // Remove oldest 30 minutes
+        }
+        this._history.push({
             gpu: gpuUtil,
             mem: this._memUsedPercent * 100,
             temp: this._tempValue,
@@ -509,7 +611,7 @@ class NvidiaMonitorApplet extends applet.Applet {
             this.memory_display_mode,
             this._memLabel,
             this._memPieChartArea,
-            Math.round(memUsed) + "MiB / " + Math.round(memTotal) + "MiB"
+            this._turn_over ? `MEM:${Math.floor(this._memUsedPercent * 100)}%` : Math.round(memUsed) + "MiB / " + Math.round(memTotal) + "MiB"
         );
 
         const visGpu = this._updateSection(
@@ -517,7 +619,7 @@ class NvidiaMonitorApplet extends applet.Applet {
             this.gpu_display_mode,
             this._gpuLabel,
             this._gpuPieChartArea,
-            "GPU: " + gpuUtil + "%"
+            this._turn_over ? `GPU:${gpuUtil}%` : "GPU: " + gpuUtil + "%"
         );
 
         const visFan = this._updateSection(
@@ -525,7 +627,7 @@ class NvidiaMonitorApplet extends applet.Applet {
             this.fan_display_mode,
             this._fanLabel,
             this._fanPieChartArea,
-            "Fan: " + fanSpeed + "%"
+            this._turn_over ? `FAN:${fanSpeed}%` : "Fan: " + fanSpeed + "%"
         );
 
         // Separators
@@ -574,7 +676,9 @@ class NvidiaMonitorApplet extends applet.Applet {
         if (this._monitorProc) {
             try {
                 this._monitorProc.force_exit();
-            } catch (e) { }
+            } catch (e) {
+                global.logError("Error terminating monitor subprocess: " + e.message);
+            }
             this._monitorProc = null;
         }
 
@@ -585,12 +689,12 @@ class NvidiaMonitorApplet extends applet.Applet {
         this.settings.finalize();
     }
 
-    on_applet_clicked(event) {
+    on_applet_clicked() {
         this.menu.toggle();
         global.log("Nvidia Monitor: Menu toggled on click.");
     }
 }
 
-function main(metadata, orientation, panel_height, instance_id) {
+function main(metadata, orientation, panel_height, instance_id) { // eslint-disable-line
     return new NvidiaMonitorApplet(metadata, orientation, panel_height, instance_id);
 }
