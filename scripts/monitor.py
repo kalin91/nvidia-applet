@@ -494,7 +494,6 @@ class MonitorNav:
             else:
                  draw_text(label_text, x, height - 5, align_right=(i==xsteps), color=col_axis_x)
 
-
     def calculate_coords(self, width, height, graph_w, graph_h, margin_top, margin_right):
         if not self.history: return []
 
