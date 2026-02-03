@@ -30,6 +30,7 @@ class MonitorNav:
         parser.add_argument("--color-fan", type=str, default="#7805e4")
         parser.add_argument("--color-bg", type=str, default="#000000")
         parser.add_argument("--ysteps", type=int, default=3)
+        parser.add_argument("--xsteps", type=int, default=3)
         parser.add_argument("--xunit", type=str, default="seconds")
         parser.add_argument("--xlength", type=float, default=60)
         
@@ -275,11 +276,14 @@ class MonitorNav:
             if len(self.history) > self.max_history:
                 self.history.pop(0)
             
-            # Update labels
-            self.label_gpu.set_text(f"GPU: {data.get('gpu', 0):.0f}%")
-            self.label_mem.set_text(f"Mem: {data.get('mem', 0):.0f}%")
-            self.label_temp.set_text(f"Temp: {data.get('temp', 0):.0f}°C")
-            self.label_fan.set_text(f"Fan: {data.get('fan', 0):.0f}%")
+            # Update labels with dynamic colors
+            def set_lbl(lbl, text, color_hex):
+                lbl.set_markup(f"<span color='{color_hex}'>{text}</span>")
+
+            set_lbl(self.label_gpu, f"GPU: {data.get('gpu', 0):.0f}%", self.args.color_gpu)
+            set_lbl(self.label_mem, f"Mem: {data.get('mem', 0):.0f}%", self.args.color_mem)
+            set_lbl(self.label_temp, f"Temp: {data.get('temp', 0):.0f}°C", self.args.color_temp)
+            set_lbl(self.label_fan, f"Fan: {data.get('fan', 0):.0f}%", self.args.color_fan)
             
             self.graph_area.queue_draw()
             
@@ -317,8 +321,9 @@ class MonitorNav:
         self.draw_tooltip(cr, width, height, margin_top, margin_bottom, coords)
 
     def draw_grid_and_labels(self, cr, width, height, graph_h, margin_left, margin_right, margin_top, margin_bottom):
-        # Text Color
+        # Text Color & Grid Color (using inverse of bg for visibility)
         text_col = self.colors['text']
+        grid_col = (*text_col, 0.3) # RGB + Alpha
 
         # Helper to draw text
         cr.set_font_size(10)
@@ -330,33 +335,115 @@ class MonitorNav:
             cr.move_to(text_x, text_y)
             cr.show_text(text)
 
-        # Draw Grid & Y-Axis Labels
+        # Draw Y-Axis Grid & Labels
         cr.set_line_width(1)
-        steps = max(1, self.args.ysteps)
+        # Determine if we show axes
+        show_pct_axis = self.show_gpu or self.show_mem or self.show_fan
+        show_temp_axis = self.show_temp
+
+        ysteps = max(1, self.args.ysteps)
         
-        for i in range(steps + 1):
-            ratio = i / float(steps)
+        for i in range(ysteps + 1):
+            ratio = i / float(ysteps)
             y = margin_top + graph_h * (1 - ratio) # 0 at bottom
             
-            # Grid Line
-            cr.set_source_rgba(0.3, 0.3, 0.3, 0.5)
+            # Grid Line (Horizontal)
+            cr.set_source_rgba(*grid_col)
             cr.move_to(margin_left, y)
             cr.line_to(width - margin_right, y)
             cr.stroke()
             
             # Labels
-            # Left: Temp (0 - 100 C assumed)
-            temp_val = int(ratio * 100)
-            draw_text(f"{temp_val}°C", margin_left, y, align_right=True, color=self.colors['temp'])
+            # Left: Temp (0 - 110 C)
+            if show_temp_axis:
+                temp_val = int(ratio * 110)
+                draw_text(f"{temp_val}°C", margin_left, y, align_right=True, color=self.colors['temp'])
             
             # Right: Unit % (0 - 100 %)
-            pct_val = int(ratio * 100)
-            draw_text(f"{pct_val}%", width - margin_right, y, align_right=False)
+            if show_pct_axis:
+                pct_val = int(ratio * 100)
+                draw_text(f"{pct_val}%", width - margin_right, y, align_right=False)
 
-        # X-Axis Labels (Time)
-        cr.set_source_rgb(*text_col)
-        draw_text("Now", width - margin_right, height - 5, align_right=True)
-        draw_text(f"{self.args.xlength} {self.args.xunit} ago", margin_left, height - 5, align_right=False)
+        # X-Axis Grid & Labels
+        # xsteps: number of intervals. e.g. 2 means 3 lines (0, 50, 100) or just internal lines?
+        # Usually steps means subdivisions.
+        xsteps = max(1, self.args.xsteps) if hasattr(self.args, 'xsteps') else 1
+
+        graph_w = width - margin_left - margin_right 
+
+        for i in range(xsteps + 1):
+            ratio = i / float(xsteps)
+             # x goes right to left in time? 
+             # "Now" is at width - margin_right. 
+             # "Oldest" is at margin_left.
+             # So 0% (oldest) is left, 100% (now) is right.
+            x = margin_left + graph_w * ratio
+
+            # Grid Line (Vertical) - Optional? Plan says "guide labels ... similar to Y-axis lines"
+            # If xsteps > 1 or explicitly requested. Let's draw vertical grid lines for intermediate points
+            if 0 < i < xsteps: # Don't draw borders if redundant, but here borders are useful
+                cr.set_source_rgba(*grid_col)
+                cr.move_to(x, margin_top)
+                cr.line_to(x, height - margin_bottom)
+                cr.stroke()
+            
+            # Label
+            # If ratio=1 -> Now (0s ago). If ratio=0 -> Max Time ago.
+            # Time ago = xlength * (1 - ratio)
+            
+            # We want to label specific points.
+            # e.g. if xlength=60s. ratio=0 -> 60s. ratio=0.5 -> 30s. ratio=1 -> 0s.
+            time_val = self.args.xlength * (1 - ratio)
+            unit_char = self.args.xunit[0]
+            
+            label_text = ""
+            if i == xsteps:
+                label_text = "Now"
+            else:
+                # Format logic
+                if unit_char == 's':
+                    label_text = f"{int(time_val)}s"
+                elif unit_char == 'm': # minutes, maybe show decimals if small?
+                    if time_val < 1: label_text = f"{int(time_val*60)}s"
+                    else: label_text = f"{time_val:.1f}m".replace('.0m','m')
+                else: # hours
+                     label_text = f"{time_val:.1f}h".replace('.0h','h')
+            
+            # Don't draw over Y-axis labels if at edges?
+            # At i=0 (left), we might clash with Temp label if it's at bottom?
+            # Labels for X axis are usually below the graph.
+            
+            # Alignment: Center for mid points. Left for left edge? Right for Right edge?
+            # Let's just put them at y = height - 5
+            
+            # For i=0 (Left edge), we already have code drawing start time.
+            # For i=xsteps (Right edge), we have code drawing "Now".
+            # The original code drew them explicitly outside loop.
+            # Now we loop.
+            
+            tx = x
+            if i == 0: tx += 2; align_r = False
+            elif i == xsteps: tx -= 2; align_r = True
+            else: align_r = False; tx -= 10 # approximate centering? draw_text doesn't center.
+            # My draw_text helper only supports align_right or left of x.
+            # Let's adjust tx to be center if not edge.
+            
+            # Actually, let's keep it simple.
+            # If i=0, align_right=False (Left aligned to x)
+            # If i=xsteps, align_right=True (Right aligned to x)
+            # Else, maybe Center?
+            
+            if 0 < i < xsteps:
+                # Manual centering hack
+                cr.set_source_rgb(*text_col)
+                ext = cr.text_extents(label_text)
+                cur_x = x - ext.width/2
+                cur_y = height - 5 + ext.height/2
+                cr.move_to(cur_x, cur_y)
+                cr.show_text(label_text)
+            else:
+                 draw_text(label_text, x, height - 5, align_right=(i==xsteps))
+
 
     def calculate_coords(self, width, height, graph_w, graph_h, margin_top, margin_right):
         if not self.history: return []
@@ -373,14 +460,14 @@ class MonitorNav:
             
             x = (width - margin_right) - (i * step_x)
             
-            def get_y(val):
-                return margin_top + graph_h * (1 - (val / 100.0))
+            def get_y(val, max_val=100.0):
+                return margin_top + graph_h * (1 - (val / max_val))
             
             coords.append({
                 'x': x,
                 'gpu': get_y(data.get('gpu', 0)),
                 'mem': get_y(data.get('mem', 0)),
-                'temp': get_y(data.get('temp', 0)),
+                'temp': get_y(data.get('temp', 0), 110.0), # Temp max 110
                 'fan': get_y(data.get('fan', 0)),
                 'raw': data,
                 'step_x': step_x 

@@ -146,6 +146,7 @@ class NvidiaMonitorApplet extends applet.Applet {
                 "--color-fan", this.fan_color,
                 "--color-bg", this.background_color,
                 "--ysteps", this.y_axis_steps.toString(),
+                "--xsteps", this.x_axis_steps.toString(),
                 "--xunit", this.x_axis_unit,
                 "--xlength", xLength.toString()
             ];
@@ -425,6 +426,7 @@ class NvidiaMonitorApplet extends applet.Applet {
 
         // Monitor Axes
         this.settings.bind("y-axis-steps", "y_axis_steps", () => this._resetMonitor());
+        this.settings.bind("x-axis-steps", "x_axis_steps", () => this._resetMonitor());
         this.settings.bind("x-axis-unit", "x_axis_unit", () => this._resetMonitor());
         this.settings.bind("x-axis-length-sec", "x_axis_length_sec", () => this._resetMonitor());
         this.settings.bind("x-axis-length-min", "x_axis_length_min", () => this._resetMonitor());
