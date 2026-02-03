@@ -34,6 +34,7 @@ class MonitorNav:
         parser.add_argument("--color-axis-x", type=str, default="#ffffff")
         parser.add_argument("--color-grid", type=str, default="rgba(255,255,255,0.3)")
         parser.add_argument("--ysteps", type=int, default=3)
+        parser.add_argument("--temp-unit", type=str, default="C")
         parser.add_argument("--xsteps", type=int, default=3)
         parser.add_argument("--xunit", type=str, default="seconds")
         parser.add_argument("--xlength", type=float, default=60)
@@ -295,7 +296,15 @@ class MonitorNav:
     def process_data(self, line):
         try:
             data = json.loads(line)
-            # Expected format: {"gpu": float, "mem": float, "temp": float, "fan": float}
+            
+            # Handle commands
+            if 'command' in data:
+                cmd = data['command']
+                if cmd == 'present':
+                    self.window.present()
+                return
+
+            # Expected format: {"gpu": float, "mem": float, "temp": float, "fan": float, "ts": str}
             
             self.history.append(data)
             # print(f"DEBUG DATA: {data}", file=sys.stderr)
@@ -309,7 +318,13 @@ class MonitorNav:
 
             set_lbl(self.label_gpu, f"GPU: {data.get('gpu', 0):.0f}%", self.args.color_gpu)
             set_lbl(self.label_mem, f"Mem: {data.get('mem', 0):.0f}%", self.args.color_mem)
-            set_lbl(self.label_temp, f"Temp: {data.get('temp', 0):.0f}°C", self.args.color_temp)
+            
+            t_val = data.get('temp', 0)
+            t_str = f"{t_val:.0f}°C"
+            if self.args.temp_unit == 'F':
+                t_str = f"{(t_val*9/5)+32:.0f}°F"
+            set_lbl(self.label_temp, f"Temp: {t_str}", self.args.color_temp)
+            
             set_lbl(self.label_fan, f"Fan: {data.get('fan', 0):.0f}%", self.args.color_fan)
             self.graph_area.queue_draw()
             
@@ -384,8 +399,15 @@ class MonitorNav:
             # Labels
             # Left: Temp (0 - 110 C)
             if show_temp_axis:
-                temp_val = int(ratio * 110)
-                draw_text(f"{temp_val}°C", margin_left, y, align_right=True, color=col_axis_temp)
+                max_temp = 110
+                temp_val_c = int(ratio * max_temp)
+                
+                label_val = f"{temp_val_c}°C"
+                if self.args.temp_unit == "F":
+                    temp_val_f = int((temp_val_c * 9/5) + 32)
+                    label_val = f"{temp_val_f}°F"
+
+                draw_text(label_val, margin_left, y, align_right=True, color=col_axis_temp)
             
             # Right: Unit % (0 - 100 %)
             if show_pct_axis:
@@ -549,9 +571,26 @@ class MonitorNav:
                 # Draw Info Box
                 lines = []
                 data = closest_pt['raw']
+                
+                # Time
+                ts_str = data.get('ts', '') # e.g. 2024/02/02_12:00:00.000
+                if ts_str:
+                    # Clean format. Assuming YYYY/MM/DD_HH:MM:SS.msec
+                    # Extract HH:MM:SS
+                    try:
+                        time_part = ts_str.split('_')[1].split('.')[0]
+                        lines.append((f"Time: {time_part}", self.colors['axis_x']))
+                    except:
+                        lines.append((f"Time: {ts_str}", self.colors['axis_x']))
+                
                 if self.show_gpu: lines.append((f"GPU: {data.get('gpu', 0):.1f}%", self.colors['gpu']))
                 if self.show_mem: lines.append((f"MEM: {data.get('mem', 0):.1f}%", self.colors['mem']))
-                if self.show_temp: lines.append((f"TMP: {data.get('temp', 0):.1f}°C", self.colors['temp']))
+                if self.show_temp: 
+                    t_val = data.get('temp', 0)
+                    t_s = f"{t_val:.1f}°C"
+                    if self.args.temp_unit == 'F':
+                        t_s = f"{(t_val*9/5)+32:.1f}°F"
+                    lines.append((f"TMP: {t_s}", self.colors['temp']))
                 if self.show_fan: lines.append((f"FAN: {data.get('fan', 0):.1f}%", self.colors['fan']))
                 
                 # Box dims

@@ -79,7 +79,7 @@
     "y_axis_section": {
       "type": "section",
       "title": "Y-Axis Settings",
-      "keys": ["y-axis-steps"]
+      "keys": ["y-axis-steps", "y-axis-temp-unit"]
     },
     "x_axis_section": {
       "type": "section",
@@ -111,6 +111,16 @@
     },
     "description": "Y-Axis Guides",
     "tooltip": "Number of guide lines for the Y-Axis."
+  },
+  "y-axis-temp-unit": {
+    "type": "combobox",
+    "default": "C",
+    "options": {
+      "Celsius (°C)": "C",
+      "Fahrenheit (°F)": "F"
+    },
+    "description": "Y-Axis Temperature Unit",
+    "tooltip": "Unit for the temperature axis in the monitor."
   },
   "x-axis-steps": {
     "type": "combobox",

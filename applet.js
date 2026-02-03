@@ -111,7 +111,8 @@ class NvidiaMonitorApplet extends applet.Applet {
 
     _openMonitor() {
         if (this._monitorProc) {
-            // Bring to front or just return
+            // Bring to front
+            this._sendToMonitor({ command: "present" });
             return;
         }
 
@@ -150,6 +151,7 @@ class NvidiaMonitorApplet extends applet.Applet {
                 "--color-axis-x", this.x_axis_color,
                 "--color-grid", this.guidelines_color,
                 "--ysteps", this.y_axis_steps.toString(),
+                "--temp-unit", this.y_axis_temp_unit,
                 "--xsteps", this.x_axis_steps.toString(),
                 "--xunit", this.x_axis_unit,
                 "--xlength", xLength.toString()
@@ -204,14 +206,16 @@ class NvidiaMonitorApplet extends applet.Applet {
         }
     }
     _resetMonitor() {
-        this._closeMonitor();
-        GLib.timeout_add(GLib.PRIORITY_DEFAULT, 100, () => {
-            if (this._monitorProc) {
-                return GLib.SOURCE_REMOVE;
-            }
-            this._openMonitor();
-            return GLib.SOURCE_CONTINUE;
-        });
+        if (this._monitorProc) {
+            this._closeMonitor();
+            GLib.timeout_add(GLib.PRIORITY_DEFAULT, 100, () => {
+                if (this._monitorProc) {
+                    return GLib.SOURCE_REMOVE;
+                }
+                this._openMonitor();
+                return GLib.SOURCE_CONTINUE;
+            });
+        }
     }
 
     _sendToMonitor(data) {
@@ -434,6 +438,7 @@ class NvidiaMonitorApplet extends applet.Applet {
 
         // Monitor Axes
         this.settings.bind("y-axis-steps", "y_axis_steps", () => this._resetMonitor());
+        this.settings.bind("y-axis-temp-unit", "y_axis_temp_unit", () => this._resetMonitor());
         this.settings.bind("x-axis-steps", "x_axis_steps", () => this._resetMonitor());
         this.settings.bind("x-axis-unit", "x_axis_unit", () => this._resetMonitor());
         this.settings.bind("x-axis-length-sec", "x_axis_length_sec", () => this._resetMonitor());
@@ -633,6 +638,7 @@ class NvidiaMonitorApplet extends applet.Applet {
             this._history.splice(0, 1800); // Remove oldest 30 minutes
         }
         this._history.push({
+            ts: timestamp,
             gpu: gpuUtil,
             mem: this._memUsedPercent * 100,
             temp: this._tempValue,
@@ -641,6 +647,7 @@ class NvidiaMonitorApplet extends applet.Applet {
 
         // Send to external monitor if running
         this._sendToMonitor({
+            ts: timestamp,
             gpu: gpuUtil,
             mem: this._memUsedPercent * 100,
             temp: this._tempValue,
