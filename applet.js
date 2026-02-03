@@ -145,6 +145,10 @@ class NvidiaMonitorApplet extends applet.Applet {
                 "--color-temp", this.temp_color,
                 "--color-fan", this.fan_color,
                 "--color-bg", this.background_color,
+                "--color-axis-temp", this.temp_axis_color,
+                "--color-axis-pct", this.percent_axis_color,
+                "--color-axis-x", this.x_axis_color,
+                "--color-grid", this.guidelines_color,
                 "--ysteps", this.y_axis_steps.toString(),
                 "--xsteps", this.x_axis_steps.toString(),
                 "--xunit", this.x_axis_unit,
@@ -423,6 +427,10 @@ class NvidiaMonitorApplet extends applet.Applet {
         this.settings.bind("gpu_color", "gpu_color", () => this._resetMonitor());
         this.settings.bind("fan_color", "fan_color", () => this._resetMonitor());
         this.settings.bind("background_color", "background_color", () => this._resetMonitor());
+        this.settings.bind("temp-axis-color", "temp_axis_color", () => this._resetMonitor());
+        this.settings.bind("percent-axis-color", "percent_axis_color", () => this._resetMonitor());
+        this.settings.bind("x-axis-color", "x_axis_color", () => this._resetMonitor());
+        this.settings.bind("guidelines-color", "guidelines_color", () => this._resetMonitor());
 
         // Monitor Axes
         this.settings.bind("y-axis-steps", "y_axis_steps", () => this._resetMonitor());

@@ -8,7 +8,7 @@ import signal
 import argparse
 
 gi.require_version('Gtk', '3.0')
-from gi.repository import Gtk, GLib, Gdk
+from gi.repository import Gtk, GLib, Gdk #, Pango
 
 class MonitorNav:
     def __init__(self):
@@ -29,6 +29,10 @@ class MonitorNav:
         parser.add_argument("--color-temp", type=str, default="#f51717")
         parser.add_argument("--color-fan", type=str, default="#7805e4")
         parser.add_argument("--color-bg", type=str, default="#000000")
+        parser.add_argument("--color-axis-temp", type=str, default="#ffffff")
+        parser.add_argument("--color-axis-pct", type=str, default="#ffffff")
+        parser.add_argument("--color-axis-x", type=str, default="#ffffff")
+        parser.add_argument("--color-grid", type=str, default="rgba(255,255,255,0.3)")
         parser.add_argument("--ysteps", type=int, default=3)
         parser.add_argument("--xsteps", type=int, default=3)
         parser.add_argument("--xunit", type=str, default="seconds")
@@ -48,7 +52,10 @@ class MonitorNav:
             'temp': self.hex_to_rgb(self.args.color_temp),
             'fan': self.hex_to_rgb(self.args.color_fan),
             'bg': self.hex_to_rgb(self.args.color_bg),
-            'text': self.get_inverse_color(self.args.color_bg)
+            'axis_temp': self.hex_to_rgb(self.args.color_axis_temp),
+            'axis_pct': self.hex_to_rgb(self.args.color_axis_pct),
+            'axis_x': self.hex_to_rgb(self.args.color_axis_x),
+            'grid': self.hex_to_rgb(self.args.color_grid)
         }
 
         # Visibility states (default all true)
@@ -66,11 +73,12 @@ class MonitorNav:
         
         self.window = self.builder.get_object("monitor_window")
         self.graph_area = self.builder.get_object("graph_area")
-        
-        self.label_gpu = self.builder.get_object("label_gpu")
-        self.label_mem = self.builder.get_object("label_mem")
-        self.label_temp = self.builder.get_object("label_temp")
-        self.label_fan = self.builder.get_object("label_fan")
+        labels: list[str] = ["label_gpu","label_mem","label_temp","label_fan"]
+        for lbl_name in labels:
+            lbl =self.builder.get_object(lbl_name)
+            setattr(self, lbl_name, lbl)
+            lbl.set_name(lbl_name) # For CSS targeting
+            lbl.set_attributes(None) # Clear Glade attributes to allow markup updates
 
         # Position Window
         self.setup_window_position(self.args)
@@ -96,25 +104,43 @@ class MonitorNav:
         self.window.show_all()
 
     def hex_to_rgb(self, color_str):
-        # Handle rgb(r,g,b) format
-        if color_str.startswith("rgb"):
-            try:
-                # Extract content inside parens: rgb(224,27,36) -> 224,27,36
-                content = color_str.split('(')[1].split(')')[0]
-                parts = content.split(',')
-                if len(parts) >= 3:
-                     return (int(parts[0])/255.0, int(parts[1])/255.0, int(parts[2])/255.0)
-            except Exception as e:
-                print(f"Error parsing RGB string '{color_str}': {e}", file=sys.stderr)
-                return (1.0, 0.0, 1.0) # Error magenta
-
-        # Handle hex format
-        hex_str = color_str.lstrip('#')
+        # Unified robust color parser
         try:
-            if len(hex_str) < 6: return (1.0, 1.0, 1.0) # fallback
-            return tuple(int(hex_str[i:i+2], 16)/255.0 for i in (0, 2, 4))
-        except ValueError:
-             return (1.0, 1.0, 1.0)
+            c = color_str.strip("'\" ")
+            # Handle hex
+            if c.startswith("#"):
+                hex_s = c.lstrip("#")
+                if len(hex_s) == 3: hex_s = "".join(x*2 for x in hex_s)
+                if len(hex_s) >= 6:
+                    r = int(hex_s[0:2], 16) / 255.0
+                    g = int(hex_s[2:4], 16) / 255.0
+                    b = int(hex_s[4:6], 16) / 255.0
+                    a = 1.0
+                    if len(hex_s) == 8: a = int(hex_s[6:8], 16) / 255.0
+                    return (r, g, b, a)
+            
+            # Handle rgb/rgba
+            elif c.startswith("rgb"):
+                content = c.split('(')[1].split(')')[0]
+                parts = [x.strip() for x in content.split(',')]
+                if len(parts) >= 3:
+                     vals = [float(x) for x in parts]
+                     r, g, b = vals[0], vals[1], vals[2]
+                     a = vals[3] if len(vals) > 3 else 1.0
+                     # Normalize if 0-255 range
+                     if r > 1.0 or g > 1.0 or b > 1.0:
+                         r /= 255.0; g /= 255.0; b /= 255.0
+                     return (r, g, b, a)
+        except Exception as e:
+            print(f"Error parsing color '{color_str}': {e}", file=sys.stderr)
+            return (1.0, 0.0, 1.0, 1.0) # Error magenta
+
+        return (1.0, 1.0, 1.0, 1.0) # Fallback white
+
+    def parse_to_pango_hex(self, color_str):
+        """Converts rgba/rgb string to Pango hex color #RRGGBBAA using consistent parser"""
+        r, g, b, a = self.hex_to_rgb(color_str)
+        return "#%02x%02x%02x%02x" % (int(r*255), int(g*255), int(b*255), int(a*255))
         
     def get_inverse_color(self, hex_bg):
         r, g, b = self.hex_to_rgb(hex_bg)
@@ -277,14 +303,14 @@ class MonitorNav:
                 self.history.pop(0)
             
             # Update labels with dynamic colors
-            def set_lbl(lbl, text, color_hex):
+            def set_lbl(lbl, text, color_raw):
+                color_hex = self.parse_to_pango_hex(color_raw)
                 lbl.set_markup(f"<span color='{color_hex}'>{text}</span>")
 
             set_lbl(self.label_gpu, f"GPU: {data.get('gpu', 0):.0f}%", self.args.color_gpu)
             set_lbl(self.label_mem, f"Mem: {data.get('mem', 0):.0f}%", self.args.color_mem)
             set_lbl(self.label_temp, f"Temp: {data.get('temp', 0):.0f}°C", self.args.color_temp)
             set_lbl(self.label_fan, f"Fan: {data.get('fan', 0):.0f}%", self.args.color_fan)
-            
             self.graph_area.queue_draw()
             
         except json.JSONDecodeError:
@@ -297,7 +323,7 @@ class MonitorNav:
         height = widget.get_allocated_height()
         
         # Background
-        cr.set_source_rgb(*self.colors['bg'])
+        cr.set_source_rgba(*self.colors['bg'])
         cr.rectangle(0, 0, width, height)
         cr.fill()
 
@@ -321,14 +347,16 @@ class MonitorNav:
         self.draw_tooltip(cr, width, height, margin_top, margin_bottom, coords)
 
     def draw_grid_and_labels(self, cr, width, height, graph_h, margin_left, margin_right, margin_top, margin_bottom):
-        # Text Color & Grid Color (using inverse of bg for visibility)
-        text_col = self.colors['text']
-        grid_col = (*text_col, 0.3) # RGB + Alpha
+        # Colors from settings
+        col_axis_temp = self.colors['axis_temp']
+        col_axis_pct = self.colors['axis_pct']
+        col_axis_x = self.colors['axis_x']
+        col_grid = self.colors['grid']
 
         # Helper to draw text
         cr.set_font_size(10)
-        def draw_text(text, x, y, align_right=True, color=text_col):
-            cr.set_source_rgb(*color)
+        def draw_text(text, x, y, align_right=True, color=col_axis_temp): # careful with default arg
+            cr.set_source_rgba(*color)
             extents = cr.text_extents(text)
             text_x = x - extents.width - 2 if align_right else x + 2
             text_y = y + extents.height / 2
@@ -348,7 +376,7 @@ class MonitorNav:
             y = margin_top + graph_h * (1 - ratio) # 0 at bottom
             
             # Grid Line (Horizontal)
-            cr.set_source_rgba(*grid_col)
+            cr.set_source_rgba(*col_grid)
             cr.move_to(margin_left, y)
             cr.line_to(width - margin_right, y)
             cr.stroke()
@@ -357,12 +385,12 @@ class MonitorNav:
             # Left: Temp (0 - 110 C)
             if show_temp_axis:
                 temp_val = int(ratio * 110)
-                draw_text(f"{temp_val}°C", margin_left, y, align_right=True, color=self.colors['temp'])
+                draw_text(f"{temp_val}°C", margin_left, y, align_right=True, color=col_axis_temp)
             
             # Right: Unit % (0 - 100 %)
             if show_pct_axis:
                 pct_val = int(ratio * 100)
-                draw_text(f"{pct_val}%", width - margin_right, y, align_right=False)
+                draw_text(f"{pct_val}%", width - margin_right, y, align_right=False, color=col_axis_pct)
 
         # X-Axis Grid & Labels
         # xsteps: number of intervals. e.g. 2 means 3 lines (0, 50, 100) or just internal lines?
@@ -382,7 +410,7 @@ class MonitorNav:
             # Grid Line (Vertical) - Optional? Plan says "guide labels ... similar to Y-axis lines"
             # If xsteps > 1 or explicitly requested. Let's draw vertical grid lines for intermediate points
             if 0 < i < xsteps: # Don't draw borders if redundant, but here borders are useful
-                cr.set_source_rgba(*grid_col)
+                cr.set_source_rgba(*col_grid)
                 cr.move_to(x, margin_top)
                 cr.line_to(x, height - margin_bottom)
                 cr.stroke()
@@ -435,14 +463,14 @@ class MonitorNav:
             
             if 0 < i < xsteps:
                 # Manual centering hack
-                cr.set_source_rgb(*text_col)
+                cr.set_source_rgba(*col_axis_x)
                 ext = cr.text_extents(label_text)
                 cur_x = x - ext.width/2
                 cur_y = height - 5 + ext.height/2
                 cr.move_to(cur_x, cur_y)
                 cr.show_text(label_text)
             else:
-                 draw_text(label_text, x, height - 5, align_right=(i==xsteps))
+                 draw_text(label_text, x, height - 5, align_right=(i==xsteps), color=col_axis_x)
 
 
     def calculate_coords(self, width, height, graph_w, graph_h, margin_top, margin_right):
@@ -477,7 +505,7 @@ class MonitorNav:
     def draw_data_lines(self, cr, coords):
         # Draw Paths
         def draw_line(key, color):
-            cr.set_source_rgb(*color)
+            cr.set_source_rgba(*color)
             cr.set_line_width(2)
             first = True
             for pt in coords:
@@ -547,7 +575,7 @@ class MonitorNav:
                 # Text
                 ty = box_y + 12
                 for text, col in lines:
-                    cr.set_source_rgb(*col)
+                    cr.set_source_rgba(*col)
                     cr.move_to(box_x + 5, ty)
                     cr.show_text(text)
                     ty += 15

@@ -43,7 +43,8 @@
       "title": "Monitor Settings",
       "sections": [
         "top_note",
-        "colors_section",
+        "metric_colors_section",
+        "layout_colors_section",
         "y_axis_section",
         "x_axis_section"
       ]
@@ -53,16 +54,26 @@
       "title": "Note",
       "keys": ["monitor-note"]
     },
-    "colors_section": {
+    "metric_colors_section": {
       "type": "section",
-      "title": "Colors",
+      "title": "Metric Colors",
       "keys": [
         "temp-color",
-        "sep_general",
         "mem_color",
         "gpu_color",
-        "fan_color",
-        "background_color"
+        "fan_color"
+      ]
+    },
+    "layout_colors_section": {
+      "type": "section",
+      "title": "Layout Colors",
+      "keys": [
+        "background_color",
+        "sep_axes_colors",
+        "temp-axis-color",
+        "percent-axis-color",
+        "x-axis-color",
+        "guidelines-color"
       ]
     },
     "y_axis_section": {
@@ -191,6 +202,33 @@
     "default": "rgba(0, 0, 0, 1.0)",
     "description": "Background Color",
     "tooltip": "Background color of the graph."
+  },
+  "sep_axes_colors": {
+    "type": "separator"
+  },
+  "temp-axis-color": {
+    "type": "colorchooser",
+    "default": "rgba(245, 23, 23, 1.0)",
+    "description": "Temperature Axis Color",
+    "tooltip": "Color for the temperature axis labels."
+  },
+  "percent-axis-color": {
+    "type": "colorchooser",
+    "default": "rgba(255, 255, 255, 1.0)",
+    "description": "Percentage Axis Color",
+    "tooltip": "Color for the percentage axis labels."
+  },
+  "x-axis-color": {
+    "type": "colorchooser",
+    "default": "rgba(255, 255, 255, 1.0)",
+    "description": "X-Axis Color",
+    "tooltip": "Color for the X-axis labels (Time)."
+  },
+  "guidelines-color": {
+    "type": "colorchooser",
+    "default": "rgba(255, 255, 255, 0.3)",
+    "description": "Guidelines Color",
+    "tooltip": "Color for the grid/guide lines."
   },
   "sep_general": {
     "type": "separator"
