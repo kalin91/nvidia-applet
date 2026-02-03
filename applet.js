@@ -1,4 +1,4 @@
-const { applet, settings, popupMenu, main: Main } = imports.ui; // eslint-disable-line
+const { applet, settings, popupMenu, main: Main, modalDialog } = imports.ui; // eslint-disable-line
 const { GLib, St, Clutter, Pango, PangoCairo, Gio } = imports.gi; // eslint-disable-line
 
 class NvidiaMonitorApplet extends applet.Applet {
@@ -10,7 +10,10 @@ class NvidiaMonitorApplet extends applet.Applet {
         this._panel_height = panel_height;
         this._app_name = metadata.name
         this._uuid = metadata.uuid;
+        this._instance_id = instance_id;
         this._turn_over = false;
+        this._monitorProc = null;
+        this._monitorStdin = null;
         this.on_orientation_changed(orientation);
         // Inicializar historial
         this._history = [];
@@ -32,7 +35,7 @@ class NvidiaMonitorApplet extends applet.Applet {
                 return this._show_err('nvidia-smi not found in PATH.\nPlease ensure NVIDIA drivers are installed.');
             }
 
-            this._initSettings(metadata, instance_id);
+            this._initSettings();
 
             this.set_applet_tooltip("Displays NVIDIA GPU monitor");
 
@@ -80,6 +83,25 @@ class NvidiaMonitorApplet extends applet.Applet {
             let monitorSettings = new popupMenu.PopupIconMenuItem("Monitor Settings", 'org.gnome.SystemMonitor-symbolic', St.IconType.SYMBOLIC);
             monitorSettings.connect('activate', () => GLib.spawn_command_line_async(`xlet-settings applet ${this._uuid} -i ${this.instance_id} -t 1`));
             settings.menu.addMenuItem(monitorSettings);
+            let resetAll = new popupMenu.PopupIconMenuItem("Reset All Settings", 'edit-undo-symbolic', St.IconType.SYMBOLIC);
+            resetAll.connect('activate', () => {
+                let confirm = new modalDialog.ConfirmDialog(`Are you sure you want to reset all settings of "${this._uuid}" to default?`, () => {
+                    try {
+                        for (let key in this.settings.settingsData) {
+                            this.settings.setValue(key, this.settings.getDefaultValue(key));
+                        }
+                        this.on_orientation_changed(this.orientation);
+                        if (this._monitorProc) {
+                            this._resetMonitor();
+                        }
+                    } catch (e) {
+                        global.logError("Error resetting settings: " + e.message);
+                        this._show_err("Error resetting settings: " + e.message);
+                    }
+                });
+                confirm.open();
+            });
+            settings.menu.addMenuItem(resetAll);
 
         } catch (e) {
             global.logError(e);
@@ -154,6 +176,7 @@ class NvidiaMonitorApplet extends applet.Applet {
                 } catch (e) {
                     global.logError("Nvidia Monitor subprocess exited with error: " + e.message);
                 }
+                global.log("Nvidia Monitor: Monitor subprocess exited.");
                 this._monitorProc = null;
                 this._monitorStdin = null;
             });
@@ -162,6 +185,28 @@ class NvidiaMonitorApplet extends applet.Applet {
             global.logError("Error starting monitor: " + e.message);
             this._show_err("Could not start monitor script: " + e.message);
         }
+    }
+
+    _closeMonitor() {
+        if (this._monitorProc) {
+            try {
+                // Send termination signal
+                this._monitorProc.force_exit();
+                global.log("Nvidia Monitor: Closed programmatically.");
+            } catch (e) {
+                global.logError("Error closing monitor: " + e.message);
+            }
+        }
+    }
+    _resetMonitor() {
+        this._closeMonitor();
+        GLib.timeout_add(GLib.PRIORITY_DEFAULT, 100, () => {
+            if (this._monitorProc) {
+                return GLib.SOURCE_REMOVE;
+            }
+            this._openMonitor();
+            return GLib.SOURCE_CONTINUE;
+        });
     }
 
     _sendToMonitor(data) {
@@ -354,9 +399,9 @@ class NvidiaMonitorApplet extends applet.Applet {
         actor.hide();
     }
 
-    _initSettings(metadata, instance_id) {
+    _initSettings() {
 
-        this.settings = new settings.AppletSettings(this, metadata.uuid, instance_id);
+        this.settings = new settings.AppletSettings(this, this._uuid, this._instance_id);
 
         // Applet Settings
         this.settings.bind("refresh-interval", "refresh_interval", () => this._on_settings_changed());
@@ -372,19 +417,18 @@ class NvidiaMonitorApplet extends applet.Applet {
         this.settings.bind("fan-display-mode", "fan_display_mode", () => this._on_update_display());
 
         // Monitor Colors
-        this.settings.bind("temp-color", "temp_color");
-        this.settings.bind("mem_color", "mem_color");
-        this.settings.bind("gpu_color", "gpu_color");
-        this.settings.bind("fan_color", "fan_color");
-        this.settings.bind("background_color", "background_color");
+        this.settings.bind("temp-color", "temp_color", () => this._resetMonitor());
+        this.settings.bind("mem_color", "mem_color", () => this._resetMonitor());
+        this.settings.bind("gpu_color", "gpu_color", () => this._resetMonitor());
+        this.settings.bind("fan_color", "fan_color", () => this._resetMonitor());
+        this.settings.bind("background_color", "background_color", () => this._resetMonitor());
 
         // Monitor Axes
-        this.settings.bind("y-axis-steps", "y_axis_steps");
-        this.settings.bind("x-axis-unit", "x_axis_unit");
-        this.settings.bind("x-axis-length-sec", "x_axis_length_sec");
-        this.settings.bind("x-axis-length-min", "x_axis_length_min");
-        this.settings.bind("x-axis-length-hour", "x_axis_length_hour");
-
+        this.settings.bind("y-axis-steps", "y_axis_steps", () => this._resetMonitor());
+        this.settings.bind("x-axis-unit", "x_axis_unit", () => this._resetMonitor());
+        this.settings.bind("x-axis-length-sec", "x_axis_length_sec", () => this._resetMonitor());
+        this.settings.bind("x-axis-length-min", "x_axis_length_min", () => this._resetMonitor());
+        this.settings.bind("x-axis-length-hour", "x_axis_length_hour", () => this._resetMonitor());
     }
 
     set_applet_label(text) {
@@ -393,11 +437,11 @@ class NvidiaMonitorApplet extends applet.Applet {
     }
 
     _on_settings_changed() {
-        if (this._turn_over) 
+        if (this._turn_over)
             this._box.width = this._panel_height;
         else
             this._box.height = this._panel_height;
-        this._box.style = `border: 1px solid ${this.border_color};`; 
+        this._box.style = `border: 1px solid ${this.border_color};`;
         if (this._updateLoopId) {
             GLib.Source.remove(this._updateLoopId);
         }
@@ -644,7 +688,7 @@ class NvidiaMonitorApplet extends applet.Applet {
 
         // If nothing is shown, show placeholder in Temp label
         if (!visTemp && !visMem && !visGpu && !visFan) {
-            this._label.set_text("Nvidia");
+            this._label.set_text(this._turn_over ? "Hi!" : "Nvidia");
             this._label.show();
         }
     }

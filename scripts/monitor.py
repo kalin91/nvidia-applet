@@ -308,6 +308,15 @@ class MonitorNav:
         
         if graph_w <= 0 or graph_h <= 0: return # Too small
 
+        self.draw_grid_and_labels(cr, width, height, graph_h, margin_left, margin_right, margin_top, margin_bottom)
+        
+        coords = self.calculate_coords(width, height, graph_w, graph_h, margin_top, margin_right)
+        if not coords: return
+
+        self.draw_data_lines(cr, coords)
+        self.draw_tooltip(cr, width, height, margin_top, margin_bottom, coords)
+
+    def draw_grid_and_labels(self, cr, width, height, graph_h, margin_left, margin_right, margin_top, margin_bottom):
         # Text Color
         text_col = self.colors['text']
 
@@ -345,29 +354,17 @@ class MonitorNav:
             draw_text(f"{pct_val}%", width - margin_right, y, align_right=False)
 
         # X-Axis Labels (Time)
-        # We want labels at start, middle, end? Or fixed intervals?
-        # Let's do Start (Time ago) and End (Now)
         cr.set_source_rgb(*text_col)
         draw_text("Now", width - margin_right, height - 5, align_right=True)
         draw_text(f"{self.args.xlength} {self.args.xunit} ago", margin_left, height - 5, align_right=False)
 
-        # Data Plotting
-        if not self.history: return
+    def calculate_coords(self, width, height, graph_w, graph_h, margin_top, margin_right):
+        if not self.history: return []
 
         # How many points fit?
         # self.max_history is the capacity for the visible window
-        # We draw from right (newest) to left (oldest)
-        # Coordinate mapping:
-        # Index 0 (newest) -> x = width - margin_right
-        # Index max -> x = margin_left
-        
         step_x = float(graph_w) / (self.max_history - 1) if self.max_history > 1 else graph_w
-        
         points_to_draw = min(len(self.history), self.max_history)
-        
-        # Precompute points to avoid logic repetition
-        # data format: (timestamp, gpu, mem, temp, fan)
-        # values are 0-100
         
         coords = []
         for i in range(points_to_draw):
@@ -375,10 +372,6 @@ class MonitorNav:
             data = self.history[data_idx]
             
             x = (width - margin_right) - (i * step_x)
-            
-            # Y calculation: val (0-100) -> pixels
-            # 0 -> margin_top + graph_h
-            # 100 -> margin_top
             
             def get_y(val):
                 return margin_top + graph_h * (1 - (val / 100.0))
@@ -389,9 +382,12 @@ class MonitorNav:
                 'mem': get_y(data.get('mem', 0)),
                 'temp': get_y(data.get('temp', 0)),
                 'fan': get_y(data.get('fan', 0)),
-                'raw': data
+                'raw': data,
+                'step_x': step_x 
             })
-            
+        return coords
+
+    def draw_data_lines(self, cr, coords):
         # Draw Paths
         def draw_line(key, color):
             cr.set_source_rgb(*color)
@@ -410,28 +406,34 @@ class MonitorNav:
         if self.show_temp: draw_line('temp', self.colors['temp'])
         if self.show_fan: draw_line('fan', self.colors['fan'])
 
+    def draw_tooltip(self, cr, width, height, margin_top, margin_bottom, coords):
         # Tooltip / Hover Cursor
-        # Check mouse_x
-        if hasattr(self, 'mouse_x') and margin_left <= self.mouse_x <= width - margin_right:
-            # Find closest point
-            # mouse_x distance from right edge
-            dist_from_right = (width - margin_right) - self.mouse_x
-            idx_approx = int(round(dist_from_right / step_x))
-            
-            if 0 <= idx_approx < len(coords):
-                pt = coords[idx_approx]
+        if hasattr(self, 'mouse_x') and coords:
+             # Need step_x value which we stored in coords
+            step_x = coords[0]['step_x']
+            margin_right = width - coords[0]['x'] # approx
+            # Better: recalculate or check range
+            # Range check:
+            min_x = coords[-1]['x']
+            max_x = coords[0]['x']
+
+            if min_x <= self.mouse_x <= max_x:
+                # Find closest point
+                # Simple distance check or index calc
+                # We can reuse the index calc logic but coords are inverted order in list vs screen X
+                # Let's just search closest X
+                closest_pt = min(coords, key=lambda pt: abs(pt['x'] - self.mouse_x))
                 
                 # Draw vertical line
                 cr.set_source_rgba(1, 1, 1, 0.5)
                 cr.set_line_width(1)
-                cr.move_to(pt['x'], margin_top)
-                cr.line_to(pt['x'], height - margin_bottom)
+                cr.move_to(closest_pt['x'], margin_top)
+                cr.line_to(closest_pt['x'], height - margin_bottom)
                 cr.stroke()
                 
                 # Draw Info Box
-                # Content
                 lines = []
-                data = pt['raw']
+                data = closest_pt['raw']
                 if self.show_gpu: lines.append((f"GPU: {data.get('gpu', 0):.1f}%", self.colors['gpu']))
                 if self.show_mem: lines.append((f"MEM: {data.get('mem', 0):.1f}%", self.colors['mem']))
                 if self.show_temp: lines.append((f"TMP: {data.get('temp', 0):.1f}°C", self.colors['temp']))
@@ -440,12 +442,12 @@ class MonitorNav:
                 # Box dims
                 box_w = 100
                 box_h = len(lines) * 15 + 10
-                box_x = pt['x'] + 10
+                box_x = closest_pt['x'] + 10
                 box_y = margin_top + 10
                 
                 # Flip if too close to edge
                 if box_x + box_w > width:
-                    box_x = pt['x'] - box_w - 10
+                    box_x = closest_pt['x'] - box_w - 10
                 
                 # Box BG
                 cr.set_source_rgba(0, 0, 0, 0.8)

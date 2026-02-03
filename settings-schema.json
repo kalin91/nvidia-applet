@@ -16,7 +16,7 @@
     "section_general": {
       "type": "section",
       "title": "General Settings",
-      "keys": ["refresh-interval", "encoding", "sep_general"]
+      "keys": ["refresh-interval", "encoding", "border-color", "sep_general"]
     },
     "section_temp": {
       "type": "section",
@@ -73,7 +73,13 @@
     "x_axis_section": {
       "type": "section",
       "title": "X-Axis Settings",
-      "keys": ["x-axis-unit", "x-axis-length-sec", "x-axis-length-min", "x-axis-length-hour", "sep_xaxis"]
+      "keys": [
+        "x-axis-unit",
+        "x-axis-length-sec",
+        "x-axis-length-min",
+        "x-axis-length-hour",
+        "sep_xaxis"
+      ]
     }
   },
   "monitor-note": {
@@ -106,7 +112,7 @@
     "tooltip": "Unit of time for the X-Axis."
   },
   "sep_xaxis": {
-     "type": "separator"
+    "type": "separator"
   },
   "x-axis-length-sec": {
     "type": "spinbutton",
@@ -197,6 +203,12 @@
     "description": "Refresh Interval",
     "tooltip": "How often to update the GPU stats (in seconds)."
   },
+  "border-color": {
+    "type": "colorchooser",
+    "default": "rgba(0, 0, 0, 0.0)",
+    "description": "Applet Border Color",
+    "tooltip": "Color of the applet border. Set alpha to 0 for no border."
+  },
   "encoding": {
     "type": "combobox",
     "default": "utf8",
@@ -235,7 +247,7 @@
   },
   "memory-display-mode": {
     "type": "combobox",
-    "default": "text",
+    "default": "pie",
     "options": {
       "Text (Used / Total)": "text",
       "Pie Chart": "pie"
@@ -247,13 +259,13 @@
 
   "show-gpu-util": {
     "type": "switch",
-    "default": false,
+    "default": true,
     "description": "Show GPU Utilization",
     "tooltip": "Show GPU utilization percentage in the panel."
   },
   "gpu-display-mode": {
     "type": "combobox",
-    "default": "text",
+    "default": "pie",
     "options": {
       "Text (Percent)": "text",
       "Pie Chart": "pie"
@@ -265,13 +277,13 @@
 
   "show-fan-speed": {
     "type": "switch",
-    "default": false,
+    "default": true,
     "description": "Show Fan Speed",
     "tooltip": "Show GPU fan speed percentage in the panel."
   },
   "fan-display-mode": {
     "type": "combobox",
-    "default": "text",
+    "default": "pie",
     "options": {
       "Text (Percent)": "text",
       "Pie Chart": "pie"
