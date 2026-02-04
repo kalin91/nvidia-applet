@@ -63,7 +63,7 @@ msgstr "重置所有設定"
 
 #: applet.js:97
 msgid "Are you sure you want to reset all settings of '%s' to default?"
-msgstr ""
+msgstr "您確定要將「%s」的所有設定重置為預設值嗎？"
 
 #: applet.js:108 applet.js:109
 msgid "Error resetting settings"

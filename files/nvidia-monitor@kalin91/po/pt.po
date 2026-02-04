@@ -63,7 +63,7 @@ msgstr "Redefinir todas as configurações"
 
 #: applet.js:97
 msgid "Are you sure you want to reset all settings of '%s' to default?"
-msgstr ""
+msgstr "Tem a certeza de que pretende repor todas as definições de '%s' para os valores predefinidos?"
 
 #: applet.js:108 applet.js:109
 msgid "Error resetting settings"

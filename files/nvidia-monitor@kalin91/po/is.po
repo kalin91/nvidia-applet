@@ -63,7 +63,7 @@ msgstr "Endurstilla allar stillingar"
 
 #: applet.js:97
 msgid "Are you sure you want to reset all settings of '%s' to default?"
-msgstr ""
+msgstr "Ertu viss um að þú viljir endurstilla allar stillingar fyrir '%s' á sjálfgefin gildi?"
 
 #: applet.js:108 applet.js:109
 msgid "Error resetting settings"
