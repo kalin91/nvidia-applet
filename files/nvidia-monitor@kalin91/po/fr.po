@@ -404,7 +404,7 @@ msgstr "Couleur de l'axe X"
 
 #. settings-schema.json->x-axis-color->tooltip
 msgid "Color for the X-axis labels (Time)."
-msgstr ""
+msgstr "Couleur pour les étiquettes de l'axe X (Temps)."
 
 #. settings-schema.json->guidelines-color->description
 msgid "Guidelines Color"

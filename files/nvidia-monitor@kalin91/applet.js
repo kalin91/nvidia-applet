@@ -336,7 +336,7 @@ class NvidiaMonitorApplet extends applet.Applet {
                 label.set_text = (newText) => {
                     newText = newText.replace(/:/g, "\n");
                     let len = Math.max(...newText.split("\n").map(s => s.replace(/\./g, "").length));
-                    let text_size = Math.floor(this._panel_height * 1/len *1.2);
+                    let text_size = Math.floor(this._panel_height * 1/len * 1.2);
                     label.set_style(`font-size: ${text_size}px; max-width: ${this._panel_height}px;`);
                     orig.call(label, newText);
                 }
@@ -657,8 +657,8 @@ class NvidiaMonitorApplet extends applet.Applet {
             if (this.temp_unit === "F") {
                 displayTemp = (parseFloat(temp) * 9 / 5 + 32).toFixed(1);
             }
-            let unit = "°" + this.temp_unit
-            this._label.set_text(this._turn_over? `↓${unit}\n${displayTemp}`: `${displayTemp}${unit}`);
+            let unit = "°" + this.temp_unit;
+            this._label.set_text(this._turn_over ? `↓${unit}\n${displayTemp}`: `${displayTemp}${unit}`);
             this._label.show();
             visTemp = true;
         } else {

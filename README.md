@@ -90,7 +90,7 @@ These options customize the separate monitor window. Changes take effect after r
 
 The monitor window opens next to the panel and its initial position adapts to the panel edge (top, bottom, left, or right). After it opens, it behaves like a normal independent window — you can move it wherever you want. If you open the monitor while it is already open, it is brought to the front. On multi‑desktop setups, if the monitor is on another workspace, you’ll need to switch to that workspace or move the window yourself.
 
-cuIt shows a live time graph with dual Y‑axes (temperature and percent), customizable grid lines, and a time axis labeled from “Now” back to the selected history length. When you uncheck a metric, its line disappears and the corresponding axis labels are hidden (temperature axis for temperature, percentage axis for GPU/Mem/Fan).
+It shows a live time graph with dual Y‑axes (temperature and percent), customizable grid lines, and a time axis labeled from “Now” back to the selected history length. When you uncheck a metric, its line disappears and the corresponding axis labels are hidden (temperature axis for temperature, percentage axis for GPU/Mem/Fan).
 
 Hover over the graph to see a tooltip with the exact time and values. You can also toggle any metric line on or off directly in the window using the checkboxes.
 
