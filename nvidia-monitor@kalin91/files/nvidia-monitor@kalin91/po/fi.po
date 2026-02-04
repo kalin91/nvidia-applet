@@ -33,7 +33,7 @@ msgstr "Näyttää NVIDIA GPU -valvonnan"
 
 #: applet.js:54
 msgid "Error initializing applet"
-msgstr ""
+msgstr "Virhe sovelman alustuksessa"
 
 #: applet.js:55
 msgid "Init Error"
@@ -63,7 +63,7 @@ msgstr "Palauta kaikki asetukset"
 
 #: applet.js:107 applet.js:108
 msgid "Error resetting settings"
-msgstr ""
+msgstr "Virhe asetuksia nollattaessa"
 
 #: applet.js:117
 msgid "Error building menu: "
@@ -71,39 +71,39 @@ msgstr "Virhe valikkoa luotaessa: "
 
 #: applet.js:170
 msgid "Launching"
-msgstr ""
+msgstr "Käynnistyy"
 
 #: applet.js:182
 msgid "Sending"
-msgstr ""
+msgstr "Lähetetään"
 
 #: applet.js:182
 msgid "history points"
-msgstr ""
+msgstr "historiapistettä"
 
 #: applet.js:193
 msgid "subprocess exited with error"
-msgstr ""
+msgstr "aliprosessi päättyi virheeseen"
 
 #: applet.js:195
 msgid "Monitor subprocess exited"
-msgstr ""
+msgstr "Monitorin aliprosessi päättyi"
 
 #: applet.js:201
 msgid "Error starting monitor"
-msgstr ""
+msgstr "Virhe monitorin käynnistyksessä"
 
 #: applet.js:202
 msgid "Could not start monitor script"
-msgstr ""
+msgstr "Monitoriskriptiä ei voitu käynnistää"
 
 #: applet.js:212
 msgid "Error closing monitor"
-msgstr ""
+msgstr "Virhe monitorin sulkemisessa"
 
 #: applet.js:240
 msgid "Error sending to monitor"
-msgstr ""
+msgstr "Virhe lähetettäessä monitorille"
 
 #: applet.js:253 applet.js:507
 msgid "Error"
@@ -135,7 +135,7 @@ msgstr "Tuntematon"
 
 #: applet.js:509
 msgid "Failed to run nvidia-smi"
-msgstr ""
+msgstr "nvidia-smi:n suoritus epäonnistui"
 
 #: applet.js:513
 msgid "An unexpected error occurred while running nvidia-smi.\n"
@@ -147,23 +147,23 @@ msgstr "Vir"
 
 #: applet.js:670
 msgid "MEM"
-msgstr ""
+msgstr "MEM"
 
 #: applet.js:686
 msgid "FAN"
-msgstr ""
+msgstr "FAN"
 
 #: applet.js:703
 msgid "Hi!"
-msgstr ""
+msgstr "Hei"
 
 #: applet.js:736
 msgid "Error terminating monitor subprocess"
-msgstr ""
+msgstr "Virhe monitorin aliprosessin lopettamisessa"
 
 #: applet.js:750
 msgid "Menu toggled on click."
-msgstr ""
+msgstr "Valikko vaihdettu klikkaamalla."
 
 #. metadata.json->name
 msgid "NVIDIA Monitor"
@@ -309,7 +309,7 @@ msgstr "X-akselin aikayksikkö."
 #. settings-schema.json->x-axis-length-sec->units
 #. settings-schema.json->refresh-interval->units
 msgid "s"
-msgstr ""
+msgstr "s"
 
 #. settings-schema.json->x-axis-length-sec->description
 msgid "X-Axis Length (Seconds)"
@@ -323,7 +323,7 @@ msgstr "Kokonaiskesto, joka näytetään kaaviossa."
 
 #. settings-schema.json->x-axis-length-min->units
 msgid "m"
-msgstr ""
+msgstr "m"
 
 #. settings-schema.json->x-axis-length-min->description
 msgid "X-Axis Length (Minutes)"
@@ -331,7 +331,7 @@ msgstr "X-akselin pituus (minuuttia)"
 
 #. settings-schema.json->x-axis-length-hour->units
 msgid "h"
-msgstr ""
+msgstr "h"
 
 #. settings-schema.json->x-axis-length-hour->description
 msgid "X-Axis Length (Hours)"

@@ -33,7 +33,7 @@ msgstr "Afișează monitorul GPU NVIDIA"
 
 #: applet.js:54
 msgid "Error initializing applet"
-msgstr ""
+msgstr "Eroare la inițializarea applet-ului"
 
 #: applet.js:55
 msgid "Init Error"
@@ -63,7 +63,7 @@ msgstr "Resetează toate setările"
 
 #: applet.js:107 applet.js:108
 msgid "Error resetting settings"
-msgstr ""
+msgstr "Eroare la resetarea setărilor"
 
 #: applet.js:117
 msgid "Error building menu: "
@@ -71,39 +71,39 @@ msgstr "Eroare la construirea meniului: "
 
 #: applet.js:170
 msgid "Launching"
-msgstr ""
+msgstr "Lansare"
 
 #: applet.js:182
 msgid "Sending"
-msgstr ""
+msgstr "Trimitere"
 
 #: applet.js:182
 msgid "history points"
-msgstr ""
+msgstr "puncte din istoric"
 
 #: applet.js:193
 msgid "subprocess exited with error"
-msgstr ""
+msgstr "subprocesul s-a încheiat cu eroare"
 
 #: applet.js:195
 msgid "Monitor subprocess exited"
-msgstr ""
+msgstr "Subprocesul monitorului s-a încheiat"
 
 #: applet.js:201
 msgid "Error starting monitor"
-msgstr ""
+msgstr "Eroare la pornirea monitorului"
 
 #: applet.js:202
 msgid "Could not start monitor script"
-msgstr ""
+msgstr "Nu s-a putut porni scriptul monitorului"
 
 #: applet.js:212
 msgid "Error closing monitor"
-msgstr ""
+msgstr "Eroare la închiderea monitorului"
 
 #: applet.js:240
 msgid "Error sending to monitor"
-msgstr ""
+msgstr "Eroare la trimiterea către monitor"
 
 #: applet.js:253 applet.js:507
 msgid "Error"
@@ -135,7 +135,7 @@ msgstr "Necunoscut"
 
 #: applet.js:509
 msgid "Failed to run nvidia-smi"
-msgstr ""
+msgstr "Eșec la rularea nvidia-smi"
 
 #: applet.js:513
 msgid "An unexpected error occurred while running nvidia-smi.\n"
@@ -147,23 +147,23 @@ msgstr "Err"
 
 #: applet.js:670
 msgid "MEM"
-msgstr ""
+msgstr "MEM"
 
 #: applet.js:686
 msgid "FAN"
-msgstr ""
+msgstr "FAN"
 
 #: applet.js:703
 msgid "Hi!"
-msgstr ""
+msgstr "Hei"
 
 #: applet.js:736
 msgid "Error terminating monitor subprocess"
-msgstr ""
+msgstr "Eroare la terminarea subprocesului monitorului"
 
 #: applet.js:750
 msgid "Menu toggled on click."
-msgstr ""
+msgstr "Meniul a fost comutat la clic."
 
 #. metadata.json->name
 msgid "NVIDIA Monitor"
@@ -311,7 +311,7 @@ msgstr "Unitatea de timp pentru axa X."
 #. settings-schema.json->x-axis-length-sec->units
 #. settings-schema.json->refresh-interval->units
 msgid "s"
-msgstr ""
+msgstr "s"
 
 #. settings-schema.json->x-axis-length-sec->description
 msgid "X-Axis Length (Seconds)"
@@ -325,7 +325,7 @@ msgstr "Durata totală afișată pe grafic."
 
 #. settings-schema.json->x-axis-length-min->units
 msgid "m"
-msgstr ""
+msgstr "m"
 
 #. settings-schema.json->x-axis-length-min->description
 msgid "X-Axis Length (Minutes)"
@@ -333,7 +333,7 @@ msgstr "Lungime axă X (minute)"
 
 #. settings-schema.json->x-axis-length-hour->units
 msgid "h"
-msgstr ""
+msgstr "h"
 
 #. settings-schema.json->x-axis-length-hour->description
 msgid "X-Axis Length (Hours)"
@@ -400,7 +400,7 @@ msgid "X-Axis Color"
 msgstr "Culoare axă X"
 
 #. settings-schema.json->x-axis-color->tooltip
-msgid "Color for the X-axis labels (Time)."
+msgid "Color for the x-axis labels (Time)."
 msgstr "Culoare pentru etichetele axei X (timp)."
 
 #. settings-schema.json->guidelines-color->description

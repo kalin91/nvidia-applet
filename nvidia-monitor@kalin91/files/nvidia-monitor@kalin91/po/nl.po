@@ -33,7 +33,7 @@ msgstr "Toont NVIDIA GPU-monitor"
 
 #: applet.js:54
 msgid "Error initializing applet"
-msgstr ""
+msgstr "Fout bij initialiseren applet"
 
 #: applet.js:55
 msgid "Init Error"
@@ -63,7 +63,7 @@ msgstr "Alle instellingen resetten"
 
 #: applet.js:107 applet.js:108
 msgid "Error resetting settings"
-msgstr ""
+msgstr "Fout bij resetten instellingen"
 
 #: applet.js:117
 msgid "Error building menu: "
@@ -71,39 +71,39 @@ msgstr "Fout bij opbouwen van menu: "
 
 #: applet.js:170
 msgid "Launching"
-msgstr ""
+msgstr "Starten"
 
 #: applet.js:182
 msgid "Sending"
-msgstr ""
+msgstr "Verzenden"
 
 #: applet.js:182
 msgid "history points"
-msgstr ""
+msgstr "geschiedenispunten"
 
 #: applet.js:193
 msgid "subprocess exited with error"
-msgstr ""
+msgstr "subproces afgesloten met fout"
 
 #: applet.js:195
 msgid "Monitor subprocess exited"
-msgstr ""
+msgstr "Monitor-subproces afgesloten"
 
 #: applet.js:201
 msgid "Error starting monitor"
-msgstr ""
+msgstr "Fout bij starten monitor"
 
 #: applet.js:202
 msgid "Could not start monitor script"
-msgstr ""
+msgstr "Kon monitorscript niet starten"
 
 #: applet.js:212
 msgid "Error closing monitor"
-msgstr ""
+msgstr "Fout bij sluiten monitor"
 
 #: applet.js:240
 msgid "Error sending to monitor"
-msgstr ""
+msgstr "Fout bij verzenden naar monitor"
 
 #: applet.js:253 applet.js:507
 msgid "Error"
@@ -135,7 +135,7 @@ msgstr "Onbekend"
 
 #: applet.js:509
 msgid "Failed to run nvidia-smi"
-msgstr ""
+msgstr "Uitvoeren nvidia-smi mislukt"
 
 #: applet.js:513
 msgid "An unexpected error occurred while running nvidia-smi.\n"
@@ -148,23 +148,23 @@ msgstr "Err"
 
 #: applet.js:670
 msgid "MEM"
-msgstr ""
+msgstr "MEM"
 
 #: applet.js:686
 msgid "FAN"
-msgstr ""
+msgstr "FAN"
 
 #: applet.js:703
 msgid "Hi!"
-msgstr ""
+msgstr "Hoi"
 
 #: applet.js:736
 msgid "Error terminating monitor subprocess"
-msgstr ""
+msgstr "Fout bij beëindigen monitor-subproces"
 
 #: applet.js:750
 msgid "Menu toggled on click."
-msgstr ""
+msgstr "Menu omgeschakeld bij klik."
 
 #. metadata.json->name
 msgid "NVIDIA Monitor"

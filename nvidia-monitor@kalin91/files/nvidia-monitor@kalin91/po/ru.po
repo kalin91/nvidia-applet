@@ -33,7 +33,7 @@ msgstr "Отображает монитор GPU NVIDIA"
 
 #: applet.js:54
 msgid "Error initializing applet"
-msgstr ""
+msgstr "Ошибка инициализации апплета"
 
 #: applet.js:55
 msgid "Init Error"
@@ -63,7 +63,7 @@ msgstr "Сбросить все настройки"
 
 #: applet.js:107 applet.js:108
 msgid "Error resetting settings"
-msgstr ""
+msgstr "Ошибка сброса настроек"
 
 #: applet.js:117
 msgid "Error building menu: "
@@ -71,39 +71,39 @@ msgstr "Ошибка создания меню: "
 
 #: applet.js:170
 msgid "Launching"
-msgstr ""
+msgstr "Запуск"
 
 #: applet.js:182
 msgid "Sending"
-msgstr ""
+msgstr "Отправка"
 
 #: applet.js:182
 msgid "history points"
-msgstr ""
+msgstr "точек истории"
 
 #: applet.js:193
 msgid "subprocess exited with error"
-msgstr ""
+msgstr "подпроцесс завершился с ошибкой"
 
 #: applet.js:195
 msgid "Monitor subprocess exited"
-msgstr ""
+msgstr "Подпроцесс монитора завершен"
 
 #: applet.js:201
 msgid "Error starting monitor"
-msgstr ""
+msgstr "Ошибка запуска монитора"
 
 #: applet.js:202
 msgid "Could not start monitor script"
-msgstr ""
+msgstr "Не удалось запустить скрипт монитора"
 
 #: applet.js:212
 msgid "Error closing monitor"
-msgstr ""
+msgstr "Ошибка закрытия монитора"
 
 #: applet.js:240
 msgid "Error sending to monitor"
-msgstr ""
+msgstr "Ошибка отправки монитору"
 
 #: applet.js:253 applet.js:507
 msgid "Error"
@@ -115,7 +115,7 @@ msgstr "Инициализация..."
 
 #: applet.js:280
 msgid "Mem"
-msgstr "Mem"
+msgstr "Пам"
 
 #: applet.js:289 applet.js:678
 msgid "GPU"
@@ -135,7 +135,7 @@ msgstr "Неизвестно"
 
 #: applet.js:509
 msgid "Failed to run nvidia-smi"
-msgstr ""
+msgstr "Не удалось запустить nvidia-smi"
 
 #: applet.js:513
 msgid "An unexpected error occurred while running nvidia-smi.\n"
@@ -147,23 +147,23 @@ msgstr "Err"
 
 #: applet.js:670
 msgid "MEM"
-msgstr ""
+msgstr "ПАМ"
 
 #: applet.js:686
 msgid "FAN"
-msgstr ""
+msgstr "FAN"
 
 #: applet.js:703
 msgid "Hi!"
-msgstr ""
+msgstr "Хай"
 
 #: applet.js:736
 msgid "Error terminating monitor subprocess"
-msgstr ""
+msgstr "Ошибка завершения подпроцесса монитора"
 
 #: applet.js:750
 msgid "Menu toggled on click."
-msgstr ""
+msgstr "Меню переключено по клику."
 
 #. metadata.json->name
 msgid "NVIDIA Monitor"
@@ -309,7 +309,7 @@ msgstr "Единица времени для оси X."
 #. settings-schema.json->x-axis-length-sec->units
 #. settings-schema.json->refresh-interval->units
 msgid "s"
-msgstr ""
+msgstr "с"
 
 #. settings-schema.json->x-axis-length-sec->description
 msgid "X-Axis Length (Seconds)"
@@ -323,7 +323,7 @@ msgstr "Общая продолжительность, отображаемая 
 
 #. settings-schema.json->x-axis-length-min->units
 msgid "m"
-msgstr ""
+msgstr "м"
 
 #. settings-schema.json->x-axis-length-min->description
 msgid "X-Axis Length (Minutes)"
@@ -331,7 +331,7 @@ msgstr "Длина оси X (минуты)"
 
 #. settings-schema.json->x-axis-length-hour->units
 msgid "h"
-msgstr ""
+msgstr "ч"
 
 #. settings-schema.json->x-axis-length-hour->description
 msgid "X-Axis Length (Hours)"
@@ -427,15 +427,15 @@ msgstr "Цвет рамки апплета. Установите альфа 0 д
 
 #. settings-schema.json->encoding->options
 msgid "UTF-8"
-msgstr ""
+msgstr "UTF-8"
 
 #. settings-schema.json->encoding->options
 msgid "macintosh"
-msgstr ""
+msgstr "macintosh"
 
 #. settings-schema.json->encoding->options
 msgid "ASCII"
-msgstr ""
+msgstr "ASCII"
 
 #. settings-schema.json->encoding->description
 msgid "nvidia-smi Output Encoding"

@@ -33,7 +33,7 @@ msgstr "Mostra el monitor de GPU NVIDIA"
 
 #: applet.js:54
 msgid "Error initializing applet"
-msgstr ""
+msgstr "Error en inicialitzar l'applet"
 
 #: applet.js:55
 msgid "Init Error"
@@ -63,7 +63,7 @@ msgstr "Restableix tota la configuració"
 
 #: applet.js:107 applet.js:108
 msgid "Error resetting settings"
-msgstr ""
+msgstr "Error en restablir la configuració"
 
 #: applet.js:117
 msgid "Error building menu: "
@@ -71,39 +71,39 @@ msgstr "Error en crear el menú: "
 
 #: applet.js:170
 msgid "Launching"
-msgstr ""
+msgstr "Llançant"
 
 #: applet.js:182
 msgid "Sending"
-msgstr ""
+msgstr "Enviant"
 
 #: applet.js:182
 msgid "history points"
-msgstr ""
+msgstr "punts de l'historial"
 
 #: applet.js:193
 msgid "subprocess exited with error"
-msgstr ""
+msgstr "el subprocés ha finalitzat amb error"
 
 #: applet.js:195
 msgid "Monitor subprocess exited"
-msgstr ""
+msgstr "El subprocés del monitor ha finalitzat"
 
 #: applet.js:201
 msgid "Error starting monitor"
-msgstr ""
+msgstr "Error en iniciar el monitor"
 
 #: applet.js:202
 msgid "Could not start monitor script"
-msgstr ""
+msgstr "No s'ha pogut iniciar l'script del monitor"
 
 #: applet.js:212
 msgid "Error closing monitor"
-msgstr ""
+msgstr "Error en tancar el monitor"
 
 #: applet.js:240
 msgid "Error sending to monitor"
-msgstr ""
+msgstr "Error en enviar al monitor"
 
 #: applet.js:253 applet.js:507
 msgid "Error"
@@ -123,7 +123,7 @@ msgstr "GPU"
 
 #: applet.js:298 applet.js:686
 msgid "Fan"
-msgstr "Fan"
+msgstr "Ven"
 
 #: applet.js:508
 msgid "Failed to run nvidia-smi.\n"
@@ -135,7 +135,7 @@ msgstr "Desconegut"
 
 #: applet.js:509
 msgid "Failed to run nvidia-smi"
-msgstr ""
+msgstr "Error en executar nvidia-smi"
 
 #: applet.js:513
 msgid "An unexpected error occurred while running nvidia-smi.\n"
@@ -147,23 +147,23 @@ msgstr "Err"
 
 #: applet.js:670
 msgid "MEM"
-msgstr ""
+msgstr "MEM"
 
 #: applet.js:686
 msgid "FAN"
-msgstr ""
+msgstr "VEN"
 
 #: applet.js:703
 msgid "Hi!"
-msgstr ""
+msgstr "Ei!"
 
 #: applet.js:736
 msgid "Error terminating monitor subprocess"
-msgstr ""
+msgstr "Error en acabar el subprocés del monitor"
 
 #: applet.js:750
 msgid "Menu toggled on click."
-msgstr ""
+msgstr "Menú commutat en fer clic."
 
 #. metadata.json->name
 msgid "NVIDIA Monitor"
@@ -417,8 +417,7 @@ msgstr "Interval d'actualització"
 
 #. settings-schema.json->refresh-interval->tooltip
 msgid "How often to update the GPU stats (in seconds)."
-msgstr ""
-"Amb quina freqüència s'actualitzen les estadístiques de la GPU (en segons)."
+msgstr "Amb quina freqüència s'actualitzen les estadístiques de la GPU (en segons)."
 
 #. settings-schema.json->border-color->description
 msgid "Applet Border Color"
@@ -446,9 +445,7 @@ msgstr "Codificació de sortida de nvidia-smi"
 
 #. settings-schema.json->encoding->tooltip
 msgid "Select the character encoding used by nvidia-smi output."
-msgstr ""
-"Seleccioneu la codificació de caràcters utilitzada per la sortida de nvidia-"
-"smi."
+msgstr "Seleccioneu la codificació de caràcters utilitzada per la sortida de nvidia-smi."
 
 #. settings-schema.json->show-temp->description
 msgid "Show Temperature"
@@ -490,8 +487,7 @@ msgstr "Mode de visualització de memòria"
 
 #. settings-schema.json->memory-display-mode->tooltip
 msgid "Choose how to display memory usage: as text or as a pie chart."
-msgstr ""
-"Trieu com mostrar l'ús de memòria: com a text o com a gràfic circular."
+msgstr "Trieu com mostrar l'ús de memòria: com a text o com a gràfic circular."
 
 #. settings-schema.json->show-gpu-util->description
 msgid "Show GPU Utilization"
@@ -520,8 +516,7 @@ msgstr "Mostra la velocitat del ventilador"
 
 #. settings-schema.json->show-fan-speed->tooltip
 msgid "Show GPU fan speed percentage in the panel."
-msgstr ""
-"Mostra el percentatge de velocitat del ventilador de la GPU al panell."
+msgstr "Mostra el percentatge de velocitat del ventilador de la GPU al panell."
 
 #. settings-schema.json->fan-display-mode->description
 msgid "Fan Display Mode"
@@ -529,6 +524,4 @@ msgstr "Mode de visualització del ventilador"
 
 #. settings-schema.json->fan-display-mode->tooltip
 msgid "Choose how to display fan speed: as text or as a pie chart."
-msgstr ""
-"Trieu com mostrar la velocitat del ventilador: com a text o com a gràfic "
-"circular."
+msgstr "Trieu com mostrar la velocitat del ventilador: com a text o com a gràfic circular."

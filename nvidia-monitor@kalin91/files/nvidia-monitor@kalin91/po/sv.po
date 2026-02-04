@@ -33,7 +33,7 @@ msgstr "Visar NVIDIA GPU-övervakning"
 
 #: applet.js:54
 msgid "Error initializing applet"
-msgstr ""
+msgstr "Fel vid initiering av applet"
 
 #: applet.js:55
 msgid "Init Error"
@@ -63,7 +63,7 @@ msgstr "Återställ alla inställningar"
 
 #: applet.js:107 applet.js:108
 msgid "Error resetting settings"
-msgstr ""
+msgstr "Fel vid återställning av inställningar"
 
 #: applet.js:117
 msgid "Error building menu: "
@@ -71,39 +71,39 @@ msgstr "Fel vid skapande av meny: "
 
 #: applet.js:170
 msgid "Launching"
-msgstr ""
+msgstr "Startar"
 
 #: applet.js:182
 msgid "Sending"
-msgstr ""
+msgstr "Skickar"
 
 #: applet.js:182
 msgid "history points"
-msgstr ""
+msgstr "historikpunkter"
 
 #: applet.js:193
 msgid "subprocess exited with error"
-msgstr ""
+msgstr "underprocess avslutades med fel"
 
 #: applet.js:195
 msgid "Monitor subprocess exited"
-msgstr ""
+msgstr "Övervakningsprocess avslutades"
 
 #: applet.js:201
 msgid "Error starting monitor"
-msgstr ""
+msgstr "Fel vid start av övervakning"
 
 #: applet.js:202
 msgid "Could not start monitor script"
-msgstr ""
+msgstr "Kunde inte starta övervakningsskript"
 
 #: applet.js:212
 msgid "Error closing monitor"
-msgstr ""
+msgstr "Fel vid stängning av övervakare"
 
 #: applet.js:240
 msgid "Error sending to monitor"
-msgstr ""
+msgstr "Fel vid sändning till övervakare"
 
 #: applet.js:253 applet.js:507
 msgid "Error"
@@ -115,7 +115,7 @@ msgstr "Initierar..."
 
 #: applet.js:280
 msgid "Mem"
-msgstr "Mem"
+msgstr "RAM"
 
 #: applet.js:289 applet.js:678
 msgid "GPU"
@@ -123,7 +123,7 @@ msgstr "GPU"
 
 #: applet.js:298 applet.js:686
 msgid "Fan"
-msgstr "Fan"
+msgstr "Flk"
 
 #: applet.js:508
 msgid "Failed to run nvidia-smi.\n"
@@ -135,7 +135,7 @@ msgstr "Okänd"
 
 #: applet.js:509
 msgid "Failed to run nvidia-smi"
-msgstr ""
+msgstr "Misslyckades att köra nvidia-smi"
 
 #: applet.js:513
 msgid "An unexpected error occurred while running nvidia-smi.\n"
@@ -147,23 +147,23 @@ msgstr "Fel"
 
 #: applet.js:670
 msgid "MEM"
-msgstr ""
+msgstr "RAM"
 
 #: applet.js:686
 msgid "FAN"
-msgstr ""
+msgstr "FLK"
 
 #: applet.js:703
 msgid "Hi!"
-msgstr ""
+msgstr "Hej"
 
 #: applet.js:736
 msgid "Error terminating monitor subprocess"
-msgstr ""
+msgstr "Fel vid avslut av övervakningsprocess"
 
 #: applet.js:750
 msgid "Menu toggled on click."
-msgstr ""
+msgstr "Meny växlades vid klick."
 
 #. metadata.json->name
 msgid "NVIDIA Monitor"
@@ -309,7 +309,7 @@ msgstr "Tidsenhet för X-axeln."
 #. settings-schema.json->x-axis-length-sec->units
 #. settings-schema.json->refresh-interval->units
 msgid "s"
-msgstr ""
+msgstr "s"
 
 #. settings-schema.json->x-axis-length-sec->description
 msgid "X-Axis Length (Seconds)"
@@ -323,7 +323,7 @@ msgstr "Total visad tid på grafen."
 
 #. settings-schema.json->x-axis-length-min->units
 msgid "m"
-msgstr ""
+msgstr "m"
 
 #. settings-schema.json->x-axis-length-min->description
 msgid "X-Axis Length (Minutes)"
@@ -331,7 +331,7 @@ msgstr "X-axelns längd (minuter)"
 
 #. settings-schema.json->x-axis-length-hour->units
 msgid "h"
-msgstr ""
+msgstr "h"
 
 #. settings-schema.json->x-axis-length-hour->description
 msgid "X-Axis Length (Hours)"

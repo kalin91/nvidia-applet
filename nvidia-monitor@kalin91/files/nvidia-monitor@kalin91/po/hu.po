@@ -33,7 +33,7 @@ msgstr "NVIDIA GPU monitor megjelenítése"
 
 #: applet.js:54
 msgid "Error initializing applet"
-msgstr ""
+msgstr "Hiba az applet inicializálásakor"
 
 #: applet.js:55
 msgid "Init Error"
@@ -63,7 +63,7 @@ msgstr "Összes beállítás visszaállítása"
 
 #: applet.js:107 applet.js:108
 msgid "Error resetting settings"
-msgstr ""
+msgstr "Hiba a beállítások alaphelyzetbe állításakor"
 
 #: applet.js:117
 msgid "Error building menu: "
@@ -71,39 +71,39 @@ msgstr "Hiba a menü létrehozásakor: "
 
 #: applet.js:170
 msgid "Launching"
-msgstr ""
+msgstr "Indítás"
 
 #: applet.js:182
 msgid "Sending"
-msgstr ""
+msgstr "Küldés"
 
 #: applet.js:182
 msgid "history points"
-msgstr ""
+msgstr "előzmény pontok"
 
 #: applet.js:193
 msgid "subprocess exited with error"
-msgstr ""
+msgstr "az alfolyamat hibával lépett ki"
 
 #: applet.js:195
 msgid "Monitor subprocess exited"
-msgstr ""
+msgstr "A monitor alfolyamat kilépett"
 
 #: applet.js:201
 msgid "Error starting monitor"
-msgstr ""
+msgstr "Hiba a monitor indításakor"
 
 #: applet.js:202
 msgid "Could not start monitor script"
-msgstr ""
+msgstr "Nem sikerült elindítani a monitor szkriptet"
 
 #: applet.js:212
 msgid "Error closing monitor"
-msgstr ""
+msgstr "Hiba a monitor bezárásakor"
 
 #: applet.js:240
 msgid "Error sending to monitor"
-msgstr ""
+msgstr "Hiba a monitorra való küldéskor"
 
 #: applet.js:253 applet.js:507
 msgid "Error"
@@ -123,7 +123,7 @@ msgstr "GPU"
 
 #: applet.js:298 applet.js:686
 msgid "Fan"
-msgstr "Fan"
+msgstr "Ven"
 
 #: applet.js:508
 msgid "Failed to run nvidia-smi.\n"
@@ -135,7 +135,7 @@ msgstr "Ismeretlen"
 
 #: applet.js:509
 msgid "Failed to run nvidia-smi"
-msgstr ""
+msgstr "Az nvidia-smi futtatása sikertelen"
 
 #: applet.js:513
 msgid "An unexpected error occurred while running nvidia-smi.\n"
@@ -143,27 +143,27 @@ msgstr "Váratlan hiba történt az nvidia-smi futtatásakor.\n"
 
 #: applet.js:514
 msgid "Err"
-msgstr "Hiba"
+msgstr "Hib"
 
 #: applet.js:670
 msgid "MEM"
-msgstr ""
+msgstr "MEM"
 
 #: applet.js:686
 msgid "FAN"
-msgstr ""
+msgstr "VEN"
 
 #: applet.js:703
 msgid "Hi!"
-msgstr ""
+msgstr "Szi"
 
 #: applet.js:736
 msgid "Error terminating monitor subprocess"
-msgstr ""
+msgstr "Hiba a monitor alfolyamat leállításakor"
 
 #: applet.js:750
 msgid "Menu toggled on click."
-msgstr ""
+msgstr "Menü átváltva kattintásra."
 
 #. metadata.json->name
 msgid "NVIDIA Monitor"
@@ -310,7 +310,7 @@ msgstr "Az X-tengely időegysége."
 #. settings-schema.json->x-axis-length-sec->units
 #. settings-schema.json->refresh-interval->units
 msgid "s"
-msgstr ""
+msgstr "s"
 
 #. settings-schema.json->x-axis-length-sec->description
 msgid "X-Axis Length (Seconds)"
@@ -324,7 +324,7 @@ msgstr "A grafikonon megjelenített teljes időtartam."
 
 #. settings-schema.json->x-axis-length-min->units
 msgid "m"
-msgstr ""
+msgstr "p"
 
 #. settings-schema.json->x-axis-length-min->description
 msgid "X-Axis Length (Minutes)"
@@ -332,7 +332,7 @@ msgstr "X-tengely hossza (perc)"
 
 #. settings-schema.json->x-axis-length-hour->units
 msgid "h"
-msgstr ""
+msgstr "ó"
 
 #. settings-schema.json->x-axis-length-hour->description
 msgid "X-Axis Length (Hours)"
@@ -473,7 +473,7 @@ msgstr "GPU memória megjelenítése a panelen."
 
 #. settings-schema.json->memory-display-mode->options
 msgid "Text (Used / Total)"
-msgstr "Szöveg (használt / összes)"
+msgstr "Szöveg (Használt / Összes)"
 
 #. settings-schema.json->memory-display-mode->options
 #. settings-schema.json->gpu-display-mode->options
@@ -500,7 +500,7 @@ msgstr "GPU kihasználtság százalék megjelenítése a panelen."
 #. settings-schema.json->gpu-display-mode->options
 #. settings-schema.json->fan-display-mode->options
 msgid "Text (Percent)"
-msgstr "Szöveg (százalék)"
+msgstr "Szöveg (Százalék)"
 
 #. settings-schema.json->gpu-display-mode->description
 msgid "GPU Display Mode"

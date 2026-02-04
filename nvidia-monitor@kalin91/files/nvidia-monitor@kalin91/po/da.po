@@ -33,7 +33,7 @@ msgstr "Viser NVIDIA GPU-overvågning"
 
 #: applet.js:54
 msgid "Error initializing applet"
-msgstr ""
+msgstr "Fejl ved initialisering af applet"
 
 #: applet.js:55
 msgid "Init Error"
@@ -55,7 +55,7 @@ msgstr "Applet-indstillinger"
 #. settings-schema.json->Monitor->title
 #: applet.js:92
 msgid "Monitor Settings"
-msgstr "Skærmindstillinger"
+msgstr "Overvågningsindstillinger"
 
 #: applet.js:95
 msgid "Reset All Settings"
@@ -63,7 +63,7 @@ msgstr "Nulstil alle indstillinger"
 
 #: applet.js:107 applet.js:108
 msgid "Error resetting settings"
-msgstr ""
+msgstr "Fejl ved nulstilling af indstillinger"
 
 #: applet.js:117
 msgid "Error building menu: "
@@ -71,39 +71,39 @@ msgstr "Fejl ved opbygning af menu: "
 
 #: applet.js:170
 msgid "Launching"
-msgstr ""
+msgstr "Starter"
 
 #: applet.js:182
 msgid "Sending"
-msgstr ""
+msgstr "Sender"
 
 #: applet.js:182
 msgid "history points"
-msgstr ""
+msgstr "historikpunkter"
 
 #: applet.js:193
 msgid "subprocess exited with error"
-msgstr ""
+msgstr "underproces afsluttede med fejl"
 
 #: applet.js:195
 msgid "Monitor subprocess exited"
-msgstr ""
+msgstr "Overvågningsunderproces afsluttede"
 
 #: applet.js:201
 msgid "Error starting monitor"
-msgstr ""
+msgstr "Fejl ved start af overvågning"
 
 #: applet.js:202
 msgid "Could not start monitor script"
-msgstr ""
+msgstr "Kunne ikke starte overvågningsscript"
 
 #: applet.js:212
 msgid "Error closing monitor"
-msgstr ""
+msgstr "Fejl ved lukning af overvågning"
 
 #: applet.js:240
 msgid "Error sending to monitor"
-msgstr ""
+msgstr "Fejl ved afsendelse til overvågning"
 
 #: applet.js:253 applet.js:507
 msgid "Error"
@@ -135,7 +135,7 @@ msgstr "Ukendt"
 
 #: applet.js:509
 msgid "Failed to run nvidia-smi"
-msgstr ""
+msgstr "Kunne ikke køre nvidia-smi"
 
 #: applet.js:513
 msgid "An unexpected error occurred while running nvidia-smi.\n"
@@ -147,23 +147,23 @@ msgstr "Err"
 
 #: applet.js:670
 msgid "MEM"
-msgstr ""
+msgstr "MEM"
 
 #: applet.js:686
 msgid "FAN"
-msgstr ""
+msgstr "FAN"
 
 #: applet.js:703
 msgid "Hi!"
-msgstr ""
+msgstr "Hej"
 
 #: applet.js:736
 msgid "Error terminating monitor subprocess"
-msgstr ""
+msgstr "Fejl ved afslutning af overvågningsunderproces"
 
 #: applet.js:750
 msgid "Menu toggled on click."
-msgstr ""
+msgstr "Menu skiftet ved klik."
 
 #. metadata.json->name
 msgid "NVIDIA Monitor"
@@ -487,8 +487,7 @@ msgstr "Hukommelsesvisning"
 
 #. settings-schema.json->memory-display-mode->tooltip
 msgid "Choose how to display memory usage: as text or as a pie chart."
-msgstr ""
-"Vælg hvordan hukommelsesforbrug vises: som tekst eller lagkagediagram."
+msgstr "Vælg hvordan hukommelsesforbrug vises: som tekst eller lagkagediagram."
 
 #. settings-schema.json->show-gpu-util->description
 msgid "Show GPU Utilization"

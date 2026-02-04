@@ -33,7 +33,7 @@ msgstr "显示 NVIDIA GPU 监视器"
 
 #: applet.js:54
 msgid "Error initializing applet"
-msgstr ""
+msgstr "初始化 Applet 出错"
 
 #: applet.js:55
 msgid "Init Error"
@@ -63,7 +63,7 @@ msgstr "重置所有设置"
 
 #: applet.js:107 applet.js:108
 msgid "Error resetting settings"
-msgstr ""
+msgstr "重置设置时出错"
 
 #: applet.js:117
 msgid "Error building menu: "
@@ -71,39 +71,39 @@ msgstr "构建菜单出错："
 
 #: applet.js:170
 msgid "Launching"
-msgstr ""
+msgstr "正在启动"
 
 #: applet.js:182
 msgid "Sending"
-msgstr ""
+msgstr "正在发送"
 
 #: applet.js:182
 msgid "history points"
-msgstr ""
+msgstr "数据点"
 
 #: applet.js:193
 msgid "subprocess exited with error"
-msgstr ""
+msgstr "子进程退出，发生错误"
 
 #: applet.js:195
 msgid "Monitor subprocess exited"
-msgstr ""
+msgstr "监视器子进程已退出"
 
 #: applet.js:201
 msgid "Error starting monitor"
-msgstr ""
+msgstr "启动监视器出错"
 
 #: applet.js:202
 msgid "Could not start monitor script"
-msgstr ""
+msgstr "无法启动监视器脚本"
 
 #: applet.js:212
 msgid "Error closing monitor"
-msgstr ""
+msgstr "关闭监视器出错"
 
 #: applet.js:240
 msgid "Error sending to monitor"
-msgstr ""
+msgstr "发送至监视器出错"
 
 #: applet.js:253 applet.js:507
 msgid "Error"
@@ -115,7 +115,7 @@ msgstr "正在初始化..."
 
 #: applet.js:280
 msgid "Mem"
-msgstr "Mem"
+msgstr "显存"
 
 #: applet.js:289 applet.js:678
 msgid "GPU"
@@ -123,7 +123,7 @@ msgstr "GPU"
 
 #: applet.js:298 applet.js:686
 msgid "Fan"
-msgstr "Fan"
+msgstr "风扇"
 
 #: applet.js:508
 msgid "Failed to run nvidia-smi.\n"
@@ -135,7 +135,7 @@ msgstr "未知"
 
 #: applet.js:509
 msgid "Failed to run nvidia-smi"
-msgstr ""
+msgstr "运行 nvidia-smi 失败"
 
 #: applet.js:513
 msgid "An unexpected error occurred while running nvidia-smi.\n"
@@ -143,27 +143,27 @@ msgstr "运行 nvidia-smi 时发生未知错误。\n"
 
 #: applet.js:514
 msgid "Err"
-msgstr "Err"
+msgstr "错误"
 
 #: applet.js:670
 msgid "MEM"
-msgstr ""
+msgstr "显存"
 
 #: applet.js:686
 msgid "FAN"
-msgstr ""
+msgstr "风扇"
 
 #: applet.js:703
 msgid "Hi!"
-msgstr ""
+msgstr "嗨!"
 
 #: applet.js:736
 msgid "Error terminating monitor subprocess"
-msgstr ""
+msgstr "终止监视器子进程出错"
 
 #: applet.js:750
 msgid "Menu toggled on click."
-msgstr ""
+msgstr "点击切换菜单。"
 
 #. metadata.json->name
 msgid "NVIDIA Monitor"
@@ -173,7 +173,7 @@ msgstr "NVIDIA 监视器"
 msgid ""
 "Monitors GPU temperature, memory, utilization, and fan speed using nvidia-"
 "smi"
-msgstr "使用 nvidia-smi 监控 GPU 温度、内存、利用率和风扇速度"
+msgstr "使用 nvidia-smi 监控 GPU 温度、显存、利用率和风扇速度"
 
 #. settings-schema.json->section_general->title
 msgid "General Settings"
@@ -185,7 +185,7 @@ msgstr "温度"
 
 #. settings-schema.json->section_memory->title
 msgid "Memory Usage"
-msgstr "内存使用"
+msgstr "显存使用"
 
 #. settings-schema.json->section_gpu->title
 msgid "GPU Utilization"
@@ -218,7 +218,7 @@ msgstr "X 轴设置"
 #. settings-schema.json->monitor-note->description
 msgid ""
 "Changes to monitor settings will take effect after restarting the monitor."
-msgstr "更改监视器设置将在重新启动监视器后生效。"
+msgstr "对监视器设置的更改将在重启监视器后生效。"
 
 #. settings-schema.json->y-axis-steps->options
 #. settings-schema.json->x-axis-steps->options
@@ -256,7 +256,7 @@ msgstr "Y 轴参考线"
 
 #. settings-schema.json->y-axis-steps->tooltip
 msgid "Number of guide lines for the Y-Axis."
-msgstr "Y 轴参考线数量。"
+msgstr "Y 轴参考线的数量。"
 
 #. settings-schema.json->y-axis-temp-unit->options
 #. settings-schema.json->temp-unit->options
@@ -282,7 +282,7 @@ msgstr "X 轴参考线"
 
 #. settings-schema.json->x-axis-steps->tooltip
 msgid "Number of vertical guide lines for the X-Axis."
-msgstr "X 轴垂直参考线数量。"
+msgstr "X 轴垂直参考线的数量。"
 
 #. settings-schema.json->x-axis-unit->options
 msgid "Seconds"
@@ -341,15 +341,15 @@ msgstr "温度颜色"
 
 #. settings-schema.json->temp-color->tooltip
 msgid "Color used for temperature in the graph."
-msgstr "图表中温度使用的颜色。"
+msgstr "图表中温度线条的颜色。"
 
 #. settings-schema.json->mem_color->description
 msgid "Memory Usage Color"
-msgstr "内存使用颜色"
+msgstr "显存使用颜色"
 
 #. settings-schema.json->mem_color->tooltip
 msgid "Color used for memory usage in the graph."
-msgstr "图表中内存使用的颜色。"
+msgstr "图表中显存使用线条的颜色。"
 
 #. settings-schema.json->gpu_color->description
 msgid "GPU Utilization Color"
@@ -357,7 +357,7 @@ msgstr "GPU 利用率颜色"
 
 #. settings-schema.json->gpu_color->tooltip
 msgid "Color used for GPU utilization in the graph."
-msgstr "图表中 GPU 利用率的颜色。"
+msgstr "图表中 GPU 利用率线条的颜色。"
 
 #. settings-schema.json->fan_color->description
 msgid "Fan Speed Color"
@@ -365,7 +365,7 @@ msgstr "风扇速度颜色"
 
 #. settings-schema.json->fan_color->tooltip
 msgid "Color used for fan speed in the graph."
-msgstr "图表中风扇速度的颜色。"
+msgstr "图表中风扇速度线条的颜色。"
 
 #. settings-schema.json->background_color->description
 msgid "Background Color"
@@ -373,7 +373,7 @@ msgstr "背景颜色"
 
 #. settings-schema.json->background_color->tooltip
 msgid "Background color of the graph."
-msgstr "图表背景颜色。"
+msgstr "图表的背景颜色。"
 
 #. settings-schema.json->temp-axis-color->description
 msgid "Temperature Axis Color"
@@ -381,7 +381,7 @@ msgstr "温度轴颜色"
 
 #. settings-schema.json->temp-axis-color->tooltip
 msgid "Color for the temperature axis labels."
-msgstr "温度轴标签颜色。"
+msgstr "温度轴标签的颜色。"
 
 #. settings-schema.json->percent-axis-color->description
 msgid "Percentage Axis Color"
@@ -389,7 +389,7 @@ msgstr "百分比轴颜色"
 
 #. settings-schema.json->percent-axis-color->tooltip
 msgid "Color for the percentage axis labels."
-msgstr "百分比轴标签颜色。"
+msgstr "百分比轴标签的颜色。"
 
 #. settings-schema.json->x-axis-color->description
 msgid "X-Axis Color"
@@ -405,7 +405,7 @@ msgstr "参考线颜色"
 
 #. settings-schema.json->guidelines-color->tooltip
 msgid "Color for the grid/guide lines."
-msgstr "网格和参考线颜色。"
+msgstr "网格线和参考线的颜色。"
 
 #. settings-schema.json->refresh-interval->description
 msgid "Refresh Interval"
@@ -421,7 +421,7 @@ msgstr "Applet 边框颜色"
 
 #. settings-schema.json->border-color->tooltip
 msgid "Color of the applet border. Set alpha to 0 for no border."
-msgstr "Applet 边框颜色。将 alpha 设为 0 可隐藏边框。"
+msgstr "Applet 边框颜色。将 Alpha 值设为 0 则不显示边框。"
 
 #. settings-schema.json->encoding->options
 msgid "UTF-8"
@@ -441,7 +441,7 @@ msgstr "nvidia-smi 输出编码"
 
 #. settings-schema.json->encoding->tooltip
 msgid "Select the character encoding used by nvidia-smi output."
-msgstr "选择 nvidia-smi 输出使用的字符编码。"
+msgstr "选择 nvidia-smi 输出所使用的字符编码。"
 
 #. settings-schema.json->show-temp->description
 msgid "Show Temperature"
@@ -461,11 +461,11 @@ msgstr "选择显示 GPU 温度的单位。"
 
 #. settings-schema.json->show-memory->description
 msgid "Show Memory Usage"
-msgstr "显示内存使用"
+msgstr "显示显存使用"
 
 #. settings-schema.json->show-memory->tooltip
 msgid "Show GPU memory usage in the panel."
-msgstr "在面板中显示 GPU 内存使用情况。"
+msgstr "在面板中显示 GPU 显存使用情况。"
 
 #. settings-schema.json->memory-display-mode->options
 msgid "Text (Used / Total)"
@@ -479,11 +479,11 @@ msgstr "饼图"
 
 #. settings-schema.json->memory-display-mode->description
 msgid "Memory Display Mode"
-msgstr "内存显示模式"
+msgstr "显存显示模式"
 
 #. settings-schema.json->memory-display-mode->tooltip
 msgid "Choose how to display memory usage: as text or as a pie chart."
-msgstr "选择内存使用的显示方式：文本或饼图。"
+msgstr "选择显存使用的显示方式：文本或饼图。"
 
 #. settings-schema.json->show-gpu-util->description
 msgid "Show GPU Utilization"

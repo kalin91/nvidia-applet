@@ -33,7 +33,7 @@ msgstr "NVIDIA GPU izleyicisini gösterir"
 
 #: applet.js:54
 msgid "Error initializing applet"
-msgstr ""
+msgstr "Applet başlatma hatası"
 
 #: applet.js:55
 msgid "Init Error"
@@ -63,7 +63,7 @@ msgstr "Tüm Ayarları Sıfırla"
 
 #: applet.js:107 applet.js:108
 msgid "Error resetting settings"
-msgstr ""
+msgstr "Ayarlar sıfırlanırken hata"
 
 #: applet.js:117
 msgid "Error building menu: "
@@ -71,39 +71,39 @@ msgstr "Menü oluşturulurken hata: "
 
 #: applet.js:170
 msgid "Launching"
-msgstr ""
+msgstr "Başlatılıyor"
 
 #: applet.js:182
 msgid "Sending"
-msgstr ""
+msgstr "Gönderiliyor"
 
 #: applet.js:182
 msgid "history points"
-msgstr ""
+msgstr "geçmiş noktaları"
 
 #: applet.js:193
 msgid "subprocess exited with error"
-msgstr ""
+msgstr "alt işlem hatayla sonlandı"
 
 #: applet.js:195
 msgid "Monitor subprocess exited"
-msgstr ""
+msgstr "İzleyici alt işlemi sonlandı"
 
 #: applet.js:201
 msgid "Error starting monitor"
-msgstr ""
+msgstr "İzleyici başlatma hatası"
 
 #: applet.js:202
 msgid "Could not start monitor script"
-msgstr ""
+msgstr "İzleyici betiği başlatılamadı"
 
 #: applet.js:212
 msgid "Error closing monitor"
-msgstr ""
+msgstr "İzleyici kapatma hatası"
 
 #: applet.js:240
 msgid "Error sending to monitor"
-msgstr ""
+msgstr "İzleyiciye gönderme hatası"
 
 #: applet.js:253 applet.js:507
 msgid "Error"
@@ -115,7 +115,7 @@ msgstr "Başlatılıyor..."
 
 #: applet.js:280
 msgid "Mem"
-msgstr "Mem"
+msgstr "Bel"
 
 #: applet.js:289 applet.js:678
 msgid "GPU"
@@ -135,7 +135,7 @@ msgstr "Bilinmiyor"
 
 #: applet.js:509
 msgid "Failed to run nvidia-smi"
-msgstr ""
+msgstr "nvidia-smi çalıştırılamadı"
 
 #: applet.js:513
 msgid "An unexpected error occurred while running nvidia-smi.\n"
@@ -147,23 +147,23 @@ msgstr "Hata"
 
 #: applet.js:670
 msgid "MEM"
-msgstr ""
+msgstr "BEL"
 
 #: applet.js:686
 msgid "FAN"
-msgstr ""
+msgstr "FAN"
 
 #: applet.js:703
 msgid "Hi!"
-msgstr ""
+msgstr "Slm"
 
 #: applet.js:736
 msgid "Error terminating monitor subprocess"
-msgstr ""
+msgstr "İzleyici alt işlemi sonlandırma hatası"
 
 #: applet.js:750
 msgid "Menu toggled on click."
-msgstr ""
+msgstr "Tıklayınca menü açılır."
 
 #. metadata.json->name
 msgid "NVIDIA Monitor"
@@ -226,27 +226,27 @@ msgstr ""
 #. settings-schema.json->y-axis-steps->options
 #. settings-schema.json->x-axis-steps->options
 msgid "1 Line (50%)"
-msgstr "1 Çizgi (50%)"
+msgstr "1 Çizgi (%50)"
 
 #. settings-schema.json->y-axis-steps->options
 #. settings-schema.json->x-axis-steps->options
 msgid "2 Lines (33%, 66%)"
-msgstr "2 Çizgi (33%, 66%)"
+msgstr "2 Çizgi (%33, %66)"
 
 #. settings-schema.json->y-axis-steps->options
 #. settings-schema.json->x-axis-steps->options
 msgid "3 Lines (25%, 50%, 75%)"
-msgstr "3 Çizgi (25%, 50%, 75%)"
+msgstr "3 Çizgi (%25, %50, %75)"
 
 #. settings-schema.json->y-axis-steps->options
 #. settings-schema.json->x-axis-steps->options
 msgid "4 Lines (20%, 40%, 60%, 80%)"
-msgstr "4 Çizgi (20%, 40%, 60%, 80%)"
+msgstr "4 Çizgi (%20, %40, %60, %80)"
 
 #. settings-schema.json->y-axis-steps->options
 #. settings-schema.json->x-axis-steps->options
 msgid "5 Lines (16%, 33%, 50%, 66%, 83%)"
-msgstr "5 Çizgi (16%, 33%, 50%, 66%, 83%)"
+msgstr "5 Çizgi (%16, %33, %50, %66, %83)"
 
 #. settings-schema.json->y-axis-steps->options
 #. settings-schema.json->x-axis-steps->options
@@ -310,7 +310,7 @@ msgstr "X ekseni için zaman birimi."
 #. settings-schema.json->x-axis-length-sec->units
 #. settings-schema.json->refresh-interval->units
 msgid "s"
-msgstr ""
+msgstr "sn"
 
 #. settings-schema.json->x-axis-length-sec->description
 msgid "X-Axis Length (Seconds)"
@@ -324,7 +324,7 @@ msgstr "Grafikte gösterilen toplam süre."
 
 #. settings-schema.json->x-axis-length-min->units
 msgid "m"
-msgstr ""
+msgstr "dk"
 
 #. settings-schema.json->x-axis-length-min->description
 msgid "X-Axis Length (Minutes)"
@@ -332,7 +332,7 @@ msgstr "X Ekseni Uzunluğu (Dakika)"
 
 #. settings-schema.json->x-axis-length-hour->units
 msgid "h"
-msgstr ""
+msgstr "sa"
 
 #. settings-schema.json->x-axis-length-hour->description
 msgid "X-Axis Length (Hours)"

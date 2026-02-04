@@ -33,7 +33,7 @@ msgstr "顯示 NVIDIA GPU 監視器"
 
 #: applet.js:54
 msgid "Error initializing applet"
-msgstr ""
+msgstr "初始化 Applet 時發生錯誤"
 
 #: applet.js:55
 msgid "Init Error"
@@ -63,7 +63,7 @@ msgstr "重置所有設定"
 
 #: applet.js:107 applet.js:108
 msgid "Error resetting settings"
-msgstr ""
+msgstr "重置設定時發生錯誤"
 
 #: applet.js:117
 msgid "Error building menu: "
@@ -71,39 +71,39 @@ msgstr "建立選單時發生錯誤："
 
 #: applet.js:170
 msgid "Launching"
-msgstr ""
+msgstr "正在啟動"
 
 #: applet.js:182
 msgid "Sending"
-msgstr ""
+msgstr "正在傳送"
 
 #: applet.js:182
 msgid "history points"
-msgstr ""
+msgstr "歷史資料點"
 
 #: applet.js:193
 msgid "subprocess exited with error"
-msgstr ""
+msgstr "子程序因錯誤結束"
 
 #: applet.js:195
 msgid "Monitor subprocess exited"
-msgstr ""
+msgstr "監視器子程序已結束"
 
 #: applet.js:201
 msgid "Error starting monitor"
-msgstr ""
+msgstr "啟動監視器時發生錯誤"
 
 #: applet.js:202
 msgid "Could not start monitor script"
-msgstr ""
+msgstr "無法啟動監視器腳本"
 
 #: applet.js:212
 msgid "Error closing monitor"
-msgstr ""
+msgstr "關閉監視器時發生錯誤"
 
 #: applet.js:240
 msgid "Error sending to monitor"
-msgstr ""
+msgstr "傳送至監視器時發生錯誤"
 
 #: applet.js:253 applet.js:507
 msgid "Error"
@@ -115,7 +115,7 @@ msgstr "正在初始化..."
 
 #: applet.js:280
 msgid "Mem"
-msgstr "Mem"
+msgstr "記憶"
 
 #: applet.js:289 applet.js:678
 msgid "GPU"
@@ -123,7 +123,7 @@ msgstr "GPU"
 
 #: applet.js:298 applet.js:686
 msgid "Fan"
-msgstr "Fan"
+msgstr "風扇"
 
 #: applet.js:508
 msgid "Failed to run nvidia-smi.\n"
@@ -135,35 +135,35 @@ msgstr "未知"
 
 #: applet.js:509
 msgid "Failed to run nvidia-smi"
-msgstr ""
+msgstr "執行 nvidia-smi 失敗"
 
 #: applet.js:513
 msgid "An unexpected error occurred while running nvidia-smi.\n"
-msgstr "執行 nvidia-smi 時發生未知錯誤。\n"
+msgstr "執行 nvidia-smi 時發生未預期的錯誤。\n"
 
 #: applet.js:514
 msgid "Err"
-msgstr "Err"
+msgstr "錯誤"
 
 #: applet.js:670
 msgid "MEM"
-msgstr ""
+msgstr "記憶"
 
 #: applet.js:686
 msgid "FAN"
-msgstr ""
+msgstr "風扇"
 
 #: applet.js:703
 msgid "Hi!"
-msgstr ""
+msgstr "你好"
 
 #: applet.js:736
 msgid "Error terminating monitor subprocess"
-msgstr ""
+msgstr "終止監視器子程序時發生錯誤"
 
 #: applet.js:750
 msgid "Menu toggled on click."
-msgstr ""
+msgstr "已點擊切換選單。"
 
 #. metadata.json->name
 msgid "NVIDIA Monitor"

@@ -33,7 +33,7 @@ msgstr "Prikazuje NVIDIA GPU monitor"
 
 #: applet.js:54
 msgid "Error initializing applet"
-msgstr ""
+msgstr "Greška pri inicijalizaciji appleta"
 
 #: applet.js:55
 msgid "Init Error"
@@ -63,7 +63,7 @@ msgstr "Vrati sve postavke"
 
 #: applet.js:107 applet.js:108
 msgid "Error resetting settings"
-msgstr ""
+msgstr "Greška pri resetiranju postavki"
 
 #: applet.js:117
 msgid "Error building menu: "
@@ -71,39 +71,39 @@ msgstr "Greška pri izradi izbornika: "
 
 #: applet.js:170
 msgid "Launching"
-msgstr ""
+msgstr "Pokretanje"
 
 #: applet.js:182
 msgid "Sending"
-msgstr ""
+msgstr "Slanje"
 
 #: applet.js:182
 msgid "history points"
-msgstr ""
+msgstr "povijesnih točaka"
 
 #: applet.js:193
 msgid "subprocess exited with error"
-msgstr ""
+msgstr "podproces je završio s pogreškom"
 
 #: applet.js:195
 msgid "Monitor subprocess exited"
-msgstr ""
+msgstr "Podproces monitora je završio"
 
 #: applet.js:201
 msgid "Error starting monitor"
-msgstr ""
+msgstr "Greška pri pokretanju monitora"
 
 #: applet.js:202
 msgid "Could not start monitor script"
-msgstr ""
+msgstr "Nije moguće pokrenuti skriptu monitora"
 
 #: applet.js:212
 msgid "Error closing monitor"
-msgstr ""
+msgstr "Greška pri zatvaranju monitora"
 
 #: applet.js:240
 msgid "Error sending to monitor"
-msgstr ""
+msgstr "Greška pri slanju monitoru"
 
 #: applet.js:253 applet.js:507
 msgid "Error"
@@ -123,7 +123,7 @@ msgstr "GPU"
 
 #: applet.js:298 applet.js:686
 msgid "Fan"
-msgstr "Fan"
+msgstr "Ven"
 
 #: applet.js:508
 msgid "Failed to run nvidia-smi.\n"
@@ -135,7 +135,7 @@ msgstr "Nepoznato"
 
 #: applet.js:509
 msgid "Failed to run nvidia-smi"
-msgstr ""
+msgstr "Neuspjelo pokretanje nvidia-smi"
 
 #: applet.js:513
 msgid "An unexpected error occurred while running nvidia-smi.\n"
@@ -147,23 +147,23 @@ msgstr "Greška"
 
 #: applet.js:670
 msgid "MEM"
-msgstr ""
+msgstr "MEM"
 
 #: applet.js:686
 msgid "FAN"
-msgstr ""
+msgstr "VEN"
 
 #: applet.js:703
 msgid "Hi!"
-msgstr ""
+msgstr "Bok"
 
 #: applet.js:736
 msgid "Error terminating monitor subprocess"
-msgstr ""
+msgstr "Greška pri prekidanju podprocesa monitora"
 
 #: applet.js:750
 msgid "Menu toggled on click."
-msgstr ""
+msgstr "Izbornik uključen klikom."
 
 #. metadata.json->name
 msgid "NVIDIA Monitor"
@@ -174,7 +174,7 @@ msgid ""
 "Monitors GPU temperature, memory, utilization, and fan speed using nvidia-"
 "smi"
 msgstr ""
-"Prati temperaturu GPU-a, memoriju, opterećenje i brzinu ventilatora pomoću "
+"Prati temperaturu GPU-a, memoriju, iskorištenje i brzinu ventilatora pomoću "
 "nvidia-smi"
 
 #. settings-schema.json->section_general->title
@@ -310,7 +310,7 @@ msgstr "Jedinica vremena za X-os."
 #. settings-schema.json->x-axis-length-sec->units
 #. settings-schema.json->refresh-interval->units
 msgid "s"
-msgstr ""
+msgstr "s"
 
 #. settings-schema.json->x-axis-length-sec->description
 msgid "X-Axis Length (Seconds)"
@@ -324,7 +324,7 @@ msgstr "Ukupno trajanje prikazano na grafu."
 
 #. settings-schema.json->x-axis-length-min->units
 msgid "m"
-msgstr ""
+msgstr "m"
 
 #. settings-schema.json->x-axis-length-min->description
 msgid "X-Axis Length (Minutes)"
@@ -332,7 +332,7 @@ msgstr "Duljina X-osi (minute)"
 
 #. settings-schema.json->x-axis-length-hour->units
 msgid "h"
-msgstr ""
+msgstr "h"
 
 #. settings-schema.json->x-axis-length-hour->description
 msgid "X-Axis Length (Hours)"
@@ -356,11 +356,11 @@ msgstr "Boja za korištenje memorije na grafu."
 
 #. settings-schema.json->gpu_color->description
 msgid "GPU Utilization Color"
-msgstr "Boja GPU opterećenja"
+msgstr "Boja iskorištenja GPU-a"
 
 #. settings-schema.json->gpu_color->tooltip
 msgid "Color used for GPU utilization in the graph."
-msgstr "Boja za GPU opterećenje na grafu."
+msgstr "Boja za iskorištenje GPU-a na grafu."
 
 #. settings-schema.json->fan_color->description
 msgid "Fan Speed Color"
@@ -490,11 +490,11 @@ msgstr "Odaberite prikaz memorije: kao tekst ili kružni graf."
 
 #. settings-schema.json->show-gpu-util->description
 msgid "Show GPU Utilization"
-msgstr "Prikaži GPU opterećenje"
+msgstr "Prikaži iskorištenje GPU-a"
 
 #. settings-schema.json->show-gpu-util->tooltip
 msgid "Show GPU utilization percentage in the panel."
-msgstr "Prikaži postotak GPU opterećenja na panelu."
+msgstr "Prikaži postotak iskorištenja GPU-a na panelu."
 
 #. settings-schema.json->gpu-display-mode->options
 #. settings-schema.json->fan-display-mode->options
@@ -507,7 +507,7 @@ msgstr "Način prikaza GPU-a"
 
 #. settings-schema.json->gpu-display-mode->tooltip
 msgid "Choose how to display GPU utilization: as text or as a pie chart."
-msgstr "Odaberite prikaz GPU opterećenja: tekst ili kružni graf."
+msgstr "Odaberite prikaz iskorištenja GPU-a: tekst ili kružni graf."
 
 #. settings-schema.json->show-fan-speed->description
 msgid "Show Fan Speed"

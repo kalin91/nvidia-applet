@@ -33,7 +33,7 @@ msgstr "Exibe monitor da GPU NVIDIA"
 
 #: applet.js:54
 msgid "Error initializing applet"
-msgstr ""
+msgstr "Erro ao inicializar o applet"
 
 #: applet.js:55
 msgid "Init Error"
@@ -63,7 +63,7 @@ msgstr "Redefinir todas as configurações"
 
 #: applet.js:107 applet.js:108
 msgid "Error resetting settings"
-msgstr ""
+msgstr "Erro ao redefinir as configurações"
 
 #: applet.js:117
 msgid "Error building menu: "
@@ -71,39 +71,39 @@ msgstr "Erro ao construir o menu: "
 
 #: applet.js:170
 msgid "Launching"
-msgstr ""
+msgstr "Iniciando"
 
 #: applet.js:182
 msgid "Sending"
-msgstr ""
+msgstr "Enviando"
 
 #: applet.js:182
 msgid "history points"
-msgstr ""
+msgstr "pontos de histórico"
 
 #: applet.js:193
 msgid "subprocess exited with error"
-msgstr ""
+msgstr "subprocesso encerrou com erro"
 
 #: applet.js:195
 msgid "Monitor subprocess exited"
-msgstr ""
+msgstr "Subprocesso do monitor encerrado"
 
 #: applet.js:201
 msgid "Error starting monitor"
-msgstr ""
+msgstr "Erro ao iniciar o monitor"
 
 #: applet.js:202
 msgid "Could not start monitor script"
-msgstr ""
+msgstr "Não foi possível iniciar o script do monitor"
 
 #: applet.js:212
 msgid "Error closing monitor"
-msgstr ""
+msgstr "Erro ao fechar o monitor"
 
 #: applet.js:240
 msgid "Error sending to monitor"
-msgstr ""
+msgstr "Erro ao enviar para o monitor"
 
 #: applet.js:253 applet.js:507
 msgid "Error"
@@ -135,7 +135,7 @@ msgstr "Desconhecido"
 
 #: applet.js:509
 msgid "Failed to run nvidia-smi"
-msgstr ""
+msgstr "Falha ao executar nvidia-smi"
 
 #: applet.js:513
 msgid "An unexpected error occurred while running nvidia-smi.\n"
@@ -147,23 +147,23 @@ msgstr "Err"
 
 #: applet.js:670
 msgid "MEM"
-msgstr ""
+msgstr "MEM"
 
 #: applet.js:686
 msgid "FAN"
-msgstr ""
+msgstr "FAN"
 
 #: applet.js:703
 msgid "Hi!"
-msgstr ""
+msgstr "Oi!"
 
 #: applet.js:736
 msgid "Error terminating monitor subprocess"
-msgstr ""
+msgstr "Erro ao encerrar o subprocesso do monitor"
 
 #: applet.js:750
 msgid "Menu toggled on click."
-msgstr ""
+msgstr "Menu alternado ao clicar."
 
 #. metadata.json->name
 msgid "NVIDIA Monitor"
@@ -311,7 +311,7 @@ msgstr "Unidade de tempo para o eixo X."
 #. settings-schema.json->x-axis-length-sec->units
 #. settings-schema.json->refresh-interval->units
 msgid "s"
-msgstr ""
+msgstr "s"
 
 #. settings-schema.json->x-axis-length-sec->description
 msgid "X-Axis Length (Seconds)"
@@ -325,7 +325,7 @@ msgstr "Duração total mostrada no gráfico."
 
 #. settings-schema.json->x-axis-length-min->units
 msgid "m"
-msgstr ""
+msgstr "m"
 
 #. settings-schema.json->x-axis-length-min->description
 msgid "X-Axis Length (Minutes)"
@@ -333,7 +333,7 @@ msgstr "Comprimento do eixo X (minutos)"
 
 #. settings-schema.json->x-axis-length-hour->units
 msgid "h"
-msgstr ""
+msgstr "h"
 
 #. settings-schema.json->x-axis-length-hour->description
 msgid "X-Axis Length (Hours)"
@@ -400,7 +400,7 @@ msgid "X-Axis Color"
 msgstr "Cor do eixo X"
 
 #. settings-schema.json->x-axis-color->tooltip
-msgid "Color for the X-axis labels (Time)."
+msgid "Color for the x-axis labels (Time)."
 msgstr "Cor para os rótulos do eixo X (tempo)."
 
 #. settings-schema.json->guidelines-color->description
@@ -429,15 +429,15 @@ msgstr "Cor da borda do applet. Defina alfa como 0 para sem borda."
 
 #. settings-schema.json->encoding->options
 msgid "UTF-8"
-msgstr ""
+msgstr "UTF-8"
 
 #. settings-schema.json->encoding->options
 msgid "macintosh"
-msgstr ""
+msgstr "macintosh"
 
 #. settings-schema.json->encoding->options
 msgid "ASCII"
-msgstr ""
+msgstr "ASCII"
 
 #. settings-schema.json->encoding->description
 msgid "nvidia-smi Output Encoding"
