@@ -1,6 +1,15 @@
 const { applet, settings, popupMenu, main: Main, modalDialog } = imports.ui; // eslint-disable-line
 const { GLib, St, Clutter, Pango, PangoCairo, Gio } = imports.gi; // eslint-disable-line
 
+const Gettext = imports.gettext;
+const UUID = "nvidia-monitor@kalin91";
+
+Gettext.bindtextdomain(UUID, GLib.get_home_dir() + "/.local/share/locale")
+
+function _(str) {
+  return Gettext.dgettext(UUID, str);
+}
+
 class NvidiaMonitorApplet extends applet.Applet {
 
     constructor(metadata, orientation, panel_height, instance_id) {
@@ -31,19 +40,19 @@ class NvidiaMonitorApplet extends applet.Applet {
         try {
             this._buildMenu();
             if (!GLib.find_program_in_path('nvidia-smi')) {
-                this.set_applet_label("nvidia-smi not found");
-                return this._show_err('nvidia-smi not found in PATH.\nPlease ensure NVIDIA drivers are installed.');
+                this.set_applet_label(_("nvidia-smi not found"));
+                return this._show_err(_('nvidia-smi not found in PATH.\nPlease ensure NVIDIA drivers are installed.'));
             }
 
             this._initSettings();
 
-            this.set_applet_tooltip("Displays NVIDIA GPU monitor");
+            this.set_applet_tooltip(_("Displays NVIDIA GPU monitor"));
 
             this._on_settings_changed();
         } catch (e) {
             global.logError(e);
             this._show_err("Error initializing applet: " + e.message);
-            this.set_applet_label("Init Error");
+            this.set_applet_label(_("Init Error"));
         }
     }
     on_panel_height_changed() {
@@ -68,24 +77,24 @@ class NvidiaMonitorApplet extends applet.Applet {
             this.menuManager.addMenu(this.menu);
 
             // Add Monitor Graph item
-            let monitorItem = new popupMenu.PopupMenuItem("Open Monitor Graph");
+            let monitorItem = new popupMenu.PopupMenuItem(_("Open Monitor Graph"));
             monitorItem.connect('activate', () => this._openMonitor());
             this.menu.addMenuItem(monitorItem);
 
-            const settings = new popupMenu.PopupSubMenuMenuItem("Settings", true, { reactive: false });
+            const settings = new popupMenu.PopupSubMenuMenuItem(_("Settings"), true, { reactive: false });
             this.menu.addMenuItem(settings);
             this.menu.addMenuItem(new popupMenu.PopupSeparatorMenuItem());
 
             // Add settings items
-            let appletSettings = new popupMenu.PopupIconMenuItem("Applet Settings", 'speedometer-symbolic', St.IconType.SYMBOLIC);
+            let appletSettings = new popupMenu.PopupIconMenuItem(_("Applet Settings"), 'speedometer-symbolic', St.IconType.SYMBOLIC);
             appletSettings.connect('activate', () => GLib.spawn_command_line_async(`xlet-settings applet ${this._uuid} -i ${this.instance_id} -t 0`));
             settings.menu.addMenuItem(appletSettings);
-            let monitorSettings = new popupMenu.PopupIconMenuItem("Monitor Settings", 'org.gnome.SystemMonitor-symbolic', St.IconType.SYMBOLIC);
+            let monitorSettings = new popupMenu.PopupIconMenuItem(_("Monitor Settings"), 'org.gnome.SystemMonitor-symbolic', St.IconType.SYMBOLIC);
             monitorSettings.connect('activate', () => GLib.spawn_command_line_async(`xlet-settings applet ${this._uuid} -i ${this.instance_id} -t 1`));
             settings.menu.addMenuItem(monitorSettings);
-            let resetAll = new popupMenu.PopupIconMenuItem("Reset All Settings", 'edit-undo-symbolic', St.IconType.SYMBOLIC);
+            let resetAll = new popupMenu.PopupIconMenuItem(_("Reset All Settings"), 'edit-undo-symbolic', St.IconType.SYMBOLIC);
             resetAll.connect('activate', () => {
-                let confirm = new modalDialog.ConfirmDialog(`Are you sure you want to reset all settings of "${this._uuid}" to default?`, () => {
+                let confirm = new modalDialog.ConfirmDialog(_(`Are you sure you want to reset all settings of "${this._uuid}" to default?`), () => {
                     try {
                         for (let key in this.settings.settingsData) {
                             this.settings.setValue(key, this.settings.getDefaultValue(key));
@@ -105,7 +114,7 @@ class NvidiaMonitorApplet extends applet.Applet {
 
         } catch (e) {
             global.logError(e);
-            this._show_err("Error building menu: " + e.message);
+            this._show_err(_("Error building menu: ") + e.message);
         }
     }
 
@@ -242,7 +251,7 @@ class NvidiaMonitorApplet extends applet.Applet {
             icon_type: St.IconType.FULLCOLOR,
             icon_size: 36
         });
-        const title = `${this._app_name} Error`;
+        const title = this._app_name + " " + _("Error");
         Main.criticalNotify(title, msg, icon);
     }
 
@@ -259,7 +268,7 @@ class NvidiaMonitorApplet extends applet.Applet {
         this._pieChartSize = Math.max(16, this._panel_height - 6);
 
         // 1. Temp Label
-        this._label = this._add_label(this._turn_over ? "..." : "Initializing...");
+        this._label = this._add_label(this._turn_over ? "..." : _("Initializing..."));
         this._label.show();
 
         // 2. Sep 1
@@ -269,7 +278,7 @@ class NvidiaMonitorApplet extends applet.Applet {
         this._memLabel = this._add_label("");
 
         // 4. Mem Pie Chart (Renamed from _pieChartArea)
-        this._memPieChartArea = this._add_pieChartArea((area) => this._drawPie(area, this._memUsedPercent, "Mem"));
+        this._memPieChartArea = this._add_pieChartArea((area) => this._drawPie(area, this._memUsedPercent, _("Mem")));
 
         // 5. Sep 2
         this._sep2 = this._add_label(sepText);
@@ -278,7 +287,7 @@ class NvidiaMonitorApplet extends applet.Applet {
         this._gpuLabel = this._add_label("");
 
         // 7. GPU Pie Chart
-        this._gpuPieChartArea = this._add_pieChartArea((area) => this._drawPie(area, this._gpuUtilPercent, "GPU"));
+        this._gpuPieChartArea = this._add_pieChartArea((area) => this._drawPie(area, this._gpuUtilPercent, _("GPU")));
 
         // 8. Sep 3
         this._sep3 = this._add_label(sepText);
@@ -287,7 +296,7 @@ class NvidiaMonitorApplet extends applet.Applet {
         this._fanLabel = this._add_label("");
 
         // 10. Fan Pie Chart
-        this._fanPieChartArea = this._add_pieChartArea((area) => this._drawPie(area, this._fanSpeedPercent, "Fan"));
+        this._fanPieChartArea = this._add_pieChartArea((area) => this._drawPie(area, this._fanSpeedPercent, _("Fan")));
     }
 
     _add_label(text) {
@@ -509,14 +518,14 @@ class NvidiaMonitorApplet extends applet.Applet {
                 this._last_output = output;
                 this._parse_and_display(output);
             } else {
-                this.set_applet_label("Error");
-                this._show_err(`Failed to run nvidia-smi.\n${stderr ? stderr.toString() : "Unknown"}`);
+                this.set_applet_label(_("Error"));
+                this._show_err(_("Failed to run nvidia-smi.\n") + (stderr ? stderr.toString() : _("Unknown")));
                 global.logError("Nvidia Monitor: Failed to run nvidia-smi. Stderr: " + (stderr ? stderr.toString() : "Unknown"));
             }
         } catch (e) {
             global.logError(e);
-            this._show_err("An unexpected error occurred while running nvidia-smi.\n" + e.message);
-            this.set_applet_label("Err");
+            this._show_err(_("An unexpected error occurred while running nvidia-smi.\n") + e.message);
+            this.set_applet_label(_("Err"));
         }
     }
 
@@ -680,7 +689,7 @@ class NvidiaMonitorApplet extends applet.Applet {
             this.gpu_display_mode,
             this._gpuLabel,
             this._gpuPieChartArea,
-            this._turn_over ? `GPU:${gpuUtil}%` : "GPU: " + gpuUtil + "%"
+            this._turn_over ? `GPU:${gpuUtil}%` : _("GPU: ") + gpuUtil + "%"
         );
 
         const visFan = this._updateSection(
@@ -688,7 +697,7 @@ class NvidiaMonitorApplet extends applet.Applet {
             this.fan_display_mode,
             this._fanLabel,
             this._fanPieChartArea,
-            this._turn_over ? `FAN:${fanSpeed}%` : "Fan: " + fanSpeed + "%"
+            this._turn_over ? `FAN:${fanSpeed}%` : _("Fan: ") + fanSpeed + "%"
         );
 
         // Separators
