@@ -3,7 +3,7 @@
 #    - GPU
 #    - Fan
 #    - mem
-#  2. The string "Hi!" is meant to be used in a smaller container, so it should only be translated into a friendly word in the target language that has a maximum of 3 characters, including any punctuation symbol. Punctuation symbols can be removed to use all three characters in a word instead. If this is not possible, preserve the original "Hi!".
+#  2. The string "Hi!" is meant to be displayed in a very small container (up to 4 lines with a maximum of 4 characters per line). It should be translated into a friendly, playful, and non-offensive phrase in the target language, respecting this size limit. Regional slang or expressions that could be perceived as insulting must be avoided. If no suitable translation can be created within these constraints, preserve the original "Hi!".
 msgid ""
 msgstr ""
 "Project-Id-Version: nvidia-monitor@kalin91 v1.0.0\n"
@@ -155,7 +155,7 @@ msgstr "FAN"
 
 #: applet.js:703
 msgid "Hi!"
-msgstr "Hi!"
+msgstr "Hey!\nCómo\nta\ntú?"
 
 #: applet.js:736
 msgid "Error terminating monitor subprocess"
