@@ -1,0 +1,304 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: NVIDIA Monitor\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: applet.js:43
+msgid "nvidia-smi not found"
+msgstr "nvidia-smi introuvable"
+
+#: applet.js:44
+msgid ""
+"nvidia-smi not found in PATH.\n"
+"Please ensure NVIDIA drivers are installed."
+msgstr ""
+"nvidia-smi est introuvable dans le PATH.\n"
+"Veuillez vérifier que les pilotes NVIDIA sont installés."
+
+#: applet.js:49
+msgid "Displays NVIDIA GPU monitor"
+msgstr "Affiche le moniteur GPU NVIDIA"
+
+#: applet.js:55
+msgid "Init Error"
+msgstr "Erreur d'initialisation"
+
+#: applet.js:80
+msgid "Open Monitor Graph"
+msgstr "Ouvrir le graphique du moniteur"
+
+#: applet.js:84
+msgid "Settings"
+msgstr "Paramètres"
+
+#: applet.js:89
+msgid "Applet Settings"
+msgstr "Paramètres de l'applet"
+
+#: applet.js:92
+msgid "Monitor Settings"
+msgstr "Paramètres du moniteur"
+
+#: applet.js:95
+msgid "Reset All Settings"
+msgstr "Réinitialiser tous les paramètres"
+
+#: applet.js:117
+msgid "Error building menu: "
+msgstr "Erreur lors de la création du menu: "
+
+#: applet.js:254 applet.js:521
+msgid "Error"
+msgstr "Erreur"
+
+#: applet.js:271
+msgid "Initializing..."
+msgstr "Initialisation..."
+
+#: applet.js:281
+msgid "Mem"
+msgstr "Mem"
+
+#: applet.js:290
+msgid "GPU"
+msgstr "GPU"
+
+#: applet.js:299
+msgid "Fan"
+msgstr "Fan"
+
+#: applet.js:522
+msgid "Failed to run nvidia-smi.\n"
+msgstr "Échec de l'exécution de nvidia-smi.\n"
+
+#: applet.js:522
+msgid "Unknown"
+msgstr "Inconnu"
+
+#: applet.js:527
+msgid "An unexpected error occurred while running nvidia-smi.\n"
+msgstr "Une erreur inattendue est survenue lors de l'exécution de nvidia-smi.\n"
+
+#: applet.js:528
+msgid "Err"
+msgstr "Err"
+
+#: applet.js:692
+msgid "GPU: "
+msgstr "GPU: "
+
+#: applet.js:700
+msgid "Fan: "
+msgstr "Fan: "
+
+msgid "NVIDIA Monitor"
+msgstr "Moniteur NVIDIA"
+
+msgid ""
+"Monitors GPU temperature, memory, utilization, and fan speed using nvidia-"
+"smi"
+msgstr ""
+"Surveille la température, la mémoire, l'utilisation et la vitesse du ventilateur du GPU via nvidia-smi"
+
+msgid "General Settings"
+msgstr "Paramètres généraux"
+
+msgid "Temperature"
+msgstr "Température"
+
+msgid "Memory Usage"
+msgstr "Utilisation de la mémoire"
+
+msgid "GPU Utilization"
+msgstr "Utilisation du GPU"
+
+msgid "Fan Speed"
+msgstr "Vitesse du ventilateur"
+
+msgid "Note"
+msgstr "Note"
+
+msgid "Metric Colors"
+msgstr "Couleurs des métriques"
+
+msgid "Layout Colors"
+msgstr "Couleurs de disposition"
+
+msgid "Y-Axis Settings"
+msgstr "Paramètres de l'axe Y"
+
+msgid "X-Axis Settings"
+msgstr "Paramètres de l'axe X"
+
+msgid ""
+"Changes to monitor settings will take effect after restarting the monitor."
+msgstr ""
+"Les modifications prendront effet après le redémarrage du moniteur."
+
+msgid "1 Line (50%)"
+msgstr "1 ligne (50%)"
+
+msgid "2 Lines (33%, 66%)"
+msgstr "2 lignes (33%, 66%)"
+
+msgid "3 Lines (25%, 50%, 75%)"
+msgstr "3 lignes (25%, 50%, 75%)"
+
+msgid "4 Lines (20%, 40%, 60%, 80%)"
+msgstr "4 lignes (20%, 40%, 60%, 80%)"
+
+msgid "5 Lines (16%, 33%, 50%, 66%, 83%)"
+msgstr "5 lignes (16%, 33%, 50%, 66%, 83%)"
+
+msgid "9 Lines (Every 10%)"
+msgstr "9 lignes (tous les 10%)"
+
+msgid "Y-Axis Guides"
+msgstr "Guides de l'axe Y"
+
+msgid "Number of guide lines for the Y-Axis."
+msgstr "Nombre de lignes guides pour l'axe Y."
+
+msgid "Celsius (°C)"
+msgstr "Celsius (°C)"
+
+msgid "Fahrenheit (°F)"
+msgstr "Fahrenheit (°F)"
+
+msgid "Y-Axis Temperature Unit"
+msgstr "Unité de température de l'axe Y"
+
+msgid "Unit for the temperature axis in the monitor."
+msgstr "Unité pour l'axe de température du moniteur."
+
+msgid "X-Axis Guides"
+msgstr "Guides de l'axe X"
+
+msgid "Number of vertical guide lines for the X-Axis."
+msgstr "Nombre de lignes guides verticales pour l'axe X."
+
+msgid "Seconds"
+msgstr "Secondes"
+
+msgid "Minutes"
+msgstr "Minutes"
+
+msgid "Hours"
+msgstr "Heures"
+
+msgid "X-Axis Unit"
+msgstr "Unité de l'axe X"
+
+msgid "Unit of time for the X-Axis."
+msgstr "Unité de temps pour l'axe X."
+
+msgid "X-Axis Length (Seconds)"
+msgstr "Longueur de l'axe X (secondes)"
+
+msgid "Total duration shown on the graph."
+msgstr "Durée totale affichée sur le graphique."
+
+msgid "X-Axis Length (Minutes)"
+msgstr "Longueur de l'axe X (minutes)"
+
+msgid "X-Axis Length (Hours)"
+msgstr "Longueur de l'axe X (heures)"
+
+msgid "Temperature Color"
+msgstr "Couleur de la température"
+
+msgid "Color used for temperature in the graph."
+msgstr "Couleur utilisée pour la température sur le graphique."
+
+msgid "Memory Usage Color"
+msgstr "Couleur de l'utilisation mémoire"
+
+msgid "GPU Utilization Color"
+msgstr "Couleur de l'utilisation GPU"
+
+msgid "Fan Speed Color"
+msgstr "Couleur de la vitesse du ventilateur"
+
+msgid "Background Color"
+msgstr "Couleur de fond"
+
+msgid "Temperature Axis Color"
+msgstr "Couleur de l'axe de température"
+
+msgid "Percentage Axis Color"
+msgstr "Couleur de l'axe de pourcentage"
+
+msgid "X-Axis Color"
+msgstr "Couleur de l'axe X"
+
+msgid "Guidelines Color"
+msgstr "Couleur des guides"
+
+msgid "Refresh Interval"
+msgstr "Intervalle d'actualisation"
+
+msgid "How often to update the GPU stats (in seconds)."
+msgstr "Fréquence de mise à jour des statistiques GPU (en secondes)."
+
+msgid "Applet Border Color"
+msgstr "Couleur de la bordure de l'applet"
+
+msgid "Color of the applet border. Set alpha to 0 for no border."
+msgstr "Couleur de la bordure de l'applet. Définissez alpha à 0 pour aucune bordure."
+
+msgid "nvidia-smi Output Encoding"
+msgstr "Encodage de sortie nvidia-smi"
+
+msgid "Select the character encoding used by nvidia-smi output."
+msgstr "Sélectionnez l'encodage utilisé par la sortie nvidia-smi."
+
+msgid "Show Temperature"
+msgstr "Afficher la température"
+
+msgid "Show GPU temperature in the panel."
+msgstr "Afficher la température du GPU dans le panneau."
+
+msgid "Temperature Unit"
+msgstr "Unité de température"
+
+msgid "Choose the unit for displaying GPU temperature."
+msgstr "Choisissez l'unité pour afficher la température du GPU."
+
+msgid "Show Memory Usage"
+msgstr "Afficher l'utilisation mémoire"
+
+msgid "Show GPU memory usage in the panel."
+msgstr "Afficher l'utilisation mémoire du GPU dans le panneau."
+
+msgid "Text (Used / Total)"
+msgstr "Texte (Utilisé / Total)"
+
+msgid "Pie Chart"
+msgstr "Diagramme circulaire"
+
+msgid "Memory Display Mode"
+msgstr "Mode d'affichage de la mémoire"
+
+msgid "Show GPU Utilization"
+msgstr "Afficher l'utilisation GPU"
+
+msgid "Show GPU utilization percentage in the panel."
+msgstr "Afficher le pourcentage d'utilisation GPU dans le panneau."
+
+msgid "Text (Percent)"
+msgstr "Texte (Pourcentage)"
+
+msgid "GPU Display Mode"
+msgstr "Mode d'affichage du GPU"
+
+msgid "Show Fan Speed"
+msgstr "Afficher la vitesse du ventilateur"
+
+msgid "Show GPU fan speed percentage in the panel."
+msgstr "Afficher le pourcentage de vitesse du ventilateur."
+
+msgid "Fan Display Mode"
+msgstr "Mode d'affichage du ventilateur"

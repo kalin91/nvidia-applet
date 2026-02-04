@@ -1,0 +1,346 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: NVIDIA Monitor\n"
+"Language: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: applet.js:43
+msgid "nvidia-smi not found"
+msgstr "nvidia-smi nicht gefunden"
+
+#: applet.js:44
+msgid ""
+"nvidia-smi not found in PATH.\n"
+"Please ensure NVIDIA drivers are installed."
+msgstr ""
+"nvidia-smi wurde nicht im PATH gefunden.\n"
+"Bitte stellen Sie sicher, dass die NVIDIA-Treiber installiert sind."
+
+#: applet.js:49
+msgid "Displays NVIDIA GPU monitor"
+msgstr "Zeigt den NVIDIA-GPU-Monitor an"
+
+#: applet.js:55
+msgid "Init Error"
+msgstr "Initialisierungsfehler"
+
+#: applet.js:80
+msgid "Open Monitor Graph"
+msgstr "Monitor-Grafik öffnen"
+
+#: applet.js:84
+msgid "Settings"
+msgstr "Einstellungen"
+
+#: applet.js:89
+msgid "Applet Settings"
+msgstr "Applet-Einstellungen"
+
+#: applet.js:92
+msgid "Monitor Settings"
+msgstr "Monitor-Einstellungen"
+
+#: applet.js:95
+msgid "Reset All Settings"
+msgstr "Alle Einstellungen zurücksetzen"
+
+#: applet.js:117
+msgid "Error building menu: "
+msgstr "Fehler beim Erstellen des Menüs: "
+
+#: applet.js:254 applet.js:521
+msgid "Error"
+msgstr "Fehler"
+
+#: applet.js:271
+msgid "Initializing..."
+msgstr "Initialisiere..."
+
+#: applet.js:281
+msgid "Mem"
+msgstr "Mem"
+
+#: applet.js:290
+msgid "GPU"
+msgstr "GPU"
+
+#: applet.js:299
+msgid "Fan"
+msgstr "Fan"
+
+#: applet.js:522
+msgid "Failed to run nvidia-smi.\n"
+msgstr "nvidia-smi konnte nicht ausgeführt werden.\n"
+
+#: applet.js:522
+msgid "Unknown"
+msgstr "Unbekannt"
+
+#: applet.js:527
+msgid "An unexpected error occurred while running nvidia-smi.\n"
+msgstr "Beim Ausführen von nvidia-smi ist ein unerwarteter Fehler aufgetreten.\n"
+
+#: applet.js:528
+msgid "Err"
+msgstr "Feh"
+
+#: applet.js:692
+msgid "GPU: "
+msgstr "GPU: "
+
+#: applet.js:700
+msgid "Fan: "
+msgstr "Fan: "
+
+msgid "NVIDIA Monitor"
+msgstr "NVIDIA Monitor"
+
+msgid ""
+"Monitors GPU temperature, memory, utilization, and fan speed using nvidia-"
+"smi"
+msgstr ""
+"Überwacht GPU-Temperatur, Speicher, Auslastung und Lüftergeschwindigkeit mit nvidia-smi"
+
+msgid "General Settings"
+msgstr "Allgemeine Einstellungen"
+
+msgid "Temperature"
+msgstr "Temperatur"
+
+msgid "Memory Usage"
+msgstr "Speichernutzung"
+
+msgid "GPU Utilization"
+msgstr "GPU-Auslastung"
+
+msgid "Fan Speed"
+msgstr "Lüftergeschwindigkeit"
+
+msgid "Note"
+msgstr "Hinweis"
+
+msgid "Metric Colors"
+msgstr "Messfarben"
+
+msgid "Layout Colors"
+msgstr "Layoutfarben"
+
+msgid "Y-Axis Settings"
+msgstr "Y-Achsen-Einstellungen"
+
+msgid "X-Axis Settings"
+msgstr "X-Achsen-Einstellungen"
+
+msgid ""
+"Changes to monitor settings will take effect after restarting the monitor."
+msgstr ""
+"Änderungen an den Monitoreinstellungen werden nach einem Neustart wirksam."
+
+msgid "1 Line (50%)"
+msgstr "1 Linie (50%)"
+
+msgid "2 Lines (33%, 66%)"
+msgstr "2 Linien (33%, 66%)"
+
+msgid "3 Lines (25%, 50%, 75%)"
+msgstr "3 Linien (25%, 50%, 75%)"
+
+msgid "4 Lines (20%, 40%, 60%, 80%)"
+msgstr "4 Linien (20%, 40%, 60%, 80%)"
+
+msgid "5 Lines (16%, 33%, 50%, 66%, 83%)"
+msgstr "5 Linien (16%, 33%, 50%, 66%, 83%)"
+
+msgid "9 Lines (Every 10%)"
+msgstr "9 Linien (je 10%)"
+
+msgid "Y-Axis Guides"
+msgstr "Y-Achsen-Hilfslinien"
+
+msgid "Number of guide lines for the Y-Axis."
+msgstr "Anzahl der Hilfslinien für die Y-Achse."
+
+msgid "Celsius (°C)"
+msgstr "Celsius (°C)"
+
+msgid "Fahrenheit (°F)"
+msgstr "Fahrenheit (°F)"
+
+msgid "Y-Axis Temperature Unit"
+msgstr "Temperatur-Einheit der Y-Achse"
+
+msgid "Unit for the temperature axis in the monitor."
+msgstr "Einheit für die Temperaturachse im Monitor."
+
+msgid "X-Axis Guides"
+msgstr "X-Achsen-Hilfslinien"
+
+msgid "Number of vertical guide lines for the X-Axis."
+msgstr "Anzahl der vertikalen Hilfslinien für die X-Achse."
+
+msgid "Seconds"
+msgstr "Sekunden"
+
+msgid "Minutes"
+msgstr "Minuten"
+
+msgid "Hours"
+msgstr "Stunden"
+
+msgid "X-Axis Unit"
+msgstr "X-Achsen-Einheit"
+
+msgid "Unit of time for the X-Axis."
+msgstr "Zeiteinheit für die X-Achse."
+
+msgid "X-Axis Length (Seconds)"
+msgstr "X-Achsen-Länge (Sekunden)"
+
+msgid "Total duration shown on the graph."
+msgstr "Gesamtdauer, die im Diagramm angezeigt wird."
+
+msgid "X-Axis Length (Minutes)"
+msgstr "X-Achsen-Länge (Minuten)"
+
+msgid "X-Axis Length (Hours)"
+msgstr "X-Achsen-Länge (Stunden)"
+
+msgid "Temperature Color"
+msgstr "Temperaturfarbe"
+
+msgid "Color used for temperature in the graph."
+msgstr "Farbe für die Temperatur im Diagramm."
+
+msgid "Memory Usage Color"
+msgstr "Farbe der Speichernutzung"
+
+msgid "Color used for memory usage in the graph."
+msgstr "Farbe für die Speichernutzung im Diagramm."
+
+msgid "GPU Utilization Color"
+msgstr "Farbe der GPU-Auslastung"
+
+msgid "Color used for GPU utilization in the graph."
+msgstr "Farbe für die GPU-Auslastung im Diagramm."
+
+msgid "Fan Speed Color"
+msgstr "Farbe der Lüftergeschwindigkeit"
+
+msgid "Color used for fan speed in the graph."
+msgstr "Farbe für die Lüftergeschwindigkeit im Diagramm."
+
+msgid "Background Color"
+msgstr "Hintergrundfarbe"
+
+msgid "Background color of the graph."
+msgstr "Hintergrundfarbe des Diagramms."
+
+msgid "Temperature Axis Color"
+msgstr "Farbe der Temperaturachse"
+
+msgid "Color for the temperature axis labels."
+msgstr "Farbe für die Beschriftung der Temperaturachse."
+
+msgid "Percentage Axis Color"
+msgstr "Farbe der Prozentachse"
+
+msgid "Color for the percentage axis labels."
+msgstr "Farbe für die Beschriftung der Prozentachse."
+
+msgid "X-Axis Color"
+msgstr "Farbe der X-Achse"
+
+msgid "Color for the X-axis labels (Time)."
+msgstr "Farbe für die X-Achsen-Beschriftung (Zeit)."
+
+msgid "Guidelines Color"
+msgstr "Farbe der Hilfslinien"
+
+msgid "Color for the grid/guide lines."
+msgstr "Farbe für Raster- und Hilfslinien."
+
+msgid "Refresh Interval"
+msgstr "Aktualisierungsintervall"
+
+msgid "How often to update the GPU stats (in seconds)."
+msgstr "Wie oft die GPU-Daten aktualisiert werden (in Sekunden)."
+
+msgid "Applet Border Color"
+msgstr "Applet-Randfarbe"
+
+msgid "Color of the applet border. Set alpha to 0 for no border."
+msgstr "Farbe des Applet-Randes. Alpha auf 0 setzen für keinen Rand."
+
+msgid "UTF-8"
+msgstr "UTF-8"
+
+msgid "macintosh"
+msgstr "macintosh"
+
+msgid "ASCII"
+msgstr "ASCII"
+
+msgid "nvidia-smi Output Encoding"
+msgstr "nvidia-smi-Ausgabekodierung"
+
+msgid "Select the character encoding used by nvidia-smi output."
+msgstr "Wählen Sie die Zeichencodierung für die nvidia-smi-Ausgabe."
+
+msgid "Show Temperature"
+msgstr "Temperatur anzeigen"
+
+msgid "Show GPU temperature in the panel."
+msgstr "GPU-Temperatur im Panel anzeigen."
+
+msgid "Temperature Unit"
+msgstr "Temperatureinheit"
+
+msgid "Choose the unit for displaying GPU temperature."
+msgstr "Wählen Sie die Einheit für die Anzeige der GPU-Temperatur."
+
+msgid "Show Memory Usage"
+msgstr "Speichernutzung anzeigen"
+
+msgid "Show GPU memory usage in the panel."
+msgstr "GPU-Speichernutzung im Panel anzeigen."
+
+msgid "Text (Used / Total)"
+msgstr "Text (Verwendet / Gesamt)"
+
+msgid "Pie Chart"
+msgstr "Kreisdiagramm"
+
+msgid "Memory Display Mode"
+msgstr "Anzeigemodus für Speicher"
+
+msgid "Choose how to display memory usage: as text or as a pie chart."
+msgstr "Wählen Sie die Anzeige der Speichernutzung: Text oder Kreisdiagramm."
+
+msgid "Show GPU Utilization"
+msgstr "GPU-Auslastung anzeigen"
+
+msgid "Show GPU utilization percentage in the panel."
+msgstr "GPU-Auslastung in Prozent im Panel anzeigen."
+
+msgid "Text (Percent)"
+msgstr "Text (Prozent)"
+
+msgid "GPU Display Mode"
+msgstr "GPU-Anzeigemodus"
+
+msgid "Choose how to display GPU utilization: as text or as a pie chart."
+msgstr "Wählen Sie die Anzeige der GPU-Auslastung: Text oder Kreisdiagramm."
+
+msgid "Show Fan Speed"
+msgstr "Lüftergeschwindigkeit anzeigen"
+
+msgid "Show GPU fan speed percentage in the panel."
+msgstr "GPU-Lüftergeschwindigkeit im Panel anzeigen."
+
+msgid "Fan Display Mode"
+msgstr "Lüfter-Anzeigemodus"
+
+msgid "Choose how to display fan speed: as text or as a pie chart."
+msgstr "Wählen Sie die Anzeige der Lüftergeschwindigkeit: Text oder Kreisdiagramm."

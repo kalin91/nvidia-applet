@@ -1,0 +1,346 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Language: hr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: applet.js:43
+msgid "nvidia-smi not found"
+msgstr "nvidia-smi nije pronađen"
+
+#: applet.js:44
+msgid ""
+"nvidia-smi not found in PATH.\n"
+"Please ensure NVIDIA drivers are installed."
+msgstr ""
+"nvidia-smi nije pronađen u PATH-u.\n"
+"Provjerite jesu li NVIDIA upravljački programi instalirani."
+
+#: applet.js:49
+msgid "Displays NVIDIA GPU monitor"
+msgstr "Prikazuje NVIDIA GPU monitor"
+
+#: applet.js:55
+msgid "Init Error"
+msgstr "Greška pri pokretanju"
+
+#: applet.js:80
+msgid "Open Monitor Graph"
+msgstr "Otvori graf monitora"
+
+#: applet.js:84
+msgid "Settings"
+msgstr "Postavke"
+
+#: applet.js:89
+msgid "Applet Settings"
+msgstr "Postavke appleta"
+
+#: applet.js:92
+msgid "Monitor Settings"
+msgstr "Postavke monitora"
+
+#: applet.js:95
+msgid "Reset All Settings"
+msgstr "Vrati sve postavke"
+
+#: applet.js:117
+msgid "Error building menu: "
+msgstr "Greška pri izradi izbornika: "
+
+#: applet.js:254 applet.js:521
+msgid "Error"
+msgstr "Greška"
+
+#: applet.js:271
+msgid "Initializing..."
+msgstr "Inicijalizacija..."
+
+#: applet.js:281
+msgid "Mem"
+msgstr "Mem"
+
+#: applet.js:290
+msgid "GPU"
+msgstr "GPU"
+
+#: applet.js:299
+msgid "Fan"
+msgstr "Fan"
+
+#: applet.js:522
+msgid "Failed to run nvidia-smi.\n"
+msgstr "Neuspjelo pokretanje nvidia-smi.\n"
+
+#: applet.js:522
+msgid "Unknown"
+msgstr "Nepoznato"
+
+#: applet.js:527
+msgid "An unexpected error occurred while running nvidia-smi.\n"
+msgstr "Došlo je do neočekivane greške pri pokretanju nvidia-smi.\n"
+
+#: applet.js:528
+msgid "Err"
+msgstr "Greška"
+
+#: applet.js:692
+msgid "GPU: "
+msgstr "GPU: "
+
+#: applet.js:700
+msgid "Fan: "
+msgstr "Fan: "
+
+msgid "NVIDIA Monitor"
+msgstr "NVIDIA Monitor"
+
+msgid ""
+"Monitors GPU temperature, memory, utilization, and fan speed using nvidia-"
+"smi"
+msgstr ""
+"Prati temperaturu GPU-a, memoriju, opterećenje i brzinu ventilatora pomoću nvidia-smi"
+
+msgid "General Settings"
+msgstr "Opće postavke"
+
+msgid "Temperature"
+msgstr "Temperatura"
+
+msgid "Memory Usage"
+msgstr "Korištenje memorije"
+
+msgid "GPU Utilization"
+msgstr "Iskorištenje GPU-a"
+
+msgid "Fan Speed"
+msgstr "Brzina ventilatora"
+
+msgid "Note"
+msgstr "Napomena"
+
+msgid "Metric Colors"
+msgstr "Boje metrika"
+
+msgid "Layout Colors"
+msgstr "Boje izgleda"
+
+msgid "Y-Axis Settings"
+msgstr "Postavke Y-osi"
+
+msgid "X-Axis Settings"
+msgstr "Postavke X-osi"
+
+msgid ""
+"Changes to monitor settings will take effect after restarting the monitor."
+msgstr ""
+"Promjene postavki stupaju na snagu nakon ponovnog pokretanja monitora."
+
+msgid "1 Line (50%)"
+msgstr "1 linija (50%)"
+
+msgid "2 Lines (33%, 66%)"
+msgstr "2 linije (33%, 66%)"
+
+msgid "3 Lines (25%, 50%, 75%)"
+msgstr "3 linije (25%, 50%, 75%)"
+
+msgid "4 Lines (20%, 40%, 60%, 80%)"
+msgstr "4 linije (20%, 40%, 60%, 80%)"
+
+msgid "5 Lines (16%, 33%, 50%, 66%, 83%)"
+msgstr "5 linija (16%, 33%, 50%, 66%, 83%)"
+
+msgid "9 Lines (Every 10%)"
+msgstr "9 linija (svakih 10%)"
+
+msgid "Y-Axis Guides"
+msgstr "Vodiči Y-osi"
+
+msgid "Number of guide lines for the Y-Axis."
+msgstr "Broj pomoćnih linija za Y-os."
+
+msgid "Celsius (°C)"
+msgstr "Celzijus (°C)"
+
+msgid "Fahrenheit (°F)"
+msgstr "Fahrenheit (°F)"
+
+msgid "Y-Axis Temperature Unit"
+msgstr "Jedinica temperature Y-osi"
+
+msgid "Unit for the temperature axis in the monitor."
+msgstr "Jedinica za temperaturu na osi monitora."
+
+msgid "X-Axis Guides"
+msgstr "Vodiči X-osi"
+
+msgid "Number of vertical guide lines for the X-Axis."
+msgstr "Broj okomitih pomoćnih linija za X-os."
+
+msgid "Seconds"
+msgstr "Sekunde"
+
+msgid "Minutes"
+msgstr "Minute"
+
+msgid "Hours"
+msgstr "Sati"
+
+msgid "X-Axis Unit"
+msgstr "Jedinica X-osi"
+
+msgid "Unit of time for the X-Axis."
+msgstr "Jedinica vremena za X-os."
+
+msgid "X-Axis Length (Seconds)"
+msgstr "Duljina X-osi (sekunde)"
+
+msgid "Total duration shown on the graph."
+msgstr "Ukupno trajanje prikazano na grafu."
+
+msgid "X-Axis Length (Minutes)"
+msgstr "Duljina X-osi (minute)"
+
+msgid "X-Axis Length (Hours)"
+msgstr "Duljina X-osi (sati)"
+
+msgid "Temperature Color"
+msgstr "Boja temperature"
+
+msgid "Color used for temperature in the graph."
+msgstr "Boja za temperaturu na grafu."
+
+msgid "Memory Usage Color"
+msgstr "Boja memorije"
+
+msgid "Color used for memory usage in the graph."
+msgstr "Boja za korištenje memorije na grafu."
+
+msgid "GPU Utilization Color"
+msgstr "Boja GPU opterećenja"
+
+msgid "Color used for GPU utilization in the graph."
+msgstr "Boja za GPU opterećenje na grafu."
+
+msgid "Fan Speed Color"
+msgstr "Boja brzine ventilatora"
+
+msgid "Color used for fan speed in the graph."
+msgstr "Boja za brzinu ventilatora na grafu."
+
+msgid "Background Color"
+msgstr "Boja pozadine"
+
+msgid "Background color of the graph."
+msgstr "Boja pozadine grafa."
+
+msgid "Temperature Axis Color"
+msgstr "Boja osi temperature"
+
+msgid "Color for the temperature axis labels."
+msgstr "Boja oznaka osi temperature."
+
+msgid "Percentage Axis Color"
+msgstr "Boja osi postotaka"
+
+msgid "Color for the percentage axis labels."
+msgstr "Boja oznaka osi postotaka."
+
+msgid "X-Axis Color"
+msgstr "Boja X-osi"
+
+msgid "Color for the X-axis labels (Time)."
+msgstr "Boja oznaka X-osi (vrijeme)."
+
+msgid "Guidelines Color"
+msgstr "Boja vodiča"
+
+msgid "Color for the grid/guide lines."
+msgstr "Boja mrežnih linija."
+
+msgid "Refresh Interval"
+msgstr "Interval osvježavanja"
+
+msgid "How often to update the GPU stats (in seconds)."
+msgstr "Koliko često se ažuriraju GPU podaci (u sekundama)."
+
+msgid "Applet Border Color"
+msgstr "Boja obruba appleta"
+
+msgid "Color of the applet border. Set alpha to 0 for no border."
+msgstr "Boja obruba appleta. Postavite prozirnost na 0 za bez obruba."
+
+msgid "UTF-8"
+msgstr "UTF-8"
+
+msgid "macintosh"
+msgstr "macintosh"
+
+msgid "ASCII"
+msgstr "ASCII"
+
+msgid "nvidia-smi Output Encoding"
+msgstr "Kodiranje izlaza nvidia-smi"
+
+msgid "Select the character encoding used by nvidia-smi output."
+msgstr "Odaberite kodiranje znakova za izlaz nvidia-smi."
+
+msgid "Show Temperature"
+msgstr "Prikaži temperaturu"
+
+msgid "Show GPU temperature in the panel."
+msgstr "Prikaži temperaturu GPU-a na panelu."
+
+msgid "Temperature Unit"
+msgstr "Jedinica temperature"
+
+msgid "Choose the unit for displaying GPU temperature."
+msgstr "Odaberite jedinicu za prikaz temperature GPU-a."
+
+msgid "Show Memory Usage"
+msgstr "Prikaži korištenje memorije"
+
+msgid "Show GPU memory usage in the panel."
+msgstr "Prikaži GPU memoriju na panelu."
+
+msgid "Text (Used / Total)"
+msgstr "Tekst (korišteno / ukupno)"
+
+msgid "Pie Chart"
+msgstr "Kružni graf"
+
+msgid "Memory Display Mode"
+msgstr "Način prikaza memorije"
+
+msgid "Choose how to display memory usage: as text or as a pie chart."
+msgstr "Odaberite prikaz memorije: kao tekst ili kružni graf."
+
+msgid "Show GPU Utilization"
+msgstr "Prikaži GPU opterećenje"
+
+msgid "Show GPU utilization percentage in the panel."
+msgstr "Prikaži postotak GPU opterećenja na panelu."
+
+msgid "Text (Percent)"
+msgstr "Tekst (postotak)"
+
+msgid "GPU Display Mode"
+msgstr "Način prikaza GPU-a"
+
+msgid "Choose how to display GPU utilization: as text or as a pie chart."
+msgstr "Odaberite prikaz GPU opterećenja: tekst ili kružni graf."
+
+msgid "Show Fan Speed"
+msgstr "Prikaži brzinu ventilatora"
+
+msgid "Show GPU fan speed percentage in the panel."
+msgstr "Prikaži brzinu ventilatora GPU-a na panelu."
+
+msgid "Fan Display Mode"
+msgstr "Način prikaza ventilatora"
+
+msgid "Choose how to display fan speed: as text or as a pie chart."
+msgstr "Odaberite prikaz brzine ventilatora: tekst ili kružni graf."

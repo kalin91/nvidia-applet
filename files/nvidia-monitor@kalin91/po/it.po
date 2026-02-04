@@ -1,0 +1,346 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Language: it\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: applet.js:43
+msgid "nvidia-smi not found"
+msgstr "nvidia-smi non trovato"
+
+#: applet.js:44
+msgid ""
+"nvidia-smi not found in PATH.\n"
+"Please ensure NVIDIA drivers are installed."
+msgstr ""
+"nvidia-smi non trovato nel PATH.\n"
+"Assicurati che i driver NVIDIA siano installati."
+
+#: applet.js:49
+msgid "Displays NVIDIA GPU monitor"
+msgstr "Mostra il monitor GPU NVIDIA"
+
+#: applet.js:55
+msgid "Init Error"
+msgstr "Errore di inizializzazione"
+
+#: applet.js:80
+msgid "Open Monitor Graph"
+msgstr "Apri grafico monitor"
+
+#: applet.js:84
+msgid "Settings"
+msgstr "Impostazioni"
+
+#: applet.js:89
+msgid "Applet Settings"
+msgstr "Impostazioni Applet"
+
+#: applet.js:92
+msgid "Monitor Settings"
+msgstr "Impostazioni Monitor"
+
+#: applet.js:95
+msgid "Reset All Settings"
+msgstr "Ripristina tutte le impostazioni"
+
+#: applet.js:117
+msgid "Error building menu: "
+msgstr "Errore nella creazione del menu: "
+
+#: applet.js:254 applet.js:521
+msgid "Error"
+msgstr "Errore"
+
+#: applet.js:271
+msgid "Initializing..."
+msgstr "Inizializzazione..."
+
+#: applet.js:281
+msgid "Mem"
+msgstr "Mem"
+
+#: applet.js:290
+msgid "GPU"
+msgstr "GPU"
+
+#: applet.js:299
+msgid "Fan"
+msgstr "Fan"
+
+#: applet.js:522
+msgid "Failed to run nvidia-smi.\n"
+msgstr "Impossibile eseguire nvidia-smi.\n"
+
+#: applet.js:522
+msgid "Unknown"
+msgstr "Sconosciuto"
+
+#: applet.js:527
+msgid "An unexpected error occurred while running nvidia-smi.\n"
+msgstr "Si è verificato un errore imprevisto durante l'esecuzione di nvidia-smi.\n"
+
+#: applet.js:528
+msgid "Err"
+msgstr "Err"
+
+#: applet.js:692
+msgid "GPU: "
+msgstr "GPU: "
+
+#: applet.js:700
+msgid "Fan: "
+msgstr "Fan: "
+
+msgid "NVIDIA Monitor"
+msgstr "Monitor NVIDIA"
+
+msgid ""
+"Monitors GPU temperature, memory, utilization, and fan speed using nvidia-"
+"smi"
+msgstr ""
+"Monitora temperatura GPU, memoria, utilizzo e velocità della ventola usando nvidia-smi"
+
+msgid "General Settings"
+msgstr "Impostazioni generali"
+
+msgid "Temperature"
+msgstr "Temperatura"
+
+msgid "Memory Usage"
+msgstr "Uso memoria"
+
+msgid "GPU Utilization"
+msgstr "Utilizzo GPU"
+
+msgid "Fan Speed"
+msgstr "Velocità ventola"
+
+msgid "Note"
+msgstr "Nota"
+
+msgid "Metric Colors"
+msgstr "Colori metriche"
+
+msgid "Layout Colors"
+msgstr "Colori layout"
+
+msgid "Y-Axis Settings"
+msgstr "Impostazioni asse Y"
+
+msgid "X-Axis Settings"
+msgstr "Impostazioni asse X"
+
+msgid ""
+"Changes to monitor settings will take effect after restarting the monitor."
+msgstr ""
+"Le modifiche alle impostazioni avranno effetto dopo il riavvio del monitor."
+
+msgid "1 Line (50%)"
+msgstr "1 linea (50%)"
+
+msgid "2 Lines (33%, 66%)"
+msgstr "2 linee (33%, 66%)"
+
+msgid "3 Lines (25%, 50%, 75%)"
+msgstr "3 linee (25%, 50%, 75%)"
+
+msgid "4 Lines (20%, 40%, 60%, 80%)"
+msgstr "4 linee (20%, 40%, 60%, 80%)"
+
+msgid "5 Lines (16%, 33%, 50%, 66%, 83%)"
+msgstr "5 linee (16%, 33%, 50%, 66%, 83%)"
+
+msgid "9 Lines (Every 10%)"
+msgstr "9 linee (ogni 10%)"
+
+msgid "Y-Axis Guides"
+msgstr "Guide asse Y"
+
+msgid "Number of guide lines for the Y-Axis."
+msgstr "Numero di linee guida per l'asse Y."
+
+msgid "Celsius (°C)"
+msgstr "Celsius (°C)"
+
+msgid "Fahrenheit (°F)"
+msgstr "Fahrenheit (°F)"
+
+msgid "Y-Axis Temperature Unit"
+msgstr "Unità temperatura asse Y"
+
+msgid "Unit for the temperature axis in the monitor."
+msgstr "Unità per l'asse della temperatura nel monitor."
+
+msgid "X-Axis Guides"
+msgstr "Guide asse X"
+
+msgid "Number of vertical guide lines for the X-Axis."
+msgstr "Numero di linee guida verticali per l'asse X."
+
+msgid "Seconds"
+msgstr "Secondi"
+
+msgid "Minutes"
+msgstr "Minuti"
+
+msgid "Hours"
+msgstr "Ore"
+
+msgid "X-Axis Unit"
+msgstr "Unità asse X"
+
+msgid "Unit of time for the X-Axis."
+msgstr "Unità di tempo per l'asse X."
+
+msgid "X-Axis Length (Seconds)"
+msgstr "Lunghezza asse X (secondi)"
+
+msgid "Total duration shown on the graph."
+msgstr "Durata totale mostrata nel grafico."
+
+msgid "X-Axis Length (Minutes)"
+msgstr "Lunghezza asse X (minuti)"
+
+msgid "X-Axis Length (Hours)"
+msgstr "Lunghezza asse X (ore)"
+
+msgid "Temperature Color"
+msgstr "Colore temperatura"
+
+msgid "Color used for temperature in the graph."
+msgstr "Colore usato per la temperatura nel grafico."
+
+msgid "Memory Usage Color"
+msgstr "Colore uso memoria"
+
+msgid "Color used for memory usage in the graph."
+msgstr "Colore usato per la memoria nel grafico."
+
+msgid "GPU Utilization Color"
+msgstr "Colore utilizzo GPU"
+
+msgid "Color used for GPU utilization in the graph."
+msgstr "Colore usato per l'utilizzo GPU nel grafico."
+
+msgid "Fan Speed Color"
+msgstr "Colore velocità ventola"
+
+msgid "Color used for fan speed in the graph."
+msgstr "Colore usato per la velocità della ventola."
+
+msgid "Background Color"
+msgstr "Colore sfondo"
+
+msgid "Background color of the graph."
+msgstr "Colore di sfondo del grafico."
+
+msgid "Temperature Axis Color"
+msgstr "Colore asse temperatura"
+
+msgid "Color for the temperature axis labels."
+msgstr "Colore per le etichette dell'asse temperatura."
+
+msgid "Percentage Axis Color"
+msgstr "Colore asse percentuale"
+
+msgid "Color for the percentage axis labels."
+msgstr "Colore per le etichette percentuali."
+
+msgid "X-Axis Color"
+msgstr "Colore asse X"
+
+msgid "Color for the X-axis labels (Time)."
+msgstr "Colore per le etichette dell'asse X (tempo)."
+
+msgid "Guidelines Color"
+msgstr "Colore linee guida"
+
+msgid "Color for the grid/guide lines."
+msgstr "Colore per la griglia e le linee guida."
+
+msgid "Refresh Interval"
+msgstr "Intervallo di aggiornamento"
+
+msgid "How often to update the GPU stats (in seconds)."
+msgstr "Frequenza di aggiornamento delle statistiche GPU (in secondi)."
+
+msgid "Applet Border Color"
+msgstr "Colore bordo applet"
+
+msgid "Color of the applet border. Set alpha to 0 for no border."
+msgstr "Colore del bordo dell'applet. Imposta alpha a 0 per nessun bordo."
+
+msgid "UTF-8"
+msgstr "UTF-8"
+
+msgid "macintosh"
+msgstr "macintosh"
+
+msgid "ASCII"
+msgstr "ASCII"
+
+msgid "nvidia-smi Output Encoding"
+msgstr "Codifica output nvidia-smi"
+
+msgid "Select the character encoding used by nvidia-smi output."
+msgstr "Seleziona la codifica dei caratteri usata dall'output nvidia-smi."
+
+msgid "Show Temperature"
+msgstr "Mostra temperatura"
+
+msgid "Show GPU temperature in the panel."
+msgstr "Mostra la temperatura GPU nel pannello."
+
+msgid "Temperature Unit"
+msgstr "Unità temperatura"
+
+msgid "Choose the unit for displaying GPU temperature."
+msgstr "Scegli l'unità per visualizzare la temperatura GPU."
+
+msgid "Show Memory Usage"
+msgstr "Mostra uso memoria"
+
+msgid "Show GPU memory usage in the panel."
+msgstr "Mostra l'uso della memoria GPU nel pannello."
+
+msgid "Text (Used / Total)"
+msgstr "Testo (Usato / Totale)"
+
+msgid "Pie Chart"
+msgstr "Grafico a torta"
+
+msgid "Memory Display Mode"
+msgstr "Modalità visualizzazione memoria"
+
+msgid "Choose how to display memory usage: as text or as a pie chart."
+msgstr "Scegli come visualizzare l'uso della memoria: testo o grafico a torta."
+
+msgid "Show GPU Utilization"
+msgstr "Mostra utilizzo GPU"
+
+msgid "Show GPU utilization percentage in the panel."
+msgstr "Mostra la percentuale di utilizzo GPU nel pannello."
+
+msgid "Text (Percent)"
+msgstr "Testo (Percentuale)"
+
+msgid "GPU Display Mode"
+msgstr "Modalità visualizzazione GPU"
+
+msgid "Choose how to display GPU utilization: as text or as a pie chart."
+msgstr "Scegli come visualizzare l'utilizzo GPU: testo o grafico a torta."
+
+msgid "Show Fan Speed"
+msgstr "Mostra velocità ventola"
+
+msgid "Show GPU fan speed percentage in the panel."
+msgstr "Mostra la percentuale della velocità della ventola GPU nel pannello."
+
+msgid "Fan Display Mode"
+msgstr "Modalità visualizzazione ventola"
+
+msgid "Choose how to display fan speed: as text or as a pie chart."
+msgstr "Scegli come visualizzare la velocità della ventola: testo o grafico a torta."

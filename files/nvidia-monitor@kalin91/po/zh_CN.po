@@ -1,0 +1,332 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "nvidia-smi not found"
+msgstr "未找到 nvidia-smi"
+
+msgid ""
+"nvidia-smi not found in PATH.\n"
+"Please ensure NVIDIA drivers are installed."
+msgstr ""
+"在 PATH 中未找到 nvidia-smi。\n"
+"请确认已安装 NVIDIA 驱动程序。"
+
+msgid "Displays NVIDIA GPU monitor"
+msgstr "显示 NVIDIA GPU 监视器"
+
+msgid "Init Error"
+msgstr "初始化错误"
+
+msgid "Open Monitor Graph"
+msgstr "打开监视图表"
+
+msgid "Settings"
+msgstr "设置"
+
+msgid "Applet Settings"
+msgstr "Applet 设置"
+
+msgid "Monitor Settings"
+msgstr "监视器设置"
+
+msgid "Reset All Settings"
+msgstr "重置所有设置"
+
+msgid "Error building menu: "
+msgstr "构建菜单出错："
+
+msgid "Error"
+msgstr "错误"
+
+msgid "Initializing..."
+msgstr "正在初始化..."
+
+msgid "Mem"
+msgstr "Mem"
+
+msgid "GPU"
+msgstr "GPU"
+
+msgid "Fan"
+msgstr "Fan"
+
+msgid "Failed to run nvidia-smi.\n"
+msgstr "运行 nvidia-smi 失败。\n"
+
+msgid "Unknown"
+msgstr "未知"
+
+msgid "An unexpected error occurred while running nvidia-smi.\n"
+msgstr "运行 nvidia-smi 时发生未知错误。\n"
+
+msgid "Err"
+msgstr "Err"
+
+msgid "GPU: "
+msgstr "GPU: "
+
+msgid "Fan: "
+msgstr "Fan: "
+
+msgid "NVIDIA Monitor"
+msgstr "NVIDIA 监视器"
+
+msgid ""
+"Monitors GPU temperature, memory, utilization, and fan speed using nvidia-"
+"smi"
+msgstr "使用 nvidia-smi 监控 GPU 温度、内存、利用率和风扇速度"
+
+msgid "General Settings"
+msgstr "常规设置"
+
+msgid "Temperature"
+msgstr "温度"
+
+msgid "Memory Usage"
+msgstr "内存使用"
+
+msgid "GPU Utilization"
+msgstr "GPU 利用率"
+
+msgid "Fan Speed"
+msgstr "风扇速度"
+
+msgid "Note"
+msgstr "注意"
+
+msgid "Metric Colors"
+msgstr "指标颜色"
+
+msgid "Layout Colors"
+msgstr "布局颜色"
+
+msgid "Y-Axis Settings"
+msgstr "Y 轴设置"
+
+msgid "X-Axis Settings"
+msgstr "X 轴设置"
+
+msgid ""
+"Changes to monitor settings will take effect after restarting the monitor."
+msgstr "更改监视器设置将在重新启动监视器后生效。"
+
+msgid "1 Line (50%)"
+msgstr "1 条线 (50%)"
+
+msgid "2 Lines (33%, 66%)"
+msgstr "2 条线 (33%, 66%)"
+
+msgid "3 Lines (25%, 50%, 75%)"
+msgstr "3 条线 (25%, 50%, 75%)"
+
+msgid "4 Lines (20%, 40%, 60%, 80%)"
+msgstr "4 条线 (20%, 40%, 60%, 80%)"
+
+msgid "5 Lines (16%, 33%, 50%, 66%, 83%)"
+msgstr "5 条线 (16%, 33%, 50%, 66%, 83%)"
+
+msgid "9 Lines (Every 10%)"
+msgstr "9 条线 (每 10%)"
+
+msgid "Y-Axis Guides"
+msgstr "Y 轴参考线"
+
+msgid "Number of guide lines for the Y-Axis."
+msgstr "Y 轴参考线数量。"
+
+msgid "Celsius (°C)"
+msgstr "摄氏度 (°C)"
+
+msgid "Fahrenheit (°F)"
+msgstr "华氏度 (°F)"
+
+msgid "Y-Axis Temperature Unit"
+msgstr "Y 轴温度单位"
+
+msgid "Unit for the temperature axis in the monitor."
+msgstr "监视器中温度轴的单位。"
+
+msgid "X-Axis Guides"
+msgstr "X 轴参考线"
+
+msgid "Number of vertical guide lines for the X-Axis."
+msgstr "X 轴垂直参考线数量。"
+
+msgid "Seconds"
+msgstr "秒"
+
+msgid "Minutes"
+msgstr "分钟"
+
+msgid "Hours"
+msgstr "小时"
+
+msgid "X-Axis Unit"
+msgstr "X 轴单位"
+
+msgid "Unit of time for the X-Axis."
+msgstr "X 轴的时间单位。"
+
+msgid "s"
+msgstr "秒"
+
+msgid "X-Axis Length (Seconds)"
+msgstr "X 轴长度 (秒)"
+
+msgid "Total duration shown on the graph."
+msgstr "图表中显示的总时长。"
+
+msgid "m"
+msgstr "分"
+
+msgid "X-Axis Length (Minutes)"
+msgstr "X 轴长度 (分钟)"
+
+msgid "h"
+msgstr "小时"
+
+msgid "X-Axis Length (Hours)"
+msgstr "X 轴长度 (小时)"
+
+msgid "Temperature Color"
+msgstr "温度颜色"
+
+msgid "Color used for temperature in the graph."
+msgstr "图表中温度使用的颜色。"
+
+msgid "Memory Usage Color"
+msgstr "内存使用颜色"
+
+msgid "Color used for memory usage in the graph."
+msgstr "图表中内存使用的颜色。"
+
+msgid "GPU Utilization Color"
+msgstr "GPU 利用率颜色"
+
+msgid "Color used for GPU utilization in the graph."
+msgstr "图表中 GPU 利用率的颜色。"
+
+msgid "Fan Speed Color"
+msgstr "风扇速度颜色"
+
+msgid "Color used for fan speed in the graph."
+msgstr "图表中风扇速度的颜色。"
+
+msgid "Background Color"
+msgstr "背景颜色"
+
+msgid "Background color of the graph."
+msgstr "图表背景颜色。"
+
+msgid "Temperature Axis Color"
+msgstr "温度轴颜色"
+
+msgid "Color for the temperature axis labels."
+msgstr "温度轴标签颜色。"
+
+msgid "Percentage Axis Color"
+msgstr "百分比轴颜色"
+
+msgid "Color for the percentage axis labels."
+msgstr "百分比轴标签颜色。"
+
+msgid "X-Axis Color"
+msgstr "X 轴颜色"
+
+msgid "Color for the X-axis labels (Time)."
+msgstr "X 轴标签（时间）的颜色。"
+
+msgid "Guidelines Color"
+msgstr "参考线颜色"
+
+msgid "Color for the grid/guide lines."
+msgstr "网格和参考线颜色。"
+
+msgid "Refresh Interval"
+msgstr "刷新间隔"
+
+msgid "How often to update the GPU stats (in seconds)."
+msgstr "更新 GPU 状态的频率（秒）。"
+
+msgid "Applet Border Color"
+msgstr "Applet 边框颜色"
+
+msgid "Color of the applet border. Set alpha to 0 for no border."
+msgstr "Applet 边框颜色。将 alpha 设为 0 可隐藏边框。"
+
+msgid "UTF-8"
+msgstr "UTF-8"
+
+msgid "macintosh"
+msgstr "macintosh"
+
+msgid "ASCII"
+msgstr "ASCII"
+
+msgid "nvidia-smi Output Encoding"
+msgstr "nvidia-smi 输出编码"
+
+msgid "Select the character encoding used by nvidia-smi output."
+msgstr "选择 nvidia-smi 输出使用的字符编码。"
+
+msgid "Show Temperature"
+msgstr "显示温度"
+
+msgid "Show GPU temperature in the panel."
+msgstr "在面板中显示 GPU 温度。"
+
+msgid "Temperature Unit"
+msgstr "温度单位"
+
+msgid "Choose the unit for displaying GPU temperature."
+msgstr "选择显示 GPU 温度的单位。"
+
+msgid "Show Memory Usage"
+msgstr "显示内存使用"
+
+msgid "Show GPU memory usage in the panel."
+msgstr "在面板中显示 GPU 内存使用情况。"
+
+msgid "Text (Used / Total)"
+msgstr "文本 (已用 / 总量)"
+
+msgid "Pie Chart"
+msgstr "饼图"
+
+msgid "Memory Display Mode"
+msgstr "内存显示模式"
+
+msgid "Choose how to display memory usage: as text or as a pie chart."
+msgstr "选择内存使用的显示方式：文本或饼图。"
+
+msgid "Show GPU Utilization"
+msgstr "显示 GPU 利用率"
+
+msgid "Show GPU utilization percentage in the panel."
+msgstr "在面板中显示 GPU 利用率百分比。"
+
+msgid "Text (Percent)"
+msgstr "文本 (百分比)"
+
+msgid "GPU Display Mode"
+msgstr "GPU 显示模式"
+
+msgid "Choose how to display GPU utilization: as text or as a pie chart."
+msgstr "选择 GPU 利用率的显示方式：文本或饼图。"
+
+msgid "Show Fan Speed"
+msgstr "显示风扇速度"
+
+msgid "Show GPU fan speed percentage in the panel."
+msgstr "在面板中显示 GPU 风扇速度百分比。"
+
+msgid "Fan Display Mode"
+msgstr "风扇显示模式"
+
+msgid "Choose how to display fan speed: as text or as a pie chart."
+msgstr "选择风扇速度的显示方式：文本或饼图。"

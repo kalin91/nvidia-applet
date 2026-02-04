@@ -1,0 +1,331 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: NVIDIA Monitor\n"
+"Language: nl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "nvidia-smi not found"
+msgstr "nvidia-smi niet gevonden"
+
+msgid ""
+"nvidia-smi not found in PATH.\n"
+"Please ensure NVIDIA drivers are installed."
+msgstr ""
+"nvidia-smi niet gevonden in PATH.\n"
+"Zorg ervoor dat NVIDIA-stuurprogramma's zijn geïnstalleerd."
+
+msgid "Displays NVIDIA GPU monitor"
+msgstr "Toont NVIDIA GPU-monitor"
+
+msgid "Init Error"
+msgstr "Initialisatiefout"
+
+msgid "Open Monitor Graph"
+msgstr "Monitor grafiek openen"
+
+msgid "Settings"
+msgstr "Instellingen"
+
+msgid "Applet Settings"
+msgstr "Applet-instellingen"
+
+msgid "Monitor Settings"
+msgstr "Monitorinstellingen"
+
+msgid "Reset All Settings"
+msgstr "Alle instellingen resetten"
+
+msgid "Error building menu: "
+msgstr "Fout bij opbouwen van menu: "
+
+msgid "Error"
+msgstr "Fout"
+
+msgid "Initializing..."
+msgstr "Initialiseren..."
+
+msgid "Mem"
+msgstr "Mem"
+
+msgid "GPU"
+msgstr "GPU"
+
+msgid "Fan"
+msgstr "Fan"
+
+msgid "Failed to run nvidia-smi.\n"
+msgstr "Kan nvidia-smi niet uitvoeren.\n"
+
+msgid "Unknown"
+msgstr "Onbekend"
+
+msgid "An unexpected error occurred while running nvidia-smi.\n"
+msgstr "Er is een onverwachte fout opgetreden bij het uitvoeren van nvidia-smi.\n"
+
+msgid "Err"
+msgstr "Err"
+
+msgid "GPU: "
+msgstr "GPU: "
+
+msgid "Fan: "
+msgstr "Fan: "
+
+msgid "NVIDIA Monitor"
+msgstr "NVIDIA Monitor"
+
+msgid ""
+"Monitors GPU temperature, memory, utilization, and fan speed using nvidia-smi"
+msgstr "Bewaakt GPU-temperatuur, geheugen, gebruik en ventilatorsnelheid met nvidia-smi"
+
+msgid "General Settings"
+msgstr "Algemene instellingen"
+
+msgid "Temperature"
+msgstr "Temperatuur"
+
+msgid "Memory Usage"
+msgstr "Geheugengebruik"
+
+msgid "GPU Utilization"
+msgstr "GPU-gebruik"
+
+msgid "Fan Speed"
+msgstr "Ventilatorsnelheid"
+
+msgid "Note"
+msgstr "Opmerking"
+
+msgid "Metric Colors"
+msgstr "Metriekkleuren"
+
+msgid "Layout Colors"
+msgstr "Lay-outkleuren"
+
+msgid "Y-Axis Settings"
+msgstr "Y-as instellingen"
+
+msgid "X-Axis Settings"
+msgstr "X-as instellingen"
+
+msgid ""
+"Changes to monitor settings will take effect after restarting the monitor."
+msgstr "Wijzigingen worden van kracht na het herstarten van de monitor."
+
+msgid "1 Line (50%)"
+msgstr "1 lijn (50%)"
+
+msgid "2 Lines (33%, 66%)"
+msgstr "2 lijnen (33%, 66%)"
+
+msgid "3 Lines (25%, 50%, 75%)"
+msgstr "3 lijnen (25%, 50%, 75%)"
+
+msgid "4 Lines (20%, 40%, 60%, 80%)"
+msgstr "4 lijnen (20%, 40%, 60%, 80%)"
+
+msgid "5 Lines (16%, 33%, 50%, 66%, 83%)"
+msgstr "5 lijnen (16%, 33%, 50%, 66%, 83%)"
+
+msgid "9 Lines (Every 10%)"
+msgstr "9 lijnen (elke 10%)"
+
+msgid "Y-Axis Guides"
+msgstr "Y-as hulplijnen"
+
+msgid "Number of guide lines for the Y-Axis."
+msgstr "Aantal hulplijnen voor de Y-as."
+
+msgid "Celsius (°C)"
+msgstr "Celsius (°C)"
+
+msgid "Fahrenheit (°F)"
+msgstr "Fahrenheit (°F)"
+
+msgid "Y-Axis Temperature Unit"
+msgstr "Y-as temperatuureenheid"
+
+msgid "Unit for the temperature axis in the monitor."
+msgstr "Eenheid voor de temperatuuras in de monitor."
+
+msgid "X-Axis Guides"
+msgstr "X-as hulplijnen"
+
+msgid "Number of vertical guide lines for the X-Axis."
+msgstr "Aantal verticale hulplijnen voor de X-as."
+
+msgid "Seconds"
+msgstr "Seconden"
+
+msgid "Minutes"
+msgstr "Minuten"
+
+msgid "Hours"
+msgstr "Uren"
+
+msgid "X-Axis Unit"
+msgstr "X-as eenheid"
+
+msgid "Unit of time for the X-Axis."
+msgstr "Tijdseenheid voor de X-as."
+
+msgid "s"
+msgstr "s"
+
+msgid "X-Axis Length (Seconds)"
+msgstr "X-as lengte (seconden)"
+
+msgid "Total duration shown on the graph."
+msgstr "Totale duur weergegeven op de grafiek."
+
+msgid "m"
+msgstr "m"
+
+msgid "X-Axis Length (Minutes)"
+msgstr "X-as lengte (minuten)"
+
+msgid "h"
+msgstr "u"
+
+msgid "X-Axis Length (Hours)"
+msgstr "X-as lengte (uren)"
+
+msgid "Temperature Color"
+msgstr "Temperatuurkleur"
+
+msgid "Color used for temperature in the graph."
+msgstr "Kleur gebruikt voor temperatuur in de grafiek."
+
+msgid "Memory Usage Color"
+msgstr "Geheugengebruik kleur"
+
+msgid "Color used for memory usage in the graph."
+msgstr "Kleur gebruikt voor geheugengebruik in de grafiek."
+
+msgid "GPU Utilization Color"
+msgstr "GPU-gebruik kleur"
+
+msgid "Color used for GPU utilization in the graph."
+msgstr "Kleur gebruikt voor GPU-gebruik in de grafiek."
+
+msgid "Fan Speed Color"
+msgstr "Ventilatorsnelheid kleur"
+
+msgid "Color used for fan speed in the graph."
+msgstr "Kleur gebruikt voor ventilatorsnelheid in de grafiek."
+
+msgid "Background Color"
+msgstr "Achtergrondkleur"
+
+msgid "Background color of the graph."
+msgstr "Achtergrondkleur van de grafiek."
+
+msgid "Temperature Axis Color"
+msgstr "Temperatuuras kleur"
+
+msgid "Color for the temperature axis labels."
+msgstr "Kleur voor temperatuuraslabels."
+
+msgid "Percentage Axis Color"
+msgstr "Percentage-as kleur"
+
+msgid "Color for the percentage axis labels."
+msgstr "Kleur voor percentage-aslabels."
+
+msgid "X-Axis Color"
+msgstr "X-as kleur"
+
+msgid "Color for the X-axis labels (Time)."
+msgstr "Kleur voor X-aslabels (tijd)."
+
+msgid "Guidelines Color"
+msgstr "Hulplijnen kleur"
+
+msgid "Color for the grid/guide lines."
+msgstr "Kleur voor raster- en hulplijnen."
+
+msgid "Refresh Interval"
+msgstr "Verversingsinterval"
+
+msgid "How often to update the GPU stats (in seconds)."
+msgstr "Hoe vaak GPU-statistieken worden bijgewerkt (in seconden)."
+
+msgid "Applet Border Color"
+msgstr "Applet randkleur"
+
+msgid "Color of the applet border. Set alpha to 0 for no border."
+msgstr "Kleur van de applet-rand. Stel alpha in op 0 voor geen rand."
+
+msgid "UTF-8"
+msgstr "UTF-8"
+
+msgid "macintosh"
+msgstr "macintosh"
+
+msgid "ASCII"
+msgstr "ASCII"
+
+msgid "nvidia-smi Output Encoding"
+msgstr "nvidia-smi uitvoercodering"
+
+msgid "Select the character encoding used by nvidia-smi output."
+msgstr "Selecteer de tekenencodering die nvidia-smi gebruikt."
+
+msgid "Show Temperature"
+msgstr "Temperatuur tonen"
+
+msgid "Show GPU temperature in the panel."
+msgstr "Toon GPU-temperatuur in het paneel."
+
+msgid "Temperature Unit"
+msgstr "Temperatuureenheid"
+
+msgid "Choose the unit for displaying GPU temperature."
+msgstr "Kies de eenheid voor het weergeven van GPU-temperatuur."
+
+msgid "Show Memory Usage"
+msgstr "Geheugengebruik tonen"
+
+msgid "Show GPU memory usage in the panel."
+msgstr "Toon GPU-geheugengebruik in het paneel."
+
+msgid "Text (Used / Total)"
+msgstr "Tekst (gebruikt / totaal)"
+
+msgid "Pie Chart"
+msgstr "Cirkeldiagram"
+
+msgid "Memory Display Mode"
+msgstr "Geheugenweergavemodus"
+
+msgid "Choose how to display memory usage: as text or as a pie chart."
+msgstr "Kies hoe geheugengebruik wordt weergegeven: tekst of cirkeldiagram."
+
+msgid "Show GPU Utilization"
+msgstr "GPU-gebruik tonen"
+
+msgid "Show GPU utilization percentage in the panel."
+msgstr "Toon GPU-gebruik in procenten in het paneel."
+
+msgid "Text (Percent)"
+msgstr "Tekst (procent)"
+
+msgid "GPU Display Mode"
+msgstr "GPU-weergavemodus"
+
+msgid "Choose how to display GPU utilization: as text or as a pie chart."
+msgstr "Kies hoe GPU-gebruik wordt weergegeven."
+
+msgid "Show Fan Speed"
+msgstr "Ventilatorsnelheid tonen"
+
+msgid "Show GPU fan speed percentage in the panel."
+msgstr "Toon GPU-ventilatorsnelheid in procenten in het paneel."
+
+msgid "Fan Display Mode"
+msgstr "Ventilatorweergavemodus"
+
+msgid "Choose how to display fan speed: as text or as a pie chart."
+msgstr "Kies hoe ventilatorsnelheid wordt weergegeven."

@@ -1,0 +1,325 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: NVIDIA Monitor\n"
+"Language: tr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "nvidia-smi not found"
+msgstr "nvidia-smi bulunamadı"
+
+msgid ""
+"nvidia-smi not found in PATH.\n"
+"Please ensure NVIDIA drivers are installed."
+msgstr ""
+"nvidia-smi PATH içinde bulunamadı.\n"
+"NVIDIA sürücülerinin yüklü olduğundan emin olun."
+
+msgid "Displays NVIDIA GPU monitor"
+msgstr "NVIDIA GPU izleyicisini gösterir"
+
+msgid "Init Error"
+msgstr "Başlatma Hatası"
+
+msgid "Open Monitor Graph"
+msgstr "Monitör Grafiğini Aç"
+
+msgid "Settings"
+msgstr "Ayarlar"
+
+msgid "Applet Settings"
+msgstr "Applet Ayarları"
+
+msgid "Monitor Settings"
+msgstr "Monitör Ayarları"
+
+msgid "Reset All Settings"
+msgstr "Tüm Ayarları Sıfırla"
+
+msgid "Error building menu: "
+msgstr "Menü oluşturulurken hata: "
+
+msgid "Error"
+msgstr "Hata"
+
+msgid "Initializing..."
+msgstr "Başlatılıyor..."
+
+msgid "Mem"
+msgstr "Mem"
+
+msgid "GPU"
+msgstr "GPU"
+
+msgid "Fan"
+msgstr "Fan"
+
+msgid "Failed to run nvidia-smi.\n"
+msgstr "nvidia-smi çalıştırılamadı.\n"
+
+msgid "Unknown"
+msgstr "Bilinmiyor"
+
+msgid "An unexpected error occurred while running nvidia-smi.\n"
+msgstr "nvidia-smi çalıştırılırken beklenmeyen bir hata oluştu.\n"
+
+msgid "Err"
+msgstr "Hata"
+
+msgid "GPU: "
+msgstr "GPU: "
+
+msgid "Fan: "
+msgstr "Fan: "
+
+msgid "NVIDIA Monitor"
+msgstr "NVIDIA Monitor"
+
+msgid ""
+"Monitors GPU temperature, memory, utilization, and fan speed using nvidia-"
+"smi"
+msgstr ""
+"nvidia-smi kullanarak GPU sıcaklığı, bellek, kullanım ve fan hızını izler"
+
+msgid "General Settings"
+msgstr "Genel Ayarlar"
+
+msgid "Temperature"
+msgstr "Sıcaklık"
+
+msgid "Memory Usage"
+msgstr "Bellek Kullanımı"
+
+msgid "GPU Utilization"
+msgstr "GPU Kullanımı"
+
+msgid "Fan Speed"
+msgstr "Fan Hızı"
+
+msgid "Note"
+msgstr "Not"
+
+msgid "Metric Colors"
+msgstr "Metrik Renkleri"
+
+msgid "Layout Colors"
+msgstr "Düzen Renkleri"
+
+msgid "Y-Axis Settings"
+msgstr "Y Ekseni Ayarları"
+
+msgid "X-Axis Settings"
+msgstr "X Ekseni Ayarları"
+
+msgid ""
+"Changes to monitor settings will take effect after restarting the monitor."
+msgstr ""
+"Monitör ayarlarındaki değişiklikler yeniden başlatıldıktan sonra geçerli olur."
+
+msgid "1 Line (50%)"
+msgstr "1 Çizgi (50%)"
+
+msgid "2 Lines (33%, 66%)"
+msgstr "2 Çizgi (33%, 66%)"
+
+msgid "3 Lines (25%, 50%, 75%)"
+msgstr "3 Çizgi (25%, 50%, 75%)"
+
+msgid "4 Lines (20%, 40%, 60%, 80%)"
+msgstr "4 Çizgi (20%, 40%, 60%, 80%)"
+
+msgid "5 Lines (16%, 33%, 50%, 66%, 83%)"
+msgstr "5 Çizgi (16%, 33%, 50%, 66%, 83%)"
+
+msgid "9 Lines (Every 10%)"
+msgstr "9 Çizgi (her %10)"
+
+msgid "Y-Axis Guides"
+msgstr "Y Ekseni Kılavuzları"
+
+msgid "Number of guide lines for the Y-Axis."
+msgstr "Y ekseni için kılavuz çizgi sayısı."
+
+msgid "Celsius (°C)"
+msgstr "Celsius (°C)"
+
+msgid "Fahrenheit (°F)"
+msgstr "Fahrenheit (°F)"
+
+msgid "Y-Axis Temperature Unit"
+msgstr "Y Ekseni Sıcaklık Birimi"
+
+msgid "Unit for the temperature axis in the monitor."
+msgstr "Monitördeki sıcaklık ekseni için birim."
+
+msgid "X-Axis Guides"
+msgstr "X Ekseni Kılavuzları"
+
+msgid "Number of vertical guide lines for the X-Axis."
+msgstr "X ekseni için dikey kılavuz çizgi sayısı."
+
+msgid "Seconds"
+msgstr "Saniye"
+
+msgid "Minutes"
+msgstr "Dakika"
+
+msgid "Hours"
+msgstr "Saat"
+
+msgid "X-Axis Unit"
+msgstr "X Ekseni Birimi"
+
+msgid "Unit of time for the X-Axis."
+msgstr "X ekseni için zaman birimi."
+
+msgid "X-Axis Length (Seconds)"
+msgstr "X Ekseni Uzunluğu (Saniye)"
+
+msgid "Total duration shown on the graph."
+msgstr "Grafikte gösterilen toplam süre."
+
+msgid "X-Axis Length (Minutes)"
+msgstr "X Ekseni Uzunluğu (Dakika)"
+
+msgid "X-Axis Length (Hours)"
+msgstr "X Ekseni Uzunluğu (Saat)"
+
+msgid "Temperature Color"
+msgstr "Sıcaklık Rengi"
+
+msgid "Color used for temperature in the graph."
+msgstr "Grafikte sıcaklık için kullanılan renk."
+
+msgid "Memory Usage Color"
+msgstr "Bellek Kullanım Rengi"
+
+msgid "Color used for memory usage in the graph."
+msgstr "Grafikte bellek kullanımı için kullanılan renk."
+
+msgid "GPU Utilization Color"
+msgstr "GPU Kullanım Rengi"
+
+msgid "Color used for GPU utilization in the graph."
+msgstr "Grafikte GPU kullanımı için kullanılan renk."
+
+msgid "Fan Speed Color"
+msgstr "Fan Hızı Rengi"
+
+msgid "Color used for fan speed in the graph."
+msgstr "Grafikte fan hızı için kullanılan renk."
+
+msgid "Background Color"
+msgstr "Arka Plan Rengi"
+
+msgid "Background color of the graph."
+msgstr "Grafiğin arka plan rengi."
+
+msgid "Temperature Axis Color"
+msgstr "Sıcaklık Ekseni Rengi"
+
+msgid "Color for the temperature axis labels."
+msgstr "Sıcaklık ekseni etiketleri için renk."
+
+msgid "Percentage Axis Color"
+msgstr "Yüzde Ekseni Rengi"
+
+msgid "Color for the percentage axis labels."
+msgstr "Yüzde ekseni etiketleri için renk."
+
+msgid "X-Axis Color"
+msgstr "X Ekseni Rengi"
+
+msgid "Color for the X-axis labels (Time)."
+msgstr "X ekseni etiketleri (zaman) için renk."
+
+msgid "Guidelines Color"
+msgstr "Kılavuz Çizgi Rengi"
+
+msgid "Color for the grid/guide lines."
+msgstr "Izgara/kılavuz çizgileri için renk."
+
+msgid "Refresh Interval"
+msgstr "Yenileme Aralığı"
+
+msgid "How often to update the GPU stats (in seconds)."
+msgstr "GPU istatistiklerinin ne sıklıkla güncelleneceği (saniye)."
+
+msgid "Applet Border Color"
+msgstr "Applet Kenarlık Rengi"
+
+msgid "Color of the applet border. Set alpha to 0 for no border."
+msgstr "Applet kenarlık rengi. Kenarlık olmaması için alfa değerini 0 yapın."
+
+msgid "UTF-8"
+msgstr "UTF-8"
+
+msgid "macintosh"
+msgstr "macintosh"
+
+msgid "ASCII"
+msgstr "ASCII"
+
+msgid "nvidia-smi Output Encoding"
+msgstr "nvidia-smi Çıktı Kodlaması"
+
+msgid "Select the character encoding used by nvidia-smi output."
+msgstr "nvidia-smi çıktısı için kullanılan karakter kodlamasını seçin."
+
+msgid "Show Temperature"
+msgstr "Sıcaklığı Göster"
+
+msgid "Show GPU temperature in the panel."
+msgstr "Panelde GPU sıcaklığını göster."
+
+msgid "Temperature Unit"
+msgstr "Sıcaklık Birimi"
+
+msgid "Choose the unit for displaying GPU temperature."
+msgstr "GPU sıcaklığını göstermek için birim seçin."
+
+msgid "Show Memory Usage"
+msgstr "Bellek Kullanımını Göster"
+
+msgid "Show GPU memory usage in the panel."
+msgstr "Panelde GPU bellek kullanımını göster."
+
+msgid "Text (Used / Total)"
+msgstr "Metin (Kullanılan / Toplam)"
+
+msgid "Pie Chart"
+msgstr "Pasta Grafik"
+
+msgid "Memory Display Mode"
+msgstr "Bellek Gösterim Modu"
+
+msgid "Choose how to display memory usage: as text or as a pie chart."
+msgstr "Bellek kullanımının metin mi yoksa pasta grafik olarak mı gösterileceğini seçin."
+
+msgid "Show GPU Utilization"
+msgstr "GPU Kullanımını Göster"
+
+msgid "Show GPU utilization percentage in the panel."
+msgstr "Panelde GPU kullanım yüzdesini göster."
+
+msgid "Text (Percent)"
+msgstr "Metin (Yüzde)"
+
+msgid "GPU Display Mode"
+msgstr "GPU Gösterim Modu"
+
+msgid "Choose how to display GPU utilization: as text or as a pie chart."
+msgstr "GPU kullanımını metin veya pasta grafik olarak gösterme biçimini seçin."
+
+msgid "Show Fan Speed"
+msgstr "Fan Hızını Göster"
+
+msgid "Show GPU fan speed percentage in the panel."
+msgstr "Panelde GPU fan hızını yüzde olarak göster."
+
+msgid "Fan Display Mode"
+msgstr "Fan Gösterim Modu"
+
+msgid "Choose how to display fan speed: as text or as a pie chart."
+msgstr "Fan hızını metin veya pasta grafik olarak gösterme biçimini seçin."

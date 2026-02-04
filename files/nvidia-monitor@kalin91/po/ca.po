@@ -1,0 +1,334 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: NVIDIA Monitor\n"
+"Language: ca\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "nvidia-smi not found"
+msgstr "nvidia-smi no trobat"
+
+msgid ""
+"nvidia-smi not found in PATH.\n"
+"Please ensure NVIDIA drivers are installed."
+msgstr ""
+"nvidia-smi no s'ha trobat al PATH.\n"
+"Assegureu-vos que els controladors NVIDIA estan instal·lats."
+
+msgid "Displays NVIDIA GPU monitor"
+msgstr "Mostra el monitor de GPU NVIDIA"
+
+msgid "Init Error"
+msgstr "Error d'inicialització"
+
+msgid "Open Monitor Graph"
+msgstr "Obre el gràfic del monitor"
+
+msgid "Settings"
+msgstr "Configuració"
+
+msgid "Applet Settings"
+msgstr "Configuració de l'applet"
+
+msgid "Monitor Settings"
+msgstr "Configuració del monitor"
+
+msgid "Reset All Settings"
+msgstr "Restableix tota la configuració"
+
+msgid "Error building menu: "
+msgstr "Error en crear el menú: "
+
+msgid "Error"
+msgstr "Error"
+
+msgid "Initializing..."
+msgstr "Inicialitzant..."
+
+msgid "Mem"
+msgstr "Mem"
+
+msgid "GPU"
+msgstr "GPU"
+
+msgid "Fan"
+msgstr "Fan"
+
+msgid "Failed to run nvidia-smi.\n"
+msgstr "No s'ha pogut executar nvidia-smi.\n"
+
+msgid "Unknown"
+msgstr "Desconegut"
+
+msgid "An unexpected error occurred while running nvidia-smi.\n"
+msgstr "S'ha produït un error inesperat en executar nvidia-smi.\n"
+
+msgid "Err"
+msgstr "Err"
+
+msgid "GPU: "
+msgstr "GPU: "
+
+msgid "Fan: "
+msgstr "Fan: "
+
+msgid "NVIDIA Monitor"
+msgstr "Monitor NVIDIA"
+
+msgid ""
+"Monitors GPU temperature, memory, utilization, and fan speed using nvidia-"
+"smi"
+msgstr ""
+"Supervisa la temperatura, la memòria, l'ús i la velocitat del ventilador de la GPU mitjançant nvidia-smi"
+
+msgid "General Settings"
+msgstr "Configuració general"
+
+msgid "Temperature"
+msgstr "Temperatura"
+
+msgid "Memory Usage"
+msgstr "Ús de memòria"
+
+msgid "GPU Utilization"
+msgstr "Ús de GPU"
+
+msgid "Fan Speed"
+msgstr "Velocitat del ventilador"
+
+msgid "Note"
+msgstr "Nota"
+
+msgid "Metric Colors"
+msgstr "Colors de mètrica"
+
+msgid "Layout Colors"
+msgstr "Colors del disseny"
+
+msgid "Y-Axis Settings"
+msgstr "Configuració de l'eix Y"
+
+msgid "X-Axis Settings"
+msgstr "Configuració de l'eix X"
+
+msgid ""
+"Changes to monitor settings will take effect after restarting the monitor."
+msgstr ""
+"Els canvis en la configuració del monitor tindran efecte després de reiniciar-lo."
+
+msgid "1 Line (50%)"
+msgstr "1 línia (50%)"
+
+msgid "2 Lines (33%, 66%)"
+msgstr "2 línies (33%, 66%)"
+
+msgid "3 Lines (25%, 50%, 75%)"
+msgstr "3 línies (25%, 50%, 75%)"
+
+msgid "4 Lines (20%, 40%, 60%, 80%)"
+msgstr "4 línies (20%, 40%, 60%, 80%)"
+
+msgid "5 Lines (16%, 33%, 50%, 66%, 83%)"
+msgstr "5 línies (16%, 33%, 50%, 66%, 83%)"
+
+msgid "9 Lines (Every 10%)"
+msgstr "9 línies (cada 10%)"
+
+msgid "Y-Axis Guides"
+msgstr "Guies de l'eix Y"
+
+msgid "Number of guide lines for the Y-Axis."
+msgstr "Nombre de línies guia per a l'eix Y."
+
+msgid "Celsius (°C)"
+msgstr "Celsius (°C)"
+
+msgid "Fahrenheit (°F)"
+msgstr "Fahrenheit (°F)"
+
+msgid "Y-Axis Temperature Unit"
+msgstr "Unitat de temperatura de l'eix Y"
+
+msgid "Unit for the temperature axis in the monitor."
+msgstr "Unitat per a l'eix de temperatura del monitor."
+
+msgid "X-Axis Guides"
+msgstr "Guies de l'eix X"
+
+msgid "Number of vertical guide lines for the X-Axis."
+msgstr "Nombre de línies guia verticals per a l'eix X."
+
+msgid "Seconds"
+msgstr "Segons"
+
+msgid "Minutes"
+msgstr "Minuts"
+
+msgid "Hours"
+msgstr "Hores"
+
+msgid "X-Axis Unit"
+msgstr "Unitat de l'eix X"
+
+msgid "Unit of time for the X-Axis."
+msgstr "Unitat de temps per a l'eix X."
+
+msgid "s"
+msgstr "s"
+
+msgid "X-Axis Length (Seconds)"
+msgstr "Longitud de l'eix X (segons)"
+
+msgid "Total duration shown on the graph."
+msgstr "Durada total mostrada al gràfic."
+
+msgid "m"
+msgstr "m"
+
+msgid "X-Axis Length (Minutes)"
+msgstr "Longitud de l'eix X (minuts)"
+
+msgid "h"
+msgstr "h"
+
+msgid "X-Axis Length (Hours)"
+msgstr "Longitud de l'eix X (hores)"
+
+msgid "Temperature Color"
+msgstr "Color de la temperatura"
+
+msgid "Color used for temperature in the graph."
+msgstr "Color utilitzat per a la temperatura al gràfic."
+
+msgid "Memory Usage Color"
+msgstr "Color de l'ús de memòria"
+
+msgid "Color used for memory usage in the graph."
+msgstr "Color utilitzat per a l'ús de memòria al gràfic."
+
+msgid "GPU Utilization Color"
+msgstr "Color de l'ús de GPU"
+
+msgid "Color used for GPU utilization in the graph."
+msgstr "Color utilitzat per a l'ús de GPU al gràfic."
+
+msgid "Fan Speed Color"
+msgstr "Color de la velocitat del ventilador"
+
+msgid "Color used for fan speed in the graph."
+msgstr "Color utilitzat per a la velocitat del ventilador al gràfic."
+
+msgid "Background Color"
+msgstr "Color de fons"
+
+msgid "Background color of the graph."
+msgstr "Color de fons del gràfic."
+
+msgid "Temperature Axis Color"
+msgstr "Color de l'eix de temperatura"
+
+msgid "Color for the temperature axis labels."
+msgstr "Color per a les etiquetes de l'eix de temperatura."
+
+msgid "Percentage Axis Color"
+msgstr "Color de l'eix de percentatge"
+
+msgid "Color for the percentage axis labels."
+msgstr "Color per a les etiquetes de percentatge."
+
+msgid "X-Axis Color"
+msgstr "Color de l'eix X"
+
+msgid "Color for the X-axis labels (Time)."
+msgstr "Color per a les etiquetes de l'eix X (temps)."
+
+msgid "Guidelines Color"
+msgstr "Color de les línies guia"
+
+msgid "Color for the grid/guide lines."
+msgstr "Color per a les línies de la graella."
+
+msgid "Refresh Interval"
+msgstr "Interval d'actualització"
+
+msgid "How often to update the GPU stats (in seconds)."
+msgstr "Amb quina freqüència s'actualitzen les estadístiques de la GPU (en segons)."
+
+msgid "Applet Border Color"
+msgstr "Color del contorn de l'applet"
+
+msgid "Color of the applet border. Set alpha to 0 for no border."
+msgstr "Color del contorn de l'applet. Poseu alfa a 0 per eliminar-lo."
+
+msgid "UTF-8"
+msgstr "UTF-8"
+
+msgid "macintosh"
+msgstr "macintosh"
+
+msgid "ASCII"
+msgstr "ASCII"
+
+msgid "nvidia-smi Output Encoding"
+msgstr "Codificació de sortida de nvidia-smi"
+
+msgid "Select the character encoding used by nvidia-smi output."
+msgstr "Seleccioneu la codificació de caràcters utilitzada per la sortida de nvidia-smi."
+
+msgid "Show Temperature"
+msgstr "Mostra la temperatura"
+
+msgid "Show GPU temperature in the panel."
+msgstr "Mostra la temperatura de la GPU al panell."
+
+msgid "Temperature Unit"
+msgstr "Unitat de temperatura"
+
+msgid "Choose the unit for displaying GPU temperature."
+msgstr "Trieu la unitat per mostrar la temperatura de la GPU."
+
+msgid "Show Memory Usage"
+msgstr "Mostra l'ús de memòria"
+
+msgid "Show GPU memory usage in the panel."
+msgstr "Mostra l'ús de memòria de la GPU al panell."
+
+msgid "Text (Used / Total)"
+msgstr "Text (usada / total)"
+
+msgid "Pie Chart"
+msgstr "Gràfic circular"
+
+msgid "Memory Display Mode"
+msgstr "Mode de visualització de memòria"
+
+msgid "Choose how to display memory usage: as text or as a pie chart."
+msgstr "Trieu com mostrar l'ús de memòria: com a text o com a gràfic circular."
+
+msgid "Show GPU Utilization"
+msgstr "Mostra l'ús de GPU"
+
+msgid "Show GPU utilization percentage in the panel."
+msgstr "Mostra el percentatge d'ús de la GPU al panell."
+
+msgid "Text (Percent)"
+msgstr "Text (percentatge)"
+
+msgid "GPU Display Mode"
+msgstr "Mode de visualització de GPU"
+
+msgid "Choose how to display GPU utilization: as text or as a pie chart."
+msgstr "Trieu com mostrar l'ús de GPU: com a text o com a gràfic circular."
+
+msgid "Show Fan Speed"
+msgstr "Mostra la velocitat del ventilador"
+
+msgid "Show GPU fan speed percentage in the panel."
+msgstr "Mostra el percentatge de velocitat del ventilador de la GPU al panell."
+
+msgid "Fan Display Mode"
+msgstr "Mode de visualització del ventilador"
+
+msgid "Choose how to display fan speed: as text or as a pie chart."
+msgstr "Trieu com mostrar la velocitat del ventilador: com a text o com a gràfic circular."

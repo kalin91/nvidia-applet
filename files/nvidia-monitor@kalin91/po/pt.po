@@ -1,0 +1,337 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Language: pt\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: applet.js:43
+msgid "nvidia-smi not found"
+msgstr "nvidia-smi não encontrado"
+
+#: applet.js:44
+msgid ""
+"nvidia-smi not found in PATH.\n"
+"Please ensure NVIDIA drivers are installed."
+msgstr ""
+"nvidia-smi não encontrado no PATH.\n"
+"Certifique-se de que os drivers NVIDIA estão instalados."
+
+#: applet.js:49
+msgid "Displays NVIDIA GPU monitor"
+msgstr "Exibe monitor da GPU NVIDIA"
+
+#: applet.js:55
+msgid "Init Error"
+msgstr "Erro de inicialização"
+
+#: applet.js:80
+msgid "Open Monitor Graph"
+msgstr "Abrir gráfico do monitor"
+
+#: applet.js:84
+msgid "Settings"
+msgstr "Configurações"
+
+#: applet.js:89
+msgid "Applet Settings"
+msgstr "Configurações do Applet"
+
+#: applet.js:92
+msgid "Monitor Settings"
+msgstr "Configurações do Monitor"
+
+#: applet.js:95
+msgid "Reset All Settings"
+msgstr "Redefinir todas as configurações"
+
+#: applet.js:117
+msgid "Error building menu: "
+msgstr "Erro ao construir o menu: "
+
+#: applet.js:254 applet.js:521
+msgid "Error"
+msgstr "Erro"
+
+#: applet.js:271
+msgid "Initializing..."
+msgstr "Inicializando..."
+
+#: applet.js:281
+msgid "Mem"
+msgstr "Mem"
+
+#: applet.js:290
+msgid "GPU"
+msgstr "GPU"
+
+#: applet.js:299
+msgid "Fan"
+msgstr "Fan"
+
+#: applet.js:522
+msgid "Failed to run nvidia-smi.\n"
+msgstr "Falha ao executar nvidia-smi.\n"
+
+#: applet.js:522
+msgid "Unknown"
+msgstr "Desconhecido"
+
+#: applet.js:527
+msgid "An unexpected error occurred while running nvidia-smi.\n"
+msgstr "Ocorreu um erro inesperado ao executar nvidia-smi.\n"
+
+#: applet.js:528
+msgid "Err"
+msgstr "Err"
+
+#: applet.js:692
+msgid "GPU: "
+msgstr "GPU: "
+
+#: applet.js:700
+msgid "Fan: "
+msgstr "Fan: "
+
+msgid "NVIDIA Monitor"
+msgstr "Monitor NVIDIA"
+
+msgid ""
+"Monitors GPU temperature, memory, utilization, and fan speed using nvidia-"
+"smi"
+msgstr ""
+"Monitora temperatura da GPU, memória, utilização e velocidade do ventilador usando nvidia-smi"
+
+msgid "General Settings"
+msgstr "Configurações gerais"
+
+msgid "Temperature"
+msgstr "Temperatura"
+
+msgid "Memory Usage"
+msgstr "Uso de memória"
+
+msgid "GPU Utilization"
+msgstr "Utilização da GPU"
+
+msgid "Fan Speed"
+msgstr "Velocidade do ventilador"
+
+msgid "Note"
+msgstr "Nota"
+
+msgid "Metric Colors"
+msgstr "Cores das métricas"
+
+msgid "Layout Colors"
+msgstr "Cores do layout"
+
+msgid "Y-Axis Settings"
+msgstr "Configurações do eixo Y"
+
+msgid "X-Axis Settings"
+msgstr "Configurações do eixo X"
+
+msgid ""
+"Changes to monitor settings will take effect after restarting the monitor."
+msgstr ""
+"As alterações nas configurações do monitor terão efeito após reiniciar o monitor."
+
+msgid "1 Line (50%)"
+msgstr "1 Linha (50%)"
+
+msgid "2 Lines (33%, 66%)"
+msgstr "2 Linhas (33%, 66%)"
+
+msgid "3 Lines (25%, 50%, 75%)"
+msgstr "3 Linhas (25%, 50%, 75%)"
+
+msgid "4 Lines (20%, 40%, 60%, 80%)"
+msgstr "4 Linhas (20%, 40%, 60%, 80%)"
+
+msgid "5 Lines (16%, 33%, 50%, 66%, 83%)"
+msgstr "5 Linhas (16%, 33%, 50%, 66%, 83%)"
+
+msgid "9 Lines (Every 10%)"
+msgstr "9 Linhas (a cada 10%)"
+
+msgid "Y-Axis Guides"
+msgstr "Guias do eixo Y"
+
+msgid "Number of guide lines for the Y-Axis."
+msgstr "Número de linhas guia para o eixo Y."
+
+msgid "Celsius (°C)"
+msgstr "Celsius (°C)"
+
+msgid "Fahrenheit (°F)"
+msgstr "Fahrenheit (°F)"
+
+msgid "Y-Axis Temperature Unit"
+msgstr "Unidade de temperatura do eixo Y"
+
+msgid "Unit for the temperature axis in the monitor."
+msgstr "Unidade para o eixo de temperatura no monitor."
+
+msgid "X-Axis Guides"
+msgstr "Guias do eixo X"
+
+msgid "Number of vertical guide lines for the X-Axis."
+msgstr "Número de linhas verticais guia para o eixo X."
+
+msgid "Seconds"
+msgstr "Segundos"
+
+msgid "Minutes"
+msgstr "Minutos"
+
+msgid "Hours"
+msgstr "Horas"
+
+msgid "X-Axis Unit"
+msgstr "Unidade do eixo X"
+
+msgid "Unit of time for the X-Axis."
+msgstr "Unidade de tempo para o eixo X."
+
+msgid "X-Axis Length (Seconds)"
+msgstr "Comprimento do eixo X (segundos)"
+
+msgid "Total duration shown on the graph."
+msgstr "Duração total mostrada no gráfico."
+
+msgid "X-Axis Length (Minutes)"
+msgstr "Comprimento do eixo X (minutos)"
+
+msgid "X-Axis Length (Hours)"
+msgstr "Comprimento do eixo X (horas)"
+
+msgid "Temperature Color"
+msgstr "Cor da temperatura"
+
+msgid "Color used for temperature in the graph."
+msgstr "Cor usada para a temperatura no gráfico."
+
+msgid "Memory Usage Color"
+msgstr "Cor do uso de memória"
+
+msgid "Color used for memory usage in the graph."
+msgstr "Cor usada para o uso de memória no gráfico."
+
+msgid "GPU Utilization Color"
+msgstr "Cor da utilização da GPU"
+
+msgid "Color used for GPU utilization in the graph."
+msgstr "Cor usada para a utilização da GPU no gráfico."
+
+msgid "Fan Speed Color"
+msgstr "Cor da velocidade do ventilador"
+
+msgid "Color used for fan speed in the graph."
+msgstr "Cor usada para a velocidade do ventilador no gráfico."
+
+msgid "Background Color"
+msgstr "Cor de fundo"
+
+msgid "Background color of the graph."
+msgstr "Cor de fundo do gráfico."
+
+msgid "Temperature Axis Color"
+msgstr "Cor do eixo de temperatura"
+
+msgid "Color for the temperature axis labels."
+msgstr "Cor para os rótulos do eixo de temperatura."
+
+msgid "Percentage Axis Color"
+msgstr "Cor do eixo de porcentagem"
+
+msgid "Color for the percentage axis labels."
+msgstr "Cor para os rótulos do eixo de porcentagem."
+
+msgid "X-Axis Color"
+msgstr "Cor do eixo X"
+
+msgid "Color for the X-axis labels (Time)."
+msgstr "Cor para os rótulos do eixo X (tempo)."
+
+msgid "Guidelines Color"
+msgstr "Cor das linhas guia"
+
+msgid "Color for the grid/guide lines."
+msgstr "Cor para as linhas da grade/guia."
+
+msgid "Refresh Interval"
+msgstr "Intervalo de atualização"
+
+msgid "How often to update the GPU stats (in seconds)."
+msgstr "Com que frequência atualizar as estatísticas da GPU (em segundos)."
+
+msgid "Applet Border Color"
+msgstr "Cor da borda do applet"
+
+msgid "Color of the applet border. Set alpha to 0 for no border."
+msgstr "Cor da borda do applet. Defina alfa como 0 para sem borda."
+
+msgid "nvidia-smi Output Encoding"
+msgstr "Codificação de saída do nvidia-smi"
+
+msgid "Select the character encoding used by nvidia-smi output."
+msgstr "Selecione a codificação de caracteres usada pela saída do nvidia-smi."
+
+msgid "Show Temperature"
+msgstr "Mostrar temperatura"
+
+msgid "Show GPU temperature in the panel."
+msgstr "Mostrar temperatura da GPU no painel."
+
+msgid "Temperature Unit"
+msgstr "Unidade de temperatura"
+
+msgid "Choose the unit for displaying GPU temperature."
+msgstr "Escolha a unidade para exibir a temperatura da GPU."
+
+msgid "Show Memory Usage"
+msgstr "Mostrar uso de memória"
+
+msgid "Show GPU memory usage in the panel."
+msgstr "Mostrar uso de memória da GPU no painel."
+
+msgid "Text (Used / Total)"
+msgstr "Texto (Usado / Total)"
+
+msgid "Pie Chart"
+msgstr "Gráfico circular"
+
+msgid "Memory Display Mode"
+msgstr "Modo de exibição da memória"
+
+msgid "Choose how to display memory usage: as text or as a pie chart."
+msgstr "Escolha como exibir o uso de memória: como texto ou gráfico circular."
+
+msgid "Show GPU Utilization"
+msgstr "Mostrar utilização da GPU"
+
+msgid "Show GPU utilization percentage in the panel."
+msgstr "Mostrar porcentagem de utilização da GPU no painel."
+
+msgid "Text (Percent)"
+msgstr "Texto (Porcentagem)"
+
+msgid "GPU Display Mode"
+msgstr "Modo de exibição da GPU"
+
+msgid "Choose how to display GPU utilization: as text or as a pie chart."
+msgstr "Escolha como exibir a utilização da GPU: como texto ou gráfico circular."
+
+msgid "Show Fan Speed"
+msgstr "Mostrar velocidade do ventilador"
+
+msgid "Show GPU fan speed percentage in the panel."
+msgstr "Mostrar porcentagem da velocidade do ventilador da GPU no painel."
+
+msgid "Fan Display Mode"
+msgstr "Modo de exibição do ventilador"
+
+msgid "Choose how to display fan speed: as text or as a pie chart."
+msgstr "Escolha como exibir a velocidade do ventilador: como texto ou gráfico circular."

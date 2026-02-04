@@ -1,0 +1,337 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: applet.js:43
+msgid "nvidia-smi not found"
+msgstr "nvidia-smi не найден"
+
+#: applet.js:44
+msgid ""
+"nvidia-smi not found in PATH.\n"
+"Please ensure NVIDIA drivers are installed."
+msgstr ""
+"nvidia-smi не найден в PATH.\n"
+"Убедитесь, что драйверы NVIDIA установлены."
+
+#: applet.js:49
+msgid "Displays NVIDIA GPU monitor"
+msgstr "Отображает монитор GPU NVIDIA"
+
+#: applet.js:55
+msgid "Init Error"
+msgstr "Ошибка инициализации"
+
+#: applet.js:80
+msgid "Open Monitor Graph"
+msgstr "Открыть график монитора"
+
+#: applet.js:84
+msgid "Settings"
+msgstr "Настройки"
+
+#: applet.js:89
+msgid "Applet Settings"
+msgstr "Настройки апплета"
+
+#: applet.js:92
+msgid "Monitor Settings"
+msgstr "Настройки монитора"
+
+#: applet.js:95
+msgid "Reset All Settings"
+msgstr "Сбросить все настройки"
+
+#: applet.js:117
+msgid "Error building menu: "
+msgstr "Ошибка создания меню: "
+
+#: applet.js:254 applet.js:521
+msgid "Error"
+msgstr "Ошибка"
+
+#: applet.js:271
+msgid "Initializing..."
+msgstr "Инициализация..."
+
+#: applet.js:281
+msgid "Mem"
+msgstr "Mem"
+
+#: applet.js:290
+msgid "GPU"
+msgstr "GPU"
+
+#: applet.js:299
+msgid "Fan"
+msgstr "Fan"
+
+#: applet.js:522
+msgid "Failed to run nvidia-smi.\n"
+msgstr "Не удалось запустить nvidia-smi.\n"
+
+#: applet.js:522
+msgid "Unknown"
+msgstr "Неизвестно"
+
+#: applet.js:527
+msgid "An unexpected error occurred while running nvidia-smi.\n"
+msgstr "Произошла непредвиденная ошибка при запуске nvidia-smi.\n"
+
+#: applet.js:528
+msgid "Err"
+msgstr "Err"
+
+#: applet.js:692
+msgid "GPU: "
+msgstr "GPU: "
+
+#: applet.js:700
+msgid "Fan: "
+msgstr "Fan: "
+
+msgid "NVIDIA Monitor"
+msgstr "Монитор NVIDIA"
+
+msgid ""
+"Monitors GPU temperature, memory, utilization, and fan speed using nvidia-"
+"smi"
+msgstr ""
+"Отслеживает температуру GPU, память, загрузку и скорость вентилятора с помощью nvidia-smi"
+
+msgid "General Settings"
+msgstr "Общие настройки"
+
+msgid "Temperature"
+msgstr "Температура"
+
+msgid "Memory Usage"
+msgstr "Использование памяти"
+
+msgid "GPU Utilization"
+msgstr "Загрузка GPU"
+
+msgid "Fan Speed"
+msgstr "Скорость вентилятора"
+
+msgid "Note"
+msgstr "Примечание"
+
+msgid "Metric Colors"
+msgstr "Цвета метрик"
+
+msgid "Layout Colors"
+msgstr "Цвета интерфейса"
+
+msgid "Y-Axis Settings"
+msgstr "Настройки оси Y"
+
+msgid "X-Axis Settings"
+msgstr "Настройки оси X"
+
+msgid ""
+"Changes to monitor settings will take effect after restarting the monitor."
+msgstr ""
+"Изменения настроек вступят в силу после перезапуска монитора."
+
+msgid "1 Line (50%)"
+msgstr "1 линия (50%)"
+
+msgid "2 Lines (33%, 66%)"
+msgstr "2 линии (33%, 66%)"
+
+msgid "3 Lines (25%, 50%, 75%)"
+msgstr "3 линии (25%, 50%, 75%)"
+
+msgid "4 Lines (20%, 40%, 60%, 80%)"
+msgstr "4 линии (20%, 40%, 60%, 80%)"
+
+msgid "5 Lines (16%, 33%, 50%, 66%, 83%)"
+msgstr "5 линий (16%, 33%, 50%, 66%, 83%)"
+
+msgid "9 Lines (Every 10%)"
+msgstr "9 линий (каждые 10%)"
+
+msgid "Y-Axis Guides"
+msgstr "Направляющие оси Y"
+
+msgid "Number of guide lines for the Y-Axis."
+msgstr "Количество направляющих линий для оси Y."
+
+msgid "Celsius (°C)"
+msgstr "Цельсий (°C)"
+
+msgid "Fahrenheit (°F)"
+msgstr "Фаренгейт (°F)"
+
+msgid "Y-Axis Temperature Unit"
+msgstr "Единица температуры оси Y"
+
+msgid "Unit for the temperature axis in the monitor."
+msgstr "Единица измерения температуры на оси Y."
+
+msgid "X-Axis Guides"
+msgstr "Направляющие оси X"
+
+msgid "Number of vertical guide lines for the X-Axis."
+msgstr "Количество вертикальных направляющих линий для оси X."
+
+msgid "Seconds"
+msgstr "Секунды"
+
+msgid "Minutes"
+msgstr "Минуты"
+
+msgid "Hours"
+msgstr "Часы"
+
+msgid "X-Axis Unit"
+msgstr "Единица оси X"
+
+msgid "Unit of time for the X-Axis."
+msgstr "Единица времени для оси X."
+
+msgid "X-Axis Length (Seconds)"
+msgstr "Длина оси X (секунды)"
+
+msgid "Total duration shown on the graph."
+msgstr "Общая продолжительность, отображаемая на графике."
+
+msgid "X-Axis Length (Minutes)"
+msgstr "Длина оси X (минуты)"
+
+msgid "X-Axis Length (Hours)"
+msgstr "Длина оси X (часы)"
+
+msgid "Temperature Color"
+msgstr "Цвет температуры"
+
+msgid "Color used for temperature in the graph."
+msgstr "Цвет температуры на графике."
+
+msgid "Memory Usage Color"
+msgstr "Цвет использования памяти"
+
+msgid "Color used for memory usage in the graph."
+msgstr "Цвет использования памяти на графике."
+
+msgid "GPU Utilization Color"
+msgstr "Цвет загрузки GPU"
+
+msgid "Color used for GPU utilization in the graph."
+msgstr "Цвет загрузки GPU на графике."
+
+msgid "Fan Speed Color"
+msgstr "Цвет скорости вентилятора"
+
+msgid "Color used for fan speed in the graph."
+msgstr "Цвет скорости вентилятора на графике."
+
+msgid "Background Color"
+msgstr "Цвет фона"
+
+msgid "Background color of the graph."
+msgstr "Цвет фона графика."
+
+msgid "Temperature Axis Color"
+msgstr "Цвет оси температуры"
+
+msgid "Color for the temperature axis labels."
+msgstr "Цвет подписей оси температуры."
+
+msgid "Percentage Axis Color"
+msgstr "Цвет оси процентов"
+
+msgid "Color for the percentage axis labels."
+msgstr "Цвет подписей оси процентов."
+
+msgid "X-Axis Color"
+msgstr "Цвет оси X"
+
+msgid "Color for the X-axis labels (Time)."
+msgstr "Цвет подписей оси X (время)."
+
+msgid "Guidelines Color"
+msgstr "Цвет направляющих"
+
+msgid "Color for the grid/guide lines."
+msgstr "Цвет линий сетки/направляющих."
+
+msgid "Refresh Interval"
+msgstr "Интервал обновления"
+
+msgid "How often to update the GPU stats (in seconds)."
+msgstr "Как часто обновлять статистику GPU (в секундах)."
+
+msgid "Applet Border Color"
+msgstr "Цвет рамки апплета"
+
+msgid "Color of the applet border. Set alpha to 0 for no border."
+msgstr "Цвет рамки апплета. Установите альфа 0 для отсутствия рамки."
+
+msgid "nvidia-smi Output Encoding"
+msgstr "Кодировка вывода nvidia-smi"
+
+msgid "Select the character encoding used by nvidia-smi output."
+msgstr "Выберите кодировку символов вывода nvidia-smi."
+
+msgid "Show Temperature"
+msgstr "Показывать температуру"
+
+msgid "Show GPU temperature in the panel."
+msgstr "Показывать температуру GPU на панели."
+
+msgid "Temperature Unit"
+msgstr "Единица температуры"
+
+msgid "Choose the unit for displaying GPU temperature."
+msgstr "Выберите единицу отображения температуры GPU."
+
+msgid "Show Memory Usage"
+msgstr "Показывать использование памяти"
+
+msgid "Show GPU memory usage in the panel."
+msgstr "Показывать использование памяти GPU на панели."
+
+msgid "Text (Used / Total)"
+msgstr "Текст (Использовано / Всего)"
+
+msgid "Pie Chart"
+msgstr "Круговая диаграмма"
+
+msgid "Memory Display Mode"
+msgstr "Режим отображения памяти"
+
+msgid "Choose how to display memory usage: as text or as a pie chart."
+msgstr "Выберите способ отображения памяти: текстом или круговой диаграммой."
+
+msgid "Show GPU Utilization"
+msgstr "Показывать загрузку GPU"
+
+msgid "Show GPU utilization percentage in the panel."
+msgstr "Показывать процент загрузки GPU на панели."
+
+msgid "Text (Percent)"
+msgstr "Текст (Процент)"
+
+msgid "GPU Display Mode"
+msgstr "Режим отображения GPU"
+
+msgid "Choose how to display GPU utilization: as text or as a pie chart."
+msgstr "Выберите способ отображения загрузки GPU: текстом или круговой диаграммой."
+
+msgid "Show Fan Speed"
+msgstr "Показывать скорость вентилятора"
+
+msgid "Show GPU fan speed percentage in the panel."
+msgstr "Показывать процент скорости вентилятора GPU на панели."
+
+msgid "Fan Display Mode"
+msgstr "Режим отображения вентилятора"
+
+msgid "Choose how to display fan speed: as text or as a pie chart."
+msgstr "Выберите способ отображения скорости вентилятора: текстом или круговой диаграммой."

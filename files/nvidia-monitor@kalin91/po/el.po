@@ -1,0 +1,334 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: NVIDIA Monitor\n"
+"Language: el\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: applet.js:43
+msgid "nvidia-smi not found"
+msgstr "Το nvidia-smi δεν βρέθηκε"
+
+#: applet.js:44
+msgid ""
+"nvidia-smi not found in PATH.\n"
+"Please ensure NVIDIA drivers are installed."
+msgstr ""
+"Το nvidia-smi δεν βρέθηκε στο PATH.\n"
+"Βεβαιωθείτε ότι έχουν εγκατασταθεί οι οδηγοί NVIDIA."
+
+#: applet.js:49
+msgid "Displays NVIDIA GPU monitor"
+msgstr "Εμφανίζει τον παρακολούθηση NVIDIA GPU"
+
+#: applet.js:55
+msgid "Init Error"
+msgstr "Σφάλμα εκκίνησης"
+
+#: applet.js:80
+msgid "Open Monitor Graph"
+msgstr "Άνοιγμα γραφήματος παρακολούθησης"
+
+#: applet.js:84
+msgid "Settings"
+msgstr "Ρυθμίσεις"
+
+#: applet.js:89
+msgid "Applet Settings"
+msgstr "Ρυθμίσεις Applet"
+
+#: applet.js:92
+msgid "Monitor Settings"
+msgstr "Ρυθμίσεις Παρακολούθησης"
+
+#: applet.js:95
+msgid "Reset All Settings"
+msgstr "Επαναφορά όλων των ρυθμίσεων"
+
+#: applet.js:117
+msgid "Error building menu: "
+msgstr "Σφάλμα δημιουργίας μενού: "
+
+#: applet.js:254 applet.js:521
+msgid "Error"
+msgstr "Σφάλμα"
+
+#: applet.js:271
+msgid "Initializing..."
+msgstr "Αρχικοποίηση..."
+
+#: applet.js:281
+msgid "Mem"
+msgstr "Mem"
+
+#: applet.js:290
+msgid "GPU"
+msgstr "GPU"
+
+#: applet.js:299
+msgid "Fan"
+msgstr "Fan"
+
+#: applet.js:522
+msgid "Failed to run nvidia-smi.\n"
+msgstr "Αποτυχία εκτέλεσης του nvidia-smi.\n"
+
+#: applet.js:522
+msgid "Unknown"
+msgstr "Άγνωστο"
+
+#: applet.js:527
+msgid "An unexpected error occurred while running nvidia-smi.\n"
+msgstr "Παρουσιάστηκε απρόσμενο σφάλμα κατά την εκτέλεση του nvidia-smi.\n"
+
+#: applet.js:528
+msgid "Err"
+msgstr "Err"
+
+#: applet.js:692
+msgid "GPU: "
+msgstr "GPU: "
+
+#: applet.js:700
+msgid "Fan: "
+msgstr "Fan: "
+
+msgid "NVIDIA Monitor"
+msgstr "Παρακολούθηση NVIDIA"
+
+msgid ""
+"Monitors GPU temperature, memory, utilization, and fan speed using nvidia-smi"
+msgstr "Παρακολουθεί τη θερμοκρασία GPU, τη μνήμη, τη χρήση και την ταχύτητα ανεμιστήρα μέσω του nvidia-smi"
+
+msgid "General Settings"
+msgstr "Γενικές ρυθμίσεις"
+
+msgid "Temperature"
+msgstr "Θερμοκρασία"
+
+msgid "Memory Usage"
+msgstr "Χρήση μνήμης"
+
+msgid "GPU Utilization"
+msgstr "Χρήση GPU"
+
+msgid "Fan Speed"
+msgstr "Ταχύτητα ανεμιστήρα"
+
+msgid "Note"
+msgstr "Σημείωση"
+
+msgid "Metric Colors"
+msgstr "Χρώματα μετρήσεων"
+
+msgid "Layout Colors"
+msgstr "Χρώματα διάταξης"
+
+msgid "Y-Axis Settings"
+msgstr "Ρυθμίσεις άξονα Y"
+
+msgid "X-Axis Settings"
+msgstr "Ρυθμίσεις άξονα X"
+
+msgid ""
+"Changes to monitor settings will take effect after restarting the monitor."
+msgstr "Οι αλλαγές στις ρυθμίσεις θα εφαρμοστούν μετά την επανεκκίνηση της παρακολούθησης."
+
+msgid "1 Line (50%)"
+msgstr "1 γραμμή (50%)"
+
+msgid "2 Lines (33%, 66%)"
+msgstr "2 γραμμές (33%, 66%)"
+
+msgid "3 Lines (25%, 50%, 75%)"
+msgstr "3 γραμμές (25%, 50%, 75%)"
+
+msgid "4 Lines (20%, 40%, 60%, 80%)"
+msgstr "4 γραμμές (20%, 40%, 60%, 80%)"
+
+msgid "5 Lines (16%, 33%, 50%, 66%, 83%)"
+msgstr "5 γραμμές (16%, 33%, 50%, 66%, 83%)"
+
+msgid "9 Lines (Every 10%)"
+msgstr "9 γραμμές (κάθε 10%)"
+
+msgid "Y-Axis Guides"
+msgstr "Οδηγοί άξονα Y"
+
+msgid "Number of guide lines for the Y-Axis."
+msgstr "Αριθμός γραμμών οδηγού για τον άξονα Y"
+
+msgid "Celsius (°C)"
+msgstr "Κελσίου (°C)"
+
+msgid "Fahrenheit (°F)"
+msgstr "Φαρενάιτ (°F)"
+
+msgid "Y-Axis Temperature Unit"
+msgstr "Μονάδα θερμοκρασίας άξονα Y"
+
+msgid "Unit for the temperature axis in the monitor."
+msgstr "Μονάδα θερμοκρασίας στον άξονα"
+
+msgid "X-Axis Guides"
+msgstr "Οδηγοί άξονα X"
+
+msgid "Number of vertical guide lines for the X-Axis."
+msgstr "Αριθμός κάθετων γραμμών οδηγού για τον άξονα X"
+
+msgid "Seconds"
+msgstr "Δευτερόλεπτα"
+
+msgid "Minutes"
+msgstr "Λεπτά"
+
+msgid "Hours"
+msgstr "Ώρες"
+
+msgid "X-Axis Unit"
+msgstr "Μονάδα άξονα X"
+
+msgid "Unit of time for the X-Axis."
+msgstr "Μονάδα χρόνου για τον άξονα X"
+
+msgid "X-Axis Length (Seconds)"
+msgstr "Μήκος άξονα X (δευτερόλεπτα)"
+
+msgid "Total duration shown on the graph."
+msgstr "Συνολική διάρκεια στο γράφημα"
+
+msgid "X-Axis Length (Minutes)"
+msgstr "Μήκος άξονα X (λεπτά)"
+
+msgid "X-Axis Length (Hours)"
+msgstr "Μήκος άξονα X (ώρες)"
+
+msgid "Temperature Color"
+msgstr "Χρώμα θερμοκρασίας"
+
+msgid "Color used for temperature in the graph."
+msgstr "Χρώμα θερμοκρασίας στο γράφημα"
+
+msgid "Memory Usage Color"
+msgstr "Χρώμα χρήσης μνήμης"
+
+msgid "Color used for memory usage in the graph."
+msgstr "Χρώμα χρήσης μνήμης στο γράφημα"
+
+msgid "GPU Utilization Color"
+msgstr "Χρώμα χρήσης GPU"
+
+msgid "Color used for GPU utilization in the graph."
+msgstr "Χρώμα χρήσης GPU στο γράφημα"
+
+msgid "Fan Speed Color"
+msgstr "Χρώμα ταχύτητας ανεμιστήρα"
+
+msgid "Color used for fan speed in the graph."
+msgstr "Χρώμα ταχύτητας ανεμιστήρα στο γράφημα"
+
+msgid "Background Color"
+msgstr "Χρώμα φόντου"
+
+msgid "Background color of the graph."
+msgstr "Χρώμα φόντου του γραφήματος"
+
+msgid "Temperature Axis Color"
+msgstr "Χρώμα άξονα θερμοκρασίας"
+
+msgid "Color for the temperature axis labels."
+msgstr "Χρώμα ετικετών άξονα θερμοκρασίας"
+
+msgid "Percentage Axis Color"
+msgstr "Χρώμα άξονα ποσοστού"
+
+msgid "Color for the percentage axis labels."
+msgstr "Χρώμα ετικετών ποσοστού"
+
+msgid "X-Axis Color"
+msgstr "Χρώμα άξονα X"
+
+msgid "Color for the X-axis labels (Time)."
+msgstr "Χρώμα ετικετών άξονα X (χρόνος)"
+
+msgid "Guidelines Color"
+msgstr "Χρώμα οδηγών"
+
+msgid "Color for the grid/guide lines."
+msgstr "Χρώμα γραμμών πλέγματος"
+
+msgid "Refresh Interval"
+msgstr "Διάστημα ανανέωσης"
+
+msgid "How often to update the GPU stats (in seconds)."
+msgstr "Συχνότητα ενημέρωσης GPU (δευτερόλεπτα)"
+
+msgid "Applet Border Color"
+msgstr "Χρώμα περιγράμματος applet"
+
+msgid "Color of the applet border. Set alpha to 0 for no border."
+msgstr "Χρώμα περιγράμματος. Θέσε alpha 0 για χωρίς περίγραμμα"
+
+msgid "nvidia-smi Output Encoding"
+msgstr "Κωδικοποίηση εξόδου nvidia-smi"
+
+msgid "Select the character encoding used by nvidia-smi output."
+msgstr "Επιλογή κωδικοποίησης χαρακτήρων εξόδου nvidia-smi"
+
+msgid "Show Temperature"
+msgstr "Εμφάνιση θερμοκρασίας"
+
+msgid "Show GPU temperature in the panel."
+msgstr "Εμφάνιση θερμοκρασίας GPU στο πάνελ"
+
+msgid "Temperature Unit"
+msgstr "Μονάδα θερμοκρασίας"
+
+msgid "Choose the unit for displaying GPU temperature."
+msgstr "Επιλέξτε μονάδα θερμοκρασίας"
+
+msgid "Show Memory Usage"
+msgstr "Εμφάνιση χρήσης μνήμης"
+
+msgid "Show GPU memory usage in the panel."
+msgstr "Εμφάνιση χρήσης μνήμης GPU στο πάνελ"
+
+msgid "Text (Used / Total)"
+msgstr "Κείμενο (Χρήση / Σύνολο)"
+
+msgid "Pie Chart"
+msgstr "Κυκλικό γράφημα"
+
+msgid "Memory Display Mode"
+msgstr "Λειτουργία εμφάνισης μνήμης"
+
+msgid "Choose how to display memory usage: as text or as a pie chart."
+msgstr "Επιλογή τρόπου εμφάνισης μνήμης"
+
+msgid "Show GPU Utilization"
+msgstr "Εμφάνιση χρήσης GPU"
+
+msgid "Show GPU utilization percentage in the panel."
+msgstr "Εμφάνιση ποσοστού GPU στο πάνελ"
+
+msgid "Text (Percent)"
+msgstr "Κείμενο (%)"
+
+msgid "GPU Display Mode"
+msgstr "Λειτουργία εμφάνισης GPU"
+
+msgid "Choose how to display GPU utilization: as text or as a pie chart."
+msgstr "Επιλογή τρόπου εμφάνισης GPU"
+
+msgid "Show Fan Speed"
+msgstr "Εμφάνιση ταχύτητας ανεμιστήρα"
+
+msgid "Show GPU fan speed percentage in the panel."
+msgstr "Εμφάνιση ταχύτητας ανεμιστήρα στο πάνελ"
+
+msgid "Fan Display Mode"
+msgstr "Λειτουργία εμφάνισης ανεμιστήρα"
+
+msgid "Choose how to display fan speed: as text or as a pie chart."
+msgstr "Επιλογή τρόπου εμφάνισης ανεμιστήρα"

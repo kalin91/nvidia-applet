@@ -1,0 +1,346 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: NVIDIA Monitor\n"
+"Language: fi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: applet.js:43
+msgid "nvidia-smi not found"
+msgstr "nvidia-smi ei löytynyt"
+
+#: applet.js:44
+msgid ""
+"nvidia-smi not found in PATH.\n"
+"Please ensure NVIDIA drivers are installed."
+msgstr ""
+"nvidia-smi ei löytynyt PATH-muuttujasta.\n"
+"Varmista, että NVIDIA-ajurit on asennettu."
+
+#: applet.js:49
+msgid "Displays NVIDIA GPU monitor"
+msgstr "Näyttää NVIDIA GPU -valvonnan"
+
+#: applet.js:55
+msgid "Init Error"
+msgstr "Alustusvirhe"
+
+#: applet.js:80
+msgid "Open Monitor Graph"
+msgstr "Avaa monitorikaavio"
+
+#: applet.js:84
+msgid "Settings"
+msgstr "Asetukset"
+
+#: applet.js:89
+msgid "Applet Settings"
+msgstr "Sovelman asetukset"
+
+#: applet.js:92
+msgid "Monitor Settings"
+msgstr "Monitorin asetukset"
+
+#: applet.js:95
+msgid "Reset All Settings"
+msgstr "Palauta kaikki asetukset"
+
+#: applet.js:117
+msgid "Error building menu: "
+msgstr "Virhe valikkoa luotaessa: "
+
+#: applet.js:254 applet.js:521
+msgid "Error"
+msgstr "Virhe"
+
+#: applet.js:271
+msgid "Initializing..."
+msgstr "Alustetaan..."
+
+#: applet.js:281
+msgid "Mem"
+msgstr "Mem"
+
+#: applet.js:290
+msgid "GPU"
+msgstr "GPU"
+
+#: applet.js:299
+msgid "Fan"
+msgstr "Fan"
+
+#: applet.js:522
+msgid "Failed to run nvidia-smi.\n"
+msgstr "nvidia-smi:n suoritus epäonnistui.\n"
+
+#: applet.js:522
+msgid "Unknown"
+msgstr "Tuntematon"
+
+#: applet.js:527
+msgid "An unexpected error occurred while running nvidia-smi.\n"
+msgstr "Odottamaton virhe suoritettaessa nvidia-smi:tä.\n"
+
+#: applet.js:528
+msgid "Err"
+msgstr "Vir"
+
+#: applet.js:692
+msgid "GPU: "
+msgstr "GPU: "
+
+#: applet.js:700
+msgid "Fan: "
+msgstr "Fan: "
+
+msgid "NVIDIA Monitor"
+msgstr "NVIDIA Monitor"
+
+msgid ""
+"Monitors GPU temperature, memory, utilization, and fan speed using nvidia-"
+"smi"
+msgstr ""
+"Valvoo GPU:n lämpötilaa, muistia, käyttöä ja tuulettimen nopeutta nvidia-smi:n avulla"
+
+msgid "General Settings"
+msgstr "Yleiset asetukset"
+
+msgid "Temperature"
+msgstr "Lämpötila"
+
+msgid "Memory Usage"
+msgstr "Muistin käyttö"
+
+msgid "GPU Utilization"
+msgstr "GPU:n käyttöaste"
+
+msgid "Fan Speed"
+msgstr "Tuulettimen nopeus"
+
+msgid "Note"
+msgstr "Huomautus"
+
+msgid "Metric Colors"
+msgstr "Mittarien värit"
+
+msgid "Layout Colors"
+msgstr "Ulkoasun värit"
+
+msgid "Y-Axis Settings"
+msgstr "Y-akselin asetukset"
+
+msgid "X-Axis Settings"
+msgstr "X-akselin asetukset"
+
+msgid ""
+"Changes to monitor settings will take effect after restarting the monitor."
+msgstr ""
+"Muutokset tulevat voimaan, kun monitori käynnistetään uudelleen."
+
+msgid "1 Line (50%)"
+msgstr "1 viiva (50%)"
+
+msgid "2 Lines (33%, 66%)"
+msgstr "2 viivaa (33%, 66%)"
+
+msgid "3 Lines (25%, 50%, 75%)"
+msgstr "3 viivaa (25%, 50%, 75%)"
+
+msgid "4 Lines (20%, 40%, 60%, 80%)"
+msgstr "4 viivaa (20%, 40%, 60%, 80%)"
+
+msgid "5 Lines (16%, 33%, 50%, 66%, 83%)"
+msgstr "5 viivaa (16%, 33%, 50%, 66%, 83%)"
+
+msgid "9 Lines (Every 10%)"
+msgstr "9 viivaa (joka 10%)"
+
+msgid "Y-Axis Guides"
+msgstr "Y-akselin apuviivat"
+
+msgid "Number of guide lines for the Y-Axis."
+msgstr "Apuviivojen määrä Y-akselilla."
+
+msgid "Celsius (°C)"
+msgstr "Celsius (°C)"
+
+msgid "Fahrenheit (°F)"
+msgstr "Fahrenheit (°F)"
+
+msgid "Y-Axis Temperature Unit"
+msgstr "Y-akselin lämpötilayksikkö"
+
+msgid "Unit for the temperature axis in the monitor."
+msgstr "Lämpötila-akselin yksikkö monitorissa."
+
+msgid "X-Axis Guides"
+msgstr "X-akselin apuviivat"
+
+msgid "Number of vertical guide lines for the X-Axis."
+msgstr "Pystysuorien apuviivojen määrä X-akselilla."
+
+msgid "Seconds"
+msgstr "Sekunnit"
+
+msgid "Minutes"
+msgstr "Minuutit"
+
+msgid "Hours"
+msgstr "Tunnit"
+
+msgid "X-Axis Unit"
+msgstr "X-akselin yksikkö"
+
+msgid "Unit of time for the X-Axis."
+msgstr "X-akselin aikayksikkö."
+
+msgid "X-Axis Length (Seconds)"
+msgstr "X-akselin pituus (sekuntia)"
+
+msgid "Total duration shown on the graph."
+msgstr "Kokonaiskesto, joka näytetään kaaviossa."
+
+msgid "X-Axis Length (Minutes)"
+msgstr "X-akselin pituus (minuuttia)"
+
+msgid "X-Axis Length (Hours)"
+msgstr "X-akselin pituus (tuntia)"
+
+msgid "Temperature Color"
+msgstr "Lämpötilan väri"
+
+msgid "Color used for temperature in the graph."
+msgstr "Kaaviossa käytetty lämpötilan väri."
+
+msgid "Memory Usage Color"
+msgstr "Muistin käytön väri"
+
+msgid "Color used for memory usage in the graph."
+msgstr "Kaaviossa käytetty muistin käytön väri."
+
+msgid "GPU Utilization Color"
+msgstr "GPU:n käytön väri"
+
+msgid "Color used for GPU utilization in the graph."
+msgstr "Kaaviossa käytetty GPU:n käytön väri."
+
+msgid "Fan Speed Color"
+msgstr "Tuulettimen nopeuden väri"
+
+msgid "Color used for fan speed in the graph."
+msgstr "Kaaviossa käytetty tuulettimen nopeuden väri."
+
+msgid "Background Color"
+msgstr "Taustaväri"
+
+msgid "Background color of the graph."
+msgstr "Kaavion taustaväri."
+
+msgid "Temperature Axis Color"
+msgstr "Lämpötila-akselin väri"
+
+msgid "Color for the temperature axis labels."
+msgstr "Lämpötila-akselin otsikoiden väri."
+
+msgid "Percentage Axis Color"
+msgstr "Prosenttiakselin väri"
+
+msgid "Color for the percentage axis labels."
+msgstr "Prosenttiakselin otsikoiden väri."
+
+msgid "X-Axis Color"
+msgstr "X-akselin väri"
+
+msgid "Color for the X-axis labels (Time)."
+msgstr "X-akselin otsikoiden väri (aika)."
+
+msgid "Guidelines Color"
+msgstr "Apuviivojen väri"
+
+msgid "Color for the grid/guide lines."
+msgstr "Ruudukon ja apuviivojen väri."
+
+msgid "Refresh Interval"
+msgstr "Päivitysväli"
+
+msgid "How often to update the GPU stats (in seconds)."
+msgstr "Kuinka usein GPU-tilastot päivitetään (sekunteina)."
+
+msgid "Applet Border Color"
+msgstr "Appletin reunaväri"
+
+msgid "Color of the applet border. Set alpha to 0 for no border."
+msgstr "Appletin reunan väri. Aseta alfa-arvo 0 poistaaksesi reunan."
+
+msgid "UTF-8"
+msgstr "UTF-8"
+
+msgid "macintosh"
+msgstr "macintosh"
+
+msgid "ASCII"
+msgstr "ASCII"
+
+msgid "nvidia-smi Output Encoding"
+msgstr "nvidia-smi:n tulosteen merkistökoodaus"
+
+msgid "Select the character encoding used by nvidia-smi output."
+msgstr "Valitse nvidia-smi:n tulosteen merkistökoodaus."
+
+msgid "Show Temperature"
+msgstr "Näytä lämpötila"
+
+msgid "Show GPU temperature in the panel."
+msgstr "Näytä GPU:n lämpötila paneelissa."
+
+msgid "Temperature Unit"
+msgstr "Lämpötilayksikkö"
+
+msgid "Choose the unit for displaying GPU temperature."
+msgstr "Valitse yksikkö GPU:n lämpötilan näyttämiseen."
+
+msgid "Show Memory Usage"
+msgstr "Näytä muistin käyttö"
+
+msgid "Show GPU memory usage in the panel."
+msgstr "Näytä GPU:n muistin käyttö paneelissa."
+
+msgid "Text (Used / Total)"
+msgstr "Teksti (käytetty / yhteensä)"
+
+msgid "Pie Chart"
+msgstr "Ympyräkaavio"
+
+msgid "Memory Display Mode"
+msgstr "Muistin näyttötila"
+
+msgid "Choose how to display memory usage: as text or as a pie chart."
+msgstr "Valitse muistin näyttötapa: tekstinä tai ympyräkaaviona."
+
+msgid "Show GPU Utilization"
+msgstr "Näytä GPU:n käyttö"
+
+msgid "Show GPU utilization percentage in the panel."
+msgstr "Näytä GPU:n käyttöaste prosentteina paneelissa."
+
+msgid "Text (Percent)"
+msgstr "Teksti (prosentti)"
+
+msgid "GPU Display Mode"
+msgstr "GPU:n näyttötila"
+
+msgid "Choose how to display GPU utilization: as text or as a pie chart."
+msgstr "Valitse GPU:n käyttöasteen näyttötapa: tekstinä tai ympyräkaaviona."
+
+msgid "Show Fan Speed"
+msgstr "Näytä tuulettimen nopeus"
+
+msgid "Show GPU fan speed percentage in the panel."
+msgstr "Näytä GPU:n tuulettimen nopeus prosentteina paneelissa."
+
+msgid "Fan Display Mode"
+msgstr "Tuulettimen näyttötila"
+
+msgid "Choose how to display fan speed: as text or as a pie chart."
+msgstr "Valitse tuulettimen nopeuden näyttötapa: tekstinä tai ympyräkaaviona."

@@ -1,0 +1,331 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: NVIDIA Monitor\n"
+"Language: is\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "nvidia-smi not found"
+msgstr "nvidia-smi fannst ekki"
+
+msgid ""
+"nvidia-smi not found in PATH.\n"
+"Please ensure NVIDIA drivers are installed."
+msgstr ""
+"nvidia-smi fannst ekki í PATH.\n"
+"Vinsamlegast tryggðu að NVIDIA rekla séu uppsettir."
+
+msgid "Displays NVIDIA GPU monitor"
+msgstr "Sýnir NVIDIA GPU eftirlit"
+
+msgid "Init Error"
+msgstr "Upphafsvilla"
+
+msgid "Open Monitor Graph"
+msgstr "Opna eftirlitsgraf"
+
+msgid "Settings"
+msgstr "Stillingar"
+
+msgid "Applet Settings"
+msgstr "Forritsstillingar"
+
+msgid "Monitor Settings"
+msgstr "Skjárstillingar"
+
+msgid "Reset All Settings"
+msgstr "Endurstilla allar stillingar"
+
+msgid "Error building menu: "
+msgstr "Villa við gerð valmyndar: "
+
+msgid "Error"
+msgstr "Villa"
+
+msgid "Initializing..."
+msgstr "Frumstillir..."
+
+msgid "Mem"
+msgstr "Mem"
+
+msgid "GPU"
+msgstr "GPU"
+
+msgid "Fan"
+msgstr "Fan"
+
+msgid "Failed to run nvidia-smi.\n"
+msgstr "Mistókst að keyra nvidia-smi.\n"
+
+msgid "Unknown"
+msgstr "Óþekkt"
+
+msgid "An unexpected error occurred while running nvidia-smi.\n"
+msgstr "Óvænt villa kom upp við keyrslu nvidia-smi.\n"
+
+msgid "Err"
+msgstr "Err"
+
+msgid "GPU: "
+msgstr "GPU: "
+
+msgid "Fan: "
+msgstr "Fan: "
+
+msgid "NVIDIA Monitor"
+msgstr "NVIDIA Eftirlit"
+
+msgid ""
+"Monitors GPU temperature, memory, utilization, and fan speed using nvidia-smi"
+msgstr "Fylgist með GPU hita, minni, nýtingu og viftuhraða með nvidia-smi"
+
+msgid "General Settings"
+msgstr "Almennar stillingar"
+
+msgid "Temperature"
+msgstr "Hitastig"
+
+msgid "Memory Usage"
+msgstr "Minnisnotkun"
+
+msgid "GPU Utilization"
+msgstr "GPU nýting"
+
+msgid "Fan Speed"
+msgstr "Viftuhraði"
+
+msgid "Note"
+msgstr "Athugasemd"
+
+msgid "Metric Colors"
+msgstr "Litir mælinga"
+
+msgid "Layout Colors"
+msgstr "Litir útlits"
+
+msgid "Y-Axis Settings"
+msgstr "Y-ás stillingar"
+
+msgid "X-Axis Settings"
+msgstr "X-ás stillingar"
+
+msgid ""
+"Changes to monitor settings will take effect after restarting the monitor."
+msgstr "Breytingar taka gildi eftir endurræsingu eftirlitsins."
+
+msgid "1 Line (50%)"
+msgstr "1 lína (50%)"
+
+msgid "2 Lines (33%, 66%)"
+msgstr "2 línur (33%, 66%)"
+
+msgid "3 Lines (25%, 50%, 75%)"
+msgstr "3 línur (25%, 50%, 75%)"
+
+msgid "4 Lines (20%, 40%, 60%, 80%)"
+msgstr "4 línur (20%, 40%, 60%, 80%)"
+
+msgid "5 Lines (16%, 33%, 50%, 66%, 83%)"
+msgstr "5 línur (16%, 33%, 50%, 66%, 83%)"
+
+msgid "9 Lines (Every 10%)"
+msgstr "9 línur (hver 10%)"
+
+msgid "Y-Axis Guides"
+msgstr "Leiðarlínur Y-áss"
+
+msgid "Number of guide lines for the Y-Axis."
+msgstr "Fjöldi leiðarlína á Y-ás."
+
+msgid "Celsius (°C)"
+msgstr "Celsíus (°C)"
+
+msgid "Fahrenheit (°F)"
+msgstr "Fahrenheit (°F)"
+
+msgid "Y-Axis Temperature Unit"
+msgstr "Hitastigseining Y-áss"
+
+msgid "Unit for the temperature axis in the monitor."
+msgstr "Eining fyrir hitastigsás í eftirliti."
+
+msgid "X-Axis Guides"
+msgstr "Leiðarlínur X-áss"
+
+msgid "Number of vertical guide lines for the X-Axis."
+msgstr "Fjöldi lóðréttra leiðarlína á X-ás."
+
+msgid "Seconds"
+msgstr "Sekúndur"
+
+msgid "Minutes"
+msgstr "Mínútur"
+
+msgid "Hours"
+msgstr "Klukkustundir"
+
+msgid "X-Axis Unit"
+msgstr "Eining X-áss"
+
+msgid "Unit of time for the X-Axis."
+msgstr "Tímaeining fyrir X-ás."
+
+msgid "s"
+msgstr "s"
+
+msgid "X-Axis Length (Seconds)"
+msgstr "Lengd X-áss (sekúndur)"
+
+msgid "Total duration shown on the graph."
+msgstr "Heildartími sem sýndur er á grafinu."
+
+msgid "m"
+msgstr "m"
+
+msgid "X-Axis Length (Minutes)"
+msgstr "Lengd X-áss (mínútur)"
+
+msgid "h"
+msgstr "klst"
+
+msgid "X-Axis Length (Hours)"
+msgstr "Lengd X-áss (klukkustundir)"
+
+msgid "Temperature Color"
+msgstr "Litur hitastigs"
+
+msgid "Color used for temperature in the graph."
+msgstr "Litur fyrir hitastig í grafinu."
+
+msgid "Memory Usage Color"
+msgstr "Litur minnisnotkunar"
+
+msgid "Color used for memory usage in the graph."
+msgstr "Litur fyrir minnisnotkun í grafinu."
+
+msgid "GPU Utilization Color"
+msgstr "Litur GPU nýtingar"
+
+msgid "Color used for GPU utilization in the graph."
+msgstr "Litur fyrir GPU nýtingu í grafinu."
+
+msgid "Fan Speed Color"
+msgstr "Litur viftuhraða"
+
+msgid "Color used for fan speed in the graph."
+msgstr "Litur fyrir viftuhraða í grafinu."
+
+msgid "Background Color"
+msgstr "Bakgrunnslitur"
+
+msgid "Background color of the graph."
+msgstr "Bakgrunnslitur grafsins."
+
+msgid "Temperature Axis Color"
+msgstr "Litur hitastigsáss"
+
+msgid "Color for the temperature axis labels."
+msgstr "Litur fyrir hitastigsás merkimiða."
+
+msgid "Percentage Axis Color"
+msgstr "Litur prósentuáss"
+
+msgid "Color for the percentage axis labels."
+msgstr "Litur fyrir prósentuás merkimiða."
+
+msgid "X-Axis Color"
+msgstr "Litur X-áss"
+
+msgid "Color for the X-axis labels (Time)."
+msgstr "Litur fyrir X-ás merkimiða (tími)."
+
+msgid "Guidelines Color"
+msgstr "Litur leiðarlína"
+
+msgid "Color for the grid/guide lines."
+msgstr "Litur fyrir rist og leiðarlínur."
+
+msgid "Refresh Interval"
+msgstr "Endurnýjunartími"
+
+msgid "How often to update the GPU stats (in seconds)."
+msgstr "Hversu oft á að uppfæra GPU gögn (í sekúndum)."
+
+msgid "Applet Border Color"
+msgstr "Litur jaðars forrits"
+
+msgid "Color of the applet border. Set alpha to 0 for no border."
+msgstr "Litur jaðars forritsins. Stilltu alpha í 0 fyrir engan jaðar."
+
+msgid "UTF-8"
+msgstr "UTF-8"
+
+msgid "macintosh"
+msgstr "macintosh"
+
+msgid "ASCII"
+msgstr "ASCII"
+
+msgid "nvidia-smi Output Encoding"
+msgstr "nvidia-smi úttakskóðun"
+
+msgid "Select the character encoding used by nvidia-smi output."
+msgstr "Veldu stafakóðun sem nvidia-smi notar."
+
+msgid "Show Temperature"
+msgstr "Sýna hitastig"
+
+msgid "Show GPU temperature in the panel."
+msgstr "Sýna GPU hitastig í spjaldi."
+
+msgid "Temperature Unit"
+msgstr "Hitastigseining"
+
+msgid "Choose the unit for displaying GPU temperature."
+msgstr "Veldu einingu fyrir GPU hitastig."
+
+msgid "Show Memory Usage"
+msgstr "Sýna minnisnotkun"
+
+msgid "Show GPU memory usage in the panel."
+msgstr "Sýna GPU minnisnotkun í spjaldi."
+
+msgid "Text (Used / Total)"
+msgstr "Texti (notað / alls)"
+
+msgid "Pie Chart"
+msgstr "Kökugraf"
+
+msgid "Memory Display Mode"
+msgstr "Birting minnis"
+
+msgid "Choose how to display memory usage: as text or as a pie chart."
+msgstr "Veldu hvernig minnisnotkun er sýnd: texti eða kökugraf."
+
+msgid "Show GPU Utilization"
+msgstr "Sýna GPU nýtingu"
+
+msgid "Show GPU utilization percentage in the panel."
+msgstr "Sýna GPU nýtingu í prósentum."
+
+msgid "Text (Percent)"
+msgstr "Texti (prósenta)"
+
+msgid "GPU Display Mode"
+msgstr "Birting GPU"
+
+msgid "Choose how to display GPU utilization: as text or as a pie chart."
+msgstr "Veldu hvernig GPU nýting er sýnd: sem texti eða kökugraf."
+
+msgid "Show Fan Speed"
+msgstr "Sýna viftuhraða"
+
+msgid "Show GPU fan speed percentage in the panel."
+msgstr "Sýna GPU viftuhraða í prósentum."
+
+msgid "Fan Display Mode"
+msgstr "Birting viftu"
+
+msgid "Choose how to display fan speed: as text or as a pie chart."
+msgstr "Veldu hvernig viftuhraði er sýndur."
