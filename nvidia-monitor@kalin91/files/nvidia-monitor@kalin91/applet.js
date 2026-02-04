@@ -1,7 +1,7 @@
 const { applet, settings, popupMenu, main: Main, modalDialog } = imports.ui; // eslint-disable-line
 const { GLib, St, Clutter, Pango, PangoCairo, Gio } = imports.gi; // eslint-disable-line
 
-const Gettext = imports.gettext;
+const Gettext = imports.gettext;  // eslint-disable-line
 const UUID = "nvidia-monitor@kalin91";
 
 Gettext.bindtextdomain(UUID, GLib.get_home_dir() + "/.local/share/locale")
@@ -51,7 +51,7 @@ class NvidiaMonitorApplet extends applet.Applet {
             this._on_settings_changed();
         } catch (e) {
             global.logError(e);
-            this._show_err("Error initializing applet: " + e.message);
+            this._show_err(`${_("Error initializing applet")}: ${e.message}`);
             this.set_applet_label(_("Init Error"));
         }
     }
@@ -104,8 +104,8 @@ class NvidiaMonitorApplet extends applet.Applet {
                             this._resetMonitor();
                         }
                     } catch (e) {
-                        global.logError("Error resetting settings: " + e.message);
-                        this._show_err("Error resetting settings: " + e.message);
+                        global.logError(`${_("Error resetting settings")}: ${e.message}`);
+                        this._show_err(`${_("Error resetting settings")}: ${e.message}`);
                     }
                 });
                 confirm.open();
@@ -167,7 +167,7 @@ class NvidiaMonitorApplet extends applet.Applet {
             ];
 
             // Log for debugging
-            global.log("Nvidia Monitor: Launching " + args.join(" "));
+            global.log(`Nvidia Monitor: ${_("Launching")} ${args.join(" ")}`);
 
             // Subprocess with Stdin pipe
             this._monitorProc = Gio.Subprocess.new(
@@ -179,7 +179,7 @@ class NvidiaMonitorApplet extends applet.Applet {
 
             // Send existing history to populate graph immediately
             if (this._history && this._history.length > 0) {
-                global.log("Nvidia Monitor: Sending " + this._history.length + " history points.");
+                global.log(`Nvidia Monitor: ${_("Sending")} ${this._history.length} ${_("history points")}.`);
                 for (let point of this._history) {
                     this._sendToMonitor(point);
                 }
@@ -190,16 +190,16 @@ class NvidiaMonitorApplet extends applet.Applet {
                 try {
                     proc.wait_check_finish(result);
                 } catch (e) {
-                    global.logError("Nvidia Monitor subprocess exited with error: " + e.message);
+                    global.logError(`Nvidia Monitor: ${_("subprocess exited with error")}: ${e.message}`);
                 }
-                global.log("Nvidia Monitor: Monitor subprocess exited.");
+                global.log(`Nvidia Monitor: ${_("Monitor subprocess exited")}.`);
                 this._monitorProc = null;
                 this._monitorStdin = null;
             });
 
         } catch (e) {
-            global.logError("Error starting monitor: " + e.message);
-            this._show_err("Could not start monitor script: " + e.message);
+            global.logError(`Nvidia Monitor: ${_("Error starting monitor")}: ${e.message}`);
+            this._show_err(`Nvidia Monitor: ${_("Could not start monitor script")}: ${e.message}`);
         }
     }
 
@@ -208,9 +208,8 @@ class NvidiaMonitorApplet extends applet.Applet {
             try {
                 // Send termination signal
                 this._monitorProc.force_exit();
-                global.log("Nvidia Monitor: Closed programmatically.");
             } catch (e) {
-                global.logError("Error closing monitor: " + e.message);
+                global.logError(`Nvidia Monitor: ${_("Error closing monitor")}: ${e.message}`);
             }
         }
     }
@@ -238,7 +237,7 @@ class NvidiaMonitorApplet extends applet.Applet {
             this._monitorStdin.flush(null);
         } catch (e) {
             // Broken pipe likely
-            global.logError("Error sending to monitor: " + e.message);
+            global.logError(`Nvidia Monitor: ${_("Error sending to monitor")}: ${e.messag}`);
             this._monitorProc = null;
             this._monitorStdin = null;
         }
@@ -300,13 +299,8 @@ class NvidiaMonitorApplet extends applet.Applet {
     }
 
     _add_label(text) {
-        // En modo horizontal, usamos St.Label normal
         if (this._turn_over & text === this._sepText) {
 
-
-            // En modo vertical, usamos DrawingArea para pintar el texto rotado sin romper el layout
-            // Creamos un "Custom Actor" falso que se comporta como Label
-            // Importante: width/height inicial para asegurar que se pinte la primera vez
             const area = new St.DrawingArea({
                 style_class: 'applet-label',
                 reactive: true,
@@ -316,14 +310,12 @@ class NvidiaMonitorApplet extends applet.Applet {
                 height: 1
             });
 
-            // Guardamos el texto en una propiedad personalizada para poder cambiarlo después
             area._custom_text = text;
 
-            // Función "set_text" personalizada para mantener compatibilidad
             area.set_text = (newText) => {
                 if (area._custom_text !== newText) {
                     area._custom_text = newText;
-                    area.queue_repaint(); // Redibujar cuando cambia el texto
+                    area.queue_repaint(); // Repaint when text changes
                 }
             };
 
@@ -331,7 +323,7 @@ class NvidiaMonitorApplet extends applet.Applet {
 
             this._add_to_box(area);
             return area;
-        } else {// if (!this._turn_over) {
+        } else {
             const label = new St.Label({
                 text: text,
                 style_class: 'applet-label',
@@ -358,7 +350,6 @@ class NvidiaMonitorApplet extends applet.Applet {
         let cr = actor.get_context();
         let [w, h] = actor.get_surface_size();
 
-        // Configurar fuente y texto
         let layout = PangoCairo.create_layout(cr);
         layout.set_text(area._custom_text || "", -1);
 
@@ -374,17 +365,12 @@ class NvidiaMonitorApplet extends applet.Applet {
         let textWidth = logicalRect.width;
         let textHeight = logicalRect.height;
 
-        // Rotar el contexto 90 grados a la izquierda (o -90)
         cr.translate(w / 2, h / 2);
         cr.rotate(Math.PI / 2);
 
-        // Dibujar centrado
         cr.moveTo(-textWidth / 2, -textHeight / 2);
         PangoCairo.show_layout(cr, layout);
 
-        // IMPORTANTE: Ajustar tamaño dinámicamente
-        // En vertical: Ancho del widget = Alto del texto (+ padding)
-        // Alto del widget = Ancho del texto (+ padding)
         let reqW = textHeight + 4;
         let reqH = textWidth;
 
@@ -520,11 +506,11 @@ class NvidiaMonitorApplet extends applet.Applet {
             } else {
                 this.set_applet_label(_("Error"));
                 this._show_err(_("Failed to run nvidia-smi.\n") + (stderr ? stderr.toString() : _("Unknown")));
-                global.logError("Nvidia Monitor: Failed to run nvidia-smi. Stderr: " + (stderr ? stderr.toString() : "Unknown"));
+                global.logError(`Nvidia Monitor: ${_("Failed to run nvidia-smi")}. Stderr: ${(stderr ? stderr.toString() : _("Unknown"))}`);
             }
         } catch (e) {
             global.logError(e);
-            this._show_err(_("An unexpected error occurred while running nvidia-smi.\n") + e.message);
+            this._show_err(`Nvidia Monitor: ${_("An unexpected error occurred while running nvidia-smi.\n")} ${e.message}`);
             this.set_applet_label(_("Err"));
         }
     }
@@ -639,7 +625,7 @@ class NvidiaMonitorApplet extends applet.Applet {
             outStream.write_all(logEntry, null);
             outStream.close(null);
         } catch (e) {
-            if (!this._logErr) { global.logError("Log error: " + e.message); this._logErr = true; }
+            if (!this._logErr) { global.logError("Nvidia Monitor: Log error: " + e.message); this._logErr = true; }
         }
 
         // Store in history
@@ -681,7 +667,7 @@ class NvidiaMonitorApplet extends applet.Applet {
             this.memory_display_mode,
             this._memLabel,
             this._memPieChartArea,
-            this._turn_over ? `MEM:${Math.floor(this._memUsedPercent * 100)}%` : Math.round(memUsed) + "MiB / " + Math.round(memTotal) + "MiB"
+            this._turn_over ? `${_("MEM")}:${Math.floor(this._memUsedPercent * 100)}%` : Math.round(memUsed) + "MiB / " + Math.round(memTotal) + "MiB"
         );
 
         const visGpu = this._updateSection(
@@ -689,7 +675,7 @@ class NvidiaMonitorApplet extends applet.Applet {
             this.gpu_display_mode,
             this._gpuLabel,
             this._gpuPieChartArea,
-            this._turn_over ? `GPU:${gpuUtil}%` : _("GPU: ") + gpuUtil + "%"
+            this._turn_over ? `${_("GPU")}:${gpuUtil}%` : `${_("GPU")}: ${gpuUtil} %`
         );
 
         const visFan = this._updateSection(
@@ -697,7 +683,7 @@ class NvidiaMonitorApplet extends applet.Applet {
             this.fan_display_mode,
             this._fanLabel,
             this._fanPieChartArea,
-            this._turn_over ? `FAN:${fanSpeed}%` : _("Fan: ") + fanSpeed + "%"
+            this._turn_over ? `${_("FAN")}:${fanSpeed}%` : `${_("Fan")}: ${fanSpeed} %`
         );
 
         // Separators
@@ -714,7 +700,7 @@ class NvidiaMonitorApplet extends applet.Applet {
 
         // If nothing is shown, show placeholder in Temp label
         if (!visTemp && !visMem && !visGpu && !visFan) {
-            this._label.set_text(this._turn_over ? "Hi!" : "Nvidia");
+            this._label.set_text(this._turn_over ? _("Hi!") : "Nvidia");
             this._label.show();
         }
     }
@@ -747,7 +733,7 @@ class NvidiaMonitorApplet extends applet.Applet {
             try {
                 this._monitorProc.force_exit();
             } catch (e) {
-                global.logError("Error terminating monitor subprocess: " + e.message);
+                global.logError(`Nvidia Monitor: ${_("Error terminating monitor subprocess")}: ${e.message}`);
             }
             this._monitorProc = null;
         }
@@ -761,7 +747,7 @@ class NvidiaMonitorApplet extends applet.Applet {
 
     on_applet_clicked() {
         this.menu.toggle();
-        global.log("Nvidia Monitor: Menu toggled on click.");
+        global.log(`Nvidia Monitor: ${_("Menu toggled on click.")}`);
     }
 }
 
