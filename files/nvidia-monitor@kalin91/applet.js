@@ -94,7 +94,8 @@ class NvidiaMonitorApplet extends applet.Applet {
             settings.menu.addMenuItem(monitorSettings);
             let resetAll = new popupMenu.PopupIconMenuItem(_("Reset All Settings"), 'edit-undo-symbolic', St.IconType.SYMBOLIC);
             resetAll.connect('activate', () => {
-                let confirm = new modalDialog.ConfirmDialog(_(`Are you sure you want to reset all settings of "${this._uuid}" to default?`), () => {
+                let confirm = new modalDialog.ConfirmDialog(_("Are you sure you want to reset all settings of '%s' to default?")
+                .format(this._uuid),    () => {
                     try {
                         for (let key in this.settings.settingsData) {
                             this.settings.setValue(key, this.settings.getDefaultValue(key));

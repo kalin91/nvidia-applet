@@ -61,111 +61,116 @@ msgstr "Setări monitor"
 msgid "Reset All Settings"
 msgstr "Resetează toate setările"
 
-#: applet.js:107 applet.js:108
+#: applet.js:97
+msgid "Are you sure you want to reset all settings of '%s' to default?"
+msgstr ""
+
+#: applet.js:108 applet.js:109
 msgid "Error resetting settings"
 msgstr "Eroare la resetarea setărilor"
 
-#: applet.js:117
+#: applet.js:118
 msgid "Error building menu: "
 msgstr "Eroare la construirea meniului: "
 
-#: applet.js:170
+#: applet.js:171
 msgid "Launching"
 msgstr "Lansare"
 
-#: applet.js:182
+#: applet.js:183
 msgid "Sending"
 msgstr "Trimitere"
 
-#: applet.js:182
+#: applet.js:183
 msgid "history points"
 msgstr "puncte din istoric"
 
-#: applet.js:193
+#: applet.js:194
 msgid "subprocess exited with error"
 msgstr "subprocesul s-a încheiat cu eroare"
 
-#: applet.js:195
+#: applet.js:196
 msgid "Monitor subprocess exited"
 msgstr "Subprocesul monitorului s-a încheiat"
 
-#: applet.js:201
+#: applet.js:202
 msgid "Error starting monitor"
 msgstr "Eroare la pornirea monitorului"
 
-#: applet.js:202
+#: applet.js:203
 msgid "Could not start monitor script"
 msgstr "Nu s-a putut porni scriptul monitorului"
 
-#: applet.js:212
+#: applet.js:213
 msgid "Error closing monitor"
 msgstr "Eroare la închiderea monitorului"
 
-#: applet.js:240
+#: applet.js:241
 msgid "Error sending to monitor"
 msgstr "Eroare la trimiterea către monitor"
 
-#: applet.js:253 applet.js:507
+#: applet.js:254 applet.js:509
 msgid "Error"
 msgstr "Eroare"
 
-#: applet.js:270
+#: applet.js:271
 msgid "Initializing..."
 msgstr "Inițializare..."
 
-#: applet.js:280
+#: applet.js:281
 msgid "Mem"
 msgstr "Mem"
 
-#: applet.js:289 applet.js:678
+#: applet.js:290 applet.js:681
 msgid "GPU"
 msgstr "GPU"
 
-#: applet.js:298 applet.js:686
+#: applet.js:299 applet.js:689
 msgid "Fan"
 msgstr "Fan"
 
-#: applet.js:508
+#: applet.js:510
 msgid "Failed to run nvidia-smi.\n"
 msgstr "Nu s-a putut rula nvidia-smi.\n"
 
-#: applet.js:508 applet.js:509
+#: applet.js:510 applet.js:511
 msgid "Unknown"
 msgstr "Necunoscut"
 
-#: applet.js:509
+#: applet.js:511
 msgid "Failed to run nvidia-smi"
 msgstr "Eșec la rularea nvidia-smi"
 
-#: applet.js:513
+#: applet.js:515
 msgid "An unexpected error occurred while running nvidia-smi.\n"
 msgstr "A apărut o eroare neașteptată la rularea nvidia-smi.\n"
 
-#: applet.js:514
+#: applet.js:516
 msgid "Err"
 msgstr "Err"
 
-#: applet.js:670
+#: applet.js:673
 msgid "MEM"
 msgstr "MEM"
 
-#: applet.js:686
+#: applet.js:689
 msgid "FAN"
 msgstr "FAN"
 
-#: applet.js:703
+#: applet.js:706
 msgid "Hi!"
 msgstr "Hei"
 
-#: applet.js:736
+#: applet.js:739
 msgid "Error terminating monitor subprocess"
 msgstr "Eroare la terminarea subprocesului monitorului"
 
-#: applet.js:750
+#: applet.js:753
 msgid "Menu toggled on click."
 msgstr "Meniul a fost comutat la clic."
 
 #. metadata.json->name
+#: ui/monitor_window.glade:7
 msgid "NVIDIA Monitor"
 msgstr "Monitor NVIDIA"
 
@@ -400,8 +405,8 @@ msgid "X-Axis Color"
 msgstr "Culoare axă X"
 
 #. settings-schema.json->x-axis-color->tooltip
-msgid "Color for the x-axis labels (Time)."
-msgstr "Culoare pentru etichetele axei X (timp)."
+msgid "Color for the X-axis labels (Time)."
+msgstr ""
 
 #. settings-schema.json->guidelines-color->description
 msgid "Guidelines Color"

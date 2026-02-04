@@ -61,111 +61,116 @@ msgstr "Eftirlitsstillingar"
 msgid "Reset All Settings"
 msgstr "Endurstilla allar stillingar"
 
-#: applet.js:107 applet.js:108
+#: applet.js:97
+msgid "Are you sure you want to reset all settings of '%s' to default?"
+msgstr ""
+
+#: applet.js:108 applet.js:109
 msgid "Error resetting settings"
 msgstr "Villa við að endurstilla stillingar"
 
-#: applet.js:117
+#: applet.js:118
 msgid "Error building menu: "
 msgstr "Villa við gerð valmyndar: "
 
-#: applet.js:170
+#: applet.js:171
 msgid "Launching"
 msgstr "Ræsir"
 
-#: applet.js:182
+#: applet.js:183
 msgid "Sending"
 msgstr "Sendir"
 
-#: applet.js:182
+#: applet.js:183
 msgid "history points"
 msgstr "sögupunktar"
 
-#: applet.js:193
+#: applet.js:194
 msgid "subprocess exited with error"
 msgstr "undirferli hætti með villu"
 
-#: applet.js:195
+#: applet.js:196
 msgid "Monitor subprocess exited"
 msgstr "Eftirlitsundirferli hætti"
 
-#: applet.js:201
+#: applet.js:202
 msgid "Error starting monitor"
 msgstr "Villa við að ræsa eftirlit"
 
-#: applet.js:202
+#: applet.js:203
 msgid "Could not start monitor script"
 msgstr "Gat ekki ræst eftirlitsskrifu"
 
-#: applet.js:212
+#: applet.js:213
 msgid "Error closing monitor"
 msgstr "Villa við að loka eftirliti"
 
-#: applet.js:240
+#: applet.js:241
 msgid "Error sending to monitor"
 msgstr "Villa við sendingu til eftirlits"
 
-#: applet.js:253 applet.js:507
+#: applet.js:254 applet.js:509
 msgid "Error"
 msgstr "Villa"
 
-#: applet.js:270
+#: applet.js:271
 msgid "Initializing..."
 msgstr "Frumstillir..."
 
-#: applet.js:280
+#: applet.js:281
 msgid "Mem"
 msgstr "Min"
 
-#: applet.js:289 applet.js:678
+#: applet.js:290 applet.js:681
 msgid "GPU"
 msgstr "GPU"
 
-#: applet.js:298 applet.js:686
+#: applet.js:299 applet.js:689
 msgid "Fan"
 msgstr "Vif"
 
-#: applet.js:508
+#: applet.js:510
 msgid "Failed to run nvidia-smi.\n"
 msgstr "Mistókst að keyra nvidia-smi.\n"
 
-#: applet.js:508 applet.js:509
+#: applet.js:510 applet.js:511
 msgid "Unknown"
 msgstr "Óþekkt"
 
-#: applet.js:509
+#: applet.js:511
 msgid "Failed to run nvidia-smi"
 msgstr "Mistókst að keyra nvidia-smi"
 
-#: applet.js:513
+#: applet.js:515
 msgid "An unexpected error occurred while running nvidia-smi.\n"
 msgstr "Óvænt villa kom upp við keyrslu nvidia-smi.\n"
 
-#: applet.js:514
+#: applet.js:516
 msgid "Err"
 msgstr "Err"
 
-#: applet.js:670
+#: applet.js:673
 msgid "MEM"
 msgstr "MIN"
 
-#: applet.js:686
+#: applet.js:689
 msgid "FAN"
 msgstr "VIF"
 
-#: applet.js:703
+#: applet.js:706
 msgid "Hi!"
 msgstr "Hæ!"
 
-#: applet.js:736
+#: applet.js:739
 msgid "Error terminating monitor subprocess"
 msgstr "Villa við að stöðva undirferli eftirlits"
 
-#: applet.js:750
+#: applet.js:753
 msgid "Menu toggled on click."
 msgstr "Valmynd ræst við smell."
 
 #. metadata.json->name
+#: ui/monitor_window.glade:7
 msgid "NVIDIA Monitor"
 msgstr "NVIDIA Eftirlit"
 

@@ -61,111 +61,116 @@ msgstr "Configuració del monitor"
 msgid "Reset All Settings"
 msgstr "Restableix tota la configuració"
 
-#: applet.js:107 applet.js:108
+#: applet.js:97
+msgid "Are you sure you want to reset all settings of '%s' to default?"
+msgstr ""
+
+#: applet.js:108 applet.js:109
 msgid "Error resetting settings"
 msgstr "Error en restablir la configuració"
 
-#: applet.js:117
+#: applet.js:118
 msgid "Error building menu: "
 msgstr "Error en crear el menú: "
 
-#: applet.js:170
+#: applet.js:171
 msgid "Launching"
 msgstr "Llançant"
 
-#: applet.js:182
+#: applet.js:183
 msgid "Sending"
 msgstr "Enviant"
 
-#: applet.js:182
+#: applet.js:183
 msgid "history points"
 msgstr "punts de l'historial"
 
-#: applet.js:193
+#: applet.js:194
 msgid "subprocess exited with error"
 msgstr "el subprocés ha finalitzat amb error"
 
-#: applet.js:195
+#: applet.js:196
 msgid "Monitor subprocess exited"
 msgstr "El subprocés del monitor ha finalitzat"
 
-#: applet.js:201
+#: applet.js:202
 msgid "Error starting monitor"
 msgstr "Error en iniciar el monitor"
 
-#: applet.js:202
+#: applet.js:203
 msgid "Could not start monitor script"
 msgstr "No s'ha pogut iniciar l'script del monitor"
 
-#: applet.js:212
+#: applet.js:213
 msgid "Error closing monitor"
 msgstr "Error en tancar el monitor"
 
-#: applet.js:240
+#: applet.js:241
 msgid "Error sending to monitor"
 msgstr "Error en enviar al monitor"
 
-#: applet.js:253 applet.js:507
+#: applet.js:254 applet.js:509
 msgid "Error"
 msgstr "Error"
 
-#: applet.js:270
+#: applet.js:271
 msgid "Initializing..."
 msgstr "Inicialitzant..."
 
-#: applet.js:280
+#: applet.js:281
 msgid "Mem"
 msgstr "Mem"
 
-#: applet.js:289 applet.js:678
+#: applet.js:290 applet.js:681
 msgid "GPU"
 msgstr "GPU"
 
-#: applet.js:298 applet.js:686
+#: applet.js:299 applet.js:689
 msgid "Fan"
 msgstr "Ven"
 
-#: applet.js:508
+#: applet.js:510
 msgid "Failed to run nvidia-smi.\n"
 msgstr "No s'ha pogut executar nvidia-smi.\n"
 
-#: applet.js:508 applet.js:509
+#: applet.js:510 applet.js:511
 msgid "Unknown"
 msgstr "Desconegut"
 
-#: applet.js:509
+#: applet.js:511
 msgid "Failed to run nvidia-smi"
 msgstr "Error en executar nvidia-smi"
 
-#: applet.js:513
+#: applet.js:515
 msgid "An unexpected error occurred while running nvidia-smi.\n"
 msgstr "S'ha produït un error inesperat en executar nvidia-smi.\n"
 
-#: applet.js:514
+#: applet.js:516
 msgid "Err"
 msgstr "Err"
 
-#: applet.js:670
+#: applet.js:673
 msgid "MEM"
 msgstr "MEM"
 
-#: applet.js:686
+#: applet.js:689
 msgid "FAN"
 msgstr "VEN"
 
-#: applet.js:703
+#: applet.js:706
 msgid "Hi!"
 msgstr "Ei!"
 
-#: applet.js:736
+#: applet.js:739
 msgid "Error terminating monitor subprocess"
 msgstr "Error en acabar el subprocés del monitor"
 
-#: applet.js:750
+#: applet.js:753
 msgid "Menu toggled on click."
 msgstr "Menú commutat en fer clic."
 
 #. metadata.json->name
+#: ui/monitor_window.glade:7
 msgid "NVIDIA Monitor"
 msgstr "Monitor NVIDIA"
 
@@ -417,7 +422,8 @@ msgstr "Interval d'actualització"
 
 #. settings-schema.json->refresh-interval->tooltip
 msgid "How often to update the GPU stats (in seconds)."
-msgstr "Amb quina freqüència s'actualitzen les estadístiques de la GPU (en segons)."
+msgstr ""
+"Amb quina freqüència s'actualitzen les estadístiques de la GPU (en segons)."
 
 #. settings-schema.json->border-color->description
 msgid "Applet Border Color"
@@ -445,7 +451,9 @@ msgstr "Codificació de sortida de nvidia-smi"
 
 #. settings-schema.json->encoding->tooltip
 msgid "Select the character encoding used by nvidia-smi output."
-msgstr "Seleccioneu la codificació de caràcters utilitzada per la sortida de nvidia-smi."
+msgstr ""
+"Seleccioneu la codificació de caràcters utilitzada per la sortida de nvidia-"
+"smi."
 
 #. settings-schema.json->show-temp->description
 msgid "Show Temperature"
@@ -487,7 +495,8 @@ msgstr "Mode de visualització de memòria"
 
 #. settings-schema.json->memory-display-mode->tooltip
 msgid "Choose how to display memory usage: as text or as a pie chart."
-msgstr "Trieu com mostrar l'ús de memòria: com a text o com a gràfic circular."
+msgstr ""
+"Trieu com mostrar l'ús de memòria: com a text o com a gràfic circular."
 
 #. settings-schema.json->show-gpu-util->description
 msgid "Show GPU Utilization"
@@ -516,7 +525,8 @@ msgstr "Mostra la velocitat del ventilador"
 
 #. settings-schema.json->show-fan-speed->tooltip
 msgid "Show GPU fan speed percentage in the panel."
-msgstr "Mostra el percentatge de velocitat del ventilador de la GPU al panell."
+msgstr ""
+"Mostra el percentatge de velocitat del ventilador de la GPU al panell."
 
 #. settings-schema.json->fan-display-mode->description
 msgid "Fan Display Mode"
@@ -524,4 +534,6 @@ msgstr "Mode de visualització del ventilador"
 
 #. settings-schema.json->fan-display-mode->tooltip
 msgid "Choose how to display fan speed: as text or as a pie chart."
-msgstr "Trieu com mostrar la velocitat del ventilador: com a text o com a gràfic circular."
+msgstr ""
+"Trieu com mostrar la velocitat del ventilador: com a text o com a gràfic "
+"circular."
