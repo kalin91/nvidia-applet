@@ -31,6 +31,10 @@ msgstr ""
 msgid "Displays NVIDIA GPU monitor"
 msgstr "Prikazuje NVIDIA GPU monitor"
 
+#: applet.js:54
+msgid "Error initializing applet"
+msgstr ""
+
 #: applet.js:55
 msgid "Init Error"
 msgstr "Greška pri pokretanju"
@@ -43,10 +47,12 @@ msgstr "Otvori graf monitora"
 msgid "Settings"
 msgstr "Postavke"
 
+#. settings-schema.json->Applet->title
 #: applet.js:89
 msgid "Applet Settings"
 msgstr "Postavke appleta"
 
+#. settings-schema.json->Monitor->title
 #: applet.js:92
 msgid "Monitor Settings"
 msgstr "Postavke monitora"
@@ -55,301 +61,466 @@ msgstr "Postavke monitora"
 msgid "Reset All Settings"
 msgstr "Vrati sve postavke"
 
+#: applet.js:107 applet.js:108
+msgid "Error resetting settings"
+msgstr ""
+
 #: applet.js:117
 msgid "Error building menu: "
 msgstr "Greška pri izradi izbornika: "
 
-#: applet.js:254 applet.js:521
+#: applet.js:170
+msgid "Launching"
+msgstr ""
+
+#: applet.js:182
+msgid "Sending"
+msgstr ""
+
+#: applet.js:182
+msgid "history points"
+msgstr ""
+
+#: applet.js:193
+msgid "subprocess exited with error"
+msgstr ""
+
+#: applet.js:195
+msgid "Monitor subprocess exited"
+msgstr ""
+
+#: applet.js:201
+msgid "Error starting monitor"
+msgstr ""
+
+#: applet.js:202
+msgid "Could not start monitor script"
+msgstr ""
+
+#: applet.js:212
+msgid "Error closing monitor"
+msgstr ""
+
+#: applet.js:240
+msgid "Error sending to monitor"
+msgstr ""
+
+#: applet.js:253 applet.js:507
 msgid "Error"
 msgstr "Greška"
 
-#: applet.js:271
+#: applet.js:270
 msgid "Initializing..."
 msgstr "Inicijalizacija..."
 
-#: applet.js:281
+#: applet.js:280
 msgid "Mem"
 msgstr "Mem"
 
-#: applet.js:290
+#: applet.js:289 applet.js:678
 msgid "GPU"
 msgstr "GPU"
 
-#: applet.js:299
+#: applet.js:298 applet.js:686
 msgid "Fan"
 msgstr "Fan"
 
-#: applet.js:522
+#: applet.js:508
 msgid "Failed to run nvidia-smi.\n"
 msgstr "Neuspjelo pokretanje nvidia-smi.\n"
 
-#: applet.js:522
+#: applet.js:508 applet.js:509
 msgid "Unknown"
 msgstr "Nepoznato"
 
-#: applet.js:527
+#: applet.js:509
+msgid "Failed to run nvidia-smi"
+msgstr ""
+
+#: applet.js:513
 msgid "An unexpected error occurred while running nvidia-smi.\n"
 msgstr "Došlo je do neočekivane greške pri pokretanju nvidia-smi.\n"
 
-#: applet.js:528
+#: applet.js:514
 msgid "Err"
 msgstr "Greška"
 
-#: applet.js:692
-msgid "GPU: "
-msgstr "GPU: "
+#: applet.js:670
+msgid "MEM"
+msgstr ""
 
-#: applet.js:700
-msgid "Fan: "
-msgstr "Fan: "
+#: applet.js:686
+msgid "FAN"
+msgstr ""
 
+#: applet.js:703
+msgid "Hi!"
+msgstr ""
+
+#: applet.js:736
+msgid "Error terminating monitor subprocess"
+msgstr ""
+
+#: applet.js:750
+msgid "Menu toggled on click."
+msgstr ""
+
+#. metadata.json->name
 msgid "NVIDIA Monitor"
 msgstr "NVIDIA Monitor"
 
+#. metadata.json->description
 msgid ""
 "Monitors GPU temperature, memory, utilization, and fan speed using nvidia-"
 "smi"
 msgstr ""
-"Prati temperaturu GPU-a, memoriju, opterećenje i brzinu ventilatora pomoću nvidia-smi"
+"Prati temperaturu GPU-a, memoriju, opterećenje i brzinu ventilatora pomoću "
+"nvidia-smi"
 
+#. settings-schema.json->section_general->title
 msgid "General Settings"
 msgstr "Opće postavke"
 
+#. settings-schema.json->section_temp->title
 msgid "Temperature"
 msgstr "Temperatura"
 
+#. settings-schema.json->section_memory->title
 msgid "Memory Usage"
 msgstr "Korištenje memorije"
 
+#. settings-schema.json->section_gpu->title
 msgid "GPU Utilization"
 msgstr "Iskorištenje GPU-a"
 
+#. settings-schema.json->section_fan->title
 msgid "Fan Speed"
 msgstr "Brzina ventilatora"
 
+#. settings-schema.json->top_note->title
 msgid "Note"
 msgstr "Napomena"
 
+#. settings-schema.json->metric_colors_section->title
 msgid "Metric Colors"
 msgstr "Boje metrika"
 
+#. settings-schema.json->layout_colors_section->title
 msgid "Layout Colors"
 msgstr "Boje izgleda"
 
+#. settings-schema.json->y_axis_section->title
 msgid "Y-Axis Settings"
 msgstr "Postavke Y-osi"
 
+#. settings-schema.json->x_axis_section->title
 msgid "X-Axis Settings"
 msgstr "Postavke X-osi"
 
+#. settings-schema.json->monitor-note->description
 msgid ""
 "Changes to monitor settings will take effect after restarting the monitor."
 msgstr ""
 "Promjene postavki stupaju na snagu nakon ponovnog pokretanja monitora."
 
+#. settings-schema.json->y-axis-steps->options
+#. settings-schema.json->x-axis-steps->options
 msgid "1 Line (50%)"
 msgstr "1 linija (50%)"
 
+#. settings-schema.json->y-axis-steps->options
+#. settings-schema.json->x-axis-steps->options
 msgid "2 Lines (33%, 66%)"
 msgstr "2 linije (33%, 66%)"
 
+#. settings-schema.json->y-axis-steps->options
+#. settings-schema.json->x-axis-steps->options
 msgid "3 Lines (25%, 50%, 75%)"
 msgstr "3 linije (25%, 50%, 75%)"
 
+#. settings-schema.json->y-axis-steps->options
+#. settings-schema.json->x-axis-steps->options
 msgid "4 Lines (20%, 40%, 60%, 80%)"
 msgstr "4 linije (20%, 40%, 60%, 80%)"
 
+#. settings-schema.json->y-axis-steps->options
+#. settings-schema.json->x-axis-steps->options
 msgid "5 Lines (16%, 33%, 50%, 66%, 83%)"
 msgstr "5 linija (16%, 33%, 50%, 66%, 83%)"
 
+#. settings-schema.json->y-axis-steps->options
+#. settings-schema.json->x-axis-steps->options
 msgid "9 Lines (Every 10%)"
 msgstr "9 linija (svakih 10%)"
 
+#. settings-schema.json->y-axis-steps->description
 msgid "Y-Axis Guides"
 msgstr "Vodiči Y-osi"
 
+#. settings-schema.json->y-axis-steps->tooltip
 msgid "Number of guide lines for the Y-Axis."
 msgstr "Broj pomoćnih linija za Y-os."
 
+#. settings-schema.json->y-axis-temp-unit->options
+#. settings-schema.json->temp-unit->options
 msgid "Celsius (°C)"
 msgstr "Celzijus (°C)"
 
+#. settings-schema.json->y-axis-temp-unit->options
+#. settings-schema.json->temp-unit->options
 msgid "Fahrenheit (°F)"
 msgstr "Fahrenheit (°F)"
 
+#. settings-schema.json->y-axis-temp-unit->description
 msgid "Y-Axis Temperature Unit"
 msgstr "Jedinica temperature Y-osi"
 
+#. settings-schema.json->y-axis-temp-unit->tooltip
 msgid "Unit for the temperature axis in the monitor."
 msgstr "Jedinica za temperaturu na osi monitora."
 
+#. settings-schema.json->x-axis-steps->description
 msgid "X-Axis Guides"
 msgstr "Vodiči X-osi"
 
+#. settings-schema.json->x-axis-steps->tooltip
 msgid "Number of vertical guide lines for the X-Axis."
 msgstr "Broj okomitih pomoćnih linija za X-os."
 
+#. settings-schema.json->x-axis-unit->options
 msgid "Seconds"
 msgstr "Sekunde"
 
+#. settings-schema.json->x-axis-unit->options
 msgid "Minutes"
 msgstr "Minute"
 
+#. settings-schema.json->x-axis-unit->options
 msgid "Hours"
 msgstr "Sati"
 
+#. settings-schema.json->x-axis-unit->description
 msgid "X-Axis Unit"
 msgstr "Jedinica X-osi"
 
+#. settings-schema.json->x-axis-unit->tooltip
 msgid "Unit of time for the X-Axis."
 msgstr "Jedinica vremena za X-os."
 
+#. settings-schema.json->x-axis-length-sec->units
+#. settings-schema.json->refresh-interval->units
+msgid "s"
+msgstr ""
+
+#. settings-schema.json->x-axis-length-sec->description
 msgid "X-Axis Length (Seconds)"
 msgstr "Duljina X-osi (sekunde)"
 
+#. settings-schema.json->x-axis-length-sec->tooltip
+#. settings-schema.json->x-axis-length-min->tooltip
+#. settings-schema.json->x-axis-length-hour->tooltip
 msgid "Total duration shown on the graph."
 msgstr "Ukupno trajanje prikazano na grafu."
 
+#. settings-schema.json->x-axis-length-min->units
+msgid "m"
+msgstr ""
+
+#. settings-schema.json->x-axis-length-min->description
 msgid "X-Axis Length (Minutes)"
 msgstr "Duljina X-osi (minute)"
 
+#. settings-schema.json->x-axis-length-hour->units
+msgid "h"
+msgstr ""
+
+#. settings-schema.json->x-axis-length-hour->description
 msgid "X-Axis Length (Hours)"
 msgstr "Duljina X-osi (sati)"
 
+#. settings-schema.json->temp-color->description
 msgid "Temperature Color"
 msgstr "Boja temperature"
 
+#. settings-schema.json->temp-color->tooltip
 msgid "Color used for temperature in the graph."
 msgstr "Boja za temperaturu na grafu."
 
+#. settings-schema.json->mem_color->description
 msgid "Memory Usage Color"
 msgstr "Boja memorije"
 
+#. settings-schema.json->mem_color->tooltip
 msgid "Color used for memory usage in the graph."
 msgstr "Boja za korištenje memorije na grafu."
 
+#. settings-schema.json->gpu_color->description
 msgid "GPU Utilization Color"
 msgstr "Boja GPU opterećenja"
 
+#. settings-schema.json->gpu_color->tooltip
 msgid "Color used for GPU utilization in the graph."
 msgstr "Boja za GPU opterećenje na grafu."
 
+#. settings-schema.json->fan_color->description
 msgid "Fan Speed Color"
 msgstr "Boja brzine ventilatora"
 
+#. settings-schema.json->fan_color->tooltip
 msgid "Color used for fan speed in the graph."
 msgstr "Boja za brzinu ventilatora na grafu."
 
+#. settings-schema.json->background_color->description
 msgid "Background Color"
 msgstr "Boja pozadine"
 
+#. settings-schema.json->background_color->tooltip
 msgid "Background color of the graph."
 msgstr "Boja pozadine grafa."
 
+#. settings-schema.json->temp-axis-color->description
 msgid "Temperature Axis Color"
 msgstr "Boja osi temperature"
 
+#. settings-schema.json->temp-axis-color->tooltip
 msgid "Color for the temperature axis labels."
 msgstr "Boja oznaka osi temperature."
 
+#. settings-schema.json->percent-axis-color->description
 msgid "Percentage Axis Color"
 msgstr "Boja osi postotaka"
 
+#. settings-schema.json->percent-axis-color->tooltip
 msgid "Color for the percentage axis labels."
 msgstr "Boja oznaka osi postotaka."
 
+#. settings-schema.json->x-axis-color->description
 msgid "X-Axis Color"
 msgstr "Boja X-osi"
 
+#. settings-schema.json->x-axis-color->tooltip
 msgid "Color for the X-axis labels (Time)."
 msgstr "Boja oznaka X-osi (vrijeme)."
 
+#. settings-schema.json->guidelines-color->description
 msgid "Guidelines Color"
 msgstr "Boja vodiča"
 
+#. settings-schema.json->guidelines-color->tooltip
 msgid "Color for the grid/guide lines."
 msgstr "Boja mrežnih linija."
 
+#. settings-schema.json->refresh-interval->description
 msgid "Refresh Interval"
 msgstr "Interval osvježavanja"
 
+#. settings-schema.json->refresh-interval->tooltip
 msgid "How often to update the GPU stats (in seconds)."
 msgstr "Koliko često se ažuriraju GPU podaci (u sekundama)."
 
+#. settings-schema.json->border-color->description
 msgid "Applet Border Color"
 msgstr "Boja obruba appleta"
 
+#. settings-schema.json->border-color->tooltip
 msgid "Color of the applet border. Set alpha to 0 for no border."
 msgstr "Boja obruba appleta. Postavite prozirnost na 0 za bez obruba."
 
+#. settings-schema.json->encoding->options
 msgid "UTF-8"
 msgstr "UTF-8"
 
+#. settings-schema.json->encoding->options
 msgid "macintosh"
 msgstr "macintosh"
 
+#. settings-schema.json->encoding->options
 msgid "ASCII"
 msgstr "ASCII"
 
+#. settings-schema.json->encoding->description
 msgid "nvidia-smi Output Encoding"
 msgstr "Kodiranje izlaza nvidia-smi"
 
+#. settings-schema.json->encoding->tooltip
 msgid "Select the character encoding used by nvidia-smi output."
 msgstr "Odaberite kodiranje znakova za izlaz nvidia-smi."
 
+#. settings-schema.json->show-temp->description
 msgid "Show Temperature"
 msgstr "Prikaži temperaturu"
 
+#. settings-schema.json->show-temp->tooltip
 msgid "Show GPU temperature in the panel."
 msgstr "Prikaži temperaturu GPU-a na panelu."
 
+#. settings-schema.json->temp-unit->description
 msgid "Temperature Unit"
 msgstr "Jedinica temperature"
 
+#. settings-schema.json->temp-unit->tooltip
 msgid "Choose the unit for displaying GPU temperature."
 msgstr "Odaberite jedinicu za prikaz temperature GPU-a."
 
+#. settings-schema.json->show-memory->description
 msgid "Show Memory Usage"
 msgstr "Prikaži korištenje memorije"
 
+#. settings-schema.json->show-memory->tooltip
 msgid "Show GPU memory usage in the panel."
 msgstr "Prikaži GPU memoriju na panelu."
 
+#. settings-schema.json->memory-display-mode->options
 msgid "Text (Used / Total)"
 msgstr "Tekst (korišteno / ukupno)"
 
+#. settings-schema.json->memory-display-mode->options
+#. settings-schema.json->gpu-display-mode->options
+#. settings-schema.json->fan-display-mode->options
 msgid "Pie Chart"
 msgstr "Kružni graf"
 
+#. settings-schema.json->memory-display-mode->description
 msgid "Memory Display Mode"
 msgstr "Način prikaza memorije"
 
+#. settings-schema.json->memory-display-mode->tooltip
 msgid "Choose how to display memory usage: as text or as a pie chart."
 msgstr "Odaberite prikaz memorije: kao tekst ili kružni graf."
 
+#. settings-schema.json->show-gpu-util->description
 msgid "Show GPU Utilization"
 msgstr "Prikaži GPU opterećenje"
 
+#. settings-schema.json->show-gpu-util->tooltip
 msgid "Show GPU utilization percentage in the panel."
 msgstr "Prikaži postotak GPU opterećenja na panelu."
 
+#. settings-schema.json->gpu-display-mode->options
+#. settings-schema.json->fan-display-mode->options
 msgid "Text (Percent)"
 msgstr "Tekst (postotak)"
 
+#. settings-schema.json->gpu-display-mode->description
 msgid "GPU Display Mode"
 msgstr "Način prikaza GPU-a"
 
+#. settings-schema.json->gpu-display-mode->tooltip
 msgid "Choose how to display GPU utilization: as text or as a pie chart."
 msgstr "Odaberite prikaz GPU opterećenja: tekst ili kružni graf."
 
+#. settings-schema.json->show-fan-speed->description
 msgid "Show Fan Speed"
 msgstr "Prikaži brzinu ventilatora"
 
+#. settings-schema.json->show-fan-speed->tooltip
 msgid "Show GPU fan speed percentage in the panel."
 msgstr "Prikaži brzinu ventilatora GPU-a na panelu."
 
+#. settings-schema.json->fan-display-mode->description
 msgid "Fan Display Mode"
 msgstr "Način prikaza ventilatora"
 
+#. settings-schema.json->fan-display-mode->tooltip
 msgid "Choose how to display fan speed: as text or as a pie chart."
 msgstr "Odaberite prikaz brzine ventilatora: tekst ili kružni graf."

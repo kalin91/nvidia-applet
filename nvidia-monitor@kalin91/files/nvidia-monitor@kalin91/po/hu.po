@@ -31,6 +31,10 @@ msgstr ""
 msgid "Displays NVIDIA GPU monitor"
 msgstr "NVIDIA GPU monitor megjelenítése"
 
+#: applet.js:54
+msgid "Error initializing applet"
+msgstr ""
+
 #: applet.js:55
 msgid "Init Error"
 msgstr "Inicializálási hiba"
@@ -43,10 +47,12 @@ msgstr "Monitor grafikon megnyitása"
 msgid "Settings"
 msgstr "Beállítások"
 
+#. settings-schema.json->Applet->title
 #: applet.js:89
 msgid "Applet Settings"
 msgstr "Applet beállítások"
 
+#. settings-schema.json->Monitor->title
 #: applet.js:92
 msgid "Monitor Settings"
 msgstr "Monitor beállítások"
@@ -55,57 +61,115 @@ msgstr "Monitor beállítások"
 msgid "Reset All Settings"
 msgstr "Összes beállítás visszaállítása"
 
+#: applet.js:107 applet.js:108
+msgid "Error resetting settings"
+msgstr ""
+
 #: applet.js:117
 msgid "Error building menu: "
 msgstr "Hiba a menü létrehozásakor: "
 
-#: applet.js:254 applet.js:521
+#: applet.js:170
+msgid "Launching"
+msgstr ""
+
+#: applet.js:182
+msgid "Sending"
+msgstr ""
+
+#: applet.js:182
+msgid "history points"
+msgstr ""
+
+#: applet.js:193
+msgid "subprocess exited with error"
+msgstr ""
+
+#: applet.js:195
+msgid "Monitor subprocess exited"
+msgstr ""
+
+#: applet.js:201
+msgid "Error starting monitor"
+msgstr ""
+
+#: applet.js:202
+msgid "Could not start monitor script"
+msgstr ""
+
+#: applet.js:212
+msgid "Error closing monitor"
+msgstr ""
+
+#: applet.js:240
+msgid "Error sending to monitor"
+msgstr ""
+
+#: applet.js:253 applet.js:507
 msgid "Error"
 msgstr "Hiba"
 
-#: applet.js:271
+#: applet.js:270
 msgid "Initializing..."
 msgstr "Inicializálás..."
 
-#: applet.js:281
+#: applet.js:280
 msgid "Mem"
 msgstr "Mem"
 
-#: applet.js:290
+#: applet.js:289 applet.js:678
 msgid "GPU"
 msgstr "GPU"
 
-#: applet.js:299
+#: applet.js:298 applet.js:686
 msgid "Fan"
 msgstr "Fan"
 
-#: applet.js:522
+#: applet.js:508
 msgid "Failed to run nvidia-smi.\n"
 msgstr "Az nvidia-smi futtatása sikertelen.\n"
 
-#: applet.js:522
+#: applet.js:508 applet.js:509
 msgid "Unknown"
 msgstr "Ismeretlen"
 
-#: applet.js:527
+#: applet.js:509
+msgid "Failed to run nvidia-smi"
+msgstr ""
+
+#: applet.js:513
 msgid "An unexpected error occurred while running nvidia-smi.\n"
 msgstr "Váratlan hiba történt az nvidia-smi futtatásakor.\n"
 
-#: applet.js:528
+#: applet.js:514
 msgid "Err"
 msgstr "Hiba"
 
-#: applet.js:692
-msgid "GPU: "
-msgstr "GPU: "
+#: applet.js:670
+msgid "MEM"
+msgstr ""
 
-#: applet.js:700
-msgid "Fan: "
-msgstr "Fan: "
+#: applet.js:686
+msgid "FAN"
+msgstr ""
 
+#: applet.js:703
+msgid "Hi!"
+msgstr ""
+
+#: applet.js:736
+msgid "Error terminating monitor subprocess"
+msgstr ""
+
+#: applet.js:750
+msgid "Menu toggled on click."
+msgstr ""
+
+#. metadata.json->name
 msgid "NVIDIA Monitor"
 msgstr "NVIDIA Monitor"
 
+#. metadata.json->description
 msgid ""
 "Monitors GPU temperature, memory, utilization, and fan speed using nvidia-"
 "smi"
@@ -113,244 +177,354 @@ msgstr ""
 "Figyeli a GPU hőmérsékletét, memóriáját, kihasználtságát és a ventilátor "
 "sebességét az nvidia-smi segítségével"
 
+#. settings-schema.json->section_general->title
 msgid "General Settings"
 msgstr "Általános beállítások"
 
+#. settings-schema.json->section_temp->title
 msgid "Temperature"
 msgstr "Hőmérséklet"
 
+#. settings-schema.json->section_memory->title
 msgid "Memory Usage"
 msgstr "Memóriahasználat"
 
+#. settings-schema.json->section_gpu->title
 msgid "GPU Utilization"
 msgstr "GPU kihasználtság"
 
+#. settings-schema.json->section_fan->title
 msgid "Fan Speed"
 msgstr "Ventilátor sebesség"
 
+#. settings-schema.json->top_note->title
 msgid "Note"
 msgstr "Megjegyzés"
 
+#. settings-schema.json->metric_colors_section->title
 msgid "Metric Colors"
 msgstr "Mérési színek"
 
+#. settings-schema.json->layout_colors_section->title
 msgid "Layout Colors"
 msgstr "Elrendezés színei"
 
+#. settings-schema.json->y_axis_section->title
 msgid "Y-Axis Settings"
 msgstr "Y-tengely beállításai"
 
+#. settings-schema.json->x_axis_section->title
 msgid "X-Axis Settings"
 msgstr "X-tengely beállításai"
 
+#. settings-schema.json->monitor-note->description
 msgid ""
 "Changes to monitor settings will take effect after restarting the monitor."
 msgstr ""
 "A beállítások módosításai a monitor újraindítása után lépnek érvénybe."
 
+#. settings-schema.json->y-axis-steps->options
+#. settings-schema.json->x-axis-steps->options
 msgid "1 Line (50%)"
 msgstr "1 vonal (50%)"
 
+#. settings-schema.json->y-axis-steps->options
+#. settings-schema.json->x-axis-steps->options
 msgid "2 Lines (33%, 66%)"
 msgstr "2 vonal (33%, 66%)"
 
+#. settings-schema.json->y-axis-steps->options
+#. settings-schema.json->x-axis-steps->options
 msgid "3 Lines (25%, 50%, 75%)"
 msgstr "3 vonal (25%, 50%, 75%)"
 
+#. settings-schema.json->y-axis-steps->options
+#. settings-schema.json->x-axis-steps->options
 msgid "4 Lines (20%, 40%, 60%, 80%)"
 msgstr "4 vonal (20%, 40%, 60%, 80%)"
 
+#. settings-schema.json->y-axis-steps->options
+#. settings-schema.json->x-axis-steps->options
 msgid "5 Lines (16%, 33%, 50%, 66%, 83%)"
 msgstr "5 vonal (16%, 33%, 50%, 66%, 83%)"
 
+#. settings-schema.json->y-axis-steps->options
+#. settings-schema.json->x-axis-steps->options
 msgid "9 Lines (Every 10%)"
 msgstr "9 vonal (minden 10%)"
 
+#. settings-schema.json->y-axis-steps->description
 msgid "Y-Axis Guides"
 msgstr "Y-tengely segédvonalak"
 
+#. settings-schema.json->y-axis-steps->tooltip
 msgid "Number of guide lines for the Y-Axis."
 msgstr "A Y-tengely segédvonalainak száma."
 
+#. settings-schema.json->y-axis-temp-unit->options
+#. settings-schema.json->temp-unit->options
 msgid "Celsius (°C)"
 msgstr "Celsius (°C)"
 
+#. settings-schema.json->y-axis-temp-unit->options
+#. settings-schema.json->temp-unit->options
 msgid "Fahrenheit (°F)"
 msgstr "Fahrenheit (°F)"
 
+#. settings-schema.json->y-axis-temp-unit->description
 msgid "Y-Axis Temperature Unit"
 msgstr "Y-tengely hőmérsékleti egység"
 
+#. settings-schema.json->y-axis-temp-unit->tooltip
 msgid "Unit for the temperature axis in the monitor."
 msgstr "A hőmérséklet tengely mértékegysége."
 
+#. settings-schema.json->x-axis-steps->description
 msgid "X-Axis Guides"
 msgstr "X-tengely segédvonalak"
 
+#. settings-schema.json->x-axis-steps->tooltip
 msgid "Number of vertical guide lines for the X-Axis."
 msgstr "Az X-tengely függőleges segédvonalainak száma."
 
+#. settings-schema.json->x-axis-unit->options
 msgid "Seconds"
 msgstr "Másodperc"
 
+#. settings-schema.json->x-axis-unit->options
 msgid "Minutes"
 msgstr "Perc"
 
+#. settings-schema.json->x-axis-unit->options
 msgid "Hours"
 msgstr "Óra"
 
+#. settings-schema.json->x-axis-unit->description
 msgid "X-Axis Unit"
 msgstr "X-tengely egység"
 
+#. settings-schema.json->x-axis-unit->tooltip
 msgid "Unit of time for the X-Axis."
 msgstr "Az X-tengely időegysége."
 
+#. settings-schema.json->x-axis-length-sec->units
+#. settings-schema.json->refresh-interval->units
+msgid "s"
+msgstr ""
+
+#. settings-schema.json->x-axis-length-sec->description
 msgid "X-Axis Length (Seconds)"
 msgstr "X-tengely hossza (másodperc)"
 
+#. settings-schema.json->x-axis-length-sec->tooltip
+#. settings-schema.json->x-axis-length-min->tooltip
+#. settings-schema.json->x-axis-length-hour->tooltip
 msgid "Total duration shown on the graph."
 msgstr "A grafikonon megjelenített teljes időtartam."
 
+#. settings-schema.json->x-axis-length-min->units
+msgid "m"
+msgstr ""
+
+#. settings-schema.json->x-axis-length-min->description
 msgid "X-Axis Length (Minutes)"
 msgstr "X-tengely hossza (perc)"
 
+#. settings-schema.json->x-axis-length-hour->units
+msgid "h"
+msgstr ""
+
+#. settings-schema.json->x-axis-length-hour->description
 msgid "X-Axis Length (Hours)"
 msgstr "X-tengely hossza (óra)"
 
+#. settings-schema.json->temp-color->description
 msgid "Temperature Color"
 msgstr "Hőmérséklet színe"
 
+#. settings-schema.json->temp-color->tooltip
 msgid "Color used for temperature in the graph."
 msgstr "A hőmérséklet grafikon színe."
 
+#. settings-schema.json->mem_color->description
 msgid "Memory Usage Color"
 msgstr "Memória színe"
 
+#. settings-schema.json->mem_color->tooltip
 msgid "Color used for memory usage in the graph."
 msgstr "A memóriahasználat színe a grafikonon."
 
+#. settings-schema.json->gpu_color->description
 msgid "GPU Utilization Color"
 msgstr "GPU kihasználtság színe"
 
+#. settings-schema.json->gpu_color->tooltip
 msgid "Color used for GPU utilization in the graph."
 msgstr "A GPU kihasználtság színe a grafikonon."
 
+#. settings-schema.json->fan_color->description
 msgid "Fan Speed Color"
 msgstr "Ventilátor színe"
 
+#. settings-schema.json->fan_color->tooltip
 msgid "Color used for fan speed in the graph."
 msgstr "A ventilátor sebességének színe."
 
+#. settings-schema.json->background_color->description
 msgid "Background Color"
 msgstr "Háttérszín"
 
+#. settings-schema.json->background_color->tooltip
 msgid "Background color of the graph."
 msgstr "A grafikon háttérszíne."
 
+#. settings-schema.json->temp-axis-color->description
 msgid "Temperature Axis Color"
 msgstr "Hőmérséklet tengely színe"
 
+#. settings-schema.json->temp-axis-color->tooltip
 msgid "Color for the temperature axis labels."
 msgstr "A hőmérséklet tengely feliratainak színe."
 
+#. settings-schema.json->percent-axis-color->description
 msgid "Percentage Axis Color"
 msgstr "Százalék tengely színe"
 
+#. settings-schema.json->percent-axis-color->tooltip
 msgid "Color for the percentage axis labels."
 msgstr "A százalék tengely feliratainak színe."
 
+#. settings-schema.json->x-axis-color->description
 msgid "X-Axis Color"
 msgstr "X-tengely színe"
 
+#. settings-schema.json->x-axis-color->tooltip
 msgid "Color for the X-axis labels (Time)."
 msgstr "Az X-tengely (idő) feliratainak színe."
 
+#. settings-schema.json->guidelines-color->description
 msgid "Guidelines Color"
 msgstr "Segédvonalak színe"
 
+#. settings-schema.json->guidelines-color->tooltip
 msgid "Color for the grid/guide lines."
 msgstr "A segédvonalak színe."
 
+#. settings-schema.json->refresh-interval->description
 msgid "Refresh Interval"
 msgstr "Frissítési időköz"
 
+#. settings-schema.json->refresh-interval->tooltip
 msgid "How often to update the GPU stats (in seconds)."
 msgstr "Milyen gyakran frissüljenek a GPU adatok (másodpercben)."
 
+#. settings-schema.json->border-color->description
 msgid "Applet Border Color"
 msgstr "Applet keretszín"
 
+#. settings-schema.json->border-color->tooltip
 msgid "Color of the applet border. Set alpha to 0 for no border."
-msgstr "Az applet keretének színe. Állítsa az alfát 0-ra a keret eltávolításához."
+msgstr ""
+"Az applet keretének színe. Állítsa az alfát 0-ra a keret eltávolításához."
 
+#. settings-schema.json->encoding->options
 msgid "UTF-8"
 msgstr "UTF-8"
 
+#. settings-schema.json->encoding->options
 msgid "macintosh"
 msgstr "macintosh"
 
+#. settings-schema.json->encoding->options
 msgid "ASCII"
 msgstr "ASCII"
 
+#. settings-schema.json->encoding->description
 msgid "nvidia-smi Output Encoding"
 msgstr "nvidia-smi kimenet kódolása"
 
+#. settings-schema.json->encoding->tooltip
 msgid "Select the character encoding used by nvidia-smi output."
 msgstr "Válassza ki az nvidia-smi kimenet karakterkódolását."
 
+#. settings-schema.json->show-temp->description
 msgid "Show Temperature"
 msgstr "Hőmérséklet megjelenítése"
 
+#. settings-schema.json->show-temp->tooltip
 msgid "Show GPU temperature in the panel."
 msgstr "GPU hőmérséklet megjelenítése a panelen."
 
+#. settings-schema.json->temp-unit->description
 msgid "Temperature Unit"
 msgstr "Hőmérsékleti egység"
 
+#. settings-schema.json->temp-unit->tooltip
 msgid "Choose the unit for displaying GPU temperature."
 msgstr "Válassza ki a GPU hőmérséklet mértékegységét."
 
+#. settings-schema.json->show-memory->description
 msgid "Show Memory Usage"
 msgstr "Memóriahasználat megjelenítése"
 
+#. settings-schema.json->show-memory->tooltip
 msgid "Show GPU memory usage in the panel."
 msgstr "GPU memória megjelenítése a panelen."
 
+#. settings-schema.json->memory-display-mode->options
 msgid "Text (Used / Total)"
 msgstr "Szöveg (használt / összes)"
 
+#. settings-schema.json->memory-display-mode->options
+#. settings-schema.json->gpu-display-mode->options
+#. settings-schema.json->fan-display-mode->options
 msgid "Pie Chart"
 msgstr "Kördiagram"
 
+#. settings-schema.json->memory-display-mode->description
 msgid "Memory Display Mode"
 msgstr "Memória megjelenítési mód"
 
+#. settings-schema.json->memory-display-mode->tooltip
 msgid "Choose how to display memory usage: as text or as a pie chart."
 msgstr "Válassza ki a memória megjelenítését: szöveg vagy kördiagram."
 
+#. settings-schema.json->show-gpu-util->description
 msgid "Show GPU Utilization"
 msgstr "GPU kihasználtság megjelenítése"
 
+#. settings-schema.json->show-gpu-util->tooltip
 msgid "Show GPU utilization percentage in the panel."
 msgstr "GPU kihasználtság százalék megjelenítése a panelen."
 
+#. settings-schema.json->gpu-display-mode->options
+#. settings-schema.json->fan-display-mode->options
 msgid "Text (Percent)"
 msgstr "Szöveg (százalék)"
 
+#. settings-schema.json->gpu-display-mode->description
 msgid "GPU Display Mode"
 msgstr "GPU megjelenítési mód"
 
+#. settings-schema.json->gpu-display-mode->tooltip
 msgid "Choose how to display GPU utilization: as text or as a pie chart."
-msgstr "Válassza ki a GPU kihasználtság megjelenítését: szöveg vagy kördiagram."
+msgstr ""
+"Válassza ki a GPU kihasználtság megjelenítését: szöveg vagy kördiagram."
 
+#. settings-schema.json->show-fan-speed->description
 msgid "Show Fan Speed"
 msgstr "Ventilátor sebesség megjelenítése"
 
+#. settings-schema.json->show-fan-speed->tooltip
 msgid "Show GPU fan speed percentage in the panel."
 msgstr "GPU ventilátor sebesség megjelenítése a panelen."
 
+#. settings-schema.json->fan-display-mode->description
 msgid "Fan Display Mode"
 msgstr "Ventilátor megjelenítési mód"
 
+#. settings-schema.json->fan-display-mode->tooltip
 msgid "Choose how to display fan speed: as text or as a pie chart."
-msgstr "Válassza ki a ventilátor sebességének megjelenítését: szöveg vagy kördiagram."
+msgstr ""
+"Válassza ki a ventilátor sebességének megjelenítését: szöveg vagy "
+"kördiagram."

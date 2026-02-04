@@ -31,6 +31,10 @@ msgstr ""
 msgid "Displays NVIDIA GPU monitor"
 msgstr "NVIDIA GPU モニターを表示"
 
+#: applet.js:54
+msgid "Error initializing applet"
+msgstr ""
+
 #: applet.js:55
 msgid "Init Error"
 msgstr "初期化エラー"
@@ -43,10 +47,12 @@ msgstr "モニターグラフを開く"
 msgid "Settings"
 msgstr "設定"
 
+#. settings-schema.json->Applet->title
 #: applet.js:89
 msgid "Applet Settings"
 msgstr "アプレット設定"
 
+#. settings-schema.json->Monitor->title
 #: applet.js:92
 msgid "Monitor Settings"
 msgstr "モニター設定"
@@ -55,289 +61,463 @@ msgstr "モニター設定"
 msgid "Reset All Settings"
 msgstr "すべての設定をリセット"
 
+#: applet.js:107 applet.js:108
+msgid "Error resetting settings"
+msgstr ""
+
 #: applet.js:117
 msgid "Error building menu: "
 msgstr "メニュー作成エラー: "
 
-#: applet.js:254 applet.js:521
+#: applet.js:170
+msgid "Launching"
+msgstr ""
+
+#: applet.js:182
+msgid "Sending"
+msgstr ""
+
+#: applet.js:182
+msgid "history points"
+msgstr ""
+
+#: applet.js:193
+msgid "subprocess exited with error"
+msgstr ""
+
+#: applet.js:195
+msgid "Monitor subprocess exited"
+msgstr ""
+
+#: applet.js:201
+msgid "Error starting monitor"
+msgstr ""
+
+#: applet.js:202
+msgid "Could not start monitor script"
+msgstr ""
+
+#: applet.js:212
+msgid "Error closing monitor"
+msgstr ""
+
+#: applet.js:240
+msgid "Error sending to monitor"
+msgstr ""
+
+#: applet.js:253 applet.js:507
 msgid "Error"
 msgstr "エラー"
 
-#: applet.js:271
+#: applet.js:270
 msgid "Initializing..."
 msgstr "初期化中..."
 
-#: applet.js:281
+#: applet.js:280
 msgid "Mem"
 msgstr "Mem"
 
-#: applet.js:290
+#: applet.js:289 applet.js:678
 msgid "GPU"
 msgstr "GPU"
 
-#: applet.js:299
+#: applet.js:298 applet.js:686
 msgid "Fan"
 msgstr "Fan"
 
-#: applet.js:522
+#: applet.js:508
 msgid "Failed to run nvidia-smi.\n"
 msgstr "nvidia-smi の実行に失敗しました。\n"
 
-#: applet.js:522
+#: applet.js:508 applet.js:509
 msgid "Unknown"
 msgstr "不明"
 
-#: applet.js:527
+#: applet.js:509
+msgid "Failed to run nvidia-smi"
+msgstr ""
+
+#: applet.js:513
 msgid "An unexpected error occurred while running nvidia-smi.\n"
 msgstr "nvidia-smi 実行中に予期しないエラーが発生しました。\n"
 
-#: applet.js:528
+#: applet.js:514
 msgid "Err"
 msgstr "Err"
 
-#: applet.js:692
-msgid "GPU: "
-msgstr "GPU: "
+#: applet.js:670
+msgid "MEM"
+msgstr ""
 
-#: applet.js:700
-msgid "Fan: "
-msgstr "Fan: "
+#: applet.js:686
+msgid "FAN"
+msgstr ""
 
+#: applet.js:703
+msgid "Hi!"
+msgstr ""
+
+#: applet.js:736
+msgid "Error terminating monitor subprocess"
+msgstr ""
+
+#: applet.js:750
+msgid "Menu toggled on click."
+msgstr ""
+
+#. metadata.json->name
 msgid "NVIDIA Monitor"
 msgstr "NVIDIA モニター"
 
+#. metadata.json->description
 msgid ""
-"Monitors GPU temperature, memory, utilization, and fan speed using nvidia-smi"
+"Monitors GPU temperature, memory, utilization, and fan speed using nvidia-"
+"smi"
 msgstr "nvidia-smi を使用して GPU 温度、メモリ、使用率、ファン速度を監視"
 
+#. settings-schema.json->section_general->title
 msgid "General Settings"
 msgstr "一般設定"
 
+#. settings-schema.json->section_temp->title
 msgid "Temperature"
 msgstr "温度"
 
+#. settings-schema.json->section_memory->title
 msgid "Memory Usage"
 msgstr "メモリ使用量"
 
+#. settings-schema.json->section_gpu->title
 msgid "GPU Utilization"
 msgstr "GPU 使用率"
 
+#. settings-schema.json->section_fan->title
 msgid "Fan Speed"
 msgstr "ファン速度"
 
+#. settings-schema.json->top_note->title
 msgid "Note"
 msgstr "注意"
 
+#. settings-schema.json->metric_colors_section->title
 msgid "Metric Colors"
 msgstr "メトリック色"
 
+#. settings-schema.json->layout_colors_section->title
 msgid "Layout Colors"
 msgstr "レイアウト色"
 
+#. settings-schema.json->y_axis_section->title
 msgid "Y-Axis Settings"
 msgstr "Y軸設定"
 
+#. settings-schema.json->x_axis_section->title
 msgid "X-Axis Settings"
 msgstr "X軸設定"
 
+#. settings-schema.json->monitor-note->description
 msgid ""
 "Changes to monitor settings will take effect after restarting the monitor."
 msgstr "モニター設定の変更は再起動後に反映されます。"
 
+#. settings-schema.json->y-axis-steps->options
+#. settings-schema.json->x-axis-steps->options
 msgid "1 Line (50%)"
 msgstr "1 本 (50%)"
 
+#. settings-schema.json->y-axis-steps->options
+#. settings-schema.json->x-axis-steps->options
 msgid "2 Lines (33%, 66%)"
 msgstr "2 本 (33%, 66%)"
 
+#. settings-schema.json->y-axis-steps->options
+#. settings-schema.json->x-axis-steps->options
 msgid "3 Lines (25%, 50%, 75%)"
 msgstr "3 本 (25%, 50%, 75%)"
 
+#. settings-schema.json->y-axis-steps->options
+#. settings-schema.json->x-axis-steps->options
 msgid "4 Lines (20%, 40%, 60%, 80%)"
 msgstr "4 本 (20%, 40%, 60%, 80%)"
 
+#. settings-schema.json->y-axis-steps->options
+#. settings-schema.json->x-axis-steps->options
 msgid "5 Lines (16%, 33%, 50%, 66%, 83%)"
 msgstr "5 本 (16%, 33%, 50%, 66%, 83%)"
 
+#. settings-schema.json->y-axis-steps->options
+#. settings-schema.json->x-axis-steps->options
 msgid "9 Lines (Every 10%)"
 msgstr "9 本 (10%ごと)"
 
+#. settings-schema.json->y-axis-steps->description
 msgid "Y-Axis Guides"
 msgstr "Y軸ガイド"
 
+#. settings-schema.json->y-axis-steps->tooltip
 msgid "Number of guide lines for the Y-Axis."
 msgstr "Y軸のガイドライン数"
 
+#. settings-schema.json->y-axis-temp-unit->options
+#. settings-schema.json->temp-unit->options
 msgid "Celsius (°C)"
 msgstr "摂氏 (°C)"
 
+#. settings-schema.json->y-axis-temp-unit->options
+#. settings-schema.json->temp-unit->options
 msgid "Fahrenheit (°F)"
 msgstr "華氏 (°F)"
 
+#. settings-schema.json->y-axis-temp-unit->description
 msgid "Y-Axis Temperature Unit"
 msgstr "Y軸温度単位"
 
+#. settings-schema.json->y-axis-temp-unit->tooltip
 msgid "Unit for the temperature axis in the monitor."
 msgstr "モニターの温度軸単位"
 
+#. settings-schema.json->x-axis-steps->description
 msgid "X-Axis Guides"
 msgstr "X軸ガイド"
 
+#. settings-schema.json->x-axis-steps->tooltip
 msgid "Number of vertical guide lines for the X-Axis."
 msgstr "X軸の縦ガイドライン数"
 
+#. settings-schema.json->x-axis-unit->options
 msgid "Seconds"
 msgstr "秒"
 
+#. settings-schema.json->x-axis-unit->options
 msgid "Minutes"
 msgstr "分"
 
+#. settings-schema.json->x-axis-unit->options
 msgid "Hours"
 msgstr "時間"
 
+#. settings-schema.json->x-axis-unit->description
 msgid "X-Axis Unit"
 msgstr "X軸単位"
 
+#. settings-schema.json->x-axis-unit->tooltip
 msgid "Unit of time for the X-Axis."
 msgstr "X軸の時間単位"
 
+#. settings-schema.json->x-axis-length-sec->units
+#. settings-schema.json->refresh-interval->units
+msgid "s"
+msgstr ""
+
+#. settings-schema.json->x-axis-length-sec->description
 msgid "X-Axis Length (Seconds)"
 msgstr "X軸の長さ (秒)"
 
+#. settings-schema.json->x-axis-length-sec->tooltip
+#. settings-schema.json->x-axis-length-min->tooltip
+#. settings-schema.json->x-axis-length-hour->tooltip
 msgid "Total duration shown on the graph."
 msgstr "グラフに表示される合計時間"
 
+#. settings-schema.json->x-axis-length-min->units
+msgid "m"
+msgstr ""
+
+#. settings-schema.json->x-axis-length-min->description
 msgid "X-Axis Length (Minutes)"
 msgstr "X軸の長さ (分)"
 
+#. settings-schema.json->x-axis-length-hour->units
+msgid "h"
+msgstr ""
+
+#. settings-schema.json->x-axis-length-hour->description
 msgid "X-Axis Length (Hours)"
 msgstr "X軸の長さ (時間)"
 
+#. settings-schema.json->temp-color->description
 msgid "Temperature Color"
 msgstr "温度の色"
 
+#. settings-schema.json->temp-color->tooltip
 msgid "Color used for temperature in the graph."
 msgstr "グラフの温度表示色"
 
+#. settings-schema.json->mem_color->description
 msgid "Memory Usage Color"
 msgstr "メモリ使用量の色"
 
+#. settings-schema.json->mem_color->tooltip
 msgid "Color used for memory usage in the graph."
 msgstr "グラフのメモリ使用量色"
 
+#. settings-schema.json->gpu_color->description
 msgid "GPU Utilization Color"
 msgstr "GPU使用率の色"
 
+#. settings-schema.json->gpu_color->tooltip
 msgid "Color used for GPU utilization in the graph."
 msgstr "グラフのGPU使用率色"
 
+#. settings-schema.json->fan_color->description
 msgid "Fan Speed Color"
 msgstr "ファン速度の色"
 
+#. settings-schema.json->fan_color->tooltip
 msgid "Color used for fan speed in the graph."
 msgstr "グラフのファン速度色"
 
+#. settings-schema.json->background_color->description
 msgid "Background Color"
 msgstr "背景色"
 
+#. settings-schema.json->background_color->tooltip
 msgid "Background color of the graph."
 msgstr "グラフの背景色"
 
+#. settings-schema.json->temp-axis-color->description
 msgid "Temperature Axis Color"
 msgstr "温度軸の色"
 
+#. settings-schema.json->temp-axis-color->tooltip
 msgid "Color for the temperature axis labels."
 msgstr "温度軸ラベルの色"
 
+#. settings-schema.json->percent-axis-color->description
 msgid "Percentage Axis Color"
 msgstr "パーセント軸の色"
 
+#. settings-schema.json->percent-axis-color->tooltip
 msgid "Color for the percentage axis labels."
 msgstr "パーセント軸ラベルの色"
 
+#. settings-schema.json->x-axis-color->description
 msgid "X-Axis Color"
 msgstr "X軸の色"
 
+#. settings-schema.json->x-axis-color->tooltip
 msgid "Color for the X-axis labels (Time)."
 msgstr "X軸ラベルの色 (時間)"
 
+#. settings-schema.json->guidelines-color->description
 msgid "Guidelines Color"
 msgstr "ガイドラインの色"
 
+#. settings-schema.json->guidelines-color->tooltip
 msgid "Color for the grid/guide lines."
 msgstr "グリッド線の色"
 
+#. settings-schema.json->refresh-interval->description
 msgid "Refresh Interval"
 msgstr "更新間隔"
 
+#. settings-schema.json->refresh-interval->tooltip
 msgid "How often to update the GPU stats (in seconds)."
 msgstr "GPU統計の更新頻度 (秒)"
 
+#. settings-schema.json->border-color->description
 msgid "Applet Border Color"
 msgstr "アプレット枠線の色"
 
+#. settings-schema.json->border-color->tooltip
 msgid "Color of the applet border. Set alpha to 0 for no border."
 msgstr "アプレット枠線の色。透明にするにはアルファを0に設定"
 
+#. settings-schema.json->encoding->options
+msgid "UTF-8"
+msgstr ""
+
+#. settings-schema.json->encoding->options
+msgid "macintosh"
+msgstr ""
+
+#. settings-schema.json->encoding->options
+msgid "ASCII"
+msgstr ""
+
+#. settings-schema.json->encoding->description
 msgid "nvidia-smi Output Encoding"
 msgstr "nvidia-smi 出力エンコード"
 
+#. settings-schema.json->encoding->tooltip
 msgid "Select the character encoding used by nvidia-smi output."
 msgstr "nvidia-smi 出力の文字エンコードを選択"
 
+#. settings-schema.json->show-temp->description
 msgid "Show Temperature"
 msgstr "温度を表示"
 
+#. settings-schema.json->show-temp->tooltip
 msgid "Show GPU temperature in the panel."
 msgstr "パネルにGPU温度を表示"
 
+#. settings-schema.json->temp-unit->description
 msgid "Temperature Unit"
 msgstr "温度単位"
 
+#. settings-schema.json->temp-unit->tooltip
 msgid "Choose the unit for displaying GPU temperature."
 msgstr "GPU温度の単位を選択"
 
+#. settings-schema.json->show-memory->description
 msgid "Show Memory Usage"
 msgstr "メモリ使用量を表示"
 
+#. settings-schema.json->show-memory->tooltip
 msgid "Show GPU memory usage in the panel."
 msgstr "パネルにGPUメモリ使用量を表示"
 
+#. settings-schema.json->memory-display-mode->options
 msgid "Text (Used / Total)"
 msgstr "テキスト (使用 / 合計)"
 
+#. settings-schema.json->memory-display-mode->options
+#. settings-schema.json->gpu-display-mode->options
+#. settings-schema.json->fan-display-mode->options
 msgid "Pie Chart"
 msgstr "円グラフ"
 
+#. settings-schema.json->memory-display-mode->description
 msgid "Memory Display Mode"
 msgstr "メモリ表示モード"
 
+#. settings-schema.json->memory-display-mode->tooltip
 msgid "Choose how to display memory usage: as text or as a pie chart."
 msgstr "メモリ使用量の表示方法を選択"
 
+#. settings-schema.json->show-gpu-util->description
 msgid "Show GPU Utilization"
 msgstr "GPU使用率を表示"
 
+#. settings-schema.json->show-gpu-util->tooltip
 msgid "Show GPU utilization percentage in the panel."
 msgstr "パネルにGPU使用率を表示"
 
+#. settings-schema.json->gpu-display-mode->options
+#. settings-schema.json->fan-display-mode->options
 msgid "Text (Percent)"
 msgstr "テキスト (％)"
 
+#. settings-schema.json->gpu-display-mode->description
 msgid "GPU Display Mode"
 msgstr "GPU表示モード"
 
+#. settings-schema.json->gpu-display-mode->tooltip
 msgid "Choose how to display GPU utilization: as text or as a pie chart."
 msgstr "GPU使用率の表示方法を選択"
 
+#. settings-schema.json->show-fan-speed->description
 msgid "Show Fan Speed"
 msgstr "ファン速度を表示"
 
+#. settings-schema.json->show-fan-speed->tooltip
 msgid "Show GPU fan speed percentage in the panel."
 msgstr "パネルにファン速度を表示"
 
+#. settings-schema.json->fan-display-mode->description
 msgid "Fan Display Mode"
 msgstr "ファン表示モード"
 
+#. settings-schema.json->fan-display-mode->tooltip
 msgid "Choose how to display fan speed: as text or as a pie chart."
 msgstr "ファン速度の表示方法を選択"
