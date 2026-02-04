@@ -94,7 +94,8 @@ class NvidiaMonitorApplet extends applet.Applet {
             settings.menu.addMenuItem(monitorSettings);
             let resetAll = new popupMenu.PopupIconMenuItem(_("Reset All Settings"), 'edit-undo-symbolic', St.IconType.SYMBOLIC);
             resetAll.connect('activate', () => {
-                let confirm = new modalDialog.ConfirmDialog(_(`Are you sure you want to reset all settings of "${this._uuid}" to default?`), () => {
+                let confirm = new modalDialog.ConfirmDialog(_("Are you sure you want to reset all settings of '%s' to default?")
+                .format(this._uuid),    () => {
                     try {
                         for (let key in this.settings.settingsData) {
                             this.settings.setValue(key, this.settings.getDefaultValue(key));
@@ -334,7 +335,8 @@ class NvidiaMonitorApplet extends applet.Applet {
                 let orig = label.set_text;
                 label.set_text = (newText) => {
                     newText = newText.replace(/:/g, "\n");
-                    let text_size = Math.floor(this._panel_height * 0.40);
+                    let len = Math.max(...newText.split("\n").map(s => s.replace(/\./g, "").length));
+                    let text_size = Math.floor(this._panel_height * 1/len * 1.2);
                     label.set_style(`font-size: ${text_size}px; max-width: ${this._panel_height}px;`);
                     orig.call(label, newText);
                 }
@@ -655,7 +657,8 @@ class NvidiaMonitorApplet extends applet.Applet {
             if (this.temp_unit === "F") {
                 displayTemp = (parseFloat(temp) * 9 / 5 + 32).toFixed(1);
             }
-            this._label.set_text(displayTemp + "°" + this.temp_unit);
+            let unit = "°" + this.temp_unit;
+            this._label.set_text(this._turn_over ? `↓${unit}\n${displayTemp}`: `${displayTemp}${unit}`);
             this._label.show();
             visTemp = true;
         } else {

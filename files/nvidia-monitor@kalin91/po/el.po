@@ -3,7 +3,7 @@
 #    - GPU
 #    - Fan
 #    - mem
-#  2. The string "Hi!" is meant to be used in a smaller container, so it should only be translated into a friendly word in the target language that has a maximum of 3 characters, including any punctuation symbol. Punctuation symbols can be removed to use all three characters in a word instead. If this is not possible, preserve the original "Hi!".
+#  2. The string "Hi!" is meant to be displayed in a very small container (up to 4 lines with a maximum of 4 characters per line). It should be translated into a friendly, playful, and non-offensive phrase in the target language, respecting this size limit. Regional slang or expressions that could be perceived as insulting must be avoided. If no suitable translation can be created within these constraints, preserve the original "Hi!".
 msgid ""
 msgstr ""
 "Project-Id-Version: nvidia-monitor@kalin91 v1.0.0\n"
@@ -61,111 +61,116 @@ msgstr "Ρυθμίσεις παρακολούθησης"
 msgid "Reset All Settings"
 msgstr "Επαναφορά όλων των ρυθμίσεων"
 
-#: applet.js:107 applet.js:108
+#: applet.js:97
+msgid "Are you sure you want to reset all settings of '%s' to default?"
+msgstr "Είστε σίγουροι ότι θέλετε να επαναφέρετε όλες τις ρυθμίσεις του '%s' στις προεπιλεγμένες τιμές;"
+
+#: applet.js:108 applet.js:109
 msgid "Error resetting settings"
 msgstr "Σφάλμα επαναφοράς ρυθμίσεων"
 
-#: applet.js:117
+#: applet.js:118
 msgid "Error building menu: "
 msgstr "Σφάλμα δημιουργίας μενού: "
 
-#: applet.js:170
+#: applet.js:171
 msgid "Launching"
 msgstr "Εκκίνηση"
 
-#: applet.js:182
+#: applet.js:183
 msgid "Sending"
 msgstr "Αποστολή"
 
-#: applet.js:182
+#: applet.js:183
 msgid "history points"
 msgstr "σημεία ιστορικού"
 
-#: applet.js:193
+#: applet.js:194
 msgid "subprocess exited with error"
 msgstr "η υποδιεργασία τερματίστηκε με σφάλμα"
 
-#: applet.js:195
+#: applet.js:196
 msgid "Monitor subprocess exited"
 msgstr "Η υποδιεργασία παρακολούθησης τερματίστηκε"
 
-#: applet.js:201
+#: applet.js:202
 msgid "Error starting monitor"
 msgstr "Σφάλμα εκκίνησης παρακολούθησης"
 
-#: applet.js:202
+#: applet.js:203
 msgid "Could not start monitor script"
 msgstr "Αδυναμία εκκίνησης σεναρίου παρακολούθησης"
 
-#: applet.js:212
+#: applet.js:213
 msgid "Error closing monitor"
 msgstr "Σφάλμα κλεισίματος παρακολούθησης"
 
-#: applet.js:240
+#: applet.js:241
 msgid "Error sending to monitor"
 msgstr "Σφάλμα αποστολής στην παρακολούθηση"
 
-#: applet.js:253 applet.js:507
+#: applet.js:254 applet.js:509
 msgid "Error"
 msgstr "Σφάλμα"
 
-#: applet.js:270
+#: applet.js:271
 msgid "Initializing..."
 msgstr "Αρχικοποίηση..."
 
-#: applet.js:280
+#: applet.js:281
 msgid "Mem"
 msgstr "Mem"
 
-#: applet.js:289 applet.js:678
+#: applet.js:290 applet.js:681
 msgid "GPU"
 msgstr "GPU"
 
-#: applet.js:298 applet.js:686
+#: applet.js:299 applet.js:689
 msgid "Fan"
 msgstr "Fan"
 
-#: applet.js:508
+#: applet.js:510
 msgid "Failed to run nvidia-smi.\n"
 msgstr "Αποτυχία εκτέλεσης του nvidia-smi.\n"
 
-#: applet.js:508 applet.js:509
+#: applet.js:510 applet.js:511
 msgid "Unknown"
 msgstr "Άγνωστο"
 
-#: applet.js:509
+#: applet.js:511
 msgid "Failed to run nvidia-smi"
 msgstr "Αποτυχία εκτέλεσης του nvidia-smi"
 
-#: applet.js:513
+#: applet.js:515
 msgid "An unexpected error occurred while running nvidia-smi.\n"
 msgstr "Παρουσιάστηκε απρόσμενο σφάλμα κατά την εκτέλεση του nvidia-smi.\n"
 
-#: applet.js:514
+#: applet.js:516
 msgid "Err"
 msgstr "Err"
 
-#: applet.js:670
+#: applet.js:673
 msgid "MEM"
 msgstr "MEM"
 
-#: applet.js:686
+#: applet.js:689
 msgid "FAN"
 msgstr "FAN"
 
-#: applet.js:703
+#: applet.js:706
 msgid "Hi!"
 msgstr "Γει"
 
-#: applet.js:736
+#: applet.js:739
 msgid "Error terminating monitor subprocess"
 msgstr "Σφάλμα τερματισμού υποδιεργασίας παρακολούθησης"
 
-#: applet.js:750
+#: applet.js:753
 msgid "Menu toggled on click."
 msgstr "Το μενού εναλλάχθηκε με κλικ."
 
 #. metadata.json->name
+#: ui/monitor_window.glade:7
 msgid "NVIDIA Monitor"
 msgstr "Παρακολούθηση NVIDIA"
 
@@ -524,4 +529,5 @@ msgstr "Λειτουργία εμφάνισης ανεμιστήρα"
 
 #. settings-schema.json->fan-display-mode->tooltip
 msgid "Choose how to display fan speed: as text or as a pie chart."
-msgstr "Επιλογή τρόπου εμφάνισης ταχύτητας ανεμιστήρα: ως κείμενο ή κυκλικό γράφημα."
+msgstr ""
+"Επιλογή τρόπου εμφάνισης ταχύτητας ανεμιστήρα: ως κείμενο ή κυκλικό γράφημα."

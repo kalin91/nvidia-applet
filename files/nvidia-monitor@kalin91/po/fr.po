@@ -3,7 +3,7 @@
 #    - GPU
 #    - Fan
 #    - mem
-#  2. The string "Hi!" is meant to be used in a smaller container, so it should only be translated into a friendly word in the target language that has a maximum of 3 characters, including any punctuation symbol. Punctuation symbols can be removed to use all three characters in a word instead. If this is not possible, preserve the original "Hi!".
+#  2. The string "Hi!" is meant to be displayed in a very small container (up to 4 lines with a maximum of 4 characters per line). It should be translated into a friendly, playful, and non-offensive phrase in the target language, respecting this size limit. Regional slang or expressions that could be perceived as insulting must be avoided. If no suitable translation can be created within these constraints, preserve the original "Hi!".
 msgid ""
 msgstr ""
 "Project-Id-Version: nvidia-monitor@kalin91 v1.0.0\n"
@@ -61,111 +61,116 @@ msgstr "Paramètres du moniteur"
 msgid "Reset All Settings"
 msgstr "Réinitialiser tous les paramètres"
 
-#: applet.js:107 applet.js:108
+#: applet.js:97
+msgid "Are you sure you want to reset all settings of '%s' to default?"
+msgstr "Êtes-vous sûr de vouloir réinitialiser tous les paramètres de '%s' aux valeurs par défaut ?"
+
+#: applet.js:108 applet.js:109
 msgid "Error resetting settings"
 msgstr "Erreur lors de la réinitialisation des paramètres"
 
-#: applet.js:117
+#: applet.js:118
 msgid "Error building menu: "
 msgstr "Erreur lors de la création du menu : "
 
-#: applet.js:170
+#: applet.js:171
 msgid "Launching"
 msgstr "Lancement"
 
-#: applet.js:182
+#: applet.js:183
 msgid "Sending"
 msgstr "Envoi"
 
-#: applet.js:182
+#: applet.js:183
 msgid "history points"
 msgstr "points d'historique"
 
-#: applet.js:193
+#: applet.js:194
 msgid "subprocess exited with error"
 msgstr "le sous-processus s'est terminé avec une erreur"
 
-#: applet.js:195
+#: applet.js:196
 msgid "Monitor subprocess exited"
 msgstr "Le sous-processus du moniteur s'est terminé"
 
-#: applet.js:201
+#: applet.js:202
 msgid "Error starting monitor"
 msgstr "Erreur lors du démarrage du moniteur"
 
-#: applet.js:202
+#: applet.js:203
 msgid "Could not start monitor script"
 msgstr "Impossible de démarrer le script du moniteur"
 
-#: applet.js:212
+#: applet.js:213
 msgid "Error closing monitor"
 msgstr "Erreur lors de la fermeture du moniteur"
 
-#: applet.js:240
+#: applet.js:241
 msgid "Error sending to monitor"
 msgstr "Erreur d'envoi au moniteur"
 
-#: applet.js:253 applet.js:507
+#: applet.js:254 applet.js:509
 msgid "Error"
 msgstr "Erreur"
 
-#: applet.js:270
+#: applet.js:271
 msgid "Initializing..."
 msgstr "Initialisation..."
 
-#: applet.js:280
+#: applet.js:281
 msgid "Mem"
 msgstr "Mem"
 
-#: applet.js:289 applet.js:678
+#: applet.js:290 applet.js:681
 msgid "GPU"
 msgstr "GPU"
 
-#: applet.js:298 applet.js:686
+#: applet.js:299 applet.js:689
 msgid "Fan"
 msgstr "Ven"
 
-#: applet.js:508
+#: applet.js:510
 msgid "Failed to run nvidia-smi.\n"
 msgstr "Échec de l'exécution de nvidia-smi.\n"
 
-#: applet.js:508 applet.js:509
+#: applet.js:510 applet.js:511
 msgid "Unknown"
 msgstr "Inconnu"
 
-#: applet.js:509
+#: applet.js:511
 msgid "Failed to run nvidia-smi"
 msgstr "Échec de l'exécution de nvidia-smi"
 
-#: applet.js:513
+#: applet.js:515
 msgid "An unexpected error occurred while running nvidia-smi.\n"
 msgstr "Une erreur inattendue est survenue lors de l'exécution de nvidia-smi.\n"
 
-#: applet.js:514
+#: applet.js:516
 msgid "Err"
 msgstr "Err"
 
-#: applet.js:670
+#: applet.js:673
 msgid "MEM"
 msgstr "MEM"
 
-#: applet.js:686
+#: applet.js:689
 msgid "FAN"
 msgstr "VEN"
 
-#: applet.js:703
+#: applet.js:706
 msgid "Hi!"
 msgstr "Slt"
 
-#: applet.js:736
+#: applet.js:739
 msgid "Error terminating monitor subprocess"
 msgstr "Erreur lors de l'arrêt du sous-processus du moniteur"
 
-#: applet.js:750
+#: applet.js:753
 msgid "Menu toggled on click."
 msgstr "Menu basculé au clic."
 
 #. metadata.json->name
+#: ui/monitor_window.glade:7
 msgid "NVIDIA Monitor"
 msgstr "Moniteur NVIDIA"
 
@@ -398,7 +403,7 @@ msgid "X-Axis Color"
 msgstr "Couleur de l'axe X"
 
 #. settings-schema.json->x-axis-color->tooltip
-msgid "Color for the x-axis labels (Time)."
+msgid "Color for the X-axis labels (Time)."
 msgstr "Couleur pour les étiquettes de l'axe X (Temps)."
 
 #. settings-schema.json->guidelines-color->description
@@ -487,7 +492,8 @@ msgstr "Mode d'affichage de la mémoire"
 #. settings-schema.json->memory-display-mode->tooltip
 msgid "Choose how to display memory usage: as text or as a pie chart."
 msgstr ""
-"Choisissez comment afficher l'utilisation de la mémoire : en texte ou en camembert."
+"Choisissez comment afficher l'utilisation de la mémoire : en texte ou en "
+"camembert."
 
 #. settings-schema.json->show-gpu-util->description
 msgid "Show GPU Utilization"
@@ -526,4 +532,5 @@ msgstr "Mode d'affichage du ventilateur"
 #. settings-schema.json->fan-display-mode->tooltip
 msgid "Choose how to display fan speed: as text or as a pie chart."
 msgstr ""
-"Choisissez comment afficher la vitesse du ventilateur : en texte ou en camembert."
+"Choisissez comment afficher la vitesse du ventilateur : en texte ou en "
+"camembert."
