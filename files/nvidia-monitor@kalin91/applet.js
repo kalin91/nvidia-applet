@@ -237,7 +237,7 @@ class NvidiaMonitorApplet extends applet.Applet {
             this._monitorStdin.flush(null);
         } catch (e) {
             // Broken pipe likely
-            global.logError(`Nvidia Monitor: ${_("Error sending to monitor")}: ${e.messag}`);
+            global.logError(`Nvidia Monitor: ${_("Error sending to monitor")}: ${e.message}`);
             this._monitorProc = null;
             this._monitorStdin = null;
         }
@@ -675,7 +675,7 @@ class NvidiaMonitorApplet extends applet.Applet {
             this.gpu_display_mode,
             this._gpuLabel,
             this._gpuPieChartArea,
-            this._turn_over ? `${_("GPU")}:${gpuUtil}%` : `${_("GPU")}: ${gpuUtil} %`
+            this._turn_over ? `${_("GPU")}:${gpuUtil}%` : `${_("GPU")}: ${gpuUtil}%`
         );
 
         const visFan = this._updateSection(
@@ -683,7 +683,7 @@ class NvidiaMonitorApplet extends applet.Applet {
             this.fan_display_mode,
             this._fanLabel,
             this._fanPieChartArea,
-            this._turn_over ? `${_("FAN")}:${fanSpeed}%` : `${_("Fan")}: ${fanSpeed} %`
+            this._turn_over ? `${_("FAN")}:${fanSpeed}%` : `${_("Fan")}: ${fanSpeed}%`
         );
 
         // Separators
