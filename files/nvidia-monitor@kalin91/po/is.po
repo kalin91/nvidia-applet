@@ -1,9 +1,3 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) 2026 kalin91 <carlos.mor.ort@gmail.com>
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <carlos.mor.ort@gmail.com>, 2026.
-#
-#, fuzzy
 # Rules:
 #  1. The following strings should only be replaced with 3-character equivalent strings. They can be translations or comprehensible abbreviations of the original words in the target language; otherwise, they should remain unaltered.
 #    - GPU
@@ -13,517 +7,517 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: nvidia-monitor@kalin91 v1.0.0\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-02-02 22:56-0600\n"
 "PO-Revision-Date: 2026-02-03 00:00+0000\n"
 "Last-Translator: Carlos Alberto Morales Ortega <carlos.mor.ort@gmail.com>\n"
-"Language-Team: XX <AI generated>\n"
-"Language: \n"
+"Language-Team: Icelandic <AI generated>\n"
+"Language: is\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 #: applet.js:43
 msgid "nvidia-smi not found"
-msgstr ""
+msgstr "nvidia-smi fannst ekki"
 
 #: applet.js:44
 msgid ""
 "nvidia-smi not found in PATH.\n"
 "Please ensure NVIDIA drivers are installed."
 msgstr ""
+"nvidia-smi fannst ekki í PATH.\n"
+"Vinsamlegast tryggðu að NVIDIA rekla séu uppsettir."
 
 #: applet.js:49
 msgid "Displays NVIDIA GPU monitor"
-msgstr ""
+msgstr "Sýnir NVIDIA GPU eftirlit"
 
 #: applet.js:54
 msgid "Error initializing applet"
-msgstr ""
+msgstr "Villa við ræsingu forritsins"
 
 #: applet.js:55
 msgid "Init Error"
-msgstr ""
+msgstr "Upphafsvilla"
 
 #: applet.js:80
 msgid "Open Monitor Graph"
-msgstr ""
+msgstr "Opna eftirlitsgraf"
 
 #: applet.js:84
 msgid "Settings"
-msgstr ""
+msgstr "Stillingar"
 
 #. settings-schema.json->Applet->title
 #: applet.js:89
 msgid "Applet Settings"
-msgstr ""
+msgstr "Stillingar forrits"
 
 #. settings-schema.json->Monitor->title
 #: applet.js:92
 msgid "Monitor Settings"
-msgstr ""
+msgstr "Eftirlitsstillingar"
 
 #: applet.js:95
 msgid "Reset All Settings"
-msgstr ""
+msgstr "Endurstilla allar stillingar"
 
 #: applet.js:107 applet.js:108
 msgid "Error resetting settings"
-msgstr ""
+msgstr "Villa við að endurstilla stillingar"
 
 #: applet.js:117
 msgid "Error building menu: "
-msgstr ""
+msgstr "Villa við gerð valmyndar: "
 
 #: applet.js:170
 msgid "Launching"
-msgstr ""
+msgstr "Ræsir"
 
 #: applet.js:182
 msgid "Sending"
-msgstr ""
+msgstr "Sendir"
 
 #: applet.js:182
 msgid "history points"
-msgstr ""
+msgstr "sögupunktar"
 
 #: applet.js:193
 msgid "subprocess exited with error"
-msgstr ""
+msgstr "undirferli hætti með villu"
 
 #: applet.js:195
 msgid "Monitor subprocess exited"
-msgstr ""
+msgstr "Eftirlitsundirferli hætti"
 
 #: applet.js:201
 msgid "Error starting monitor"
-msgstr ""
+msgstr "Villa við að ræsa eftirlit"
 
 #: applet.js:202
 msgid "Could not start monitor script"
-msgstr ""
+msgstr "Gat ekki ræst eftirlitsskrifu"
 
 #: applet.js:212
 msgid "Error closing monitor"
-msgstr ""
+msgstr "Villa við að loka eftirliti"
 
 #: applet.js:240
 msgid "Error sending to monitor"
-msgstr ""
+msgstr "Villa við sendingu til eftirlits"
 
 #: applet.js:253 applet.js:507
 msgid "Error"
-msgstr ""
+msgstr "Villa"
 
 #: applet.js:270
 msgid "Initializing..."
-msgstr ""
+msgstr "Frumstillir..."
 
 #: applet.js:280
 msgid "Mem"
-msgstr ""
+msgstr "Min"
 
 #: applet.js:289 applet.js:678
 msgid "GPU"
-msgstr ""
+msgstr "GPU"
 
 #: applet.js:298 applet.js:686
 msgid "Fan"
-msgstr ""
+msgstr "Vif"
 
 #: applet.js:508
 msgid "Failed to run nvidia-smi.\n"
-msgstr ""
+msgstr "Mistókst að keyra nvidia-smi.\n"
 
 #: applet.js:508 applet.js:509
 msgid "Unknown"
-msgstr ""
+msgstr "Óþekkt"
 
 #: applet.js:509
 msgid "Failed to run nvidia-smi"
-msgstr ""
+msgstr "Mistókst að keyra nvidia-smi"
 
 #: applet.js:513
 msgid "An unexpected error occurred while running nvidia-smi.\n"
-msgstr ""
+msgstr "Óvænt villa kom upp við keyrslu nvidia-smi.\n"
 
 #: applet.js:514
 msgid "Err"
-msgstr ""
+msgstr "Err"
 
 #: applet.js:670
 msgid "MEM"
-msgstr ""
+msgstr "MIN"
 
 #: applet.js:686
 msgid "FAN"
-msgstr ""
+msgstr "VIF"
 
 #: applet.js:703
 msgid "Hi!"
-msgstr ""
+msgstr "Hæ!"
 
 #: applet.js:736
 msgid "Error terminating monitor subprocess"
-msgstr ""
+msgstr "Villa við að stöðva undirferli eftirlits"
 
 #: applet.js:750
 msgid "Menu toggled on click."
-msgstr ""
+msgstr "Valmynd ræst við smell."
 
 #. metadata.json->name
 msgid "NVIDIA Monitor"
-msgstr ""
+msgstr "NVIDIA Eftirlit"
 
 #. metadata.json->description
 msgid ""
 "Monitors GPU temperature, memory, utilization, and fan speed using nvidia-"
 "smi"
-msgstr ""
+msgstr "Fylgist með GPU hita, minni, nýtingu og viftuhraða með nvidia-smi"
 
 #. settings-schema.json->section_general->title
 msgid "General Settings"
-msgstr ""
+msgstr "Almennar stillingar"
 
 #. settings-schema.json->section_temp->title
 msgid "Temperature"
-msgstr ""
+msgstr "Hitastig"
 
 #. settings-schema.json->section_memory->title
 msgid "Memory Usage"
-msgstr ""
+msgstr "Minnisnotkun"
 
 #. settings-schema.json->section_gpu->title
 msgid "GPU Utilization"
-msgstr ""
+msgstr "GPU nýting"
 
 #. settings-schema.json->section_fan->title
 msgid "Fan Speed"
-msgstr ""
+msgstr "Viftuhraði"
 
 #. settings-schema.json->top_note->title
 msgid "Note"
-msgstr ""
+msgstr "Athugasemd"
 
 #. settings-schema.json->metric_colors_section->title
 msgid "Metric Colors"
-msgstr ""
+msgstr "Litir mælinga"
 
 #. settings-schema.json->layout_colors_section->title
 msgid "Layout Colors"
-msgstr ""
+msgstr "Litir útlits"
 
 #. settings-schema.json->y_axis_section->title
 msgid "Y-Axis Settings"
-msgstr ""
+msgstr "Y-ás stillingar"
 
 #. settings-schema.json->x_axis_section->title
 msgid "X-Axis Settings"
-msgstr ""
+msgstr "X-ás stillingar"
 
 #. settings-schema.json->monitor-note->description
 msgid ""
 "Changes to monitor settings will take effect after restarting the monitor."
-msgstr ""
+msgstr "Breytingar taka gildi eftir endurræsingu eftirlitsins."
 
 #. settings-schema.json->y-axis-steps->options
 #. settings-schema.json->x-axis-steps->options
 msgid "1 Line (50%)"
-msgstr ""
+msgstr "1 lína (50%)"
 
 #. settings-schema.json->y-axis-steps->options
 #. settings-schema.json->x-axis-steps->options
 msgid "2 Lines (33%, 66%)"
-msgstr ""
+msgstr "2 línur (33%, 66%)"
 
 #. settings-schema.json->y-axis-steps->options
 #. settings-schema.json->x-axis-steps->options
 msgid "3 Lines (25%, 50%, 75%)"
-msgstr ""
+msgstr "3 línur (25%, 50%, 75%)"
 
 #. settings-schema.json->y-axis-steps->options
 #. settings-schema.json->x-axis-steps->options
 msgid "4 Lines (20%, 40%, 60%, 80%)"
-msgstr ""
+msgstr "4 línur (20%, 40%, 60%, 80%)"
 
 #. settings-schema.json->y-axis-steps->options
 #. settings-schema.json->x-axis-steps->options
 msgid "5 Lines (16%, 33%, 50%, 66%, 83%)"
-msgstr ""
+msgstr "5 línur (16%, 33%, 50%, 66%, 83%)"
 
 #. settings-schema.json->y-axis-steps->options
 #. settings-schema.json->x-axis-steps->options
 msgid "9 Lines (Every 10%)"
-msgstr ""
+msgstr "9 línur (hver 10%)"
 
 #. settings-schema.json->y-axis-steps->description
 msgid "Y-Axis Guides"
-msgstr ""
+msgstr "Leiðarlínur Y-áss"
 
 #. settings-schema.json->y-axis-steps->tooltip
 msgid "Number of guide lines for the Y-Axis."
-msgstr ""
+msgstr "Fjöldi leiðarlína á Y-ás."
 
 #. settings-schema.json->y-axis-temp-unit->options
 #. settings-schema.json->temp-unit->options
 msgid "Celsius (°C)"
-msgstr ""
+msgstr "Celsíus (°C)"
 
 #. settings-schema.json->y-axis-temp-unit->options
 #. settings-schema.json->temp-unit->options
 msgid "Fahrenheit (°F)"
-msgstr ""
+msgstr "Fahrenheit (°F)"
 
 #. settings-schema.json->y-axis-temp-unit->description
 msgid "Y-Axis Temperature Unit"
-msgstr ""
+msgstr "Hitastigseining Y-áss"
 
 #. settings-schema.json->y-axis-temp-unit->tooltip
 msgid "Unit for the temperature axis in the monitor."
-msgstr ""
+msgstr "Eining fyrir hitastigsás í eftirliti."
 
 #. settings-schema.json->x-axis-steps->description
 msgid "X-Axis Guides"
-msgstr ""
+msgstr "Leiðarlínur X-áss"
 
 #. settings-schema.json->x-axis-steps->tooltip
 msgid "Number of vertical guide lines for the X-Axis."
-msgstr ""
+msgstr "Fjöldi lóðréttra leiðarlína á X-ás."
 
 #. settings-schema.json->x-axis-unit->options
 msgid "Seconds"
-msgstr ""
+msgstr "Sekúndur"
 
 #. settings-schema.json->x-axis-unit->options
 msgid "Minutes"
-msgstr ""
+msgstr "Mínútur"
 
 #. settings-schema.json->x-axis-unit->options
 msgid "Hours"
-msgstr ""
+msgstr "Klukkustundir"
 
 #. settings-schema.json->x-axis-unit->description
 msgid "X-Axis Unit"
-msgstr ""
+msgstr "Eining X-áss"
 
 #. settings-schema.json->x-axis-unit->tooltip
 msgid "Unit of time for the X-Axis."
-msgstr ""
+msgstr "Tímaeining fyrir X-ás."
 
 #. settings-schema.json->x-axis-length-sec->units
 #. settings-schema.json->refresh-interval->units
 msgid "s"
-msgstr ""
+msgstr "s"
 
 #. settings-schema.json->x-axis-length-sec->description
 msgid "X-Axis Length (Seconds)"
-msgstr ""
+msgstr "Lengd X-áss (sekúndur)"
 
 #. settings-schema.json->x-axis-length-sec->tooltip
 #. settings-schema.json->x-axis-length-min->tooltip
 #. settings-schema.json->x-axis-length-hour->tooltip
 msgid "Total duration shown on the graph."
-msgstr ""
+msgstr "Heildartími sem sýndur er á grafinu."
 
 #. settings-schema.json->x-axis-length-min->units
 msgid "m"
-msgstr ""
+msgstr "m"
 
 #. settings-schema.json->x-axis-length-min->description
 msgid "X-Axis Length (Minutes)"
-msgstr ""
+msgstr "Lengd X-áss (mínútur)"
 
 #. settings-schema.json->x-axis-length-hour->units
 msgid "h"
-msgstr ""
+msgstr "klst"
 
 #. settings-schema.json->x-axis-length-hour->description
 msgid "X-Axis Length (Hours)"
-msgstr ""
+msgstr "Lengd X-áss (klukkustundir)"
 
 #. settings-schema.json->temp-color->description
 msgid "Temperature Color"
-msgstr ""
+msgstr "Litur hitastigs"
 
 #. settings-schema.json->temp-color->tooltip
 msgid "Color used for temperature in the graph."
-msgstr ""
+msgstr "Litur fyrir hitastig í grafinu."
 
 #. settings-schema.json->mem_color->description
 msgid "Memory Usage Color"
-msgstr ""
+msgstr "Litur minnisnotkunar"
 
 #. settings-schema.json->mem_color->tooltip
 msgid "Color used for memory usage in the graph."
-msgstr ""
+msgstr "Litur fyrir minnisnotkun í grafinu."
 
 #. settings-schema.json->gpu_color->description
 msgid "GPU Utilization Color"
-msgstr ""
+msgstr "Litur GPU nýtingar"
 
 #. settings-schema.json->gpu_color->tooltip
 msgid "Color used for GPU utilization in the graph."
-msgstr ""
+msgstr "Litur fyrir GPU nýtingu í grafinu."
 
 #. settings-schema.json->fan_color->description
 msgid "Fan Speed Color"
-msgstr ""
+msgstr "Litur viftuhraða"
 
 #. settings-schema.json->fan_color->tooltip
 msgid "Color used for fan speed in the graph."
-msgstr ""
+msgstr "Litur fyrir viftuhraða í grafinu."
 
 #. settings-schema.json->background_color->description
 msgid "Background Color"
-msgstr ""
+msgstr "Bakgrunnslitur"
 
 #. settings-schema.json->background_color->tooltip
 msgid "Background color of the graph."
-msgstr ""
+msgstr "Bakgrunnslitur grafsins."
 
 #. settings-schema.json->temp-axis-color->description
 msgid "Temperature Axis Color"
-msgstr ""
+msgstr "Litur hitastigsáss"
 
 #. settings-schema.json->temp-axis-color->tooltip
 msgid "Color for the temperature axis labels."
-msgstr ""
+msgstr "Litur fyrir hitastigsás merkimiða."
 
 #. settings-schema.json->percent-axis-color->description
 msgid "Percentage Axis Color"
-msgstr ""
+msgstr "Litur prósentuáss"
 
 #. settings-schema.json->percent-axis-color->tooltip
 msgid "Color for the percentage axis labels."
-msgstr ""
+msgstr "Litur fyrir prósentuás merkimiða."
 
 #. settings-schema.json->x-axis-color->description
 msgid "X-Axis Color"
-msgstr ""
+msgstr "Litur X-áss"
 
 #. settings-schema.json->x-axis-color->tooltip
 msgid "Color for the X-axis labels (Time)."
-msgstr ""
+msgstr "Litur fyrir X-ás merkimiða (tími)."
 
 #. settings-schema.json->guidelines-color->description
 msgid "Guidelines Color"
-msgstr ""
+msgstr "Litur leiðarlína"
 
 #. settings-schema.json->guidelines-color->tooltip
 msgid "Color for the grid/guide lines."
-msgstr ""
+msgstr "Litur fyrir rist og leiðarlínur."
 
 #. settings-schema.json->refresh-interval->description
 msgid "Refresh Interval"
-msgstr ""
+msgstr "Endurnýjunartími"
 
 #. settings-schema.json->refresh-interval->tooltip
 msgid "How often to update the GPU stats (in seconds)."
-msgstr ""
+msgstr "Hversu oft á að uppfæra GPU gögn (í sekúndum)."
 
 #. settings-schema.json->border-color->description
 msgid "Applet Border Color"
-msgstr ""
+msgstr "Litur jaðars forrits"
 
 #. settings-schema.json->border-color->tooltip
 msgid "Color of the applet border. Set alpha to 0 for no border."
-msgstr ""
+msgstr "Litur jaðars forritsins. Stilltu alpha í 0 fyrir engan jaðar."
 
 #. settings-schema.json->encoding->options
 msgid "UTF-8"
-msgstr ""
+msgstr "UTF-8"
 
 #. settings-schema.json->encoding->options
 msgid "macintosh"
-msgstr ""
+msgstr "macintosh"
 
 #. settings-schema.json->encoding->options
 msgid "ASCII"
-msgstr ""
+msgstr "ASCII"
 
 #. settings-schema.json->encoding->description
 msgid "nvidia-smi Output Encoding"
-msgstr ""
+msgstr "nvidia-smi úttakskóðun"
 
 #. settings-schema.json->encoding->tooltip
 msgid "Select the character encoding used by nvidia-smi output."
-msgstr ""
+msgstr "Veldu stafakóðun sem nvidia-smi notar."
 
 #. settings-schema.json->show-temp->description
 msgid "Show Temperature"
-msgstr ""
+msgstr "Sýna hitastig"
 
 #. settings-schema.json->show-temp->tooltip
 msgid "Show GPU temperature in the panel."
-msgstr ""
+msgstr "Sýna GPU hitastig í spjaldi."
 
 #. settings-schema.json->temp-unit->description
 msgid "Temperature Unit"
-msgstr ""
+msgstr "Hitastigseining"
 
 #. settings-schema.json->temp-unit->tooltip
 msgid "Choose the unit for displaying GPU temperature."
-msgstr ""
+msgstr "Veldu einingu fyrir GPU hitastig."
 
 #. settings-schema.json->show-memory->description
 msgid "Show Memory Usage"
-msgstr ""
+msgstr "Sýna minnisnotkun"
 
 #. settings-schema.json->show-memory->tooltip
 msgid "Show GPU memory usage in the panel."
-msgstr ""
+msgstr "Sýna GPU minnisnotkun í spjaldi."
 
 #. settings-schema.json->memory-display-mode->options
 msgid "Text (Used / Total)"
-msgstr ""
+msgstr "Texti (notað / alls)"
 
 #. settings-schema.json->memory-display-mode->options
 #. settings-schema.json->gpu-display-mode->options
 #. settings-schema.json->fan-display-mode->options
 msgid "Pie Chart"
-msgstr ""
+msgstr "Kökugraf"
 
 #. settings-schema.json->memory-display-mode->description
 msgid "Memory Display Mode"
-msgstr ""
+msgstr "Birting minnis"
 
 #. settings-schema.json->memory-display-mode->tooltip
 msgid "Choose how to display memory usage: as text or as a pie chart."
-msgstr ""
+msgstr "Veldu hvernig minnisnotkun er sýnd: texti eða kökugraf."
 
 #. settings-schema.json->show-gpu-util->description
 msgid "Show GPU Utilization"
-msgstr ""
+msgstr "Sýna GPU nýtingu"
 
 #. settings-schema.json->show-gpu-util->tooltip
 msgid "Show GPU utilization percentage in the panel."
-msgstr ""
+msgstr "Sýna GPU nýtingu í prósentum."
 
 #. settings-schema.json->gpu-display-mode->options
 #. settings-schema.json->fan-display-mode->options
 msgid "Text (Percent)"
-msgstr ""
+msgstr "Texti (prósenta)"
 
 #. settings-schema.json->gpu-display-mode->description
 msgid "GPU Display Mode"
-msgstr ""
+msgstr "Birting GPU"
 
 #. settings-schema.json->gpu-display-mode->tooltip
 msgid "Choose how to display GPU utilization: as text or as a pie chart."
-msgstr ""
+msgstr "Veldu hvernig GPU nýting er sýnd: sem texti eða kökugraf."
 
 #. settings-schema.json->show-fan-speed->description
 msgid "Show Fan Speed"
-msgstr ""
+msgstr "Sýna viftuhraða"
 
 #. settings-schema.json->show-fan-speed->tooltip
 msgid "Show GPU fan speed percentage in the panel."
-msgstr ""
+msgstr "Sýna GPU viftuhraða í prósentum."
 
 #. settings-schema.json->fan-display-mode->description
 msgid "Fan Display Mode"
-msgstr ""
+msgstr "Birting viftu"
 
 #. settings-schema.json->fan-display-mode->tooltip
 msgid "Choose how to display fan speed: as text or as a pie chart."
-msgstr ""
+msgstr "Veldu hvernig viftuhraði er sýndur."

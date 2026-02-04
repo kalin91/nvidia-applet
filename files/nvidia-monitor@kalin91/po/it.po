@@ -1,9 +1,3 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) 2026 kalin91 <carlos.mor.ort@gmail.com>
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <carlos.mor.ort@gmail.com>, 2026.
-#
-#, fuzzy
 # Rules:
 #  1. The following strings should only be replaced with 3-character equivalent strings. They can be translations or comprehensible abbreviations of the original words in the target language; otherwise, they should remain unaltered.
 #    - GPU
@@ -13,517 +7,523 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: nvidia-monitor@kalin91 v1.0.0\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-02-02 22:56-0600\n"
 "PO-Revision-Date: 2026-02-03 00:00+0000\n"
 "Last-Translator: Carlos Alberto Morales Ortega <carlos.mor.ort@gmail.com>\n"
-"Language-Team: XX <AI generated>\n"
-"Language: \n"
+"Language-Team: Italian <AI generated>\n"
+"Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 #: applet.js:43
 msgid "nvidia-smi not found"
-msgstr ""
+msgstr "nvidia-smi non trovato"
 
 #: applet.js:44
 msgid ""
 "nvidia-smi not found in PATH.\n"
 "Please ensure NVIDIA drivers are installed."
 msgstr ""
+"nvidia-smi non trovato nel PATH.\n"
+"Assicurati che i driver NVIDIA siano installati."
 
 #: applet.js:49
 msgid "Displays NVIDIA GPU monitor"
-msgstr ""
+msgstr "Mostra il monitor GPU NVIDIA"
 
 #: applet.js:54
 msgid "Error initializing applet"
-msgstr ""
+msgstr "Errore di inizializzazione dell'applet"
 
 #: applet.js:55
 msgid "Init Error"
-msgstr ""
+msgstr "Errore di inizializzazione"
 
 #: applet.js:80
 msgid "Open Monitor Graph"
-msgstr ""
+msgstr "Apri grafico monitor"
 
 #: applet.js:84
 msgid "Settings"
-msgstr ""
+msgstr "Impostazioni"
 
 #. settings-schema.json->Applet->title
 #: applet.js:89
 msgid "Applet Settings"
-msgstr ""
+msgstr "Impostazioni Applet"
 
 #. settings-schema.json->Monitor->title
 #: applet.js:92
 msgid "Monitor Settings"
-msgstr ""
+msgstr "Impostazioni Monitor"
 
 #: applet.js:95
 msgid "Reset All Settings"
-msgstr ""
+msgstr "Ripristina tutte le impostazioni"
 
 #: applet.js:107 applet.js:108
 msgid "Error resetting settings"
-msgstr ""
+msgstr "Errore nel ripristino delle impostazioni"
 
 #: applet.js:117
 msgid "Error building menu: "
-msgstr ""
+msgstr "Errore nella creazione del menu: "
 
 #: applet.js:170
 msgid "Launching"
-msgstr ""
+msgstr "Avvio..."
 
 #: applet.js:182
 msgid "Sending"
-msgstr ""
+msgstr "Invio in corso"
 
 #: applet.js:182
 msgid "history points"
-msgstr ""
+msgstr "punti cronologia"
 
 #: applet.js:193
 msgid "subprocess exited with error"
-msgstr ""
+msgstr "sottoprocesso terminato con errore"
 
 #: applet.js:195
 msgid "Monitor subprocess exited"
-msgstr ""
+msgstr "Sottoprocesso monitor terminato"
 
 #: applet.js:201
 msgid "Error starting monitor"
-msgstr ""
+msgstr "Errore nell'avvio del monitor"
 
 #: applet.js:202
 msgid "Could not start monitor script"
-msgstr ""
+msgstr "Impossibile avviare lo script del monitor"
 
 #: applet.js:212
 msgid "Error closing monitor"
-msgstr ""
+msgstr "Errore nella chiusura del monitor"
 
 #: applet.js:240
 msgid "Error sending to monitor"
-msgstr ""
+msgstr "Errore durante l'invio al monitor"
 
 #: applet.js:253 applet.js:507
 msgid "Error"
-msgstr ""
+msgstr "Errore"
 
 #: applet.js:270
 msgid "Initializing..."
-msgstr ""
+msgstr "Inizializzazione..."
 
 #: applet.js:280
 msgid "Mem"
-msgstr ""
+msgstr "Mem"
 
 #: applet.js:289 applet.js:678
 msgid "GPU"
-msgstr ""
+msgstr "GPU"
 
 #: applet.js:298 applet.js:686
 msgid "Fan"
-msgstr ""
+msgstr "Fan"
 
 #: applet.js:508
 msgid "Failed to run nvidia-smi.\n"
-msgstr ""
+msgstr "Impossibile eseguire nvidia-smi.\n"
 
 #: applet.js:508 applet.js:509
 msgid "Unknown"
-msgstr ""
+msgstr "Sconosciuto"
 
 #: applet.js:509
 msgid "Failed to run nvidia-smi"
-msgstr ""
+msgstr "Esecuzione di nvidia-smi fallita"
 
 #: applet.js:513
 msgid "An unexpected error occurred while running nvidia-smi.\n"
 msgstr ""
+"Si è verificato un errore imprevisto durante l'esecuzione di nvidia-smi.\n"
 
 #: applet.js:514
 msgid "Err"
-msgstr ""
+msgstr "Err"
 
 #: applet.js:670
 msgid "MEM"
-msgstr ""
+msgstr "MEM"
 
 #: applet.js:686
 msgid "FAN"
-msgstr ""
+msgstr "FAN"
 
 #: applet.js:703
 msgid "Hi!"
-msgstr ""
+msgstr "Ehi"
 
 #: applet.js:736
 msgid "Error terminating monitor subprocess"
-msgstr ""
+msgstr "Errore durante la terminazione del sottoprocesso monitor"
 
 #: applet.js:750
 msgid "Menu toggled on click."
-msgstr ""
+msgstr "Menu attivato al clic."
 
 #. metadata.json->name
 msgid "NVIDIA Monitor"
-msgstr ""
+msgstr "Monitor NVIDIA"
 
 #. metadata.json->description
 msgid ""
 "Monitors GPU temperature, memory, utilization, and fan speed using nvidia-"
 "smi"
 msgstr ""
+"Monitora temperatura GPU, memoria, utilizzo e velocità della ventola usando "
+"nvidia-smi"
 
 #. settings-schema.json->section_general->title
 msgid "General Settings"
-msgstr ""
+msgstr "Impostazioni generali"
 
 #. settings-schema.json->section_temp->title
 msgid "Temperature"
-msgstr ""
+msgstr "Temperatura"
 
 #. settings-schema.json->section_memory->title
 msgid "Memory Usage"
-msgstr ""
+msgstr "Uso memoria"
 
 #. settings-schema.json->section_gpu->title
 msgid "GPU Utilization"
-msgstr ""
+msgstr "Utilizzo GPU"
 
 #. settings-schema.json->section_fan->title
 msgid "Fan Speed"
-msgstr ""
+msgstr "Velocità ventola"
 
 #. settings-schema.json->top_note->title
 msgid "Note"
-msgstr ""
+msgstr "Nota"
 
 #. settings-schema.json->metric_colors_section->title
 msgid "Metric Colors"
-msgstr ""
+msgstr "Colori metriche"
 
 #. settings-schema.json->layout_colors_section->title
 msgid "Layout Colors"
-msgstr ""
+msgstr "Colori layout"
 
 #. settings-schema.json->y_axis_section->title
 msgid "Y-Axis Settings"
-msgstr ""
+msgstr "Impostazioni asse Y"
 
 #. settings-schema.json->x_axis_section->title
 msgid "X-Axis Settings"
-msgstr ""
+msgstr "Impostazioni asse X"
 
 #. settings-schema.json->monitor-note->description
 msgid ""
 "Changes to monitor settings will take effect after restarting the monitor."
 msgstr ""
+"Le modifiche alle impostazioni avranno effetto dopo il riavvio del monitor."
 
 #. settings-schema.json->y-axis-steps->options
 #. settings-schema.json->x-axis-steps->options
 msgid "1 Line (50%)"
-msgstr ""
+msgstr "1 linea (50%)"
 
 #. settings-schema.json->y-axis-steps->options
 #. settings-schema.json->x-axis-steps->options
 msgid "2 Lines (33%, 66%)"
-msgstr ""
+msgstr "2 linee (33%, 66%)"
 
 #. settings-schema.json->y-axis-steps->options
 #. settings-schema.json->x-axis-steps->options
 msgid "3 Lines (25%, 50%, 75%)"
-msgstr ""
+msgstr "3 linee (25%, 50%, 75%)"
 
 #. settings-schema.json->y-axis-steps->options
 #. settings-schema.json->x-axis-steps->options
 msgid "4 Lines (20%, 40%, 60%, 80%)"
-msgstr ""
+msgstr "4 linee (20%, 40%, 60%, 80%)"
 
 #. settings-schema.json->y-axis-steps->options
 #. settings-schema.json->x-axis-steps->options
 msgid "5 Lines (16%, 33%, 50%, 66%, 83%)"
-msgstr ""
+msgstr "5 linee (16%, 33%, 50%, 66%, 83%)"
 
 #. settings-schema.json->y-axis-steps->options
 #. settings-schema.json->x-axis-steps->options
 msgid "9 Lines (Every 10%)"
-msgstr ""
+msgstr "9 linee (ogni 10%)"
 
 #. settings-schema.json->y-axis-steps->description
 msgid "Y-Axis Guides"
-msgstr ""
+msgstr "Guide asse Y"
 
 #. settings-schema.json->y-axis-steps->tooltip
 msgid "Number of guide lines for the Y-Axis."
-msgstr ""
+msgstr "Numero di linee guida per l'asse Y."
 
 #. settings-schema.json->y-axis-temp-unit->options
 #. settings-schema.json->temp-unit->options
 msgid "Celsius (°C)"
-msgstr ""
+msgstr "Celsius (°C)"
 
 #. settings-schema.json->y-axis-temp-unit->options
 #. settings-schema.json->temp-unit->options
 msgid "Fahrenheit (°F)"
-msgstr ""
+msgstr "Fahrenheit (°F)"
 
 #. settings-schema.json->y-axis-temp-unit->description
 msgid "Y-Axis Temperature Unit"
-msgstr ""
+msgstr "Unità temperatura asse Y"
 
 #. settings-schema.json->y-axis-temp-unit->tooltip
 msgid "Unit for the temperature axis in the monitor."
-msgstr ""
+msgstr "Unità per l'asse della temperatura nel monitor."
 
 #. settings-schema.json->x-axis-steps->description
 msgid "X-Axis Guides"
-msgstr ""
+msgstr "Guide asse X"
 
 #. settings-schema.json->x-axis-steps->tooltip
 msgid "Number of vertical guide lines for the X-Axis."
-msgstr ""
+msgstr "Numero di linee guida verticali per l'asse X."
 
 #. settings-schema.json->x-axis-unit->options
 msgid "Seconds"
-msgstr ""
+msgstr "Secondi"
 
 #. settings-schema.json->x-axis-unit->options
 msgid "Minutes"
-msgstr ""
+msgstr "Minuti"
 
 #. settings-schema.json->x-axis-unit->options
 msgid "Hours"
-msgstr ""
+msgstr "Ore"
 
 #. settings-schema.json->x-axis-unit->description
 msgid "X-Axis Unit"
-msgstr ""
+msgstr "Unità asse X"
 
 #. settings-schema.json->x-axis-unit->tooltip
 msgid "Unit of time for the X-Axis."
-msgstr ""
+msgstr "Unità di tempo per l'asse X."
 
 #. settings-schema.json->x-axis-length-sec->units
 #. settings-schema.json->refresh-interval->units
 msgid "s"
-msgstr ""
+msgstr "s"
 
 #. settings-schema.json->x-axis-length-sec->description
 msgid "X-Axis Length (Seconds)"
-msgstr ""
+msgstr "Lunghezza asse X (secondi)"
 
 #. settings-schema.json->x-axis-length-sec->tooltip
 #. settings-schema.json->x-axis-length-min->tooltip
 #. settings-schema.json->x-axis-length-hour->tooltip
 msgid "Total duration shown on the graph."
-msgstr ""
+msgstr "Durata totale mostrata nel grafico."
 
 #. settings-schema.json->x-axis-length-min->units
 msgid "m"
-msgstr ""
+msgstr "m"
 
 #. settings-schema.json->x-axis-length-min->description
 msgid "X-Axis Length (Minutes)"
-msgstr ""
+msgstr "Lunghezza asse X (minuti)"
 
 #. settings-schema.json->x-axis-length-hour->units
 msgid "h"
-msgstr ""
+msgstr "h"
 
 #. settings-schema.json->x-axis-length-hour->description
 msgid "X-Axis Length (Hours)"
-msgstr ""
+msgstr "Lunghezza asse X (ore)"
 
 #. settings-schema.json->temp-color->description
 msgid "Temperature Color"
-msgstr ""
+msgstr "Colore temperatura"
 
 #. settings-schema.json->temp-color->tooltip
 msgid "Color used for temperature in the graph."
-msgstr ""
+msgstr "Colore usato per la temperatura nel grafico."
 
 #. settings-schema.json->mem_color->description
 msgid "Memory Usage Color"
-msgstr ""
+msgstr "Colore uso memoria"
 
 #. settings-schema.json->mem_color->tooltip
 msgid "Color used for memory usage in the graph."
-msgstr ""
+msgstr "Colore usato per la memoria nel grafico."
 
 #. settings-schema.json->gpu_color->description
 msgid "GPU Utilization Color"
-msgstr ""
+msgstr "Colore utilizzo GPU"
 
 #. settings-schema.json->gpu_color->tooltip
 msgid "Color used for GPU utilization in the graph."
-msgstr ""
+msgstr "Colore usato per l'utilizzo GPU nel grafico."
 
 #. settings-schema.json->fan_color->description
 msgid "Fan Speed Color"
-msgstr ""
+msgstr "Colore velocità ventola"
 
 #. settings-schema.json->fan_color->tooltip
 msgid "Color used for fan speed in the graph."
-msgstr ""
+msgstr "Colore usato per la velocità della ventola."
 
 #. settings-schema.json->background_color->description
 msgid "Background Color"
-msgstr ""
+msgstr "Colore sfondo"
 
 #. settings-schema.json->background_color->tooltip
 msgid "Background color of the graph."
-msgstr ""
+msgstr "Colore di sfondo del grafico."
 
 #. settings-schema.json->temp-axis-color->description
 msgid "Temperature Axis Color"
-msgstr ""
+msgstr "Colore asse temperatura"
 
 #. settings-schema.json->temp-axis-color->tooltip
 msgid "Color for the temperature axis labels."
-msgstr ""
+msgstr "Colore per le etichette dell'asse temperatura."
 
 #. settings-schema.json->percent-axis-color->description
 msgid "Percentage Axis Color"
-msgstr ""
+msgstr "Colore asse percentuale"
 
 #. settings-schema.json->percent-axis-color->tooltip
 msgid "Color for the percentage axis labels."
-msgstr ""
+msgstr "Colore per le etichette percentuali."
 
 #. settings-schema.json->x-axis-color->description
 msgid "X-Axis Color"
-msgstr ""
+msgstr "Colore asse X"
 
 #. settings-schema.json->x-axis-color->tooltip
 msgid "Color for the X-axis labels (Time)."
-msgstr ""
+msgstr "Colore per le etichette dell'asse X (tempo)."
 
 #. settings-schema.json->guidelines-color->description
 msgid "Guidelines Color"
-msgstr ""
+msgstr "Colore linee guida"
 
 #. settings-schema.json->guidelines-color->tooltip
 msgid "Color for the grid/guide lines."
-msgstr ""
+msgstr "Colore per la griglia e le linee guida."
 
 #. settings-schema.json->refresh-interval->description
 msgid "Refresh Interval"
-msgstr ""
+msgstr "Intervallo di aggiornamento"
 
 #. settings-schema.json->refresh-interval->tooltip
 msgid "How often to update the GPU stats (in seconds)."
-msgstr ""
+msgstr "Frequenza di aggiornamento delle statistiche GPU (in secondi)."
 
 #. settings-schema.json->border-color->description
 msgid "Applet Border Color"
-msgstr ""
+msgstr "Colore bordo applet"
 
 #. settings-schema.json->border-color->tooltip
 msgid "Color of the applet border. Set alpha to 0 for no border."
-msgstr ""
+msgstr "Colore del bordo dell'applet. Imposta alpha a 0 per nessun bordo."
 
 #. settings-schema.json->encoding->options
 msgid "UTF-8"
-msgstr ""
+msgstr "UTF-8"
 
 #. settings-schema.json->encoding->options
 msgid "macintosh"
-msgstr ""
+msgstr "macintosh"
 
 #. settings-schema.json->encoding->options
 msgid "ASCII"
-msgstr ""
+msgstr "ASCII"
 
 #. settings-schema.json->encoding->description
 msgid "nvidia-smi Output Encoding"
-msgstr ""
+msgstr "Codifica output nvidia-smi"
 
 #. settings-schema.json->encoding->tooltip
 msgid "Select the character encoding used by nvidia-smi output."
-msgstr ""
+msgstr "Seleziona la codifica dei caratteri usata dall'output nvidia-smi."
 
 #. settings-schema.json->show-temp->description
 msgid "Show Temperature"
-msgstr ""
+msgstr "Mostra temperatura"
 
 #. settings-schema.json->show-temp->tooltip
 msgid "Show GPU temperature in the panel."
-msgstr ""
+msgstr "Mostra la temperatura GPU nel pannello."
 
 #. settings-schema.json->temp-unit->description
 msgid "Temperature Unit"
-msgstr ""
+msgstr "Unità temperatura"
 
 #. settings-schema.json->temp-unit->tooltip
 msgid "Choose the unit for displaying GPU temperature."
-msgstr ""
+msgstr "Scegli l'unità per visualizzare la temperatura GPU."
 
 #. settings-schema.json->show-memory->description
 msgid "Show Memory Usage"
-msgstr ""
+msgstr "Mostra uso memoria"
 
 #. settings-schema.json->show-memory->tooltip
 msgid "Show GPU memory usage in the panel."
-msgstr ""
+msgstr "Mostra l'uso della memoria GPU nel pannello."
 
 #. settings-schema.json->memory-display-mode->options
 msgid "Text (Used / Total)"
-msgstr ""
+msgstr "Testo (Usato / Totale)"
 
 #. settings-schema.json->memory-display-mode->options
 #. settings-schema.json->gpu-display-mode->options
 #. settings-schema.json->fan-display-mode->options
 msgid "Pie Chart"
-msgstr ""
+msgstr "Grafico a torta"
 
 #. settings-schema.json->memory-display-mode->description
 msgid "Memory Display Mode"
-msgstr ""
+msgstr "Modalità visualizzazione memoria"
 
 #. settings-schema.json->memory-display-mode->tooltip
 msgid "Choose how to display memory usage: as text or as a pie chart."
 msgstr ""
+"Scegli come visualizzare l'uso della memoria: testo o grafico a torta."
 
 #. settings-schema.json->show-gpu-util->description
 msgid "Show GPU Utilization"
-msgstr ""
+msgstr "Mostra utilizzo GPU"
 
 #. settings-schema.json->show-gpu-util->tooltip
 msgid "Show GPU utilization percentage in the panel."
-msgstr ""
+msgstr "Mostra la percentuale di utilizzo GPU nel pannello."
 
 #. settings-schema.json->gpu-display-mode->options
 #. settings-schema.json->fan-display-mode->options
 msgid "Text (Percent)"
-msgstr ""
+msgstr "Testo (Percentuale)"
 
 #. settings-schema.json->gpu-display-mode->description
 msgid "GPU Display Mode"
-msgstr ""
+msgstr "Modalità visualizzazione GPU"
 
 #. settings-schema.json->gpu-display-mode->tooltip
 msgid "Choose how to display GPU utilization: as text or as a pie chart."
-msgstr ""
+msgstr "Scegli come visualizzare l'utilizzo GPU: testo o grafico a torta."
 
 #. settings-schema.json->show-fan-speed->description
 msgid "Show Fan Speed"
-msgstr ""
+msgstr "Mostra velocità ventola"
 
 #. settings-schema.json->show-fan-speed->tooltip
 msgid "Show GPU fan speed percentage in the panel."
-msgstr ""
+msgstr "Mostra la percentuale della velocità della ventola GPU nel pannello."
 
 #. settings-schema.json->fan-display-mode->description
 msgid "Fan Display Mode"
-msgstr ""
+msgstr "Modalità visualizzazione ventola"
 
 #. settings-schema.json->fan-display-mode->tooltip
 msgid "Choose how to display fan speed: as text or as a pie chart."
 msgstr ""
+"Scegli come visualizzare la velocità della ventola: testo o grafico a torta."
