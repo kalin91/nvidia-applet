@@ -93,11 +93,11 @@ dev = [
 
 # --- Ruff replaces pylint + flake8 ---
 [tool.ruff]
-# preservé la línea larga más permisiva que tenías en pylint
+# Preserved the more permissive line length you had in pylint
 line-length = 120
 
 
-# Excluir carpetas grandes/no relevantes (equivalente a tus excludes de flake8/pylint)
+# Exclude large/irrelevant folders (equivalent to your flake8/pylint excludes)
 exclude = [
     ".venv",
     "build",
@@ -111,25 +111,9 @@ exclude = [
 ]
 include = ["scripts/"]
 [tool.ruff.lint]
-# Ignora las comprobaciones de pycodestyle que tenías en flake8
+select = ["E", "F", "D1", "ANN2"]
+# Ignore pycodestyle checks you had in flake8
 extend-ignore = [
     "E303", # too many blank lines
     "E701", # multiple statements on one line
 ]
-# Si quieres aplicar ruff solo a los scripts (equivalente a filenames = ["scripts/*.py"])
-# al ejecutar ruff puedes pasar la ruta: `ruff check scripts/`
-# pero también puedes usar include para limitar a patrones:
-
-# Ajustes de reglas (migración aproximada desde pylint):
-# - R0903 (too-few-public-methods): no tiene mapeo directo en ruff; si quieres evitar
-#   avisos similares, no lo incluyo (se suele ignorar en wrappers).
-# - I1101 / W0718 / C0301: muchos de estos son específicos de pylint; ruff cubre
-#   E/F/W de pycodestyle/pyflakes y otras reglas. Si necesitas un comportamiento
-#   muy concreto, lo ajustamos puntualmente con `select` / `ignore` / `per-file-ignores`.
-#
-# Por ahora dejo select sin definir (usarás el conjunto por defecto de ruff),
-# y extend-ignore cubre los ítems que tenías explícitos en flake8.
-
-# Ejemplo de per-file-ignores (descomentar y ajustar si lo necesitas)
-# [tool.ruff.per-file-ignores]
-# "scripts/*.py" = ["D", "S101"]
