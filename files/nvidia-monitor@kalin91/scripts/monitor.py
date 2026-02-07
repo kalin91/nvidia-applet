@@ -14,10 +14,10 @@ import argparse
 from typing import cast
 from gi import require_version
 from cairo import Context as CairoContext
-from gi.repository import Gtk, GLib, Gdk  # type: ignore
 from colored_graph import DataCanvas, DataSeries, DataCairoGrid, DataCairoAxis, Dimensions, axis_direction
 
 require_version("Gtk", "3.0")
+from gi.repository import Gtk, GLib, Gdk  # type: ignore  # noqa: E402
 
 
 @dataclass
@@ -295,12 +295,19 @@ class MonitorNav:
         target_x = 0.0
         target_y = 0.0
 
-        screen = Gdk.Screen.get_default()
-        if not screen:
-            print("Error: Unable to get default screen.", file=sys.stderr)
-            raise RuntimeError("Unable to get default screen.")
-        screen_w = screen.get_width()
-        screen_h = screen.get_height()
+        display = Gdk.Display.get_default()
+        if not display:
+            print("Error: Unable to get default display.", file=sys.stderr)
+            raise RuntimeError("Unable to get default display.")
+
+        # Use primary monitor for simplicty (or logic to find monitor at x/y)
+        monitor = display.get_primary_monitor()
+        if not monitor:
+            print("Error: Unable to get primary monitor.", file=sys.stderr)
+            raise RuntimeError("Unable to get primary monitor.")
+        geometry = monitor.get_geometry()
+        screen_w = geometry.width
+        screen_h = geometry.height
 
         if orientation == 0:  # TOP
             target_x = x_applet + (w_applet / 2) - (win_w / 2)
@@ -374,7 +381,7 @@ class MonitorNav:
                 self.process_data(line)
         except Exception as e:
             print(f"Error reading stdin: {e}", file=sys.stderr)
-            raise RuntimeError(f"Error reading stdin: {e}") from e
+            return False  # Stop watching on error
 
         return True  # Continue watching
 

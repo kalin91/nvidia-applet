@@ -18,10 +18,10 @@ packages = []
 
 [tool.mypy]
 check_untyped_defs = true
-python_version = "3.13.7"
+python_version = "3.13"
 disable_error_code = ["import-untyped", "override"]
 mypy_path = "./out"
-files = ["src/scritps/"]
+files = ["files/nvidia-monitor@kalin91/scripts/"]
 
 
 exclude = [
@@ -37,7 +37,6 @@ exclude = [
 ]
 
 [tool.pylint.master]
-load-plugins = ["workspace_temp.custom_checkers"]
 ignore-patterns = [
     "\\.venv/.*",
     ".+\\.pyi",
@@ -59,7 +58,7 @@ max-positional-arguments = 10
 max-attributes = 12
 
 [tool.flake8]
-filenames = ["scripts/*.py"]
+filenames = ["files/nvidia-monitor@kalin91/scripts/*.py"]
 max-line-length = 120
 ignore = [
     "E303", # too many blank lines
@@ -109,7 +108,7 @@ exclude = [
     "workspace_temp",
     "src/tests",
 ]
-include = ["scripts/"]
+include = ["files/nvidia-monitor@kalin91/scripts/"]
 [tool.ruff.lint]
 select = ["E", "F", "D1", "ANN2"]
 # Ignore pycodestyle checks you had in flake8

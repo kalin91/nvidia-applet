@@ -14,7 +14,10 @@ from dataclasses import dataclass, field
 from abc import ABC, abstractmethod
 from typing import Any, cast, Callable, ClassVar, TypedDict, Iterable, Self, TypeVar, Optional
 from cairo import Context as CairoContext
-from gi.repository import Gtk, Gdk  # type: ignore
+from gi import require_version
+
+require_version("Gtk", "3.0")
+from gi.repository import Gtk, Gdk  # type: ignore  # noqa: E402
 
 T = TypeVar("T")
 
@@ -543,7 +546,6 @@ class DataCairoGrid(ColoredGraph):
             if ud_steps is None:
                 print("No upToDown axes found, skipping grid drawing.", file=sys.stderr)
                 raise RuntimeError("No upToDown axes found, skipping grid drawing.")
-            print(f"Drawing grid with {ud_steps} horizontal steps.", file=sys.stderr)
             for i in range(ud_steps + 1):
                 ratio = i / float(ud_steps)
                 y = d.margin_top + graph_h * (1 - ratio)  # 0 at bottom
@@ -848,13 +850,12 @@ class DataCanvas(ColoredGraph):
         """
         try:
             self._calculate_coords(d)
-            if not d.coords:
-                return
             cr.set_source_rgba(*self.color)
             cr.rectangle(0, 0, self.__graph.get_allocated_width(), self.__graph.get_allocated_height())
             cr.fill()
             self.__grid.draw(cr, d)
-            self._draw_tooltip(cr, d)
+            if d.coords:
+                self._draw_tooltip(cr, d)
         except Exception as e:
             print(f"Error during draw: {e}", file=sys.stderr)
             raise RuntimeError(f"Error during draw: {e}")

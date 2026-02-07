@@ -1,18 +1,23 @@
 """Setup GTK stubs for type checking."""
 
-import pip
+import subprocess
+import sys
 
 
 def main() -> None:
     """Setup GTK stubs for type checking."""
     # run pip install pygobject-stubs --no-cache-dir --config-settings=config=Gtk3,Gdk3,Soup2
-    pip_args = [
-        "install",
-        "pygobject-stubs",
-        "--no-cache-dir",
-        "--config-settings=config=Gtk3,Gdk3,Soup2",
-    ]
-    pip.main(pip_args)
+    subprocess.check_call(
+        [
+            sys.executable,
+            "-m",
+            "pip",
+            "install",
+            "pygobject-stubs",
+            "--no-cache-dir",
+            "--config-settings=config=Gtk3,Gdk3,Soup2",
+        ]
+    )
 
 
 if __name__ == "__main__":
