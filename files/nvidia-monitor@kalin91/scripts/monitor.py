@@ -1,4 +1,9 @@
 #!/usr/bin/env python3
+"""NVIDIA Monitor for Cinnamon Applet:
+This application serves as a standalone monitor for NVIDIA GPU metrics, designed to be used in conjunction with a
+Cinnamon applet. It reads JSON-formatted data from stdin, which is expected to be sent by the applet,
+and renders this data in a graphical format using GTK and Cairo.
+"""
 
 import sys
 from dataclasses import dataclass
@@ -10,13 +15,15 @@ from typing import cast
 from gi import require_version
 from cairo import Context as CairoContext
 from gi.repository import Gtk, GLib, Gdk  # type: ignore
-from colored_graph import DataCanvas, DataSeries, DataCairoGrid, DataCairoAxis, Dimensions
+from colored_graph import DataCanvas, DataSeries, DataCairoGrid, DataCairoAxis, Dimensions, axis_direction
 
 require_version("Gtk", "3.0")
 
 
 @dataclass
 class AppletArgs:
+    """Arguments passed from the applet, with defaults for testing outside of Cinnamon."""
+
     x: float = 0
     y: float = 0
     width: float = 0
@@ -41,22 +48,45 @@ class AppletArgs:
 
 
 class MonitorNav:
+    """Main application class for the NVIDIA Monitor. Handles UI setup, argument parsing, and data processing.
+
+    properties:
+        __window (Gtk.Window): The main application window.
+        __graph_area (DataCanvas): The custom drawing area for rendering the GPU data graphs.
+        __args (AppletArgs): The parsed arguments from the applet, containing configuration for the monitor.
+
+    """
+
     __window: Gtk.Window
     __graph_area: DataCanvas
+    __args: AppletArgs
 
     @property
     def args(self) -> AppletArgs:
-        return self._args
+        """Returns the parsed arguments from the applet, providing access to configuration settings for the monitor."""
+        return self.__args
 
     @property
     def window(self) -> Gtk.Window:
+        """Returns the main application window, allowing for operations such as showing,
+        hiding, or moving the window."""
         return self.__window
 
     @property
     def graph_area(self) -> DataCanvas:
+        """Returns the custom drawing area for rendering the GPU data graphs."""
         return self.__graph_area
 
-    def __init__(self, builder: Gtk.Builder):
+    def __init__(self, builder: Gtk.Builder) -> None:
+        """Initializes the MonitorNav application with the given GTK builder.
+
+        Args:
+            builder (Gtk.Builder): The GTK builder used to construct the UI components.
+
+        Raises:
+            RuntimeError: If there is an error parsing the arguments or setting up the UI,
+                a RuntimeError will be raised with details about the failure.
+        """
         try:
             # Parse Args
             parser = argparse.ArgumentParser()
@@ -67,7 +97,7 @@ class MonitorNav:
                     default=f.default,
                 )
 
-            self._args = parser.parse_args(namespace=AppletArgs())
+            self.__args = parser.parse_args(namespace=AppletArgs())
 
             # Config derived from args
             self.interval = max(0.5, self.args.interval)
@@ -116,7 +146,7 @@ class MonitorNav:
                             self.args.color_axis_temp,
                             (0, 110),
                             {series[3]},
-                            {"steps": self.args.ysteps, "direction": "upToDown"},
+                            {"steps": self.args.ysteps, "direction": axis_direction.UP_TO_DOWN},
                             self.temp_label_text,
                         ),  # TEMP only
                         DataCairoAxis(
@@ -124,7 +154,7 @@ class MonitorNav:
                             self.args.color_axis_pct,
                             (0, 100),
                             set(series[:3]),
-                            {"steps": self.args.ysteps, "direction": "upToDown"},
+                            {"steps": self.args.ysteps, "direction": axis_direction.UP_TO_DOWN},
                             self.pct_label_text,
                         ),  # GPU, MEM, FAN
                         DataCairoAxis(
@@ -132,7 +162,7 @@ class MonitorNav:
                             self.args.color_axis_x,
                             (self.args.xlength, 0),
                             set(series),
-                            {"steps": self.args.xsteps, "direction": "leftToRight"},
+                            {"steps": self.args.xsteps, "direction": axis_direction.LEFT_TO_RIGHT},
                             self.x_label_text,
                         ),
                     },
@@ -141,7 +171,7 @@ class MonitorNav:
                 max_history,
             )
             # Position Window
-            self.setup_window_position(self.args)
+            self.setup_window_position()
 
             # Add toggle controls
             self.graph_area.add_controls()
@@ -164,6 +194,16 @@ class MonitorNav:
     def temp_label_text(
         self, inst: DataCairoAxis, cr: CairoContext, d: Dimensions, ratio: float, _edge: DataCairoAxis.Edge
     ) -> None:
+        """
+        Callback to generate and draw the label text for the temperature axis.
+
+        Args:
+            inst (DataCairoAxis): The axis instance calling this method.
+            cr (CairoContext): The Cairo drawing context.
+            d (Dimensions): The dimensions of the drawing area.
+            ratio (float): The position on the axis as a ratio between 0.0 and 1.0.
+            _edge (DataCairoAxis.Edge): The edge of the axis where the label is being drawn (unused).
+        """
         temp_val_c = int(ratio * 110)
         y = d.margin_top + d.graph_height * (1 - ratio)
         x = d.margin_left
@@ -175,6 +215,16 @@ class MonitorNav:
     def pct_label_text(
         self, inst: DataCairoAxis, cr: CairoContext, d: Dimensions, ratio: float, edge: DataCairoAxis.Edge
     ) -> None:
+        """
+        Callback to generate and draw the label text for the percentage axis (GPU/Memory/Fan).
+
+        Args:
+            inst (DataCairoAxis): The axis instance calling this method.
+            cr (CairoContext): The Cairo drawing context.
+            d (Dimensions): The dimensions of the drawing area.
+            ratio (float): The position on the axis as a ratio between 0.0 and 1.0.
+            edge (DataCairoAxis.Edge): The edge of the axis where the label is being drawn.
+        """
         pct_val = int(ratio * 100)
         y = d.margin_top + d.graph_height * (1 - ratio)
         x = d.width - d.margin_right
@@ -184,6 +234,16 @@ class MonitorNav:
     def x_label_text(
         self, inst: DataCairoAxis, cr: CairoContext, d: Dimensions, ratio: float, edge: DataCairoAxis.Edge
     ) -> None:
+        """
+        Callback to generate and draw the label text for the X-axis (Time).
+
+        Args:
+            inst (DataCairoAxis): The axis instance calling this method.
+            cr (CairoContext): The Cairo drawing context.
+            d (Dimensions): The dimensions of the drawing area.
+            ratio (float): The position on the axis as a ratio between 0.0 and 1.0.
+            edge (DataCairoAxis.Edge): The edge of the axis where the label is being drawn.
+        """
         time_val = self.args.xlength * (1 - ratio)
         unit_char = self.args.xunit[0]
         if unit_char == "s":
@@ -210,7 +270,14 @@ class MonitorNav:
             align_right = edge == DataCairoAxis.Edge.END
             inst.draw_text(cr, text, x, y, align_right=align_right)
 
-    def setup_window_position(self, args):
+    def setup_window_position(self) -> None:
+        """
+        sets up the initial position of the window based on the applet's position and orientation.
+        Raises:
+            RuntimeError: If there is an error getting the screen dimensions or moving the window,
+                a RuntimeError will be raised with details about the failure.
+        """
+        args = self.args
         # We need the window size to calculate position properly,
         # but window isn't realized/sized yet.
         # We can use default size from glade for initial calc
@@ -225,8 +292,8 @@ class MonitorNav:
         orientation = args.orientation
 
         # Cinnamon Side: TOP=0, BOTTOM=1, LEFT=2, RIGHT=3
-        target_x = 0
-        target_y = 0
+        target_x = 0.0
+        target_y = 0.0
 
         screen = Gdk.Screen.get_default()
         if not screen:
@@ -257,11 +324,34 @@ class MonitorNav:
         # Ensure it's not behind panel if possible?
         # self.window.set_keep_above(True)
 
-    def on_delete_event(self, *args):
+    def on_delete_event(self, *args) -> bool:
+        """
+        Handles the delete event (window close) by quitting the GTK main loop.
+
+        Returns:
+            bool: Always returns True to prevent the default handler from
+                destroying the window, allowing for graceful shutdown through Gtk.main_quit().
+        """
         Gtk.main_quit()
         return True
 
-    def on_stdin_data(self, source, condition):
+    def on_stdin_data(self, source: GLib.IOChannel, condition: GLib.IOCondition) -> bool:
+        """
+        Reads data from stdin when available, processes it, and updates the graph. If the parent process closes
+            the pipe, it exits the application.
+        Args:
+            source (GLib.IOChannel): The GLib.IOChannel source to read from, typically connected to stdin.
+            condition (GLib.IOCondition): The condition that triggered the callback, used to check for input
+            availability or hang-up events.
+
+        Raises:
+            RuntimeError: If there is an error reading from stdin or processing the data, a RuntimeError
+                will be raised with details about the failure.
+
+        Returns:
+            bool: Returns True to continue watching for stdin data, or False to stop if the parent process
+            has closed the pipe.
+        """
         if condition & GLib.IOCondition.HUP:
             print("Parent closed pipe, exiting...", file=sys.stderr)
             Gtk.main_quit()
@@ -288,7 +378,12 @@ class MonitorNav:
 
         return True  # Continue watching
 
-    def process_data(self, line):
+    def process_data(self, line: str) -> None:
+        """
+        Processes a line of JSON-formatted data received from stdin and updates the graph accordingly.
+        Args:
+            line (str): A line of JSON-formatted data received from stdin.
+        """
         try:
             data = json.loads(line)
 
